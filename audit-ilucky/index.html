@@ -1,0 +1,401 @@
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Báo cáo audit SEO, GEO và ước tính Rank Math cho landing page iLucky – Vương quốc thịnh vượng của TCBS.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Audit SEO & GEO: iLucky – Vương quốc thịnh vượng | TCBS">
+  <meta property="og:description" content="Đánh giá kỹ thuật, nội dung, E-E-A-T, GEO và ưu tiên khắc phục cho landing page iLucky của TCBS.">
+  <meta name="twitter:card" content="summary">
+  <title>Audit SEO &amp; GEO: iLucky – Vương quốc thịnh vượng | TCBS</title>
+  <style>
+    :root {
+      --ink: #162238;
+      --muted: #52627a;
+      --paper: #ffffff;
+      --canvas: #f4f7fb;
+      --line: #dbe3ef;
+      --brand: #b41334;
+      --brand-dark: #871027;
+      --good: #11735c;
+      --watch: #9a5b00;
+      --critical: #ae2538;
+      --soft-brand: #fff1f3;
+      --soft-good: #edfaf6;
+      --soft-watch: #fff7e9;
+      --soft-critical: #fff0f2;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a { color: var(--brand-dark); text-underline-offset: 0.16em; }
+    a:hover { color: var(--brand); }
+    code { padding: 0.1em 0.35em; background: #edf1f6; border-radius: 4px; font-size: 0.92em; }
+
+    .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    .hero {
+      padding: 62px 0 40px;
+      background: linear-gradient(135deg, #7d0b24 0%, #b41334 52%, #d34861 100%);
+      color: white;
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: #ffd8df;
+      font-size: 0.82rem;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.2; }
+    h1 { max-width: 900px; margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -0.035em; }
+    .lede { max-width: 820px; margin: 20px 0 0; font-size: 1.1rem; color: #fff4f5; }
+    .meta { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 26px 0 0; font-size: 0.9rem; color: #ffe4e8; }
+    .meta strong { color: white; }
+
+    .toc {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+    }
+    .toc nav { display: flex; gap: 8px 18px; overflow-x: auto; padding: 12px 0; white-space: nowrap; }
+    .toc a { color: var(--muted); font-size: 0.88rem; font-weight: 650; text-decoration: none; }
+    .toc a:hover { color: var(--brand); }
+
+    main { padding: 40px 0 72px; }
+    section { margin: 0 0 42px; }
+    h2 { margin: 0 0 14px; font-size: clamp(1.45rem, 2.5vw, 2rem); letter-spacing: -0.02em; }
+    h3 { margin: 26px 0 10px; font-size: 1.1rem; }
+    p { margin: 0 0 14px; }
+    .intro { max-width: 900px; font-size: 1.05rem; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+    .card, .callout { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    .card { padding: 20px; }
+    .card h3 { margin-top: 0; }
+    .score { font-size: 2.25rem; font-weight: 800; line-height: 1; color: var(--brand); }
+    .score-label { margin-top: 7px; color: var(--muted); font-size: 0.9rem; }
+    .badge { display: inline-block; padding: 0.22rem 0.62rem; border-radius: 999px; font-size: 0.78rem; font-weight: 750; white-space: nowrap; }
+    .good { background: var(--soft-good); color: var(--good); }
+    .watch { background: var(--soft-watch); color: var(--watch); }
+    .critical { background: var(--soft-critical); color: var(--critical); }
+    .priority { background: var(--soft-brand); color: var(--brand-dark); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    table { width: 100%; border-collapse: collapse; min-width: 780px; }
+    th, td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    th { background: #f8fafc; color: #334155; font-size: 0.83rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td p:last-child { margin-bottom: 0; }
+
+    .callout { padding: 20px 22px; }
+    .callout strong { display: block; margin-bottom: 5px; }
+    .callout.critical-box { border-left: 5px solid var(--critical); background: var(--soft-critical); }
+    .callout.good-box { border-left: 5px solid var(--good); background: var(--soft-good); }
+    .callout.brand-box { border-left: 5px solid var(--brand); background: var(--soft-brand); }
+    .callout + .callout { margin-top: 12px; }
+
+    ol, ul { margin: 10px 0 0; padding-left: 1.25rem; }
+    li + li { margin-top: 7px; }
+    .source-list li { margin-bottom: 8px; }
+    .source-list a { font-weight: 650; }
+
+    .proposed {
+      margin-top: 18px;
+      padding: 20px 22px;
+      border-radius: var(--radius);
+      background: #10223d;
+      color: #eff6ff;
+    }
+    .proposed h3 { margin-top: 0; color: white; }
+    .proposed p { margin-bottom: 9px; }
+    .proposed strong { color: #fca5b5; }
+
+    .footer { border-top: 1px solid var(--line); padding: 26px 0 50px; color: var(--muted); font-size: 0.9rem; }
+    .footer p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 24px, 1160px); }
+      .hero { padding-top: 44px; }
+      .cards { grid-template-columns: 1fr; }
+      main { padding-top: 28px; }
+      section { margin-bottom: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <p class="eyebrow">Báo cáo SEO &amp; GEO</p>
+      <h1>iLucky – Vương quốc thịnh vượng | TCBS</h1>
+      <p class="lede">Audit landing page khuyến mại theo khả năng được tìm thấy, hiểu đúng, trích dẫn đúng và kiểm chứng được bởi công cụ tìm kiếm cũng như các hệ thống trả lời bằng AI.</p>
+      <div class="meta">
+        <span><strong>Đối tượng:</strong> <a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/ilucky-vuong-quoc-thinh-vuong/" style="color:inherit">Landing page iLucky TCBS</a></span>
+        <span><strong>Ngày audit:</strong> 03/09/2026</span>
+        <span><strong>Phạm vi:</strong> SEO on-page, kỹ thuật hiển thị, GEO</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="toc">
+    <div class="shell">
+      <nav aria-label="Mục lục báo cáo">
+        <a href="#tom-tat">Tóm tắt</a>
+        <a href="#rank-math">Rank Math</a>
+        <a href="#seo">SEO chi tiết</a>
+        <a href="#geo">GEO</a>
+        <a href="#uu-tien">Ưu tiên xử lý</a>
+        <a href="#do-luong">Đo lường</a>
+        <a href="#nguon">Nguồn</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="shell">
+    <section id="tom-tat">
+      <h2>Tóm tắt điều hành</h2>
+      <p class="intro">Trang có nền tảng kỹ thuật để được crawl và đọc: canonical tự trỏ, <code>index,follow</code>, một H1, breadcrumbs dạng dữ liệu có cấu trúc và nội dung chương trình hiển thị bằng văn bản. Điểm cản trở lớn nhất không phải là độ dài bài, mà là độ chính xác dữ kiện và khả năng kiểm chứng nguồn.</p>
+
+      <div class="cards" aria-label="Tổng quan đánh giá">
+        <article class="card">
+          <div class="score">68/100</div>
+          <div class="score-label">Ước tính Rank Math, biên độ 62–72</div>
+        </article>
+        <article class="card">
+          <span class="badge watch">GEO: đọc được, chưa an toàn</span>
+          <h3>Điểm nghẽn</h3>
+          <p>Metadata nói 3 Cổng trong khi nội dung trang nêu 4 Cổng giải thưởng.</p>
+        </article>
+        <article class="card">
+          <span class="badge critical">P0</span>
+          <h3>Lỗi đa ngôn ngữ</h3>
+          <p><code>hreflang="en"</code> dẫn đến trang Marginsure, không phải bản tiếng Anh của iLucky.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="rank-math">
+      <h2>Ước tính Rank Math</h2>
+      <p>Điểm 68/100 giả định trang được khai báo là Page thường, focus keyword chính là <strong>“iLucky Vương quốc thịnh vượng”</strong>, không bật Content AI. Điểm thực tế chỉ có thể xác nhận trong CMS vì Rank Math chấm theo focus keyword và nội dung mà page builder đưa vào trình phân tích. Focus keyword là dữ liệu nội bộ của plugin, không được gửi cho Google.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Nhóm test</th><th>Trạng thái ước tính</th><th>Căn cứ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Keyword trong SEO title</td><td><span class="badge good">Đạt</span></td><td>Title hiện có chứa đúng tên chiến dịch.</td></tr>
+            <tr><td>Keyword trong meta description</td><td><span class="badge critical">Không đạt</span></td><td>Mô tả không chứa “iLucky” và còn sai dữ kiện “3 cổng”.</td></tr>
+            <tr><td>Keyword trong URL</td><td><span class="badge good">Đạt</span></td><td>Slug chứa đầy đủ tên chiến dịch; URL khoảng 69 ký tự, dưới ngưỡng 75 ký tự của Rank Math.</td></tr>
+            <tr><td>Keyword đầu/nội dung trang</td><td><span class="badge good">Đạt</span></td><td>iLucky và tên chương trình xuất hiện sớm, nhiều lần trong nội dung.</td></tr>
+            <tr><td>Keyword trong heading</td><td><span class="badge watch">Một phần</span></td><td>Có “iLucky” trong heading, nhưng tên đầy đủ chưa nằm trong H1/H2.</td></tr>
+            <tr><td>Keyword trong alt ảnh</td><td><span class="badge good">Đạt</span></td><td>Ảnh hero có alt mô tả iLucky – Vương quốc thịnh vượng.</td></tr>
+            <tr><td>Content length</td><td><span class="badge watch">Một phần</span></td><td>Trang đủ cho landing page, nhưng có thể chưa đạt ngưỡng điểm tối đa mặc định của plugin.</td></tr>
+            <tr><td>Liên kết</td><td><span class="badge watch">Một phần</span></td><td>CTA sang TCInvest có ích cho chuyển đổi, nhưng thiếu internal link ngữ cảnh và có thể không có external link phù hợp.</td></tr>
+            <tr><td>Title readability</td><td><span class="badge watch">Một phần</span></td><td>Keyword ở đầu title; thiếu năm 2026/số và không nên thêm “power word” chỉ để lấy điểm.</td></tr>
+            <tr><td>Content readability</td><td><span class="badge good">Khá</span></td><td>Có nhiều ảnh, đoạn ngắn, FAQ; chưa có mục lục anchor rõ ràng.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Rank Math có các test về keyword trong title, description, URL, heading, alt ảnh, mật độ từ khóa, liên kết và khả năng đọc. Chúng là checklist hỗ trợ tối ưu, không phải bảo đảm thứ hạng. <a href="https://rankmath.com/kb/general-tab/">Nguồn chính thức Rank Math</a></p>
+    </section>
+
+    <section id="seo">
+      <h2>Audit SEO on-page và kỹ thuật</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Thành phần</th><th>Ưu điểm</th><th>Issue</th><th>Đề xuất</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SEO title</strong></td>
+              <td><code>iLucky - Vương quốc thịnh vượng</code> ngắn, không lặp từ, khớp tên chiến dịch.</td>
+              <td>Chưa có năm 2026 hoặc thương hiệu TCBS; chưa cho người tìm kiếm biết đây là chương trình khuyến mại.</td>
+              <td><code>iLucky – Vương quốc thịnh vượng 2026 | TCBS</code></td>
+            </tr>
+            <tr>
+              <td><strong>Meta &amp; OG description</strong></td>
+              <td>Đang có description và Open Graph image.</td>
+              <td><strong>Lỗi factual:</strong> mô tả “mở 3 cổng” trong khi trang có 4 Cổng giải thưởng.</td>
+              <td>Sửa đồng bộ: <em>“iLucky – Vương quốc thịnh vượng của TCBS diễn ra 03/09–31/12/2026. Hoàn thành nhiệm vụ, tích chìa khóa và tham gia 4 Cổng giải thưởng. Xem thể lệ.”</em></td>
+            </tr>
+            <tr>
+              <td><strong>URL &amp; canonical</strong></td>
+              <td>Slug rõ nghĩa, canonical tự trỏ đúng URL, robots cho phép index.</td>
+              <td>Không có lỗi cần chỉnh.</td>
+              <td>Không đổi URL khi chương trình đang chạy.</td>
+            </tr>
+            <tr>
+              <td><strong>H1 và heading</strong></td>
+              <td>Một H1, sáu H2; cấu trúc Cổng, nhiệm vụ, nhận thưởng, điều kiện và FAQ rõ.</td>
+              <td>H1 hiện chỉ nói “phiên bản mới của iLucky”, chưa truyền đạt đầy đủ ý định trang.</td>
+              <td><code>iLucky – Vương quốc thịnh vượng: 4 Cổng giải thưởng trên TCInvest</code></td>
+            </tr>
+            <tr>
+              <td><strong>Ảnh</strong></td>
+              <td>Hero và ảnh chủ đạo có alt mô tả.</td>
+              <td>Nhiều ảnh alt rỗng; có thể là ảnh trang trí/lazy-load placeholder.</td>
+              <td>Rà soát từng ảnh có ý nghĩa. Giữ alt rỗng với ảnh trang trí, không nhồi keyword.</td>
+            </tr>
+            <tr>
+              <td><strong>Internal link</strong></td>
+              <td>CTA dẫn về TCInvest, phục vụ hành động tham gia.</td>
+              <td>Thiếu link từ đoạn nội dung đến iXu, iPower, mở tài khoản, công bố rủi ro và thể lệ.</td>
+              <td>Thêm link ngữ cảnh với anchor mô tả rõ đối tượng đích.</td>
+            </tr>
+            <tr>
+              <td><strong>Structured data</strong></td>
+              <td>Có <code>BreadcrumbList</code>, phù hợp hệ phân cấp trang.</td>
+              <td>Không có issue bắt buộc.</td>
+              <td>Giữ Breadcrumb; không dùng Product/Offer/FAQ schema sai ngữ cảnh chỉ để săn rich result.</td>
+            </tr>
+            <tr>
+              <td><strong>Hreflang</strong></td>
+              <td>Có khai báo vi/en/x-default.</td>
+              <td><strong>Lỗi P0:</strong> bản <code>en</code> hiện dẫn tới Marginsure, không cùng nội dung iLucky.</td>
+              <td>Nếu chưa có English iLucky, bỏ mapping en sai. Nếu có, thiết lập cặp vi/en tương hỗ đúng nội dung.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="proposed">
+        <h3>Khối thông tin nên đặt ngay sau hero</h3>
+        <p><strong>Thông tin chính thức về iLucky – Vương quốc thịnh vượng</strong></p>
+        <p><strong>Đơn vị tổ chức:</strong> Công ty Cổ phần Chứng khoán Kỹ Thương (TCBS)</p>
+        <p><strong>Thời gian chương trình:</strong> 03/09/2026–31/12/2026</p>
+        <p><strong>Cách tham gia:</strong> Hoàn thành nhiệm vụ hợp lệ → nhận chìa khóa iLucky → chọn 1 trong 4 Cổng giải thưởng.</p>
+        <p><strong>Hạn dùng chìa khóa:</strong> Đến 14:45 ngày 31/12/2026.</p>
+        <p><strong>Tra cứu giải thưởng:</strong> TCInvest → iLucky → Giải thưởng.</p>
+        <p><strong>Điều kiện, hạn mức và trường hợp loại trừ:</strong> Xem thể lệ chính thức, phiên bản …, cập nhật ngày …</p>
+      </div>
+    </section>
+
+    <section id="geo">
+      <h2>Audit GEO</h2>
+      <p>GEO ở đây không phải “nhồi từ khóa cho chatbot”. Mục tiêu là để một hệ thống trả lời bằng AI có thể tìm được trang, tóm tắt đúng dữ kiện và dẫn người dùng về nguồn TCBS/thể lệ TCBS. Google hướng dẫn rằng nội dung hữu ích, đáng tin cậy và có giá trị riêng sẽ có ý nghĩa lớn nhất đối với hiện diện trong generative AI search.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Trục GEO</th><th>Đánh giá</th><th>Bằng chứng</th><th>Hệ quả</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Khả năng truy xuất</td><td><span class="badge good">Tốt</span></td><td>Canonical, robots index, nội dung chính hiển thị thành text.</td><td>Crawler có cơ sở đọc và hiểu trang.</td></tr>
+            <tr><td>Khả năng trích xuất</td><td><span class="badge good">Tốt</span></td><td>Có ngày, 4 Cổng, nhiệm vụ, cách trả thưởng, FAQ và thời hạn.</td><td>AI có thể trả lời các câu hỏi quy trình cơ bản.</td></tr>
+            <tr><td>Tính nhất quán dữ kiện</td><td><span class="badge critical">Yếu nghiêm trọng</span></td><td>Metadata nói 3 Cổng, body nói 4 Cổng.</td><td>Nguy cơ AI nêu sai dữ kiện dù dùng nguồn TCBS.</td></tr>
+            <tr><td>Khả năng kiểm chứng</td><td><span class="badge critical">Yếu</span></td><td>Trang nói “theo thể lệ chính thức” nhưng không có link thể lệ trực tiếp.</td><td>Khó được dùng làm nguồn có tính chứng minh cho điều kiện khuyến mại.</td></tr>
+            <tr><td>Rõ thực thể</td><td><span class="badge watch">Khá</span></td><td>TCBS, TCInvest, iLucky, iXu và các Cổng xuất hiện rõ.</td><td>Cần nối rõ quan hệ tổ chức – đối tượng – điều kiện – thể lệ.</td></tr>
+            <tr><td>Đa ngôn ngữ</td><td><span class="badge critical">Yếu nghiêm trọng</span></td><td>Hreflang English trỏ tới Marginsure.</td><td>Phá vỡ tín hiệu thực thể/nội dung với truy vấn tiếng Anh.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>AI hiện có thể trả lời gì?</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Câu hỏi</th><th>Khả năng trả lời</th><th>Rủi ro hiện tại</th></tr></thead>
+          <tbody>
+            <tr><td>“iLucky – Vương quốc thịnh vượng là gì?”</td><td><span class="badge good">Tốt</span></td><td>Có thể mô tả đúng là chương trình tích chìa khóa trên TCInvest.</td></tr>
+            <tr><td>“Chương trình diễn ra khi nào?”</td><td><span class="badge good">Tốt</span></td><td>Ngày 03/09–31/12/2026 có trong nội dung.</td></tr>
+            <tr><td>“Có bao nhiêu Cổng giải thưởng?”</td><td><span class="badge critical">Không an toàn</span></td><td>Mâu thuẫn 3/4 Cổng giữa metadata và body.</td></tr>
+            <tr><td>“Ai được tham gia?”</td><td><span class="badge watch">Trung bình thấp</span></td><td>Trang chưa có câu trả lời độc lập, đầy đủ và link thể lệ ngay cạnh.</td></tr>
+            <tr><td>“Tôi xem thể lệ ở đâu?”</td><td><span class="badge critical">Yếu</span></td><td>Không có URL thể lệ trực tiếp trên landing page.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout brand-box">
+        <strong>Mục tiêu GEO đúng</strong>
+        Khi AI trả lời về iLucky, câu trả lời phải nêu đúng 4 Cổng, đúng thời hạn, đúng điều kiện áp dụng và dẫn người đọc về TCBS hoặc thể lệ TCBS; không chỉ đơn giản là nhắc tên chương trình.
+      </div>
+    </section>
+
+    <section id="uu-tien">
+      <h2>Thứ tự ưu tiên xử lý</h2>
+      <div class="callout critical-box">
+        <strong>P0 — xử lý trước khi kéo traffic</strong>
+        <ol>
+          <li>Sửa metadata và OG description từ “3 Cổng” thành “4 Cổng”.</li>
+          <li>Sửa hoặc gỡ hreflang English đang trỏ sang Marginsure.</li>
+          <li>Thêm link trực tiếp đến thể lệ chính thức, số phiên bản và ngày cập nhật.</li>
+        </ol>
+      </div>
+      <div class="callout brand-box">
+        <strong>P1 — tăng relevance, CTR và độ chính xác của AI</strong>
+        <ol>
+          <li>Đổi SEO title và H1 theo đề xuất.</li>
+          <li>Thêm khối “Thông tin chính thức” sau hero.</li>
+          <li>Bổ sung internal link ngữ cảnh đến iXu, iPower, mở tài khoản và công bố rủi ro.</li>
+          <li>Rà soát alt cho ảnh có ý nghĩa thông tin.</li>
+        </ol>
+      </div>
+      <div class="callout good-box">
+        <strong>P2 — tối ưu plugin có chọn lọc</strong>
+        <ol>
+          <li>Thêm mục lục anchor ngắn cho các phần Cổng, nhiệm vụ, điều kiện, FAQ.</li>
+          <li>Đặt primary/secondary focus keyword trong Rank Math và kiểm tra keyword uniqueness.</li>
+          <li>Không kéo bài lên 2.500 từ, thêm power word hay external link chỉ để chuyển màu test sang xanh.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="do-luong">
+      <h2>Đo lường sau khi triển khai</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nhóm</th><th>Chỉ số</th><th>Cách đọc</th></tr></thead>
+          <tbody>
+            <tr><td>Google Search</td><td>Impressions, clicks, CTR, average position</td><td>Lọc truy vấn branded: “ilucky tcbs”, “vương quốc thịnh vượng”, các biến thể không dấu.</td></tr>
+            <tr><td>Indexing</td><td>URL Inspection</td><td>Xác nhận Google chọn đúng canonical, crawl được và index được sau khi sửa P0.</td></tr>
+            <tr><td>GEO</td><td>Answer inclusion rate</td><td>Tỷ lệ câu trả lời AI nhắc đúng chương trình/TCBS với bộ câu hỏi cố định.</td></tr>
+            <tr><td>GEO</td><td>Official citation rate</td><td>Tỷ lệ câu trả lời dẫn về landing page hoặc thể lệ chính thức của TCBS.</td></tr>
+            <tr><td>GEO</td><td>Fact accuracy</td><td>Kiểm tra 6 dữ kiện: thời gian, 4 Cổng, chìa khóa, hạn dùng, đối tượng, nơi tra giải.</td></tr>
+            <tr><td>Core Web Vitals</td><td>LCP, INP, CLS ở p75</td><td>Chỉ báo cáo khi có dữ liệu Search Console/CrUX hoặc PageSpeed Insights hợp lệ.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>PageSpeed Insights phân biệt dữ liệu lab và dữ liệu thực tế; Core Web Vitals dùng LCP, INP, CLS và đánh giá ở phân vị 75. Không gán điểm hiệu năng cho trang này khi chưa có kết quả đo hợp lệ.</p>
+    </section>
+
+    <section id="nguon">
+      <h2>Nguồn tham khảo</h2>
+      <ul class="source-list">
+        <li><a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/ilucky-vuong-quoc-thinh-vuong/">TCBS — iLucky: Vương quốc thịnh vượng</a> (nguồn nội dung được audit).</li>
+        <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central — Creating helpful, reliable, people-first content</a>.</li>
+        <li><a href="https://developers.google.com/search/docs/fundamentals/ai-optimization-guide">Google Search Central — Guide to optimizing for generative AI features</a>.</li>
+        <li><a href="https://developers.google.com/search/docs/appearance/title-link">Google Search Central — Influencing title links</a>.</li>
+        <li><a href="https://developers.google.com/search/docs/specialty/international/localized-versions">Google Search Central — Localized versions and hreflang</a>.</li>
+        <li><a href="https://developers.google.com/speed/docs/insights/v5/about">Google — About PageSpeed Insights</a>.</li>
+        <li><a href="https://rankmath.com/kb/general-tab/">Rank Math — General Tab and Content Analysis</a>.</li>
+        <li><a href="https://rankmath.com/kb/score-100-in-tests/">Rank Math — Score 100/100 with post tests</a>.</li>
+        <li><a href="https://collaborate.princeton.edu/en/publications/geo-generative-engine-optimization/">Aggarwal et al. (2024), GEO: Generative Engine Optimization, ACM KDD 2024</a>.</li>
+        <li><a href="https://help.openai.com/en/articles/9237897-searching-the-web-with-chatgpt">OpenAI Help Center — Searching the web with ChatGPT</a>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p><strong>Ghi chú phương pháp:</strong> Điểm Rank Math là ước tính dựa trên HTML công khai và tiêu chí do Rank Math công bố. GEO được đánh giá theo khả năng truy xuất, trích xuất, tính nhất quán, kiểm chứng, thực thể và đa ngôn ngữ; đây là khung vận hành, không phải thang điểm chính thức của Google hay bất kỳ chatbot nào.</p>
+      <p>Được biên soạn để xuất bản như một trang HTML tĩnh trên GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>

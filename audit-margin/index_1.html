@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Báo cáo audit SEO và GEO cho trang Vay ký quỹ Margin (bản viết lại, trước go-live) của TCBS: điểm Rank Math ước tính, chi tiết on-page, khoảng trống Trust/E-E-A-T, mức sẵn sàng GEO và thứ tự ưu tiên xử lý.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Audit SEO & GEO: Vay ký quỹ Margin | TCBS">
+  <meta property="og:description" content="Điểm Rank Math ước tính, audit on-page chi tiết, khoảng trống Trust/E-E-A-T và mức sẵn sàng GEO cho trang Vay ký quỹ Margin TCBS.">
+  <title>Audit SEO &amp; GEO: Vay ký quỹ Margin | TCBS</title>
+  <style>
+    :root {
+      --ink: #182338;
+      --muted: #57657c;
+      --paper: #ffffff;
+      --canvas: #f5f7fb;
+      --line: #e0e6f0;
+      --brand: #b41334;
+      --brand-dark: #871027;
+      --good: #11735c;
+      --watch: #9a5b00;
+      --critical: #ae2538;
+      --soft-good: #edfaf6;
+      --soft-watch: #fff7e9;
+      --soft-critical: #fff0f2;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    a { color: var(--brand-dark); }
+    a:hover { color: var(--brand); }
+    code { padding: 0.1em 0.35em; background: #edf1f6; border-radius: 4px; font-size: 0.92em; }
+
+    .shell { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+
+    header.hero {
+      padding: 48px 0 34px;
+      background: linear-gradient(135deg, #7d0b24 0%, #b41334 100%);
+      color: #fff;
+    }
+    .eyebrow { margin: 0 0 10px; color: #ffd8df; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.2; }
+    .lede { max-width: 720px; margin: 14px 0 0; font-size: 1rem; color: #ffeef0; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 20px 0 0; font-size: 0.86rem; color: #ffd8df; }
+    .meta strong { color: #fff; }
+    .meta a { color: inherit; text-decoration: underline; }
+
+    nav.toc {
+      position: sticky; top: 0; z-index: 1;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+    nav.toc .shell { display: flex; gap: 6px 18px; overflow-x: auto; padding: 10px 0; white-space: nowrap; }
+    nav.toc a { color: var(--muted); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    nav.toc a:hover { color: var(--brand); }
+
+    main { padding: 34px 0 60px; }
+    section { margin: 0 0 38px; }
+    h2 { margin: 0 0 12px; font-size: 1.4rem; letter-spacing: -0.01em; }
+    h3 { margin: 20px 0 8px; font-size: 1.02rem; }
+    p { margin: 0 0 12px; }
+    .intro { max-width: 760px; }
+
+    .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 0; }
+    .stat { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 12px 16px; font-size: 0.9rem; }
+    .stat b { display: block; font-size: 1.15rem; color: var(--brand); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    th { background: #f8fafc; color: #37455c; font-size: 0.76rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td p:last-child { margin-bottom: 0; }
+
+    .badge { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+    .good { background: var(--soft-good); color: var(--good); }
+    .watch { background: var(--soft-watch); color: var(--watch); }
+    .critical { background: var(--soft-critical); color: var(--critical); }
+
+    .callout { padding: 16px 18px; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
+    .callout strong { display: block; margin-bottom: 6px; }
+    .callout.critical-box { border-left: 4px solid var(--critical); background: var(--soft-critical); }
+    .callout.watch-box { border-left: 4px solid var(--watch); background: var(--soft-watch); }
+    .callout.good-box { border-left: 4px solid var(--good); background: var(--soft-good); }
+    .callout + .callout { margin-top: 10px; }
+
+    ol, ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    li + li { margin-top: 6px; }
+    .source-list a { font-weight: 600; }
+
+    .footer { border-top: 1px solid var(--line); padding: 22px 0 44px; color: var(--muted); font-size: 0.86rem; }
+
+    @media (max-width: 640px) {
+      .stat-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <p class="eyebrow">Báo cáo SEO &amp; GEO</p>
+      <h1>Vay ký quỹ Margin | TCBS</h1>
+      <p class="lede">Audit trang sản phẩm vay ký quỹ — bản viết lại, trước khi go-live.</p>
+      <div class="meta">
+        <span><strong>Trang audit:</strong> <a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin-new/">vay-ky-quy-margin-new</a></span>
+        <span><strong>Ngày:</strong> 03/09/2026</span>
+        <span><strong>Phạm vi:</strong> SEO on-page, Trust/E-E-A-T, GEO</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Mục lục">
+    <div class="shell">
+      <a href="#tom-tat">Tóm tắt</a>
+      <a href="#rank-math">Rank Math</a>
+      <a href="#seo">SEO on-page</a>
+      <a href="#trust">Trust / E-E-A-T</a>
+      <a href="#geo">GEO</a>
+      <a href="#uu-tien">Ưu tiên xử lý</a>
+      <a href="#nguon">Nguồn</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+    <section id="tom-tat">
+      <h2>Tóm tắt</h2>
+      <p class="intro">Đây là trang sản phẩm hero (Tier 1), sống lâu dài chứ không phải nội dung theo đợt, nên tiêu chuẩn đánh giá đặt trọng tâm vào việc trang chịu được kiểm tra lặp lại nhiều lần bởi người dùng đang cân nhắc vay và bởi AI trả lời câu hỏi về sản phẩm này bất kỳ lúc nào. Trang có cấu trúc nội dung tốt — một H1 rõ, 10 H2 phủ đủ khái niệm, lợi ích, chính sách, hướng dẫn, rủi ro, FAQ — nhưng còn ba nhóm vấn đề chặn go-live: liên kết nội bộ chưa hoạt động, mật độ từ khóa vượt ngưỡng khuyến nghị cục bộ, và thiếu nguồn kiểm chứng cho một sản phẩm tài chính có đòn bẩy.</p>
+      <div class="stat-row">
+        <div class="stat"><b>~55–65/100</b>Rank Math ước tính</div>
+        <div class="stat"><b>10</b>CTA nội bộ đang là <code>#TODO-*</code></div>
+        <div class="stat"><b>0</b>external link tới nguồn quy định</div>
+      </div>
+    </section>
+
+    <section id="rank-math">
+      <h2>Rank Math ước tính</h2>
+      <p>Biên độ 55–65/100, giả định focus keyword là “vay ký quỹ margin”, không bật Content AI. Rank Math không công bố trọng số chính xác từng test, chỉ công bố danh sách test và điều kiện đạt, nên đây là ước tính có căn cứ, không phải số tuyệt đối.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nhóm test</th><th>Kết quả</th><th>Căn cứ</th></tr></thead>
+          <tbody>
+            <tr><td>Keyword trong title / meta / URL / đầu nội dung / heading / alt ảnh</td><td><span class="badge good">Đạt cả 6</span></td><td>Title 43 ký tự có keyword ở đầu; URL chứa trọn cụm; câu mở bài có ngay “Margin TCBS…”; phần lớn 10 H2 chứa “Margin”; cả 2 ảnh có “Margin” trong alt.</td></tr>
+            <tr><td>Mật độ từ khóa 1–1,5%</td><td><span class="badge critical">Không đạt</span></td><td>~5,4% trung bình toàn bài; riêng mục “Margin là gì?” là 6 lần/75 từ ≈ 8%.</td></tr>
+            <tr><td>Content length &gt;2.500 từ</td><td><span class="badge good">Đạt</span></td><td>~2.500–3.000 từ.</td></tr>
+            <tr><td>Internal link</td><td><span class="badge critical">Không đạt</span></td><td>10 CTA dự kiến đều là <code>#TODO-*</code>.</td></tr>
+            <tr><td>External link</td><td><span class="badge critical">Không đạt</span></td><td>0 link ra ngoài trang.</td></tr>
+            <tr><td>Content readability</td><td><span class="badge watch">Một phần</span></td><td>Có mục lục anchor, đoạn ngắn; chỉ 2 ảnh, dưới ngưỡng ≥4 của plugin.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><a href="https://rankmath.com/kb/score-100-in-tests/">Nguồn: Rank Math — Score 100/100 with post tests</a></p>
+    </section>
+
+    <section id="seo">
+      <h2>SEO on-page, theo từng phần</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thành phần</th><th>Ưu điểm</th><th>Issue</th><th>Đề xuất</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Title</strong></td>
+              <td>Đúng độ dài, keyword ở đầu.</td>
+              <td>Không có gì cần sửa gấp.</td>
+              <td>Giữ nguyên; chỉ cần không trùng với các trang con (Margin T+, MarginSure) khi cả cụm được viết lại.</td>
+            </tr>
+            <tr>
+              <td><strong>Meta description</strong></td>
+              <td>Chứa keyword, có con số hấp dẫn (0%/năm).</td>
+              <td>Nhồi 3 con số khác nhau (0%, T+, giảm 3%) trong một câu, dễ gây kỳ vọng sai.</td>
+              <td>Giữ một con số làm điểm nhấn, các điều kiện còn lại giải thích trong nội dung.</td>
+            </tr>
+            <tr>
+              <td><strong>URL &amp; canonical</strong></td>
+              <td>Slug đúng keyword, ~72 ký tự (dưới ngưỡng 75).</td>
+              <td>Không có canonical tag.</td>
+              <td>Thêm canonical tự trỏ tới URL sẽ dùng khi go-live; bỏ hậu tố <code>-new</code>. <a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization">Nguồn: Google Search Central — Canonicalization</a></td>
+            </tr>
+            <tr>
+              <td><strong>H1 / H2</strong></td>
+              <td>Một H1 rõ, 10 H2 phủ đủ khái niệm, lợi ích, chính sách, hướng dẫn, rủi ro, FAQ.</td>
+              <td>Không có issue đáng kể.</td>
+              <td>Giữ nguyên cấu trúc.</td>
+            </tr>
+            <tr>
+              <td><strong>Nội dung &amp; mật độ từ khóa</strong></td>
+              <td>~2.500–3.000 từ, giải thích được cơ chế thay vì chỉ liệt kê tính năng.</td>
+              <td>Mật độ ~5,4%, cục bộ 8%; định nghĩa Margin lặp gần nguyên văn giữa thân bài và FAQ.</td>
+              <td>Dùng đại từ/từ đồng nghĩa thay lặp từ khóa; diễn đạt lại thay vì lặp nguyên câu giữa các mục. <a href="https://developers.google.com/search/docs/essentials/spam-policies">Nguồn: Google Search Central — Spam policies (Keyword stuffing)</a></td>
+            </tr>
+            <tr>
+              <td><strong>Ảnh</strong></td>
+              <td>2 ảnh có alt chứa từ khóa đúng cách.</td>
+              <td>Chỉ 2 ảnh cho bài dài; 1 ảnh trỏ domain placeholder <code>YOUR-SITE.com</code>.</td>
+              <td>Thêm 2–3 ảnh minh họa; thay ảnh placeholder.</td>
+            </tr>
+            <tr>
+              <td><strong>Liên kết nội bộ &amp; bên ngoài</strong></td>
+              <td>Có mục lục anchor nội bài hoạt động bình thường.</td>
+              <td>10 CTA dự kiến (Margin T+, MarginSure, mở tài khoản…) đều là <code>#TODO-*</code>; 0 external link.</td>
+              <td>Thay CTA bằng URL thật — chặn cứng để index; thêm tối thiểu 1 external link tới nguồn quy định.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="trust">
+      <h2>Trust / E-E-A-T</h2>
+      <p class="intro">Đây là sản phẩm cho vay có đòn bẩy — người dùng có thể mất vốn nhanh hơn cổ phiếu thường — và trang sẽ được tra cứu lại nhiều lần trong vòng đời sản phẩm, không chỉ một đợt truyền thông. Google xếp nội dung tài chính vào nhóm YMYL và yêu cầu tín hiệu E-E-A-T mạnh hơn cho nhóm này, với Trust là thành phần trung tâm. <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Nguồn: Google Search Central — Creating helpful, reliable, people-first content</a></p>
+      <ul>
+        <li>Không có external link nào tới quy định của Ngân hàng Nhà nước hoặc Ủy ban Chứng khoán Nhà nước — trong khi tỷ lệ ký quỹ và danh mục cổ phiếu được vay đều do cơ quan quản lý quy định khung.</li>
+        <li>6 nhóm rủi ro (thị trường, lãi vay, call margin, force-sell, thanh khoản, chính sách) chỉ được nêu tên, không có một con số ngưỡng nào — đây chính là thông tin người dùng cần nhất trước khi quyết định vay.</li>
+        <li>4 mốc lãi suất khác nhau trong nội dung (0%, 7,89%, -3%, 10%) chưa được đối chiếu rõ điều kiện áp dụng riêng biệt.</li>
+      </ul>
+    </section>
+
+    <section id="geo">
+      <h2>GEO</h2>
+      <p class="intro">Trang dễ đọc cho AI: văn bản tĩnh, mục lục rõ, FAQ có cấu trúc. Nhưng nếu một AI answer engine được hỏi “lãi suất vay margin TCBS bao nhiêu” hoặc “khi nào bị force-sell”, câu trả lời hiện tại hoặc thiếu số cụ thể hoặc có nguy cơ trích nhầm một trong bốn mốc lãi suất mà không nêu điều kiện áp dụng. Nghiên cứu nền tảng của lĩnh vực này chỉ ra rằng trích dẫn nguồn và số liệu thống kê cụ thể là hai yếu tố cải thiện khả năng được trích dẫn nhiều nhất — đúng hai khoảng trống lớn nhất của trang này. <a href="https://arxiv.org/abs/2311.09735">Nguồn: Aggarwal et al., GEO: Generative Engine Optimization, KDD 2024</a></p>
+    </section>
+
+    <section id="uu-tien">
+      <h2>Ưu tiên xử lý</h2>
+      <div class="callout critical-box">
+        <strong>P0 — chặn cứng, xử lý trước khi index</strong>
+        <ol>
+          <li>Thay 10 link <code>#TODO-*</code> bằng URL thật; sửa ảnh <code>YOUR-SITE.com</code>.</li>
+          <li>Giảm mật độ từ khóa từ ~5,4% xuống 1–1,5%.</li>
+          <li>Thêm canonical tự trỏ; đổi robots sang <code>index, follow</code> khi go-live.</li>
+        </ol>
+      </div>
+      <div class="callout watch-box">
+        <strong>P1 — Trust cho sản phẩm đòn bẩy</strong>
+        <ol>
+          <li>Thêm external link tới quy định pháp lý (Ngân hàng Nhà nước / Ủy ban Chứng khoán Nhà nước).</li>
+          <li>Công bố số cụ thể cho ngưỡng call margin và force-sell.</li>
+          <li>Đối chiếu 4 mốc lãi suất theo đúng điều kiện áp dụng.</li>
+          <li>Thêm JSON-LD Organization.</li>
+        </ol>
+      </div>
+      <div class="callout good-box">
+        <strong>P2 — tối ưu thêm</strong>
+        <ol>
+          <li>Thêm 2–3 ảnh minh họa.</li>
+          <li>Bỏ hậu tố <code>-new</code> ở URL chính thức.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="nguon">
+      <h2>Nguồn tham khảo</h2>
+      <ul class="source-list">
+        <li><a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin-new/">TCBS — Vay ký quỹ Margin (bản nháp được audit)</a></li>
+        <li><a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization">Google Search Central — Canonicalization</a></li>
+        <li><a href="https://developers.google.com/search/docs/essentials/spam-policies">Google Search Central — Spam policies for Google Search</a></li>
+        <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central — Creating helpful, reliable, people-first content</a></li>
+        <li><a href="https://rankmath.com/kb/score-100-in-tests/">Rank Math — Score 100/100 with post tests</a></li>
+        <li><a href="https://arxiv.org/abs/2311.09735">Aggarwal et al. (2024), GEO: Generative Engine Optimization, ACM KDD 2024</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>Điểm Rank Math là ước tính dựa trên HTML công khai và tiêu chí do Rank Math công bố, không phải số đo trong CMS thật. GEO đánh giá theo khả năng trích xuất và độ tin cậy của dữ kiện, là khung vận hành nội bộ, không phải thang điểm chính thức của Google hay bất kỳ chatbot nào.</p>
+    </div>
+  </footer>
+</body>
+</html>

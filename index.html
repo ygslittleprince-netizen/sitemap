@@ -242,6 +242,14 @@
     margin-top:4px;
     line-height:1.4;
   }
+  .btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+.btn{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:10px 16px; border-radius:10px;
+  background: var(--red); color:#fff;
+  font-size:14px; font-weight:700; text-decoration:none;
+}
+.btn:hover{ background: var(--red-dark); }
 </style>
 </head>
 <body>
@@ -310,6 +318,13 @@
 
 <p class="fix-order">Thứ tự ưu tiên: Nhóm B → Nhóm C → Nhóm A → Nhóm D</p>
 
+</div>
+  <div class="card note">
+  <h2>Báo cáo Audit</h2>
+  <div class="btn-row">
+    <a class="btn" href="audit-ilucky/">Audit iLucky — Vương quốc thịnh vượng</a>
+    <a class="btn" href="audit-margin/">Audit Vay ký quỹ Margin</a>
+  </div>
 </div>
 </div>
 <script>

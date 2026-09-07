@@ -1,0 +1,451 @@
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Báo cáo audit SEO và GEO cho trang Margin T+ (Tier 1, đang online) của TCBS: đánh giá đạt/không đạt từng thành phần on-page, đề xuất focus keyword, title, meta, heading, internal linking, alt text, schema và nội dung SEO-ready.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Audit SEO & GEO: Margin T+ (Tier 1) | TCBS">
+  <meta property="og:description" content="Đánh giá đạt/không đạt từng thành phần on-page và đề xuất tối ưu SEO/GEO đầy đủ cho trang Margin T+ TCBS.">
+  <title>Audit SEO &amp; GEO: Margin T+ (Tier 1) | TCBS</title>
+  <style>
+    :root {
+      --ink: #182338;
+      --muted: #57657c;
+      --paper: #ffffff;
+      --canvas: #f5f7fb;
+      --line: #e0e6f0;
+      --brand: #b41334;
+      --brand-dark: #871027;
+      --good: #11735c;
+      --watch: #9a5b00;
+      --critical: #ae2538;
+      --soft-good: #edfaf6;
+      --soft-watch: #fff7e9;
+      --soft-critical: #fff0f2;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    a { color: var(--brand-dark); }
+    a:hover { color: var(--brand); }
+    code { padding: 0.1em 0.35em; background: #edf1f6; border-radius: 4px; font-size: 0.92em; }
+
+    .shell { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+
+    header.hero {
+      padding: 48px 0 34px;
+      background: linear-gradient(135deg, #7d0b24 0%, #b41334 100%);
+      color: #fff;
+    }
+    .eyebrow { margin: 0 0 10px; color: #ffd8df; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .tier-pill { display: inline-block; padding: 0.16rem 0.6rem; border-radius: 999px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 0.72rem; letter-spacing: 0.03em; }
+    h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.2; }
+    .lede { max-width: 720px; margin: 14px 0 0; font-size: 1rem; color: #ffeef0; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 20px 0 0; font-size: 0.86rem; color: #ffd8df; }
+    .meta strong { color: #fff; }
+    .meta a { color: inherit; text-decoration: underline; }
+
+    nav.toc {
+      position: sticky; top: 0; z-index: 1;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+    nav.toc .shell { display: flex; gap: 6px 18px; overflow-x: auto; padding: 10px 0; white-space: nowrap; }
+    nav.toc a { color: var(--muted); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    nav.toc a:hover { color: var(--brand); }
+
+    main { padding: 34px 0 60px; }
+    section { margin: 0 0 38px; }
+    h2 { margin: 0 0 12px; font-size: 1.4rem; letter-spacing: -0.01em; }
+    h3 { margin: 26px 0 8px; font-size: 1.08rem; }
+    h3:first-of-type { margin-top: 4px; }
+    h4 { margin: 16px 0 6px; font-size: 0.94rem; color: var(--brand-dark); }
+    p { margin: 0 0 12px; }
+    .intro { max-width: 760px; }
+
+    .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 0; }
+    .stat { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 12px 16px; font-size: 0.9rem; }
+    .stat b { display: block; font-size: 1.15rem; color: var(--brand); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    th { background: #f8fafc; color: #37455c; font-size: 0.76rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td p:last-child { margin-bottom: 0; }
+
+    .badge { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+    .good { background: var(--soft-good); color: var(--good); }
+    .watch { background: var(--soft-watch); color: var(--watch); }
+    .critical { background: var(--soft-critical); color: var(--critical); }
+
+    .callout { padding: 16px 18px; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
+    .callout strong { display: block; margin-bottom: 6px; }
+    .callout.critical-box { border-left: 4px solid var(--critical); background: var(--soft-critical); }
+    .callout.watch-box { border-left: 4px solid var(--watch); background: var(--soft-watch); }
+    .callout.good-box { border-left: 4px solid var(--good); background: var(--soft-good); }
+    .callout + .callout { margin-top: 10px; }
+
+    ol, ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    li + li { margin-top: 6px; }
+    .source-list a { font-weight: 600; }
+
+    .text-block { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; margin: 8px 0 12px; font-size: 0.94rem; }
+    .code-block { background: #0f172a; color: #e2e8f0; border-radius: var(--radius); padding: 14px 16px; overflow-x: auto; font-size: 0.8rem; line-height: 1.55; margin: 0 0 18px; }
+    .code-block code { background: none; padding: 0; color: inherit; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+    .code-label { font-size: 0.76rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; margin: 14px 0 4px; }
+    .code-label:first-child { margin-top: 0; }
+
+    .footer { border-top: 1px solid var(--line); padding: 22px 0 44px; color: var(--muted); font-size: 0.86rem; }
+
+    @media (max-width: 640px) {
+      .stat-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <p class="eyebrow">Báo cáo SEO &amp; GEO <span class="tier-pill">Tier 1 — sản phẩm tài chính lõi</span></p>
+      <h1>Margin T+ | TCBS</h1>
+      <p class="lede">Audit trang Margin T+ — đang online. Theo sitemap phân tier của TCBS, Margin T+ thuộc Tier 1 (cùng nhóm MarginSure, Hạn mức vay ký quỹ), là nhóm trang có ảnh hưởng trực tiếp tới quyết định tài chính của khách hàng nên yêu cầu chuẩn E-E-A-T cao nhất.</p>
+      <div class="meta">
+        <span><strong>Trang audit:</strong> <a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/margin-t/">vay-ky-quy-margin/margin-t/</a></span>
+        <span><strong>Ngày:</strong> 07/09/2026</span>
+        <span><strong>Phạm vi:</strong> chỉ trang đang online — không đánh giá bản nội dung đề xuất/viết lại</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Mục lục">
+    <div class="shell">
+      <a href="#tom-tat">Tóm tắt</a>
+      <a href="#seo">SEO on-page</a>
+      <a href="#trust">Trust / E-E-A-T</a>
+      <a href="#geo">GEO</a>
+      <a href="#de-xuat">Đề xuất tối ưu</a>
+      <a href="#uu-tien">Ưu tiên xử lý</a>
+      <a href="#nguon">Nguồn</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+
+    <section id="tom-tat">
+      <h2>Tóm tắt</h2>
+      <p class="intro">Trang Margin T+ đã được thiết lập để index (<code>index, follow</code>) nhưng hiện chưa có nội dung để crawl.</p>
+    </section>
+
+    <section id="seo">
+      <h2>SEO on-page — đạt / không đạt theo từng thành phần</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thành phần</th><th>Đánh giá</th><th>Căn cứ</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Title</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>“Margin TCBS - Dịch vụ vay ký quỹ an toàn, lãi suất hợp lý” — không chứa “Margin T+”, dùng chung pattern chung của cả nhóm sản phẩm margin thay vì tiêu đề riêng cho trang.</td>
+            </tr>
+            <tr>
+              <td><strong>Meta description</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>Nội dung chung chung (“dịch vụ vay ký quỹ TCBS…”), không nhắc “Margin T+”, không có con số cụ thể (0%/năm, T3/T5/T10).</td>
+            </tr>
+            <tr>
+              <td><strong>Canonical</strong></td>
+              <td><span class="badge good">Đạt</span></td>
+              <td>Tự trỏ đúng về chính trang, không có issue.</td>
+            </tr>
+            <tr>
+              <td><strong>Robots</strong></td>
+              <td><span class="badge good">Đạt</span></td>
+              <td><code>index, follow, max-snippet:250, max-video-preview:-1, max-image-preview:large</code> — cấu hình hợp lý cho trang sản phẩm.</td>
+            </tr>
+            <tr>
+              <td><strong>Heading (H1–H4)</strong></td>
+              <td><span class="badge watch">Cần xác minh</span></td>
+              <td>Không phát hiện thẻ <code>&lt;h1&gt;</code>–<code>&lt;h4&gt;</code> nào trong DOM ở lần kiểm tra qua công cụ fetch tự động, nhưng chưa đủ cơ sở để kết luận chắc chắn — cần xác minh trực tiếp bằng View Source/Inspect. Đề xuất cấu trúc heading ở phần “Đề xuất tối ưu” bên dưới.</td>
+            </tr>
+            <tr>
+              <td><strong>Nội dung chính</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>Phần nội dung sản phẩm (chính sách lãi, ví dụ minh hoạ, quy trình, FAQ) hiện chưa nằm trong văn bản HTML của trang, nên công cụ tìm kiếm khó đọc và index đầy đủ.</td>
+            </tr>
+            <tr>
+              <td><strong>Ảnh &amp; alt text</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>Chỉ có alt cho logo và icon chuyển ngôn ngữ; không có ảnh nội dung nào mang alt text mô tả sản phẩm.</td>
+            </tr>
+            <tr>
+              <td><strong>Structured data</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>0 khối JSON-LD — không có <code>BreadcrumbList</code> dù breadcrumb đã hiển thị, không có <code>FAQPage</code>.</td>
+            </tr>
+            <tr>
+              <td><strong>External link</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>0 external link tới nguồn bên thứ ba đáng tin cậy (quy định, cơ quan quản lý).</td>
+            </tr>
+            <tr>
+              <td><strong>Internal link</strong></td>
+              <td><span class="badge watch">Một phần</span></td>
+              <td>Có breadcrumb link về trang mẹ, nhưng chưa có link chéo tới các trang Tier 1 cùng nhóm (MarginSure, Hạn mức vay ký quỹ).</td>
+            </tr>
+            <tr>
+              <td><strong>Open Graph / Twitter Card</strong></td>
+              <td><span class="badge good">Đạt</span></td>
+              <td>Có đủ <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>twitter:card</code>… về mặt kỹ thuật.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="trust">
+      <h2>Trust / E-E-A-T</h2>
+      <p class="intro">Vì Margin T+ thuộc Tier 1 — nhóm trang “có ảnh hưởng trực tiếp tới quyết định tài chính” theo phân loại của sitemap — tiêu chuẩn Trust cần ở mức cao nhất trong toàn site. Ba khoảng trống hiện tại: không có external link tới quy định của cơ quan quản lý; không công bố số cụ thể cho ngưỡng gọi ký quỹ/giải chấp; không có thông tin đơn vị biên soạn hoặc kiểm duyệt nội dung. <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Nguồn: Google Search Central — Creating helpful, reliable, people-first content</a></p>
+    </section>
+
+    <section id="geo">
+      <h2>GEO</h2>
+      <p class="intro">Nội dung trả lời cho các câu hỏi người dùng hay hỏi AI answer engine (“lãi suất Margin T+ bao nhiêu”, “Margin T+ khác gì margin thường”, “đăng ký Margin T+ thế nào”) thực chất đã tồn tại trên trang ở dạng hiển thị, nhưng chưa ở dạng văn bản HTML mà AI/crawler đọc trực tiếp và trích dẫn được. Ưu tiên GEO lớn nhất là đưa đúng phần nội dung đã có sẵn (chính sách lãi 3 gói, ví dụ số liệu, quy trình) thành văn bản thật, giữ nguyên định dạng bảng và số liệu cụ thể. <a href="https://arxiv.org/abs/2311.09735">Nguồn: Aggarwal et al., GEO: Generative Engine Optimization, KDD 2024</a></p>
+    </section>
+
+    <section id="de-xuat">
+      <h2>Đề xuất tối ưu</h2>
+
+      <h3>1. Focus keywords</h3>
+      <p><strong>Primary:</strong> <code>Margin T+</code> — giữ riêng, không trùng với focus keyword “vay ký quỹ margin” của trang mẹ (tránh cannibalization).</p>
+      <p><strong>Secondary / LSI</strong> (rải tự nhiên 3–6 lần mỗi cụm): <code>vay ký quỹ linh hoạt</code>, <code>margin T3 T5 T10</code>, <code>lãi suất margin TCBS</code>, <code>gói vay theo ngày nắm giữ</code>.</p>
+      <p><strong>Long-tail cho FAQ/GEO:</strong> <code>margin t+ khác gì margin thường</code>, <code>lãi suất margin t3 t5 t10 bao nhiêu</code>, <code>cách đăng ký margin t+ tcbs</code>.</p>
+
+      <h3>2. Optimized title</h3>
+      <p class="code-label">Text</p>
+      <div class="text-block">Margin T+ TCBS – Vay Ký Quỹ Linh Hoạt T3/T5/T10, Lãi Từ 0% (54 ký tự)</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;title&gt;Margin T+ TCBS – Vay Ký Quỹ Linh Hoạt T3/T5/T10, Lãi Từ 0%&lt;/title&gt;</code></div>
+
+      <h3>3. Meta description</h3>
+      <p class="code-label">Text</p>
+      <div class="text-block">Margin T+ – vay ký quỹ linh hoạt tại TCBS theo đúng số ngày nắm giữ cổ phiếu (T3/T5/T10), lãi suất ưu đãi từ 0%/năm, hạn mức 10 tỷ VND/tài khoản. (155 ký tự)</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;meta name="description" content="Margin T+ – vay ký quỹ linh hoạt tại TCBS theo đúng số ngày nắm giữ cổ phiếu (T3/T5/T10), lãi suất ưu đãi từ 0%/năm, hạn mức 10 tỷ VND/tài khoản."&gt;</code></div>
+
+      <h3>4. Heading structure</h3>
+      <p class="code-label">Text (outline)</p>
+      <div class="text-block">
+        H1 Margin T+ — Linh hoạt hơn, hiệu quả hơn<br>
+        &nbsp;&nbsp;H2 Margin T+ là gì?<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;H3 Đối tượng khách hàng nên sử dụng<br>
+        &nbsp;&nbsp;H2 Vì sao nên sử dụng Margin T+ tại TCBS?<br>
+        &nbsp;&nbsp;H2 So sánh lãi vay Margin T+ với gói vay thông thường<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;H3 Khách hàng 1 — nắm giữ 6 ngày, đăng ký Margin T3<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;H3 Khách hàng 2 — nắm giữ 7 ngày, đăng ký Margin T5<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;H3 Khách hàng 3 — nắm giữ 12 ngày, đăng ký Margin T10<br>
+        &nbsp;&nbsp;H2 Quy trình đăng ký Margin T+<br>
+        &nbsp;&nbsp;H2 Điều kiện áp dụng &amp; rủi ro<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;H3 Lưu ý áp dụng<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;H3 Ngưỡng gọi ký quỹ &amp; giải chấp<br>
+        &nbsp;&nbsp;H2 Sản phẩm liên quan<br>
+        &nbsp;&nbsp;H2 Câu hỏi thường gặp
+      </div>
+      <p class="code-label">HTML (khung)</p>
+      <div class="code-block"><code>&lt;h1&gt;Margin T+ — Linh hoạt hơn, hiệu quả hơn&lt;/h1&gt;
+&lt;h2&gt;Margin T+ là gì?&lt;/h2&gt;
+  &lt;h3&gt;Đối tượng khách hàng nên sử dụng&lt;/h3&gt;
+&lt;h2&gt;Vì sao nên sử dụng Margin T+ tại TCBS?&lt;/h2&gt;
+&lt;h2&gt;So sánh lãi vay Margin T+ với gói vay thông thường&lt;/h2&gt;
+  &lt;h3&gt;Khách hàng 1 — nắm giữ 6 ngày, đăng ký Margin T3&lt;/h3&gt;
+  &lt;h3&gt;Khách hàng 2 — nắm giữ 7 ngày, đăng ký Margin T5&lt;/h3&gt;
+  &lt;h3&gt;Khách hàng 3 — nắm giữ 12 ngày, đăng ký Margin T10&lt;/h3&gt;
+&lt;h2&gt;Quy trình đăng ký Margin T+&lt;/h2&gt;
+&lt;h2&gt;Điều kiện áp dụng &amp; rủi ro&lt;/h2&gt;
+  &lt;h3&gt;Lưu ý áp dụng&lt;/h3&gt;
+  &lt;h3&gt;Ngưỡng gọi ký quỹ &amp; giải chấp&lt;/h3&gt;
+&lt;h2&gt;Sản phẩm liên quan&lt;/h2&gt;
+&lt;h2&gt;Câu hỏi thường gặp&lt;/h2&gt;</code></div>
+
+      <h3>5. Internal linking opportunities kèm CTA</h3>
+      <ul>
+        <li><strong>Link chéo trong cụm Tier 1:</strong> Margin T+, MarginSure và Hạn mức vay ký quỹ đều là sản phẩm Tier 1 cùng ảnh hưởng trực tiếp tới quyết định tài chính — nên thêm khối “Sản phẩm liên quan” link chéo giữa cả ba, thay vì chỉ link một chiều về trang mẹ Tier 2.</li>
+        <li><strong>Breadcrumb → BreadcrumbList schema:</strong> breadcrumb hiện đã hiển thị đúng, chỉ cần đánh dấu bằng schema (xem mục Schema).</li>
+        <li><strong>Từ khoá “Dynamic Margin”</strong> trong nội dung nên gắn link tới trang sản phẩm Dynamic Margin (nếu đã có URL) thay vì để văn bản thuần.</li>
+        <li><strong>External link followed</strong> tới quy định giao dịch ký quỹ (Thông tư 120/2020/TT-BTC) — đặt ở khối “Điều kiện áp dụng &amp; rủi ro”, xem đoạn copy sẵn ở mục “Nội dung SEO-ready” bên dưới.</li>
+        <li><strong>CTA chính:</strong> “Đăng ký ngay trên TCInvest” — đặt ngay dưới H1, trỏ thẳng mục Quản lý Margin trên TCInvest.</li>
+        <li><strong>CTA phụ:</strong> “Tính thử khoản vay của bạn” hoặc “So sánh 3 gói T3 / T5 / T10” sau khối so sánh lãi vay.</li>
+      </ul>
+
+      <h3>6. Image Alt texts (opportunities)</h3>
+      <p>Trang hiện không có ảnh nội dung nào. Đề xuất bổ sung tối thiểu 4 ảnh (đạt ngưỡng media 100% của Rank Math), alt chứa keyword tự nhiên:</p>
+      <ul>
+        <li>Banner giới thiệu Margin T+ → <code>alt="Margin T+ TCBS - vay ký quỹ linh hoạt lãi suất từ 0%/năm"</code></li>
+        <li>Ảnh giao diện “Lựa chọn gói vay” → <code>alt="Giao diện chọn gói vay Margin T3, T5, T10 trên TCInvest"</code></li>
+        <li>Ảnh giao diện “Kiểm tra khoản vay” → <code>alt="Kiểm tra lãi suất và khoản vay Margin T+ trên TCInvest"</code></li>
+        <li>Biểu đồ so sánh lãi vay (tạo mới) → <code>alt="So sánh lãi vay Margin T+ với lãi suất phổ thông 14%/năm"</code></li>
+      </ul>
+
+      <h3>7. Suggest schema</h3>
+      <p class="code-label">Text (@type cần thêm)</p>
+      <div class="text-block"><code>BreadcrumbList</code> — đánh dấu breadcrumb đã hiển thị · <code>FAQPage</code> — 5 câu hỏi đã có nội dung sẵn · <code>LoanOrCredit</code> (subtype của <code>FinancialProduct</code>) — mô tả đúng bản chất sản phẩm vay</div>
+
+      <p class="code-label">JSON-LD — BreadcrumbList</p>
+      <div class="code-block"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://www.tcbs.com.vn/"},
+    {"@type": "ListItem", "position": 2, "name": "Cá nhân", "item": "https://www.tcbs.com.vn/ca-nhan/"},
+    {"@type": "ListItem", "position": 3, "name": "Cổ phiếu iStock", "item": "https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/"},
+    {"@type": "ListItem", "position": 4, "name": "Vay ký quỹ (Margin)", "item": "https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/"},
+    {"@type": "ListItem", "position": 5, "name": "Vay linh hoạt – Margin T+", "item": "https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/margin-t/"}
+  ]
+}
+&lt;/script&gt;</code></div>
+
+      <p class="code-label">JSON-LD — FAQPage</p>
+      <div class="code-block"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Margin T+ khác gì so với vay ký quỹ thông thường?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Vay ký quỹ thông thường áp dụng một mức lãi suất cố định (~14%/năm) cho mọi kỳ hạn nắm giữ. Margin T+ chia thành ba gói T3, T5, T10 với lãi suất ưu đãi cho đúng số ngày đầu."}
+    },
+    {
+      "@type": "Question",
+      "name": "Tôi có thể chuyển đổi giữa các gói T3, T5, T10 không?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Có. Quý khách có thể đăng ký hoặc chuyển đổi giữa các chính sách lãi ngay trên TCInvest để phù hợp với chiến lược đầu tư tại từng thời điểm."}
+    },
+    {
+      "@type": "Question",
+      "name": "Nếu tôi giải ngân nhiều khoản vay trong cùng một ngày thì tính lãi thế nào?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Các khoản vay giải ngân trong cùng một ngày sẽ đồng thời áp dụng theo gói sản phẩm mà Quý khách đăng ký cuối cùng trước 17:00 ngày giải ngân."}
+    },
+    {
+      "@type": "Question",
+      "name": "Hạn mức vay tối đa theo Margin T+ là bao nhiêu?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Hạn mức hỗ trợ tối đa là 10 tỷ VND/tài khoản."}
+    },
+    {
+      "@type": "Question",
+      "name": "Margin T+ phù hợp với nhà đầu tư nào?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Phù hợp với khách hàng đang giao dịch tại TCBS, giao dịch thường xuyên, nắm giữ danh mục trong thời gian ngắn và đã có kinh nghiệm quản trị rủi ro khi dùng đòn bẩy."}
+    }
+  ]
+}
+&lt;/script&gt;</code></div>
+
+      <p class="code-label">JSON-LD — LoanOrCredit</p>
+      <div class="code-block"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "LoanOrCredit",
+  "name": "Margin T+",
+  "url": "https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/margin-t/",
+  "description": "Sản phẩm vay ký quỹ linh hoạt tại TCBS, gồm 3 gói T3, T5, T10 theo đúng số ngày dự kiến nắm giữ cổ phiếu, lãi suất ưu đãi từ 0%/năm.",
+  "provider": {
+    "@type": "FinancialService",
+    "name": "Techcom Securities (TCBS)",
+    "url": "https://www.tcbs.com.vn/"
+  },
+  "loanType": "Vay ký quỹ chứng khoán (margin loan)",
+  "amount": {
+    "@type": "MonetaryAmount",
+    "maxValue": 10000000000,
+    "currency": "VND"
+  }
+}
+&lt;/script&gt;</code></div>
+
+      <h3>8. SEO-ready content đề xuất (nếu cần)</h3>
+      <p>Nội dung sẵn dùng, đáp ứng chuẩn “keyword trong 10% đầu bài” của Rank Math và nguyên tắc “answer-first” của GEO.</p>
+
+      <p class="code-label">Câu mở đầu ngay dưới H1 — Text</p>
+      <div class="text-block">Margin T+ là sản phẩm vay ký quỹ linh hoạt của TCBS, cho phép nhà đầu tư chọn gói vay 3, 5 hoặc 10 ngày theo đúng thời gian dự kiến nắm giữ cổ phiếu, với lãi suất ưu đãi từ 0%/năm.</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;p&gt;Margin T+ là sản phẩm vay ký quỹ linh hoạt của TCBS, cho phép nhà đầu tư chọn gói vay 3, 5 hoặc 10 ngày theo đúng thời gian dự kiến nắm giữ cổ phiếu, với lãi suất ưu đãi từ 0%/năm.&lt;/p&gt;</code></div>
+
+      <p class="code-label">Dòng cập nhật lần cuối — Text</p>
+      <div class="text-block">Cập nhật lần cuối: [ngày/tháng/năm] — chính sách lãi có thể thay đổi theo từng thời kỳ.</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;p class="updated"&gt;Cập nhật lần cuối: [ngày/tháng/năm] — chính sách lãi có thể thay đổi theo từng thời kỳ.&lt;/p&gt;</code></div>
+
+      <p class="code-label">Dòng kiểm duyệt/tác giả (E-E-A-T) — Text</p>
+      <div class="text-block">Nội dung được biên soạn bởi [Phòng/Bộ phận sản phẩm] TCBS, kiểm duyệt lần cuối ngày [ngày].</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;p class="reviewed-by"&gt;Nội dung được biên soạn bởi [Phòng/Bộ phận sản phẩm] TCBS, kiểm duyệt lần cuối ngày [ngày].&lt;/p&gt;</code></div>
+
+      <p class="code-label">Đoạn external link followed tới quy định — Text</p>
+      <div class="text-block">Giao dịch ký quỹ chứng khoán tại Việt Nam được thực hiện theo quy định tại Thông tư 120/2020/TT-BTC của Bộ Tài chính. Quý khách nên tham khảo văn bản này cùng hợp đồng vay ký quỹ của TCBS để nắm rõ các ngưỡng áp dụng.</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;p&gt;Giao dịch ký quỹ chứng khoán tại Việt Nam được thực hiện theo quy định tại
+  &lt;a href="https://thuvienphapluat.vn/van-ban/Chung-khoan/Thong-tu-120-2020-TT-BTC-giao-dich-co-phieu-niem-yet-dang-ky-giao-dich-chung-khoan-chung-chi-quy-451134.aspx" rel="follow"&gt;
+    Thông tư 120/2020/TT-BTC của Bộ Tài chính
+  &lt;/a&gt;. Quý khách nên tham khảo văn bản này cùng hợp đồng vay ký quỹ của TCBS để nắm rõ các ngưỡng áp dụng.&lt;/p&gt;</code></div>
+    </section>
+
+    <section id="uu-tien">
+      <h2>Ưu tiên xử lý</h2>
+      <div class="callout critical-box">
+        <strong>P0 — chặn cứng, ảnh hưởng khả năng được index/trích dẫn</strong>
+        <ol>
+          <li>Đưa nội dung sản phẩm (chính sách lãi, ví dụ minh hoạ, quy trình, FAQ) vào HTML thật trong DOM chính của trang — trang hiện đã index nhưng chưa có gì để crawl.</li>
+          <li>Xác minh và chuẩn hoá cấu trúc heading: đúng 1 <code>&lt;h1&gt;</code> chứa “Margin T+”, các <code>&lt;h2&gt;</code>/<code>&lt;h3&gt;</code> theo khung đã đề xuất ở mục 4.</li>
+        </ol>
+      </div>
+      <div class="callout watch-box">
+        <strong>P1 — sau khi có nội dung thật, ưu tiên vì đây là trang Tier 1</strong>
+        <ol>
+          <li>Viết lại title/meta description riêng cho trang (mục 2–3).</li>
+          <li>Thêm JSON-LD: <code>BreadcrumbList</code>, <code>FAQPage</code>, <code>LoanOrCredit</code> (mục 7).</li>
+          <li>Thêm liên kết chéo tới các trang Tier 1 cùng nhóm (MarginSure, Hạn mức vay ký quỹ) và external followed link tới Thông tư 120/2020/TT-BTC (mục 5).</li>
+          <li>Thêm ảnh minh hoạ với alt text chứa “Margin T+” (mục 6).</li>
+          <li>Công bố số cụ thể cho ngưỡng gọi ký quỹ/giải chấp — khoảng trống Trust quan trọng nhất với sản phẩm Tier 1 có đòn bẩy.</li>
+        </ol>
+      </div>
+      <div class="callout good-box">
+        <strong>P2 — tối ưu thêm</strong>
+        <ol>
+          <li>Thêm dòng “Cập nhật lần cuối” và thông tin đơn vị biên soạn/kiểm duyệt (mục 8).</li>
+          <li>Thêm CTA phụ “Tính thử khoản vay” / “So sánh 3 gói T3/T5/T10” sau khối so sánh lãi vay.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="nguon">
+      <h2>Nguồn tham khảo</h2>
+      <ul class="source-list">
+        <li><a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/margin-t/">TCBS — Vay linh hoạt Margin T+ (trang đã audit)</a></li>
+        <li><a href="https://ygslittleprince-netizen.github.io/sitemap/">Sitemap TCBS — phân loại Tier 1/2/3</a></li>
+        <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central — Creating helpful, reliable, people-first content</a></li>
+        <li><a href="https://rankmath.com/kb/score-100-in-tests/">Rank Math — Score 100/100 with post tests</a></li>
+        <li><a href="https://arxiv.org/abs/2311.09735">Aggarwal et al. (2024), GEO: Generative Engine Optimization, ACM KDD 2024</a></li>
+        <li><a href="https://thuvienphapluat.vn/van-ban/Chung-khoan/Thong-tu-120-2020-TT-BTC-giao-dich-co-phieu-niem-yet-dang-ky-giao-dich-chung-khoan-chung-chi-quy-451134.aspx">Thư viện Pháp luật — Thông tư 120/2020/TT-BTC (Bộ Tài chính)</a></li>
+        <li><a href="https://ssc.gov.vn/webcenter/portal/ubck/pages_r/l/chitit?dDocName=APPSSCGOVVN162139566">Ủy ban Chứng khoán Nhà nước — Giới thiệu điểm mới Thông tư 120/2020/TT-BTC</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>Đánh giá đạt/không đạt dựa trên tiêu chí kiểm tra on-page do Rank Math công bố và hướng dẫn E-E-A-T/helpful content của Google, không phải điểm số chính thức trong CMS thật. GEO đánh giá theo khả năng trích xuất và độ tin cậy của dữ kiện, là khung vận hành nội bộ. Báo cáo chỉ đánh giá đúng trang Margin T+ đang online tại thời điểm audit, không đánh giá bất kỳ bản nội dung đề xuất/viết lại nào khác.</p>
+    </div>
+  </footer>
+</body>
+</html>

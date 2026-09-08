@@ -1,0 +1,483 @@
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="So sánh Trung tâm kiến thức VPBankS với trang Khám phá & Chia sẻ của TCBS, benchmark thêm SSI, DNSE, VNDIRECT, Pinetree, HSC, MBS, và đề xuất phát triển content hub cho TCBS theo chuẩn SEO/GEO.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Benchmark Content Hub: VPBankS vs TCBS | TCBS">
+  <meta property="og:description" content="So sánh content hub VPBankS và TCBS, benchmark 6 CTCK khác, đề xuất phát triển trang Khám phá & Chia sẻ của TCBS.">
+  <title>Benchmark Content Hub: VPBankS vs TCBS | TCBS</title>
+  <style>
+    :root {
+      --ink: #182338; --muted: #57657c; --paper: #ffffff; --canvas: #f5f7fb;
+      --line: #e0e6f0; --brand: #b41334; --brand-dark: #871027;
+      --good: #11735c; --watch: #9a5b00; --critical: #ae2538;
+      --soft-good: #edfaf6; --soft-watch: #fff7e9; --soft-critical: #fff0f2;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--canvas); font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.65; }
+    a { color: var(--brand-dark); }
+    a:hover { color: var(--brand); }
+    code { padding: 0.1em 0.35em; background: #edf1f6; border-radius: 4px; font-size: 0.92em; }
+    .shell { width: min(1040px, calc(100% - 32px)); margin: 0 auto; }
+    header.hero { padding: 48px 0 34px; background: linear-gradient(135deg, #7d0b24 0%, #b41334 100%); color: #fff; }
+    .eyebrow { margin: 0 0 10px; color: #ffd8df; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.2; }
+    .lede { max-width: 780px; margin: 14px 0 0; font-size: 1rem; color: #ffeef0; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 20px 0 0; font-size: 0.86rem; color: #ffd8df; }
+    .meta strong { color: #fff; }
+    .meta a { color: inherit; text-decoration: underline; }
+    nav.toc { position: sticky; top: 0; z-index: 1; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+    nav.toc .shell { display: flex; gap: 6px 18px; overflow-x: auto; padding: 10px 0; white-space: nowrap; }
+    nav.toc a { color: var(--muted); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    nav.toc a:hover { color: var(--brand); }
+    main { padding: 34px 0 60px; }
+    section { margin: 0 0 40px; }
+    h2 { margin: 0 0 12px; font-size: 1.4rem; letter-spacing: -0.01em; }
+    h3 { margin: 24px 0 8px; font-size: 1.08rem; }
+    h3:first-of-type { margin-top: 0; }
+    h4 { margin: 16px 0 6px; font-size: 0.94rem; color: var(--brand-dark); }
+    p { margin: 0 0 12px; }
+    .intro { max-width: 780px; }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 0; }
+    .stat { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 12px 16px; font-size: 0.9rem; flex: 1 1 200px; }
+    .stat b { display: block; font-size: 1.15rem; color: var(--brand); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    th { background: #f8fafc; color: #37455c; font-size: 0.76rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td p:last-child { margin-bottom: 0; }
+    .badge { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+    .good { background: var(--soft-good); color: var(--good); }
+    .watch { background: var(--soft-watch); color: var(--watch); }
+    .critical { background: var(--soft-critical); color: var(--critical); }
+    .callout { padding: 16px 18px; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
+    .callout strong { display: block; margin-bottom: 6px; }
+    .callout.critical-box { border-left: 4px solid var(--critical); background: var(--soft-critical); }
+    .callout.watch-box { border-left: 4px solid var(--watch); background: var(--soft-watch); }
+    .callout.good-box { border-left: 4px solid var(--good); background: var(--soft-good); }
+    .callout + .callout { margin-top: 10px; }
+    ol, ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    li + li { margin-top: 6px; }
+    .source-list a { font-weight: 600; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin: 14px 0 0; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+    .card strong { display: block; margin-bottom: 6px; color: var(--brand-dark); }
+    .card .badge { margin-bottom: 8px; }
+    .footer { border-top: 1px solid var(--line); padding: 22px 0 44px; color: var(--muted); font-size: 0.86rem; }
+    @media (max-width: 640px) { .stat-row { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <p class="eyebrow">Content Strategy &amp; SEO/GEO Benchmark</p>
+      <h1>Content hub: VPBankS vs TCBS</h1>
+      <p class="lede">So sánh Trung tâm kiến thức của VPBankS với trang Khám phá &amp; Chia sẻ đang online của TCBS, benchmark thêm 6 công ty chứng khoán khác, và đề xuất phát triển cụ thể cho TCBS.</p>
+      <div class="meta">
+        <span><strong>Trang mẫu:</strong> <a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/kien-thuc-chung">VPBankS</a></span>
+        <span><strong>Trang cần phát triển:</strong> <a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">TCBS Khám phá &amp; Chia sẻ</a></span>
+        <span><strong>Ngày:</strong> 08/09/2026</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Mục lục">
+    <div class="shell">
+      <a href="#tom-tat">Tóm tắt</a>
+      <a href="#vpbanks">VPBankS</a>
+      <a href="#vpb-danh-muc">Danh mục VPBankS</a>
+      <a href="#tcbs">TCBS hiện tại</a>
+      <a href="#so-sanh">So sánh</a>
+      <a href="#benchmark">Benchmark khác</a>
+      <a href="#de-xuat">Đề xuất phát triển</a>
+      <a href="#de-xuat-bai-tcbs">Đề xuất bài viết TCBS</a>
+      <a href="#uu-tien">Ưu tiên xử lý</a>
+      <a href="#nguon">Nguồn</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+
+    <section id="tom-tat">
+      <h2>Tóm tắt</h2>
+      <p class="intro"><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/kien-thuc-chung">VPBankS</a> có 44 bài trên 3 chuyên mục với độ sâu nội dung tốt (2.500–5.000 từ/bài, có bảng, FAQ, internal link tới sản phẩm), nhưng vẫn thiếu schema.org và bài viết không nằm trong sitemap.xml. Trang <a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">Khám phá &amp; Chia sẻ của TCBS</a> chỉ có 10 bài trên toàn hub, 2/5 chuyên mục sản phẩm (Phái sinh, Chứng chỉ quỹ) trống hoàn toàn, không có trang danh mục để mở rộng, không có bài viết liên quan, và ảnh gần như không có alt text. Trong 6 công ty chứng khoán benchmark thêm, <a href="https://www.dnse.com.vn/hoc">DNSE</a> là mô hình tham khảo mạnh nhất nhờ tổ chức nội dung theo lộ trình trình độ nhà đầu tư, đa dạng định dạng (bài viết, video, khoá học, từ điển thuật ngữ) và cập nhật đều đặn.</p>
+      <div class="stat-row">
+        <div class="stat"><b>10</b>bài trên hub TCBS (toàn bộ)</div>
+        <div class="stat"><b>44</b>bài trên hub VPBankS</div>
+        <div class="stat"><b>2/5</b>chuyên mục TCBS trống (Phái sinh, CCQ)</div>
+        <div class="stat"><b>0</b>trang danh mục/archive để mở rộng nội dung trên TCBS</div>
+      </div>
+    </section>
+
+    <section id="vpbanks">
+      <h2><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/kien-thuc-chung">VPBankS</a> — Trung tâm kiến thức (trang mẫu)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Chuyên mục</th><th>URL</th><th>Số bài (đếm trực tiếp)</th><th>Số trang</th></tr></thead>
+          <tbody>
+            <tr><td>Kiến thức chung</td><td><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/kien-thuc-chung"><code>/trung-tam-kien-thuc/kien-thuc-chung</code></a></td><td>26</td><td>5</td></tr>
+            <tr><td>Sản phẩm đầu tư</td><td><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/san-pham-dau-tu"><code>/trung-tam-kien-thuc/san-pham-dau-tu</code></a></td><td>17</td><td>3</td></tr>
+            <tr><td>Tài khoản đầu tư</td><td><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/tai-khoan-dau-tu"><code>/trung-tam-kien-thuc/tai-khoan-dau-tu</code></a></td><td>1</td><td>1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Bài viết mẫu</h3>
+      <p>Kiến thức chung: 100+ Thuật ngữ chứng khoán cơ bản · Tỷ lệ ký quỹ là gì · Lệnh MOK là gì · OTC là gì · Trái phiếu chuyển đổi là gì · Cổ phiếu penny là gì · VN-Index là gì · chuỗi bài ROE/ROA/P·E/P·B/EBIT là gì · IPO là gì · ETF là gì · Chứng khoán phái sinh là gì.</p>
+      <p>Sản phẩm đầu tư: Margin là gì · Trái phiếu hay gửi tiết kiệm · Chứng chỉ quỹ là gì · Chứng quyền có bảo đảm là gì · Sàn HOSE/HNX/UPCOM là gì · Cách chơi chứng khoán cho người mới.</p>
+      <h3>Cấu trúc bài viết (mẫu 6–7 bài)</h3>
+      <p>H1 trùng title, breadcrumb thật, meta description tuỳ biến theo bài (~150–170 ký tự, có CTA), canonical đúng, robots <code>index, follow</code>. Bài dài 2.500–5.000 từ, có bảng so sánh, một số bài có mục FAQ (không gắn schema), có mục "Có thể bạn quan tâm" (related articles), internal link tự nhiên tới sản phẩm (eMargin, NEO Invest, eBond…). Toàn bộ bài kiểm tra chỉ thấy một tác giả/reviewer duy nhất.</p>
+      <div class="card-grid">
+        <div class="card"><span class="badge good">Điểm mạnh</span><strong>Độ sâu nội dung</strong>2.500–5.000 từ/bài, có ví dụ số cụ thể, bảng so sánh, disclaimer rủi ro — đọc như biên tập thật, không mỏng.</div>
+        <div class="card"><span class="badge good">Điểm mạnh</span><strong>Internal linking</strong>Link tới sản phẩm cụ thể (eMargin, eBond, eFund…) tự nhiên trong thân bài, không nhồi nhét.</div>
+        <div class="card"><span class="badge critical">Điểm yếu</span><strong>Không có trong sitemap.xml</strong>Sitemap chỉ khai báo 1 URL hub, không có URL bài viết con — rủi ro crawl/index.</div>
+        <div class="card"><span class="badge critical">Điểm yếu</span><strong>Không có schema.org</strong>Có nội dung FAQ/bảng nhưng không có JSON-LD Article/FAQPage/BreadcrumbList — bỏ lỡ rich snippet.</div>
+        <div class="card"><span class="badge watch">Điểm yếu</span><strong>Lỗi kỹ thuật rải rác</strong>Link "Xem tất cả" của mục Sản phẩm đầu tư trỏ tới <code>/#</code>; một số thẻ bài viết không click được (orphan).</div>
+        <div class="card"><span class="badge watch">Điểm yếu</span><strong>Mất cân đối &amp; thiếu đa dạng tác giả</strong>26 vs 17 vs 1 bài giữa 3 mục; chỉ 1 tác giả/reviewer xuất hiện — yếu tín hiệu E-E-A-T.</div>
+      </div>
+    </section>
+
+    <section id="vpb-danh-muc">
+      <h2>Danh mục bài viết đầy đủ VPBankS &amp; đánh giá hiệu quả SEO/GEO</h2>
+      <p class="intro">Danh sách dưới đây được duyệt trực tiếp qua từng trang phân trang của 3 chuyên mục (không suy diễn từ mẫu), tổng cộng 44 bài. Con số này đã sửa lại so với ước tính ban đầu (~45): ở trang cuối của Kiến thức chung, "Nhập môn Chứng khoán" và "Các chỉ báo kỹ thuật cơ bản..." hoá ra là tiêu đề và mô tả của cùng 1 bài, không phải 2 bài riêng — kiểm tra lại href xác nhận chỉ có 1 link.</p>
+
+      <div class="callout watch-box">
+        <strong>Cách đọc thẻ đánh giá</strong>
+        <p style="margin:0"><span class="badge good">Mạnh</span> — tiêu đề bám sát search intent thực tế (thường dạng "X là gì" hoặc so sánh A/B có số liệu cụ thể), nội dung đủ sâu để trở thành câu trả lời tự thân, không trùng chủ đề với bài khác trong hub — dễ được cả Google và AI engine trích dẫn. <span class="badge watch">Trung bình</span> — có giá trị nhưng hoặc trùng/cạnh tranh chủ đề với bài khác trong cùng hub (cannibalization), hoặc là dạng hướng dẫn quy trình khó rút thành câu trả lời ngắn, hoặc chủ đề hơi lệch khỏi lõi tài chính. <span class="badge critical">Yếu</span> — tiêu đề không bám từ khóa tìm kiếm thực tế, nội dung xa sản phẩm cốt lõi, hoặc thiếu tín hiệu E-E-A-T rõ ràng (nguồn mơ hồ, mang tính PR/tự giới thiệu).</p>
+      </div>
+
+      <h3>Kiến thức chung — 26 bài / 5 trang</h3>
+      <ol>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/lenh-mok-la-gi">Lệnh MOK là gì? Ưu, nhược điểm và thời gian đặt lệnh</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/ty-le-ky-quy-la-gi">Tỷ lệ ký quỹ là gì? Cách tính và quản lý tỷ lệ ký quỹ an toàn</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/thuat-ngu-chung-khoan">100+ Thuật ngữ chứng khoán cơ bản nhà đầu tư mới cần biết</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/quy-tac-chon-co-phieu-tiem-nang">Quy tắc chọn cổ phiếu tiềm năng: 6 tiêu chí nhà đầu tư cần nắm</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/otc-la-gi">OTC là gì? Tìm hiểu thị trường và cách giao dịch cổ phiếu OTC</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/trai-phieu-chuyen-doi-la-gi">Trái phiếu chuyển đổi là gì? Đặc điểm, lợi ích và rủi ro cần biết</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/co-phieu-penny-la-gi">Cổ phiếu penny là gì? Cơ hội và rủi ro khi đầu tư penny stock</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/vnindex-la-gi">Chỉ số VN-Index là gì? Ý nghĩa và cách tính chỉ số VN-Index</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/trai-phieu-la-gi">Trái phiếu là gì? Phân loại, đặc điểm và cách đầu tư trái phiếu</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/roe-la-gi">ROE là gì? Ý nghĩa, công thức tính và cách dùng ROE trong đầu tư</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/roa-la-gi">ROA là gì? Chỉ số ROA bao nhiêu là tốt &amp; Cách tính</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/pe-la-gi">P/E là gì? Cách tính và ứng dụng chỉ số P/E khi đầu tư cổ phiếu</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/pb-la-gi">P/B là gì? Ý nghĩa và công thức tính chỉ số P/B</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/mo-tai-khoan-chung-khoan">Hướng dẫn mở tài khoản chứng khoán nhanh chóng, an toàn</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/ipo-la-gi">IPO là gì? Điều kiện và quy trình IPO trên sàn chứng khoán</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/etf-la-gi">ETF là gì? Quỹ ETF hoạt động thế nào, có nên đầu tư không?</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/huong-dan-choi-chung-khoan-phai-sinh">Hướng dẫn chơi chứng khoán phái sinh chi tiết cho người mới</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/ebit-la-gi">EBIT là gì? Công thức tính và ý nghĩa trong phân tích tài chính</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/dau-tu-co-phieu">Đầu tư cổ phiếu cho người mới: Bắt đầu từ đâu để hiệu quả?</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/lenh-mp-trong-chung-khoan">Lệnh MP là gì? Cách đặt lệnh thị trường trong chứng khoán</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/cong-thuc-tinh-gdp">Công thức tính GDP: 3 phương pháp chuẩn kèm ví dụ minh họa</a> <span class="badge critical">Yếu</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/co-phieu-la-gi">Cổ phiếu là gì? Phân loại và kiến thức cơ bản cho nhà đầu tư</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/chung-khoan-phai-sinh-la-gi">Chứng khoán phái sinh là gì? Kiến thức cơ bản cho người mới</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/5-bai-hoc-dau-tu-chung-khoan-tu-nha-dau-tu-huyen-thoai-warren-buffett">5 bài học đầu tư chứng khoán từ nhà đầu tư huyền thoại Warren Buffett</a> <span class="badge critical">Yếu</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/nhap-mon-chung-khoan">Nhập môn Chứng khoán</a> (mô tả hiển thị: "Các chỉ báo kỹ thuật cơ bản và cách sử dụng hiệu quả") <span class="badge critical">Yếu</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/phan-bo-danh-muc-dau-tu-the-nao-cho-hieu-qua">Phân bổ danh mục đầu tư thế nào cho hiệu quả?</a> <span class="badge watch">Trung bình</span></li>
+      </ol>
+
+      <h3>Sản phẩm đầu tư — 17 bài / 3 trang</h3>
+      <ol>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/nen-mua-trai-phieu-hay-gui-tiet-kiem">Nên mua trái phiếu hay gửi tiết kiệm? Kênh đầu tư nào hợp?</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/phan-biet-co-phieu-va-trai-phieu">Sự khác nhau giữa cổ phiếu và trái phiếu? Nên đầu tư cái nào?</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/cho-vay-cam-co-trai-phieu-la-gi">Cho vay cầm cố trái phiếu là gì? Điều kiện và quy định cần nắm</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/co-phieu-va-chung-chi-quy">Cổ phiếu và chứng chỉ quỹ khác nhau như thế nào? So sánh chi tiết</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/giao-dich-hang-hoa-phai-sinh">Giao dịch hàng hóa phái sinh là gì? Lợi ích và rủi ro khi tham gia</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/eps-la-gi">EPS là gì? Công thức tính và cách dùng EPS chọn cổ phiếu tốt</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/chung-chi-quy-la-gi">Chứng chỉ quỹ là gì? Có nên đầu tư chứng chỉ quỹ không?</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/cach-doc-bao-cao-tai-chinh">Cách đọc báo cáo tài chính doanh nghiệp nhanh cho nhà đầu tư</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/cac-phien-giao-dich-chung-khoan">Các phiên giao dịch chứng khoán: Thời gian và quy định cần biết</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/bullish-la-gi">Bullish là gì? Dấu hiệu nhận biết và chiến lược khi thị trường tăng</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/app-chung-khoan">Top 10 app chứng khoán uy tín, dễ sử dụng hiện nay</a> <span class="badge critical">Yếu</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/san-giao-dich-chung-khoan">Sàn giao dịch chứng khoán là gì? Tìm hiểu HOSE, HNX và UPCOM</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/margin-la-gi">Margin là gì? Cách sử dụng giao dịch ký quỹ an toàn, hiệu quả</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/chung-quyen-co-bao-dam-la-gi">Chứng quyền có bảo đảm là gì? Đặc điểm và cách giao dịch</a> <span class="badge good">Mạnh</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/cach-choi-chung-khoan">Cách chơi chứng khoán cho người mới bắt đầu: Hướng dẫn từ A-Z</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/cach-choi-chung-khoan-tren-dien-thoai">Cách chơi chứng khoán trên điện thoại đơn giản, mẹo giao dịch hiệu quả</a> <span class="badge watch">Trung bình</span></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/chung-khoan-vpbank-manh-ghep-dau-tu-cho-tai-chinh-thinh-vuong">Chứng khoán VPBank - Mảnh ghép đầu tư cho tài chính thịnh vượng</a> <span class="badge critical">Yếu</span></li>
+      </ol>
+
+      <h3>Tài khoản đầu tư — 1 bài / 1 trang</h3>
+      <ol>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/mo-tai-khoan-chung-khoan-khong-dung-co-sao-khong">Mở tài khoản chứng khoán không giao dịch có sao không?</a> <span class="badge watch">Trung bình</span></li>
+      </ol>
+
+      <p><strong>Tổng: 29 bài Mạnh · 10 bài Trung bình · 5 bài Yếu</strong> trên 44 bài (66% đạt Mạnh) — tỷ lệ khá cao, phần lớn nhờ format định nghĩa "X là gì" được lặp lại nhất quán.</p>
+
+      <h3>Đánh giá cấu trúc (spot-check 2 bài đại diện)</h3>
+      <p>Kiểm tra trực tiếp title tag, heading, bảng, internal link của "Nên mua trái phiếu hay gửi tiết kiệm?" và "Cổ phiếu là gì?": cả hai H1 trùng title, phân cấp H2/H3 rõ ràng (bài trái phiếu vs tiết kiệm có 4 H2, 6 H3), có bảng so sánh 8 tiêu chí, tóm tắt đầu bài, internal link tới sản phẩm thật (eBond, eFund, NEO Invest) và bài liên quan — nhưng cả hai đều không có JSON-LD (Article/FAQPage/BreadcrumbList), khớp với phát hiện chung ở mục So sánh trực tiếp.</p>
+
+      <h3>Nhóm bài hiệu quả SEO/GEO tốt nhất — giải thích chi tiết</h3>
+      <p>29/44 bài (66%) được đánh giá Mạnh, nhưng "Mạnh" không đồng nghĩa hoàn hảo — đây là 4 cơ chế cụ thể khiến một nhóm bài vượt trội hẳn so với phần còn lại của hub, xếp theo mức độ ảnh hưởng:</p>
+      <p><strong>1. Cụm chỉ số tài chính là cơ chế mạnh nhất vì nó tận dụng đồng thời 3 lợi thế.</strong> Thứ nhất là search intent: người tìm "ROE là gì", "P/E là gì" gần như chắc chắn đang ở bước nghiên cứu trước khi mở tài khoản — closer tới hành vi mua hơn là tò mò chung chung. Thứ hai là cấu trúc nội dung: mỗi bài đều có công thức toán học rõ ràng, tức là có một "câu trả lời đóng gói sẵn" (self-contained answer) — chính xác là dạng nội dung AI Overview của Google và các AI engine khác ưu tiên trích dẫn trực tiếp thay vì phải tổng hợp từ nhiều nguồn. Thứ ba là hiệu ứng cụm: 6 bài (ROE, ROA, P/E, P/B, EPS, EBIT) liên tục dẫn link qua lại tự nhiên vì chúng thực sự liên quan về mặt nội dung (đều là chỉ số phân tích cơ bản), khác với internal link gượng ép — đây là tín hiệu topical authority mà Google đánh giá cao cho cả cụm, không chỉ từng bài riêng lẻ.</p>
+      <p><strong>2. Bài glossary "100+ Thuật ngữ chứng khoán cơ bản" mạnh vì nó đổi vai trò từ "một bài viết" thành "một tài sản tra cứu".</strong> Về SEO truyền thống, đây là dạng nội dung tự nhiên thu hút backlink (người khác trích link khi cần giải thích thuật ngữ) và có thời gian trên trang dài bất thường vì người đọc quay lại nhiều lần. Về GEO, một bài tổng hợp hàng trăm định nghĩa trong 1 URL duy nhất là chính xác loại nguồn mà AI engine thích trích dẫn khi trả lời câu hỏi tổng quát ("chứng khoán có những thuật ngữ cơ bản nào") — thay vì phải chọn 1 trong hàng chục bài đơn lẻ, AI engine chọn nguồn tổng hợp vì rủi ro sai sót thấp hơn.</p>
+      <p><strong>3. Nhóm bài so sánh A/B ("Nên mua trái phiếu hay gửi tiết kiệm?", "Cổ phiếu vs trái phiếu", "Cổ phiếu vs chứng chỉ quỹ") mạnh vì chúng khớp với một dạng truy vấn ngày càng phổ biến trên các AI chatbot: câu hỏi ra quyết định ("nên chọn A hay B").</strong> Đây là dạng câu hỏi mà công cụ tìm kiếm truyền thống trả về nhiều kết quả rời rạc để người dùng tự tổng hợp, nhưng AI engine có xu hướng trả lời trực tiếp bằng cách trích một nguồn đã tổng hợp sẵn — và bài có bảng so sánh 8 tiêu chí là chính xác loại nguồn đó. Về mặt SEO truyền thống, dạng bài này cũng giữ time-on-page tốt hơn bài định nghĩa đơn thuần vì người đọc cần thời gian cân nhắc giữa các lựa chọn.</p>
+      <p><strong>4. Nhóm bài gắn thẳng sản phẩm (Margin, Chứng chỉ quỹ, Chứng quyền là gì) mạnh vì đây là điểm giao giữa nội dung giáo dục và giá trị thương mại.</strong> Khác với 3 nhóm trên vốn tối ưu cho lưu lượng truy cập, nhóm này tối ưu cho chuyển đổi: người tìm "Margin là gì" đang cân nhắc mở tài khoản margin, và bài viết dẫn thẳng về trang sản phẩm mà không cần vòng qua nội dung chung chung. Đây là mẫu hình VPBankS làm tốt nhất và là bài học trực tiếp áp dụng được cho TCBS.</p>
+      <p>Ở chiều ngược lại, nhóm bài Yếu chia sẻ một đặc điểm chung: <strong>chúng đều đặt sai trọng tâm giữa "cái công ty muốn nói" và "cái người dùng đang tìm".</strong> "Chứng khoán VPBank - Mảnh ghép đầu tư cho tài chính thịnh vượng" và "Nhập môn Chứng khoán" (tiêu đề không khớp nội dung thật — bài thực chất nói về chỉ báo kỹ thuật) đặt tên theo tư duy thương hiệu/nội bộ thay vì theo cách người dùng gõ vào ô tìm kiếm. "5 bài học từ Warren Buffett" mở đầu bằng một giai thoại không có nguồn xác thực ("một người giấu tên") — với nội dung tài chính (nhóm YMYL), chi tiết mơ hồ như vậy làm giảm uy tín cả bài lẫn cả hub. "Top 10 app chứng khoán uy tín" tự xếp hạng gồm cả đối thủ cạnh tranh — về nguyên tắc trung lập nội dung, đây là dạng bài AI engine có xu hướng tránh trích dẫn vì nghi ngờ động cơ quảng cáo. "Công thức tính GDP" đúng chuẩn kỹ thuật (có công thức, có ví dụ) nhưng chủ đề vĩ mô không có đường dẫn hợp lý nào về sản phẩm chứng khoán — thu hút traffic tốt nhưng không chuyển đổi được.</p>
+      <p>Một phát hiện phụ khi lập danh sách đầy đủ: có ít nhất 3 cặp bài trùng chủ đề rõ rệt — "Chứng khoán phái sinh là gì?" (Kiến thức chung) với "Hướng dẫn chơi chứng khoán phái sinh" (cùng chuyên mục); "Đầu tư cổ phiếu cho người mới" (Kiến thức chung) với "Cách chơi chứng khoán cho người mới bắt đầu: A-Z" (Sản phẩm đầu tư); và "Cách chơi chứng khoán cho người mới" với "Cách chơi chứng khoán trên điện thoại" — 3 cặp này được đánh giá Trung bình một phần vì cannibalization: 2 bài cùng nhắm 1 cụm từ khóa sẽ chia nhỏ tín hiệu xếp hạng thay vì cộng dồn. TCBS nên tránh lặp lỗi này khi viết nhiều bài cho cùng 1 chuyên mục.</p>
+      <div class="card-grid">
+        <div class="card"><span class="badge good">Mạnh nhất</span><strong>Cụm chỉ số tài chính (ROE, ROA, P/E, P/B, EPS, EBIT)</strong>Silo từ khóa định nghĩa, search volume ổn định, ít cạnh tranh nội dung tiếng Việt chất lượng cao, tự tạo vòng interlink giữa 6 bài — đúng mô hình topic cluster. Dạng "X là gì + công thức" cũng là format AI engine dễ trích dẫn nhất (GEO).</div>
+        <div class="card"><span class="badge good">Mạnh nhất</span><strong>100+ Thuật ngữ chứng khoán cơ bản</strong>Bài pillar/glossary bao trùm hàng trăm long-tail query trong 1 URL — ứng viên lý tưởng để AI engine trích dẫn làm nguồn tổng hợp, đồng thời là nam châm internal link từ mọi bài thuật ngữ khác.</div>
+        <div class="card"><span class="badge good">Mạnh</span><strong>Nên mua trái phiếu hay gửi tiết kiệm? / Cổ phiếu vs trái phiếu</strong>Bảng so sánh nhiều tiêu chí, tóm tắt đầu bài, phân nhóm theo khẩu vị rủi ro — giữ time-on-page tốt (SEO) và dễ được AI engine trích khi người dùng hỏi dạng "nên chọn A hay B" (GEO).</div>
+        <div class="card"><span class="badge good">Mạnh</span><strong>Margin / Chứng chỉ quỹ / Chứng quyền là gì</strong>Bám đúng sản phẩm VPBankS đang kinh doanh — vừa có search intent cao vừa dẫn thẳng về trang sản phẩm, có giá trị chuyển đổi thực.</div>
+        <div class="card"><span class="badge critical">Yếu</span><strong>"Chứng khoán VPBank - Mảnh ghép đầu tư..." / "Nhập môn Chứng khoán"</strong>Title không bám từ khóa tìm kiếm thực tế — không ai search đúng cụm này, khó rank.</div>
+        <div class="card"><span class="badge critical">Yếu</span><strong>5 bài học từ Warren Buffett</strong>Mở đầu bằng chi tiết mơ hồ ("một người giấu tên") làm giảm tín hiệu E-E-A-T, không gắn với sản phẩm VPBankS.</div>
+        <div class="card"><span class="badge critical">Yếu</span><strong>Top 10 app chứng khoán uy tín</strong>Intent thương mại tốt nhưng là list tự PR (công ty tự xếp hạng đối thủ) — độ tin cậy để AI engine trích dẫn thấp hơn nội dung định nghĩa trung lập.</div>
+        <div class="card"><span class="badge critical">Yếu</span><strong>Công thức tính GDP</strong>Chủ đề vĩ mô, evergreen traffic tốt nhưng lệch xa sản phẩm cốt lõi — giá trị chuyển đổi gần như bằng không.</div>
+      </div>
+    </section>
+
+    <section id="tcbs">
+      <h2><a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">TCBS</a> — Khám phá &amp; Chia sẻ (hiện trạng)</h2>
+      <p class="intro">Tổ chức theo 5 tab chủ đề tĩnh (Cổ phiếu, Trái phiếu, Phái sinh, Chứng chỉ quỹ, Chứng quyền), không có ô tìm kiếm, không có pagination. Không tồn tại trang danh mục/archive riêng cho từng chủ đề — các URL đoán được theo pattern category đều trả về danh sách công bố thông tin (CBTT) của khối Quan hệ nhà đầu tư, không phải bài blog. Duyệt lại trực tiếp trang <a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">Khám phá &amp; Chia sẻ</a> cho lần cập nhật này phát hiện thêm 1 bài chưa có trong lần audit trước ("Cách lựa chọn chiến lược đầu tư cổ phiếu phù hợp"), nâng tổng số bài từ 9 lên 10.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bài viết</th><th>Giải thích đánh giá</th><th>Từ</th><th>Ảnh có alt</th><th>Mục lục</th><th>Bài liên quan</th><th>Byline</th><th>Ngày XB</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/co-phieu-la-gi-vi-sao-nen-dau-tu-co-phieu/">Cổ phiếu là gì? Vì sao nên đầu tư cổ phiếu?</a> <span class="badge watch">Trung bình</span></td><td>Tiêu đề định nghĩa đúng intent nhưng nội dung quá mỏng (~550–600 từ) so với chuẩn 1.500+ từ để cạnh tranh cho một chủ đề nền tảng.</td><td>~550–600</td><td>1/3</td><td>Có</td><td>Không</td><td>Không</td><td>12/12/2025</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/dau-tu-chung-khoan-la-gi-huong-dan-co-ban-cho-nguoi-moi-bat-dau/">Đầu tư chứng khoán là gì? Hướng dẫn cơ bản cho người mới</a> <span class="badge good">Mạnh</span></td><td>Tiêu đề định nghĩa rõ, độ dài khá nhất trong nhóm bài mỏng (~1.200 từ), có mục lục — nền tảng SEO tốt nhất hiện có dù vẫn thiếu bài liên quan/byline.</td><td>~1.200</td><td>1/2</td><td>Có</td><td>Không</td><td>Không</td><td>20/01/2026</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/cach-lua-chon-chien-luoc-dau-tu-co-phieu-phu-hop-cho-tung-nha-dau-tu/">Cách lựa chọn chiến lược đầu tư cổ phiếu phù hợp cho từng nhà đầu tư</a> <span class="badge good">Mạnh</span></td><td>Nội dung có chiều sâu nhất trong hub hiện tại (2 bảng so sánh 5 chiến lược đầu tư), gần nhất với chuẩn pillar/so sánh mà VPBankS đang làm tốt.</td><td>~1.200</td><td>1/2</td><td>Có</td><td>Không</td><td>Không</td><td>15/12/2025</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/mien-phi-giao-dich-uu-dai-margin/">Miễn phí giao dịch &amp; ưu đãi margin</a> <span class="badge watch">Trung bình</span></td><td>Gắn trực tiếp khuyến mãi sản phẩm (giá trị chuyển đổi tốt) nhưng tiêu đề mang tính khuyến mãi hơn định nghĩa, 0 ảnh có alt.</td><td>~800–900</td><td>0/2</td><td>Có</td><td>Không</td><td>Ẩn trong meta</td><td>23/03/2026</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/cac-ky-thuat-phan-tich-co-phieu-ma-ban-nen-biet/">Các kỹ thuật phân tích cổ phiếu mà bạn nên biết</a> <span class="badge critical">Yếu</span></td><td>Chủ đề rộng ("kỹ thuật phân tích cổ phiếu") nhưng nội dung chỉ ~350 từ — đọc như dàn ý chưa viết đầy đủ hơn là một bài hoàn chỉnh.</td><td>~350</td><td>0/2</td><td>Có</td><td>Không</td><td>Không</td><td>12/12/2025</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/trai-phieu/cach-chon-trai-phieu-doanh-nghiep-an-toan-pheu-loc-5-buoc-nha-dau-tu-nen-biet/">Cách chọn trái phiếu doanh nghiệp an toàn: Phễu lọc 5 bước</a> <span class="badge good">Mạnh</span></td><td>Tiêu đề cụ thể có số liệu ("5 bước"), nội dung đủ dài và có cấu trúc rõ — nhưng xuất bản từ 2023, nên cập nhật lại số liệu/ngày trước khi TCBS phát triển trang mới.</td><td>~1.200</td><td>1/5</td><td>Có</td><td>Không</td><td>Ẩn trong meta</td><td>21/09/2023</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/trai-phieu/nhan-dien-rui-ro-khi-dau-tu-trai-phieu-doanh-nghiep/">Nhận diện rủi ro khi đầu tư trái phiếu doanh nghiệp</a> <span class="badge watch">Trung bình</span></td><td>Nội dung dài (~1.800 từ) nhưng đã 2022, không có mục lục, mở đầu ghi nguồn "(ĐTCK)" cho thấy đây là bài lấy lại từ báo ngoài chứ không phải content gốc của TCBS — ảnh hưởng E-E-A-T.</td><td>~1.800</td><td>0/4</td><td>Không</td><td>Không</td><td>Không</td><td>05/11/2022</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/chung-quyen/chung-quyen-co-dam-bao/">Chứng quyền có đảm bảo (CW): Khi nào nên đóng/đổi vị thế?</a> <span class="badge critical">Yếu</span></td><td>Chủ đề khá phức tạp (thời điểm đóng/đổi vị thế CW) nhưng chỉ ~280 từ — không đủ để xây tín hiệu chuyên môn hay được trích dẫn.</td><td>~280</td><td>0/3</td><td>Không</td><td>Không</td><td>Không</td><td>16/01/2026</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/portfolio-blog-toi-uu-hoa-danh-muc-dau-tu-bang-mean-variance-analysis-markowitz/">Portfolio Blog: Tối ưu hóa danh mục đầu tư bằng Mean-Variance Analysis Markowitz</a> <span class="badge watch">Trung bình</span></td><td>Bài dài và chuyên sâu nhất (~2.200 từ, phân tích định lượng danh mục) nhưng chủ đề học thuật hơi xa nhà đầu tư đại chúng; 0/8 ảnh có alt là điểm trừ nặng dù bài dài.</td><td>~2.200</td><td>0/8</td><td>Không</td><td>Không</td><td>Ẩn trong meta</td><td>05/11/2024</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/kien-thuc-co-ban/bat-dau-voi-chung-quyen-chon-dung-de-giao-dich-hieu-qua/">Bắt đầu với chứng quyền: chọn đúng để giao dịch hiệu quả</a> <span class="badge critical">Yếu</span></td><td>Cùng vấn đề nội dung mỏng (~280 từ) như bài CW trên, cộng thêm lỗi URL không khớp chuyên mục (<code>/kien-thuc-co-ban/</code> thay vì <code>/chung-quyen/</code>).</td><td>~280</td><td>0/2</td><td>Không</td><td>Không</td><td>Không</td><td>26/12/2025</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Tổng: 3 bài Mạnh · 4 bài Trung bình · 3 bài Yếu</strong> trên 10 bài (30% đạt Mạnh) — thấp hơn nhiều so với 66% của VPBankS, chủ yếu do độ dài nội dung quá mỏng (5/10 bài dưới 900 từ) chứ không phải do chọn sai đề tài.</p>
+      <div class="card-grid">
+        <div class="card"><span class="badge good">Điểm mạnh</span><strong>Meta description riêng từng bài</strong>Không phải template lặp lại — dấu hiệu on-page SEO có đầu tư.</div>
+        <div class="card"><span class="badge good">Điểm mạnh</span><strong>Breadcrumb nhất quán</strong>Trang chủ / Thông tin / {Danh mục} trên mọi bài — sẵn sàng cho BreadcrumbList schema.</div>
+        <div class="card"><span class="badge critical">Điểm yếu</span><strong>Thư viện quá mỏng</strong>10 bài toàn hub; Phái sinh và Chứng chỉ quỹ — 2 sản phẩm TCBS đang kinh doanh — trống hoàn toàn.</div>
+        <div class="card"><span class="badge critical">Điểm yếu</span><strong>Không có trang danh mục</strong>Không pagination, không archive theo chủ đề → hub không thể mở rộng.</div>
+        <div class="card"><span class="badge critical">Điểm yếu</span><strong>Không có bài viết liên quan</strong>0/10 bài kiểm tra có mục "liên quan" → mất internal link, tăng bounce rate.</div>
+        <div class="card"><span class="badge watch">Điểm yếu</span><strong>Alt text ảnh gần như thiếu hoàn toàn</strong>Nhiều bài 0/2, 0/3, 0/8 ảnh có alt.</div>
+        <div class="card"><span class="badge watch">Điểm yếu</span><strong>Không có byline công khai</strong>Chỉ có "tcbs_admin" ẩn trong meta — yếu E-E-A-T cho nội dung YMYL.</div>
+        <div class="card"><span class="badge watch">Điểm yếu</span><strong>URL không nhất quán category</strong>Bài về "Chứng quyền" nằm dưới slug <code>/kien-thuc-co-ban/</code>.</div>
+      </div>
+    </section>
+
+    <section id="so-sanh">
+      <h2>So sánh trực tiếp</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tiêu chí</th><th>VPBankS</th><th>TCBS (hiện tại)</th></tr></thead>
+          <tbody>
+            <tr><td>Số lượng bài viết</td><td><span class="badge good">44</span></td><td><span class="badge critical">10</span></td></tr>
+            <tr><td>Độ phủ chuyên mục sản phẩm</td><td><span class="badge watch">Mất cân đối (26/17/1)</span></td><td><span class="badge critical">2/5 chuyên mục trống</span></td></tr>
+            <tr><td>Độ dài bài viết trung bình</td><td><span class="badge good">2.500–5.000 từ</span></td><td><span class="badge watch">280–2.200 từ</span></td></tr>
+            <tr><td>Trang danh mục/pagination</td><td><span class="badge good">Có (5 trang cho Kiến thức chung)</span></td><td><span class="badge critical">Không có</span></td></tr>
+            <tr><td>Bài viết liên quan</td><td><span class="badge good">Có ("Có thể bạn quan tâm")</span></td><td><span class="badge critical">Không có</span></td></tr>
+            <tr><td>Meta description riêng bài</td><td><span class="badge good">Có</span></td><td><span class="badge good">Có</span></td></tr>
+            <tr><td>Byline tác giả/reviewer</td><td><span class="badge watch">Có nhưng chỉ 1 người</span></td><td><span class="badge critical">Không hiển thị công khai</span></td></tr>
+            <tr><td>Alt text ảnh</td><td><span class="badge watch">Không xác nhận đầy đủ</span></td><td><span class="badge critical">Gần như không có</span></td></tr>
+            <tr><td>Schema.org (Article/FAQPage/Breadcrumb)</td><td><span class="badge critical">Không có</span></td><td><span class="badge critical">Chưa xác nhận, khả năng không có</span></td></tr>
+            <tr><td>Sitemap.xml chứa URL bài viết</td><td><span class="badge critical">Không</span></td><td><span class="badge watch">Chưa xác nhận</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>VPBankS vượt trội về khối lượng và độ sâu nội dung, nhưng cả hai trang đều yếu như nhau ở phần kỹ thuật nền tảng (schema.org, sitemap, đa dạng tác giả) — đây chính là khoảng trống TCBS có thể vượt lên nếu làm đúng ngay từ đầu khi phát triển trang mới, thay vì chỉ đuổi theo số lượng bài của VPBankS.</p>
+    </section>
+
+    <section id="benchmark">
+      <h2>Benchmark thêm 6 công ty chứng khoán khác</h2>
+      <div class="card-grid">
+        <div class="card"><strong><a href="https://www.dnse.com.vn/hoc">DNSE</a> — mô hình tham khảo tốt nhất</strong>Tổ chức theo lộ trình trình độ (Khởi nghiệp → Trải nghiệm → Chuyên nghiệp) kết hợp thư viện 8 chủ đề. Đa dạng định dạng: bài viết, series video YouTube "Vượt Sóng", Masterclass cùng chuyên gia, có "Từ điển chứng khoán". Cập nhật đều đặn tới sát thời điểm hiện tại.</div>
+        <div class="card"><strong><a href="https://pinetree.vn/post/category/kien-thuc-co-ban/">Pinetree</a></strong>Khối lượng lớn nhất quan sát được (~250+ bài, 25 trang phân trang), có tag, đăng ký bản tin, cập nhật liên tục. Nhưng thiên về blog/tin tức rời rạc hơn pillar content sâu; không có glossary/FAQ.</div>
+        <div class="card"><strong><a href="https://www.ssi.com.vn/khach-hang-ca-nhan/trung-tam-kien-thuc">SSI</a></strong>5 chuyên mục rõ ràng, internal link tốt tới sản phẩm, bài khá dài có mục lục. Nhưng nhiều bài dừng ở 2022, không byline, không search, không ảnh minh hoạ, không glossary/FAQ.</div>
+        <div class="card"><span class="badge critical">Bài học ngược</span><strong><a href="https://dautu.vndirect.com.vn/blog/">VNDIRECT</a> — phân mảnh domain</strong>Nội dung trải trên 3 tên miền phụ khác nhau (support., dgoacademy., dautu.blog) — làm loãng domain authority và khó điều hướng. TCBS nên tránh mô hình này, gom về một hub duy nhất.</div>
+        <div class="card"><span class="badge critical">Rủi ro kỹ thuật</span><strong><a href="https://online.hsc.com.vn/tin-tuc/dao-tao-chung-khoan.html">HSC</a> — SPA thuần không SSR</strong>Trang có vẻ render phía client hoàn toàn — fetch trực tiếp chỉ thấy khung loading, không có HTML tĩnh. Domain cũ dùng redirect 302 (tạm thời) thay vì 301 khi di dời — mất SEO equity. Bài học: trang mới của TCBS bắt buộc phải SSR/pre-render và dùng 301 nếu đổi URL.</div>
+        <div class="card"><span class="badge watch">Phản ví dụ</span><strong><a href="https://www.mbs.com.vn/vi/goc-truyen-thong/tin-tuc-mbs/">MBS</a></strong>Không có content hub giáo dục thực sự — mục "tin tức" chủ yếu là thông báo nghiệp vụ/IR, không mang tính SEO.</div>
+      </div>
+    </section>
+
+    <section id="de-xuat">
+      <h2>Đề xuất phát triển cụ thể cho TCBS</h2>
+
+      <h3>1. Kiến trúc thông tin (IA)</h3>
+      <ul>
+        <li>Giữ trục chuyên mục theo sản phẩm (Cổ phiếu, Trái phiếu, Phái sinh, CCQ, Chứng quyền) nhưng thêm trục thứ hai theo <strong>trình độ nhà đầu tư</strong> (Mới bắt đầu / Có kinh nghiệm / Chuyên sâu) — mô hình <a href="https://www.dnse.com.vn/hoc">DNSE</a> — giúp cá nhân hoá hành trình đọc và tạo thêm hàng trăm URL long-tail hợp lệ (kết hợp sản phẩm × trình độ).</li>
+        <li>Xây trang danh mục/archive riêng cho từng chuyên mục, có pagination — nền tảng bắt buộc để hub mở rộng được, hiện TCBS hoàn toàn chưa có.</li>
+        <li>Thêm mục <strong>Từ điển thuật ngữ chứng khoán</strong> (glossary) dạng A–Z, mỗi thuật ngữ 1 URL riêng — dư địa SEO long-tail lớn, chưa công ty nào trong nhóm khảo sát khai thác triệt để (kể cả VPBankS).</li>
+      </ul>
+
+      <h3>2. Nội dung</h3>
+      <ul>
+        <li><strong>Ưu tiên lấp đầy 2 chuyên mục đang trống</strong>: Phái sinh và Chứng chỉ quỹ — đây là sản phẩm TCBS đang kinh doanh nhưng hoàn toàn không có bài giáo dục nào, trong khi VPBankS phủ đều hơn.</li>
+        <li>Nâng độ dài trung bình lên vùng 1.500–2.500 từ cho các bài pillar (hiện TCBS nhiều bài chỉ 280–350 từ), theo chuẩn Rank Math content-length và đúng độ sâu VPBankS đang làm.</li>
+        <li>Tách bạch nội dung giáo dục thuần khỏi nội dung quảng cáo — bài học từ cả <a href="https://www.ssi.com.vn/khach-hang-ca-nhan/trung-tam-kien-thuc">SSI</a> và TCBS hiện tại: đặt CTA sản phẩm khéo léo ở cuối bài/sidebar, không chèn ngay trong tiêu đề.</li>
+        <li>Đa dạng định dạng: thêm video ngắn và/hoặc Masterclass cùng chuyên gia (mô hình DNSE) để tăng thời gian trên trang và tín hiệu engagement.</li>
+      </ul>
+
+      <h3>3. Kỹ thuật SEO nền tảng</h3>
+      <ul>
+        <li><strong>SSR/pre-render bắt buộc</strong> nếu trang mới dùng SPA/React — bài học từ rủi ro của <a href="https://online.hsc.com.vn/tin-tuc/dao-tao-chung-khoan.html">HSC</a> (fetch chỉ thấy khung loading).</li>
+        <li>Khai báo toàn bộ URL bài viết vào <code>sitemap.xml</code> — đây là lỗi mà ngay cả <a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/kien-thuc-chung">VPBankS</a> cũng đang mắc, TCBS có thể làm đúng ngay từ đầu để vượt lên.</li>
+        <li>Thêm schema.org <code>Article</code>, <code>FAQPage</code> (cho bài có mục hỏi-đáp), <code>BreadcrumbList</code> — không đối thủ nào trong nhóm khảo sát làm tốt phần này, là cơ hội khác biệt hoá rõ ràng.</li>
+        <li>Nếu tái cấu trúc URL khi build trang mới, dùng redirect <strong>301</strong> (vĩnh viễn) cho URL cũ, không dùng 302 — bài học từ HSC.</li>
+        <li>Bổ sung alt text cho toàn bộ ảnh (hiện gần như 0% bài có đủ alt).</li>
+      </ul>
+
+      <h3>4. Trust / E-E-A-T</h3>
+      <ul>
+        <li>Hiển thị công khai byline tác giả/reviewer trên từng bài (hiện chỉ ẩn trong meta) — quan trọng hơn cả VPBankS vì nội dung tài chính thuộc nhóm YMYL.</li>
+        <li>Đa dạng hoá đội ngũ tác giả/chuyên gia thẩm định thay vì 1 người duy nhất (điểm yếu chung của cả VPBankS lẫn TCBS).</li>
+        <li>Thêm mục "Bài viết liên quan" cuối mỗi bài — vừa là tín hiệu E-E-A-T (nội dung có hệ thống, không rời rạc), vừa tăng internal link và giảm bounce rate.</li>
+        <li>Ghi rõ ngày cập nhật thực chất khi refresh nội dung cũ (một số bài TCBS chỉ đổi timestamp "updated" mà nội dung có vẻ không đổi — nên đối chiếu thủ công trước khi công bố ngày cập nhật).</li>
+      </ul>
+    </section>
+
+    <section id="de-xuat-bai-tcbs">
+      <h2>Đề xuất danh sách bài viết cho TCBS</h2>
+      <p class="intro">Bảng dưới đây là backlog đầy đủ theo 5 chuyên mục thật của <a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">Khám phá &amp; Chia sẻ</a> — gộp cả 10 bài đang có (gắn link trực tiếp) lẫn bài cần viết mới, để thấy rõ đâu là bài giữ nguyên, đâu cần viết lại, đâu cần viết thêm. 2 bài "MarginSure" và "Margin call" ở phiên bản trước đặt tại mục "Xuyên suốt" không tồn tại trên TCBS — đã chuyển vào đúng chuyên mục <strong>Cổ phiếu</strong>, vì margin là sản phẩm vay giao dịch cổ phiếu, không phải một chuyên mục riêng trong 5 tab của TCBS.</p>
+      <div class="stat-row">
+        <div class="stat"><b>3</b>bài Mạnh — giữ nguyên, không cần viết lại</div>
+        <div class="stat"><b>7</b>bài đang có nhưng cần viết lại</div>
+        <div class="stat"><b>17</b>bài cần viết thêm (chưa tồn tại)</div>
+        <div class="stat"><b>27</b>tổng số dòng backlog trên 5 chuyên mục</div>
+      </div>
+
+      <h3>Cổ phiếu</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bài viết</th><th>Trạng thái</th><th>Giải thích / Mục đích</th><th>Ưu tiên</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/dau-tu-chung-khoan-la-gi-huong-dan-co-ban-cho-nguoi-moi-bat-dau/">Đầu tư chứng khoán là gì? Hướng dẫn cơ bản cho người mới</a></td><td><span class="badge good">Mạnh — giữ nguyên</span></td><td>Không cần viết lại nội dung; chỉ cần bổ sung schema Article/FAQPage và mục "bài liên quan" khi triển khai hạng mục kỹ thuật.</td><td>—</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/cach-lua-chon-chien-luoc-dau-tu-co-phieu-phu-hop-cho-tung-nha-dau-tu/">Cách lựa chọn chiến lược đầu tư cổ phiếu phù hợp</a></td><td><span class="badge good">Mạnh — giữ nguyên</span></td><td>Bài chuẩn nhất hiện có, dùng làm mẫu định dạng (bảng so sánh + mục lục) cho các bài viết mới trong chuyên mục.</td><td>—</td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/co-phieu-la-gi-vi-sao-nen-dau-tu-co-phieu/">Cổ phiếu là gì? Vì sao nên đầu tư cổ phiếu?</a></td><td><span class="badge watch">Cần viết lại</span></td><td>Mở rộng từ ~550–600 từ lên tối thiểu 1.500 từ; bổ sung đủ alt cho 3 ảnh và thêm mục "bài liên quan".</td><td><span class="badge watch">P1</span></td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/cac-ky-thuat-phan-tich-co-phieu-ma-ban-nen-biet/">Các kỹ thuật phân tích cổ phiếu mà bạn nên biết</a></td><td><span class="badge watch">Cần viết lại</span></td><td>Viết lại toàn bộ từ ~350 từ lên tối thiểu 1.500 từ — chủ đề "phân tích cơ bản + kỹ thuật" quá lớn để gói trong 350 từ, hiện đọc như dàn ý chưa hoàn chỉnh.</td><td><span class="badge watch">P1</span></td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/mien-phi-giao-dich-uu-dai-margin/">Miễn phí giao dịch &amp; ưu đãi margin</a></td><td><span class="badge watch">Cần viết lại</span></td><td>Bổ sung alt cho 2 ảnh hiện thiếu; hiển thị byline công khai thay vì chỉ ẩn trong meta.</td><td><span class="badge good">P2</span></td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/co-phieu/portfolio-blog-toi-uu-hoa-danh-muc-dau-tu-bang-mean-variance-analysis-markowitz/">Portfolio Blog: Markowitz</a></td><td><span class="badge watch">Cần viết lại</span></td><td>Bổ sung alt cho toàn bộ 8 ảnh; thêm mục lục dù bài đã dài (~2.200 từ) để dễ điều hướng.</td><td><span class="badge good">P2</span></td></tr>
+            <tr><td>Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: bài "Miễn phí giao dịch &amp; ưu đãi margin" hiện có chỉ nói về khuyến mãi phí, chưa có bài định nghĩa gốc "Margin là gì" — bài này lấp khoảng trống định nghĩa và dẫn về 2 trang sản phẩm margin (Margin T+, hạn mức vay ký quỹ thường) đã audit trước đó.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>Margin T+ hay vay ký quỹ thường? Nên chọn sản phẩm nào</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: bài so sánh A/B dẫn chuyển đổi trực tiếp giữa 2 sản phẩm margin thật của TCBS, theo đúng mô hình bài so sánh hiệu quả nhất ở VPBankS.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>MarginSure là gì? Cách giảm lãi suất khi cổ phiếu giảm giá</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: trang sản phẩm MarginSure (đã audit trong phiên trước) hiện không có bất kỳ bài giáo dục nào dẫn về — bài này lấp khoảng trống đó.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: nội dung rủi ro/an toàn bắt buộc cho sản phẩm có đòn bẩy (nhóm YMYL) — hỗ trợ tín hiệu E-E-A-T và giảm khiếu nại do hiểu sai rủi ro.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: mở cụm chỉ số tài chính còn thiếu hoàn toàn trên TCBS — đây là định dạng hiệu quả nhất trong 44 bài đã đánh giá của VPBankS.</td><td><span class="badge watch">P1</span></td></tr>
+            <tr><td>P/E là gì? Cách ứng dụng khi định giá cổ phiếu tại TCBS</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: mở rộng cụm chỉ số tài chính cùng ROE, tạo vòng interlink nội bộ.</td><td><span class="badge watch">P1</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Trái phiếu</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bài viết</th><th>Trạng thái</th><th>Giải thích / Mục đích</th><th>Ưu tiên</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/trai-phieu/cach-chon-trai-phieu-doanh-nghiep-an-toan-pheu-loc-5-buoc-nha-dau-tu-nen-biet/">Cách chọn trái phiếu doanh nghiệp an toàn: Phễu lọc 5 bước</a></td><td><span class="badge good">Mạnh — giữ nguyên</span></td><td>Nội dung tốt, chỉ cần cập nhật lại số liệu/ngày xuất bản (hiện vẫn ghi 2023).</td><td><span class="badge good">P2</span></td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/trai-phieu/nhan-dien-rui-ro-khi-dau-tu-trai-phieu-doanh-nghiep/">Nhận diện rủi ro khi đầu tư trái phiếu doanh nghiệp</a></td><td><span class="badge watch">Cần viết lại</span></td><td>Viết lại theo giọng văn gốc của TCBS thay vì giữ nguyên trích dẫn "(ĐTCK)" từ báo ngoài; thêm mục lục; cập nhật ngày (hiện 2022).</td><td><span class="badge watch">P1</span></td></tr>
+            <tr><td>Trái phiếu doanh nghiệp là gì? Rủi ro và cách đánh giá trước khi mua</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: 2 bài hiện có đều là hướng dẫn chọn/nhận diện rủi ro, chưa có bài định nghĩa "là gì" gốc để làm nền cho cả cụm trái phiếu.</td><td><span class="badge watch">P1</span></td></tr>
+            <tr><td>Nên mua trái phiếu hay gửi tiết kiệm? So sánh lãi suất và rủi ro</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: bài so sánh intent cao, đã chứng minh hiệu quả rõ rệt ở VPBankS (một trong 4 bài "Mạnh nhất" của hub đó).</td><td><span class="badge watch">P1</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Phái sinh — chuyên mục đang trống hoàn toàn</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bài viết</th><th>Trạng thái</th><th>Giải thích / Mục đích</th><th>Ưu tiên</th></tr></thead>
+          <tbody>
+            <tr><td>Chứng khoán phái sinh là gì? Kiến thức cơ bản cho người mới bắt đầu</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: lấp chuyên mục trống hoàn toàn — đây là sản phẩm TCBS đang kinh doanh nhưng chưa có bất kỳ bài giáo dục nào.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>Hợp đồng tương lai VN30 là gì? Cách giao dịch tại TCBS</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: định nghĩa sản phẩm phái sinh cụ thể đang giao dịch trên TCBS.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>Ký quỹ phái sinh là gì? Cách tính và quản lý an toàn</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: nội dung rủi ro/an toàn cho sản phẩm có đòn bẩy — cùng logic với "Margin call là gì" ở chuyên mục Cổ phiếu.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>Nên đầu tư cổ phiếu hay phái sinh? So sánh rủi ro và lợi nhuận</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: bài so sánh dẫn intent giữa 2 chuyên mục, giữ chân người đọc đang cân nhắc trong hệ sinh thái TCBS thay vì rời đi tìm nơi khác.</td><td><span class="badge watch">P1</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Chứng chỉ quỹ — chuyên mục đang trống hoàn toàn</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bài viết</th><th>Trạng thái</th><th>Giải thích / Mục đích</th><th>Ưu tiên</th></tr></thead>
+          <tbody>
+            <tr><td>Chứng chỉ quỹ là gì? Có nên đầu tư chứng chỉ quỹ không?</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: lấp chuyên mục trống hoàn toàn — đây là sản phẩm TCBS đang kinh doanh nhưng chưa có bất kỳ bài giáo dục nào.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>Chứng chỉ quỹ và cổ phiếu khác nhau như thế nào?</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: bài so sánh, tận dụng lượng người đọc sẵn có của chuyên mục Cổ phiếu để dẫn sang chuyên mục mới.</td><td><span class="badge critical">P0</span></td></tr>
+            <tr><td>NAV chứng chỉ quỹ là gì? Cách theo dõi và đánh giá hiệu quả</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: định nghĩa chỉ số theo dõi cơ bản nhất của chứng chỉ quỹ, mở rộng độ sâu cho chuyên mục còn non.</td><td><span class="badge watch">P1</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Chứng quyền</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bài viết</th><th>Trạng thái</th><th>Giải thích / Mục đích</th><th>Ưu tiên</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/chung-quyen/chung-quyen-co-dam-bao/">Chứng quyền có đảm bảo (CW): Khi nào nên đóng/đổi vị thế?</a></td><td><span class="badge watch">Cần viết lại</span></td><td>Mở rộng từ ~280 từ, bổ sung mục lục — chủ đề "thời điểm đóng/đổi vị thế" khá kỹ thuật, cần giải thích đầy đủ hơn.</td><td><span class="badge good">P2</span></td></tr>
+            <tr><td><a href="https://www.tcbs.com.vn/thong-tin/kien-thuc-co-ban/bat-dau-voi-chung-quyen-chon-dung-de-giao-dich-hieu-qua/">Bắt đầu với chứng quyền: chọn đúng để giao dịch hiệu quả</a></td><td><span class="badge watch">Cần viết lại</span></td><td>Mở rộng nội dung từ ~280 từ; sửa URL về đúng chuyên mục <code>/chung-quyen/</code> thay vì <code>/kien-thuc-co-ban/</code>.</td><td><span class="badge good">P2</span></td></tr>
+            <tr><td>Chứng quyền có bảo đảm là gì? Cách giao dịch tại TCBS</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: cả 2 bài hiện có đều là hướng dẫn nâng cao (đóng/đổi vị thế, chọn CW), chưa có bài định nghĩa "là gì" cơ bản làm nền — người mới không có điểm vào phù hợp.</td><td><span class="badge good">P2</span></td></tr>
+            <tr><td>Chứng quyền và cổ phiếu cơ sở khác nhau như thế nào?</td><td><span class="badge critical">Cần viết thêm</span></td><td>Mục đích: bài so sánh giúp người mới hiểu quan hệ CW – cổ phiếu cơ sở trước khi đọc 2 bài nâng cao hiện có.</td><td><span class="badge good">P2</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout watch-box">
+        <strong>Lưu ý trước khi xuất bản</strong>
+        <p style="margin:0">Tên hợp đồng phái sinh và tên quỹ/mã chứng chỉ quỹ cụ thể của TCBS chưa được xác minh trực tiếp trong phiên audit này — cần đối chiếu với trang sản phẩm thật (tên hợp đồng, tên quỹ, mã sản phẩm) trước khi chốt tiêu đề cuối cùng, theo đúng nguyên tắc xác minh đã áp dụng cho Margin T+ và MarginSure.</p>
+      </div>
+    </section>
+
+    <section id="uu-tien">
+      <h2>Ưu tiên xử lý</h2>
+      <div class="callout critical-box">
+        <strong>P0 — nền tảng kỹ thuật, làm trước khi mở rộng nội dung</strong>
+        <ol>
+          <li>Đảm bảo SSR/pre-render cho trang mới (không để lặp lỗi kiểu SPA của HSC).</li>
+          <li>Xây trang danh mục/archive có pagination cho từng chuyên mục.</li>
+          <li>Khai báo toàn bộ URL bài viết vào sitemap.xml.</li>
+        </ol>
+      </div>
+      <div class="callout watch-box">
+        <strong>P1 — lấp khoảng trống nội dung &amp; Trust</strong>
+        <ol>
+          <li>Viết bài cho 2 chuyên mục đang trống: Phái sinh, Chứng chỉ quỹ (7 bài mới, xem mục Đề xuất danh sách bài viết).</li>
+          <li>Viết lại 7 bài hiện có đang mỏng/yếu (dưới 900 từ hoặc thiếu tín hiệu E-E-A-T) — xem cột "Trạng thái" ở mục Đề xuất danh sách bài viết.</li>
+          <li>Thêm byline tác giả/reviewer công khai và mục "Bài viết liên quan" trên mọi bài.</li>
+          <li>Thêm schema.org Article/FAQPage/BreadcrumbList.</li>
+          <li>Bổ sung alt text cho toàn bộ ảnh.</li>
+        </ol>
+      </div>
+      <div class="callout good-box">
+        <strong>P2 — mở rộng &amp; khác biệt hoá</strong>
+        <ol>
+          <li>Xây mục Từ điển thuật ngữ chứng khoán (glossary A–Z).</li>
+          <li>Thêm trục tổ chức theo trình độ nhà đầu tư (Mới bắt đầu / Có kinh nghiệm / Chuyên sâu).</li>
+          <li>Bổ sung định dạng video/Masterclass để đa dạng hoá nội dung.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="nguon">
+      <h2>Nguồn tham khảo</h2>
+      <ul class="source-list">
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/kien-thuc-chung">VPBankS — Kiến thức chung</a></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/san-pham-dau-tu">VPBankS — Sản phẩm đầu tư</a></li>
+        <li><a href="https://www.vpbanks.com.vn/trung-tam-kien-thuc/tai-khoan-dau-tu">VPBankS — Tài khoản đầu tư</a></li>
+        <li><a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">TCBS — Khám phá &amp; Chia sẻ (trang audit)</a></li>
+        <li><a href="https://www.dnse.com.vn/hoc">DNSE — Học đầu tư</a></li>
+        <li><a href="https://pinetree.vn/post/category/kien-thuc-co-ban/">Pinetree — Kiến thức cơ bản</a></li>
+        <li><a href="https://www.ssi.com.vn/khach-hang-ca-nhan/trung-tam-kien-thuc">SSI — Trung tâm kiến thức</a></li>
+        <li><a href="https://dautu.vndirect.com.vn/blog/">VNDIRECT — DGO Blog</a></li>
+        <li><a href="https://online.hsc.com.vn/tin-tuc/dao-tao-chung-khoan.html">HSC — Đào tạo chứng khoán</a></li>
+        <li><a href="https://www.mbs.com.vn/vi/goc-truyen-thong/tin-tuc-mbs/">MBS — Tin tức MBS</a></li>
+        <li><a href="https://rankmath.com/kb/score-100-in-tests/">Rank Math — Score 100/100 with post tests</a></li>
+        <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central — Creating helpful, reliable, people-first content</a></li>
+        <li><a href="https://arxiv.org/abs/2311.09735">Aggarwal et al. (2024), GEO: Generative Engine Optimization, ACM KDD 2024</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>Số liệu bài viết và đánh giá cấu trúc dựa trên khảo sát thủ công qua công cụ fetch tự động vào thời điểm audit, không phải số liệu phân tích lưu lượng chính thức từ các công ty. Một số chi tiết kỹ thuật (schema.org, sitemap) chưa thể xác nhận 100% qua fetch tự động và nên kiểm tra lại bằng View Source/Rich Results Test trước khi kết luận cuối cùng.</p>
+    </div>
+  </footer>
+</body>
+</html>

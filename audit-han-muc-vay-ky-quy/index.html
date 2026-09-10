@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Báo cáo audit SEO và GEO cho trang Hạn mức vay ký quỹ (Tier 1, đang online) của TCBS: đánh giá đạt/không đạt từng thành phần on-page, phân tích hiệu năng PageSpeed Insights, và đề xuất focus keyword, title, meta, heading, internal linking, alt text, schema và nội dung SEO-ready.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Audit SEO & GEO: Hạn mức vay ký quỹ (Tier 1) | TCBS">
+  <meta property="og:description" content="Đánh giá đạt/không đạt từng thành phần on-page, hiệu năng PageSpeed Insights và đề xuất tối ưu SEO/GEO đầy đủ cho trang Hạn mức vay ký quỹ TCBS.">
+  <title>Audit SEO &amp; GEO: Hạn mức vay ký quỹ (Tier 1) | TCBS</title>
+  <style>
+    :root {
+      --ink: #182338;
+      --muted: #57657c;
+      --paper: #ffffff;
+      --canvas: #f5f7fb;
+      --line: #e0e6f0;
+      --brand: #b41334;
+      --brand-dark: #871027;
+      --good: #11735c;
+      --watch: #9a5b00;
+      --critical: #ae2538;
+      --soft-good: #edfaf6;
+      --soft-watch: #fff7e9;
+      --soft-critical: #fff0f2;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    a { color: var(--brand-dark); }
+    a:hover { color: var(--brand); }
+    code { padding: 0.1em 0.35em; background: #edf1f6; border-radius: 4px; font-size: 0.92em; }
+
+    .shell { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+
+    header.hero {
+      padding: 48px 0 34px;
+      background: linear-gradient(135deg, #7d0b24 0%, #b41334 100%);
+      color: #fff;
+    }
+    .eyebrow { margin: 0 0 10px; color: #ffd8df; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .tier-pill { display: inline-block; padding: 0.16rem 0.6rem; border-radius: 999px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 0.72rem; letter-spacing: 0.03em; }
+    h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.2; }
+    .lede { max-width: 720px; margin: 14px 0 0; font-size: 1rem; color: #ffeef0; }
+    .meta { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 20px 0 0; font-size: 0.86rem; color: #ffd8df; }
+    .meta strong { color: #fff; }
+    .meta a { color: inherit; text-decoration: underline; }
+
+    nav.toc {
+      position: sticky; top: 0; z-index: 1;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(6px);
+    }
+    nav.toc .shell { display: flex; gap: 6px 18px; overflow-x: auto; padding: 10px 0; white-space: nowrap; }
+    nav.toc a { color: var(--muted); font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+    nav.toc a:hover { color: var(--brand); }
+
+    main { padding: 34px 0 60px; }
+    section { margin: 0 0 38px; }
+    h2 { margin: 0 0 12px; font-size: 1.4rem; letter-spacing: -0.01em; }
+    h3 { margin: 26px 0 8px; font-size: 1.08rem; }
+    h3:first-of-type { margin-top: 4px; }
+    h4 { margin: 16px 0 6px; font-size: 0.94rem; color: var(--brand-dark); }
+    p { margin: 0 0 12px; }
+    .intro { max-width: 760px; }
+
+    .stat-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 0; }
+    .stat { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 12px 16px; font-size: 0.9rem; }
+    .stat b { display: block; font-size: 1.15rem; color: var(--brand); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    table { width: 100%; border-collapse: collapse; min-width: 640px; }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); font-size: 0.92rem; }
+    th { background: #f8fafc; color: #37455c; font-size: 0.76rem; letter-spacing: 0.03em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    td p:last-child { margin-bottom: 0; }
+
+    .badge { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; }
+    .good { background: var(--soft-good); color: var(--good); }
+    .watch { background: var(--soft-watch); color: var(--watch); }
+    .critical { background: var(--soft-critical); color: var(--critical); }
+
+    .callout { padding: 16px 18px; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
+    .callout strong { display: block; margin-bottom: 6px; }
+    .callout.critical-box { border-left: 4px solid var(--critical); background: var(--soft-critical); }
+    .callout.watch-box { border-left: 4px solid var(--watch); background: var(--soft-watch); }
+    .callout.good-box { border-left: 4px solid var(--good); background: var(--soft-good); }
+    .callout + .callout { margin-top: 10px; }
+
+    ol, ul { margin: 8px 0 0; padding-left: 1.2rem; }
+    li + li { margin-top: 6px; }
+    .source-list a { font-weight: 600; }
+
+    .text-block { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; margin: 8px 0 12px; font-size: 0.94rem; }
+    .code-block { background: #0f172a; color: #e2e8f0; border-radius: var(--radius); padding: 14px 16px; overflow-x: auto; font-size: 0.8rem; line-height: 1.55; margin: 0 0 18px; }
+    .code-block code { background: none; padding: 0; color: inherit; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; }
+    .code-label { font-size: 0.76rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; margin: 14px 0 4px; }
+    .code-label:first-child { margin-top: 0; }
+
+    .footer { border-top: 1px solid var(--line); padding: 22px 0 44px; color: var(--muted); font-size: 0.86rem; }
+
+    @media (max-width: 640px) {
+      .stat-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <p class="eyebrow">Báo cáo SEO &amp; GEO <span class="tier-pill">Tier 1 — sản phẩm tài chính lõi</span></p>
+      <h1>Hạn mức vay ký quỹ | TCBS</h1>
+      <p class="lede">Audit trang Hạn mức vay ký quỹ — đang online, đây là trang duy nhất cần đánh giá để code lại. Theo sitemap phân tier của TCBS, trang thuộc Tier 1 (cùng nhóm Margin T+, MarginSure), là nhóm trang có ảnh hưởng trực tiếp tới quyết định tài chính của khách hàng nên yêu cầu chuẩn E-E-A-T cao nhất. Báo cáo này bổ sung thêm phần phân tích hiệu năng dựa trên kết quả PageSpeed Insights do người dùng cung cấp.</p>
+      <div class="meta">
+        <span><strong>Trang audit:</strong> <a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/han-muc-vay-ky-quy/">vay-ky-quy-margin/han-muc-vay-ky-quy/</a></span>
+        <span><strong>Ngày:</strong> 10/09/2026</span>
+        <span><strong>Phạm vi:</strong> trang đang online + báo cáo PageSpeed Insights (Desktop) ngày 09/09/2026</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Mục lục">
+    <div class="shell">
+      <a href="#tom-tat">Tóm tắt</a>
+      <a href="#seo">SEO on-page</a>
+      <a href="#hieu-nang">Hiệu năng</a>
+      <a href="#trust">Trust / E-E-A-T</a>
+      <a href="#geo">GEO</a>
+      <a href="#de-xuat">Đề xuất tối ưu</a>
+      <a href="#uu-tien">Ưu tiên xử lý</a>
+      <a href="#nguon">Nguồn</a>
+    </div>
+  </nav>
+
+  <main class="shell">
+
+    <section id="tom-tat">
+      <h2>Tóm tắt</h2>
+      <p class="intro">Trang Hạn mức vay ký quỹ đã được index (<code>index, follow</code>) và có schema breadcrumb hợp lệ, nhưng toàn bộ "nội dung" thực chất chỉ là 2 câu dẫn kèm 2 link tải file Excel — không có bảng dữ liệu, không có nội dung giải thích, và có hiệu năng tải trang kém nhất trong 3 trang Tier 1 đã audit (Performance 41/100, Total Blocking Time gần 11 giây).</p>
+    </section>
+
+    <section id="seo">
+      <h2>SEO on-page — đạt / không đạt theo từng thành phần</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Thành phần</th><th>Đánh giá</th><th>Căn cứ</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Title</strong></td>
+              <td><span class="badge good">Đạt</span></td>
+              <td>“Hạn mức vay ký quỹ TCBS | TechcomSecurities” — có đúng cụm từ khóa chính và tên thương hiệu, độ dài hợp lý (~45 ký tự).</td>
+            </tr>
+            <tr>
+              <td><strong>Meta description</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>“Khám phá Danh mục cho vay ký quỹ dự kiến tại TCBS, tận hưởng lãi suất ưu đãi cực kì hấp dẫn” — câu này hứa hẹn nội dung “lãi suất ưu đãi cực kì hấp dẫn”, nhưng trên trang không hề có bất kỳ thông tin lãi suất nào; đây là một trang danh mục mã chứng khoán đủ điều kiện vay margin (whitelist), không phải trang khuyến mãi lãi suất — lệch hoàn toàn giữa lời hứa trong snippet và nội dung thật, có thể khiến người dùng rời trang ngay khi vào (tăng bounce rate) và là tín hiệu xấu với Google.</td>
+            </tr>
+            <tr>
+              <td><strong>Canonical</strong></td>
+              <td><span class="badge good">Đạt</span></td>
+              <td>Tự trỏ đúng về chính trang, không có issue.</td>
+            </tr>
+            <tr>
+              <td><strong>Robots</strong></td>
+              <td><span class="badge good">Đạt</span></td>
+              <td><code>follow, index, max-snippet:250, max-video-preview:-1, max-image-preview:large</code> — cấu hình hợp lý cho trang sản phẩm.</td>
+            </tr>
+            <tr>
+              <td><strong>Heading (H1–H4)</strong></td>
+              <td><span class="badge watch">Cần bổ sung H1</span></td>
+              <td>Không có <code>&lt;h1&gt;</code>. Toàn trang chỉ có đúng 1 heading (<code>&lt;h2&gt;</code>) với nội dung “Danh mục Vay ký quỹ” — quá chung chung, chưa chứa từ khóa chính “hạn mức vay ký quỹ”. Đề xuất cấu trúc heading ở phần “Đề xuất tối ưu” bên dưới.</td>
+            </tr>
+            <tr>
+              <td><strong>Nội dung chính</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>Toàn bộ nội dung "chính" chỉ gồm 2 câu dẫn ngắn (“Danh mục cho vay ký quỹ (Margin) dự kiến áp dụng tại TCBS — Vui lòng xem tại đây” và bản áp dụng trước 2024) kèm 2 link tải file <code>.xlsx</code>. Không có bảng dữ liệu HTML, không có đoạn văn giải thích “hạn mức vay ký quỹ là gì”, cách tính tỷ lệ cho vay, hay cách tra cứu mã cổ phiếu — đây là trang mỏng nhất trong 3 trang Tier 1 đã audit (Margin T+, MarginSure, trang này).</td>
+            </tr>
+            <tr>
+              <td><strong>Ảnh &amp; alt text</strong></td>
+              <td><span class="badge watch">Một phần</span></td>
+              <td>16/23 thẻ <code>&lt;img&gt;</code> thiếu alt text, nhưng phần lớn là icon điều hướng/mạng xã hội mang tính trang trí (đã hợp lý khi để alt rỗng). Đáng chú ý: 1 ảnh không thuộc nhóm icon (kích thước 300×300, tên file dạng ảnh mạng xã hội ngẫu nhiên) cũng đang thiếu alt và chưa rõ mục đích hiển thị trên trang — cần xác minh với đội thiết kế trước khi gắn alt, tránh tự suy diễn nội dung ảnh.</td>
+            </tr>
+            <tr>
+              <td><strong>Structured data</strong></td>
+              <td><span class="badge watch">Một phần</span></td>
+              <td>Có 1 khối JSON-LD dạng <code>@graph</code> do plugin SEO tự sinh, gồm <code>Organization</code>, <code>WebSite</code>, <code>WebPage</code> và <code>BreadcrumbList</code> khớp đúng breadcrumb hiển thị (5 cấp). Tuy nhiên đây là schema chung toàn site, chưa có schema riêng cho trang này như <code>ItemList</code>/<code>Dataset</code> (mô tả danh mục mã được vay margin) hay <code>FAQPage</code> — dù trang hoàn toàn có thể tận dụng để tăng khả năng được trích dẫn.</td>
+            </tr>
+            <tr>
+              <td><strong>External link</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>0 external link tới nguồn bên thứ ba đáng tin cậy (quy định giao dịch ký quỹ). 2 link tải file trên trang trỏ về <code>statics.tcbs.com.vn</code> — cùng hệ thống TCBS, không tính là external.</td>
+            </tr>
+            <tr>
+              <td><strong>Internal link</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>Trong vùng nội dung chính không có link văn bản nào tới Margin T+ hay MarginSure — 2 trang Tier 1 còn lại trong cùng cụm sản phẩm vay ký quỹ. Chỉ có breadcrumb điều hướng và 2 link tải file Excel.</td>
+            </tr>
+            <tr>
+              <td><strong>Open Graph / Twitter Card</strong></td>
+              <td><span class="badge good">Đạt</span></td>
+              <td>Có đủ <code>og:title</code>, <code>og:description</code>, <code>og:image</code> (1200×630), <code>og:type</code>, <code>twitter:card</code>… về mặt kỹ thuật — lưu ý <code>og:description</code> đang lặp lại đúng lỗi “lãi suất ưu đãi cực kì hấp dẫn” của meta description, nên cần sửa đồng thời.</td>
+            </tr>
+            <tr>
+              <td><strong>Hiệu năng (PageSpeed Insights)</strong></td>
+              <td><span class="badge critical">Không đạt</span></td>
+              <td>Desktop Lighthouse: Performance <strong>41/100</strong>, Accessibility 82, Best Practices 54, SEO 85, Agentic Browsing 2/3. Chi tiết ở mục “Hiệu năng” bên dưới — đây là điểm Performance thấp nhất trong các trang Tier 1 đã audit.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="hieu-nang">
+      <h2>Hiệu năng (PageSpeed Insights)</h2>
+      <p class="intro">Dữ liệu dưới đây kết hợp 2 nguồn khác nhau từ báo cáo PageSpeed Insights (Desktop, chụp ngày 09/09/2026): dữ liệu thực tế người dùng (field data / Chrome UX Report, tổng hợp theo <strong>toàn origin tcbs.com.vn</strong> vì không đủ mẫu ở cấp URL riêng trang này) và điểm mô phỏng phòng lab (lab data / Lighthouse, đo <strong>đúng URL trang này</strong>, 1 phiên tải trang). Hai nguồn có phạm vi khác nhau nên không nên gộp chung khi đọc số liệu.</p>
+
+      <h3>Field data (CrUX — cấp origin, 28 ngày gần nhất)</h3>
+      <div class="stat-row">
+        <div class="stat">Core Web Vitals<br><b style="color:var(--critical)">Failed</b></div>
+        <div class="stat">LCP<br><b>2.5 s</b></div>
+        <div class="stat">INP<br><b>~55 ms</b></div>
+        <div class="stat">CLS<br><b>0.01</b></div>
+        <div class="stat">FCP<br><b>2.2 s</b></div>
+        <div class="stat">TTFB<br><b>1.8 s</b></div>
+      </div>
+
+      <h3>Lab data (Lighthouse 13.4.1 — đúng URL trang này)</h3>
+      <div class="stat-row">
+        <div class="stat">Performance<br><b style="color:var(--critical)">41</b></div>
+        <div class="stat">Accessibility<br><b>82</b></div>
+        <div class="stat">Best Practices<br><b>54</b></div>
+        <div class="stat">SEO<br><b>85</b></div>
+        <div class="stat">Agentic Browsing<br><b>2/3</b></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat">FCP (lab)<br><b>0.8 s</b></div>
+        <div class="stat">LCP (lab)<br><b style="color:var(--critical)">3.5 s</b></div>
+        <div class="stat">Total Blocking Time<br><b style="color:var(--critical)">10.960 ms</b></div>
+        <div class="stat">CLS (lab)<br><b>0.004</b></div>
+        <div class="stat">Speed Index<br><b style="color:var(--critical)">4.3 s</b></div>
+      </div>
+
+      <p>Vấn đề nghiêm trọng nhất là <strong>Total Blocking Time gần 11 giây</strong> — đây là con số cao bất thường, cho thấy main-thread bị chặn kéo dài bởi JavaScript trong lúc trang tải, ảnh hưởng trực tiếp tới khả năng tương tác của người dùng ngay cả khi nội dung trang này rất mỏng. Đây là mức TBT cao nhất trong các trang Tier 1 đã audit trong phiên này và cần được đội kỹ thuật xử lý ở cấp hạ tầng/JS toàn site, không thể xử lý chỉ bằng chỉnh sửa nội dung.</p>
+
+      <p><strong>Chẩn đoán chính từ Lighthouse:</strong> Minimize main-thread work 15,6s · Reduce JavaScript execution time 12,0s · Reduce unused JavaScript — ước tính tiết kiệm 3.651 KiB · Reduce unused CSS — ước tính tiết kiệm 300 KiB · Avoid enormous network payloads — tổng 7.767 KiB · 20 long task được phát hiện · ảnh chưa khai báo <code>width</code>/<code>height</code> tường minh.</p>
+
+      <p><strong>Phát hiện từ tab SEO của Lighthouse</strong> (trùng khớp với phần audit on-page ở trên): “Links are not crawlable” — cụ thể là 1 link trong mega-menu điều hướng (<code>li#mega-menu-item-91429 &gt; ... &gt; a.mega-menu-link</code>), đây là lỗi ở menu dùng chung toàn site chứ không riêng trang này, nhưng vẫn nên báo cho đội kỹ thuật; và “Image elements do not have <code>[alt]</code> attributes”, khớp với phát hiện ở bảng SEO on-page.</p>
+
+      <p><strong>Phát hiện từ tab Agentic Browsing (mới, liên quan trực tiếp tới GEO):</strong> điểm 2/3, cảnh báo “llms.txt does not follow recommendations — Fetch of llms.txt failed: Timed out fetching resource”. <code>llms.txt</code> là file ở cấp gốc domain (không riêng trang này) mà một số AI agent/answer engine dùng để hiểu cấu trúc site khi truy cập — hiện TCBS chưa có file này hoặc file bị timeout khi fetch. Đây là hạng mục cấp site, nên đưa vào backlog SEO/GEO chung của TCBS thay vì xử lý riêng cho trang này.</p>
+    </section>
+
+    <section id="trust">
+      <h2>Trust / E-E-A-T</h2>
+      <p class="intro">Trang thuộc Tier 1 nên cần chuẩn Trust cao nhất, giống Margin T+ và MarginSure. Điểm cần lưu ý riêng cho trang này: đây là loại nội dung YMYL (ảnh hưởng trực tiếp tới quyết định vay margin của khách hàng) nhưng lại trình bày dưới dạng sơ sài nhất — không giải thích danh mục được xây dựng theo tiêu chí nào, không có ngày cập nhật hiển thị cho người dùng (dù trong schema ẩn có <code>dateModified: 2025-10-23</code>), không có external link tới quy định liên quan, và meta description hứa hẹn nội dung lãi suất không tồn tại trên trang — sự lệch lạc giữa lời hứa và nội dung thật là rủi ro Trust đáng kể với nội dung tài chính. <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Nguồn: Google Search Central — Creating helpful, reliable, people-first content</a></p>
+    </section>
+
+    <section id="geo">
+      <h2>GEO</h2>
+      <p class="intro">Nếu một AI answer engine được hỏi “Hạn mức vay ký quỹ TCBS là gì”, “Danh mục cho vay ký quỹ TCBS gồm những mã nào”, hay “Tỷ lệ cho vay margin tối đa của TCBS là bao nhiêu”, hiện tại engine không có bất kỳ văn bản nào để trích dẫn — toàn bộ dữ liệu danh mục nằm trong 2 file <code>.xlsx</code> tải về, thứ mà hầu hết answer engine không đọc được. Đây là ưu tiên GEO lớn nhất của trang: đưa ít nhất một phần dữ liệu (ví dụ nhóm mã tiêu biểu, tỷ lệ cho vay theo nhóm) thành bảng HTML thật, kèm đoạn giải thích ngắn “hạn mức vay ký quỹ là gì” theo nguyên tắc answer-first. Phát hiện bổ sung từ PageSpeed Insights (mục Agentic Browsing, xem phần Hiệu năng) cho thấy TCBS cũng chưa có <code>llms.txt</code> ở cấp site — một tín hiệu GEO mới đáng theo dõi dù không riêng của trang này. <a href="https://arxiv.org/abs/2311.09735">Nguồn: Aggarwal et al., GEO: Generative Engine Optimization, KDD 2024</a></p>
+    </section>
+
+    <section id="de-xuat">
+      <h2>Đề xuất tối ưu</h2>
+
+      <h3>1. Focus keywords</h3>
+      <p><strong>Primary:</strong> <code>hạn mức vay ký quỹ</code>, <code>danh mục cho vay ký quỹ TCBS</code>.</p>
+      <p><strong>Secondary / LSI:</strong> <code>tỷ lệ cho vay margin</code>, <code>mã cổ phiếu được vay margin</code>, <code>danh mục margin TCBS</code>, <code>whitelist margin</code>.</p>
+      <p><strong>Long-tail cho FAQ/GEO:</strong> <code>hạn mức vay ký quỹ tcbs là gì</code>, <code>danh mục cho vay ký quỹ tcbs gồm những mã nào</code>, <code>tỷ lệ cho vay margin tối đa tcbs bao nhiêu %</code>, <code>danh mục margin tcbs cập nhật khi nào</code>.</p>
+
+      <h3>2. Optimized title</h3>
+      <p>Title hiện tại đã đạt (có từ khóa chính + thương hiệu, độ dài hợp lý) — <strong>giữ nguyên</strong>, không cần viết lại. Nếu muốn tăng CTR có thể cân nhắc bản thay thế bên dưới ở lần cập nhật nội dung tiếp theo.</p>
+      <p class="code-label">Text (phương án thay thế, không bắt buộc)</p>
+      <div class="text-block">Hạn Mức Vay Ký Quỹ TCBS – Danh Mục Mã Cổ Phiếu Margin Mới Nhất (58 ký tự)</div>
+
+      <h3>3. Meta description</h3>
+      <p class="code-label">Text</p>
+      <div class="text-block">Danh mục mã cổ phiếu đủ điều kiện vay ký quỹ (margin) tại TCBS, cập nhật tỷ lệ cho vay theo từng mã. Tải file danh mục mới nhất và bản áp dụng trước 2024. (152 ký tự)</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;meta name="description" content="Danh mục mã cổ phiếu đủ điều kiện vay ký quỹ (margin) tại TCBS, cập nhật tỷ lệ cho vay theo từng mã. Tải file danh mục mới nhất và bản áp dụng trước 2024."&gt;</code></div>
+      <p>Lưu ý: bỏ hẳn cụm “lãi suất ưu đãi cực kì hấp dẫn” — trang này không nói về lãi suất, nên cập nhật đồng thời <code>og:description</code> và <code>twitter:description</code> để tránh lặp lại lỗi tương tự.</p>
+
+      <h3>4. Heading structure</h3>
+      <p class="code-label">Text (outline)</p>
+      <div class="text-block">
+        H1 Hạn mức vay ký quỹ TCBS — Danh mục mã cổ phiếu được vay margin<br>
+        &nbsp;&nbsp;H2 Hạn mức vay ký quỹ là gì?<br>
+        &nbsp;&nbsp;H2 Danh mục cho vay ký quỹ (Margin) dự kiến áp dụng tại TCBS<br>
+        &nbsp;&nbsp;H2 Danh mục áp dụng trước năm 2024<br>
+        &nbsp;&nbsp;H2 Cách tra cứu mã cổ phiếu trong danh mục<br>
+        &nbsp;&nbsp;H2 Sản phẩm liên quan<br>
+        &nbsp;&nbsp;H2 Câu hỏi thường gặp
+      </div>
+      <p class="code-label">HTML (khung)</p>
+      <div class="code-block"><code>&lt;h1&gt;Hạn mức vay ký quỹ TCBS — Danh mục mã cổ phiếu được vay margin&lt;/h1&gt;
+&lt;h2&gt;Hạn mức vay ký quỹ là gì?&lt;/h2&gt;
+&lt;h2&gt;Danh mục cho vay ký quỹ (Margin) dự kiến áp dụng tại TCBS&lt;/h2&gt;
+&lt;h2&gt;Danh mục áp dụng trước năm 2024&lt;/h2&gt;
+&lt;h2&gt;Cách tra cứu mã cổ phiếu trong danh mục&lt;/h2&gt;
+&lt;h2&gt;Sản phẩm liên quan&lt;/h2&gt;
+&lt;h2&gt;Câu hỏi thường gặp&lt;/h2&gt;</code></div>
+
+      <h3>5. Internal linking opportunities kèm CTA</h3>
+      <ul>
+        <li><strong>Hoàn thiện cụm Tier 1:</strong> hiện chưa có link văn bản nào tới Margin T+ hay MarginSure trong nội dung chính — nên thêm ở khối “Sản phẩm liên quan” để 3 trang Tier 1 link chéo đầy đủ lẫn nhau.</li>
+        <li><strong>External link followed</strong> tới quy định giao dịch ký quỹ (Thông tư 120/2020/TT-BTC) — đặt ở đoạn giải thích “Hạn mức vay ký quỹ là gì”.</li>
+        <li><strong>CTA chính:</strong> “Mở tài khoản giao dịch margin” hoặc “Đăng nhập TCInvest để xem hạn mức của bạn” — hiện trang hoàn toàn không có CTA nào ngoài menu chung.</li>
+        <li><strong>CTA phụ:</strong> “Tải danh mục mới nhất (.xlsx)” — giữ nguyên 2 link tải file hiện có, nhưng đặt cạnh bảng HTML tóm tắt thay vì là nội dung duy nhất của trang.</li>
+      </ul>
+
+      <h3>6. Image Alt texts (opportunities)</h3>
+      <p>16/23 ảnh thiếu alt. Với các icon điều hướng/mạng xã hội mang tính trang trí, để alt rỗng (<code>alt=""</code>) là hợp lý và không cần bổ sung. Riêng 1 ảnh 300×300 chưa rõ mục đích hiển thị cần xác minh với đội thiết kế trước khi gắn alt — tránh tự suy diễn nội dung ảnh khi chưa xác nhận.</p>
+      <ul>
+        <li>Icon lịch (calendar-ico3.svg) cạnh phần “Vui lòng xem tại đây” → nếu mang tính minh họa cho hành động tải file, có thể gắn <code>alt="Tải file danh mục cho vay ký quỹ"</code> sau khi xác nhận đúng vị trí sử dụng.</li>
+        <li>Ảnh 300×300 chưa rõ nội dung → xác minh với đội thiết kế trước, chưa đề xuất alt cụ thể để tránh sai lệch.</li>
+      </ul>
+
+      <h3>7. Suggest schema</h3>
+      <p class="code-label">Text (@type cần thêm)</p>
+      <div class="text-block"><code>BreadcrumbList</code> — đã có sẵn qua schema chung toàn site, không cần thêm lại · <code>FAQPage</code> — dùng cho các câu hỏi long-tail đã liệt kê ở mục 1 · <code>ItemList</code>/<code>Dataset</code> — mô tả danh mục mã cổ phiếu được vay margin nếu đưa được dữ liệu ra dạng bảng HTML.</div>
+
+      <p class="code-label">JSON-LD — FAQPage (khung, cần đội sản phẩm xác nhận nội dung trả lời trước khi publish)</p>
+      <div class="code-block"><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Hạn mức vay ký quỹ TCBS là gì?",
+      "acceptedAnswer": {"@type": "Answer", "text": "[Cần đội sản phẩm xác nhận nội dung trả lời chính xác trước khi đưa vào schema.]"}
+    },
+    {
+      "@type": "Question",
+      "name": "Danh mục cho vay ký quỹ TCBS được cập nhật khi nào?",
+      "acceptedAnswer": {"@type": "Answer", "text": "[Cần đội sản phẩm xác nhận tần suất cập nhật trước khi đưa vào schema.]"}
+    }
+  ]
+}
+&lt;/script&gt;</code></div>
+      <p>Lưu ý: chưa xác minh được nội dung câu trả lời chính xác (định nghĩa hạn mức, tần suất cập nhật danh mục) trong phạm vi audit này — cần lấy từ đội sản phẩm/trang trợ giúp trước khi đưa vào <code>FAQPage</code>, tránh tự diễn giải.</p>
+
+      <h3>8. SEO-ready content đề xuất (nếu cần)</h3>
+      <p>Trang này cần bổ sung nội dung nhiều nhất trong 3 trang Tier 1 đã audit vì hiện gần như không có nội dung. Dưới đây là khung nội dung an toàn — không tự bịa số liệu tỷ lệ cho vay hay tiêu chí xét mã, chỉ đề xuất cấu trúc và giữ nguyên 2 câu dẫn đã xác minh trên trang.</p>
+
+      <p class="code-label">Câu mở đầu ngay dưới H1 — Text</p>
+      <div class="text-block">Hạn mức vay ký quỹ là danh mục các mã cổ phiếu đủ điều kiện vay margin tại TCBS, kèm tỷ lệ cho vay áp dụng cho từng mã. Danh mục được TCBS cập nhật định kỳ để phản ánh đúng tình hình thị trường.</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;p&gt;Hạn mức vay ký quỹ là danh mục các mã cổ phiếu đủ điều kiện vay margin tại TCBS, kèm tỷ lệ cho vay áp dụng cho từng mã. Danh mục được TCBS cập nhật định kỳ để phản ánh đúng tình hình thị trường.&lt;/p&gt;</code></div>
+      <p><em>Ghi chú: câu trên diễn giải lại đúng nội dung 2 câu dẫn đã có trên trang, không thêm số liệu mới. Nếu đội sản phẩm xác nhận được tần suất cập nhật cụ thể (theo tuần/tháng/quý) và tiêu chí xét mã, nên bổ sung thêm 1 đoạn nữa — hiện chưa được xác minh trực tiếp trong phiên audit này nên chưa đưa vào.</em></p>
+
+      <p class="code-label">Giữ nguyên 2 câu dẫn đã có — Text</p>
+      <div class="text-block">
+        Danh mục cho vay ký quỹ (Margin) dự kiến áp dụng tại TCBS — Vui lòng xem tại đây.<br>
+        Danh mục cho vay ký quỹ (Margin) áp dụng tại TCBS trước năm 2024 — Vui lòng xem tại đây.
+      </div>
+
+      <p class="code-label">Đoạn external link followed tới quy định — Text</p>
+      <div class="text-block">Giao dịch ký quỹ chứng khoán tại Việt Nam được thực hiện theo quy định tại Thông tư 120/2020/TT-BTC của Bộ Tài chính. Quý khách nên tham khảo văn bản này cùng hợp đồng vay ký quỹ của TCBS để nắm rõ các điều kiện áp dụng.</div>
+      <p class="code-label">HTML</p>
+      <div class="code-block"><code>&lt;p&gt;Giao dịch ký quỹ chứng khoán tại Việt Nam được thực hiện theo quy định tại
+  &lt;a href="https://thuvienphapluat.vn/van-ban/Chung-khoan/Thong-tu-120-2020-TT-BTC-giao-dich-co-phieu-niem-yet-dang-ky-giao-dich-chung-khoan-chung-chi-quy-451134.aspx" rel="follow"&gt;
+    Thông tư 120/2020/TT-BTC của Bộ Tài chính
+  &lt;/a&gt;. Quý khách nên tham khảo văn bản này cùng hợp đồng vay ký quỹ của TCBS để nắm rõ các điều kiện áp dụng.&lt;/p&gt;</code></div>
+    </section>
+
+    <section id="uu-tien">
+      <h2>Ưu tiên xử lý</h2>
+      <div class="callout critical-box">
+        <strong>P0 — chặn cứng, ảnh hưởng hiệu năng và khả năng được index/trích dẫn</strong>
+        <ol>
+          <li>Xử lý Total Blocking Time ~11 giây (Performance 41/100) — cần đội kỹ thuật/hạ tầng vào cuộc để giảm JavaScript chặn main-thread và ~3.651 KiB JS không dùng tới; đây là vấn đề nghiêm trọng nhất trong toàn bộ các trang Tier 1 đã audit.</li>
+          <li>Thêm đúng 1 <code>&lt;h1&gt;</code> chứa từ khóa chính (hiện chưa có) và đưa dữ liệu danh mục ra ít nhất 1 bảng HTML thật thay vì chỉ có 2 link tải file Excel — trang hiện đã index nhưng gần như không có gì để crawl/trích dẫn.</li>
+        </ol>
+      </div>
+      <div class="callout watch-box">
+        <strong>P1 — sau khi có nội dung thật, ưu tiên vì đây là trang Tier 1</strong>
+        <ol>
+          <li>Viết lại meta description (và <code>og:description</code>/<code>twitter:description</code>) — bỏ cụm “lãi suất ưu đãi cực kì hấp dẫn” không đúng với nội dung trang (mục 3).</li>
+          <li>Thêm liên kết chéo tới Margin T+ và MarginSure trong nội dung chính, cùng external followed link tới Thông tư 120/2020/TT-BTC (mục 5).</li>
+          <li>Thêm CTA rõ ràng (hiện trang không có CTA nào ngoài menu chung).</li>
+          <li>Thêm <code>FAQPage</code> sau khi xác nhận nội dung câu trả lời với đội sản phẩm (mục 7).</li>
+          <li>Xác minh mục đích ảnh 300×300 chưa rõ nội dung trước khi gắn alt (mục 6).</li>
+        </ol>
+      </div>
+      <div class="callout good-box">
+        <strong>P2 — tối ưu thêm</strong>
+        <ol>
+          <li>Khai báo tường minh <code>width</code>/<code>height</code> cho ảnh, minify CSS/JS (mục Hiệu năng).</li>
+          <li>Báo lỗi link không crawlable trong mega-menu cho đội kỹ thuật — lỗi toàn site, không riêng trang này.</li>
+          <li>Xem xét bổ sung <code>llms.txt</code> ở cấp domain — phát hiện từ PageSpeed Insights (mục Agentic Browsing), thuộc backlog SEO/GEO chung của TCBS.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="nguon">
+      <h2>Nguồn tham khảo</h2>
+      <ul class="source-list">
+        <li><a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/han-muc-vay-ky-quy/">TCBS — Hạn mức vay ký quỹ (trang đã audit)</a></li>
+        <li><a href="https://pagespeed.web.dev/analysis/https-www-tcbs-com-vn-ca-nhan-co-phieu-istock-vay-ky-quy-margin-han-muc-vay-ky-quy/riruapduwk?form_factor=desktop">PageSpeed Insights — báo cáo Desktop ngày 09/09/2026</a></li>
+        <li><a href="https://ygslittleprince-netizen.github.io/sitemap/">Sitemap TCBS — phân loại Tier 1/2/3</a></li>
+        <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central — Creating helpful, reliable, people-first content</a></li>
+        <li><a href="https://rankmath.com/kb/score-100-in-tests/">Rank Math — Score 100/100 with post tests</a></li>
+        <li><a href="https://arxiv.org/abs/2311.09735">Aggarwal et al. (2024), GEO: Generative Engine Optimization, ACM KDD 2024</a></li>
+        <li><a href="https://thuvienphapluat.vn/van-ban/Chung-khoan/Thong-tu-120-2020-TT-BTC-giao-dich-co-phieu-niem-yet-dang-ky-giao-dich-chung-khoan-chung-chi-quy-451134.aspx">Thư viện Pháp luật — Thông tư 120/2020/TT-BTC (Bộ Tài chính)</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <p>Đánh giá đạt/không đạt dựa trên tiêu chí kiểm tra on-page do Rank Math công bố và hướng dẫn E-E-A-T/helpful content của Google, không phải điểm số chính thức trong CMS thật. Dữ liệu hiệu năng lấy từ báo cáo PageSpeed Insights (Desktop) do người dùng cung cấp, chụp ngày 09/09/2026 — field data ở cấp origin, lab data ở cấp URL. GEO đánh giá theo khả năng trích xuất và độ tin cậy của dữ kiện, là khung vận hành nội bộ. Báo cáo chỉ đánh giá đúng trang Hạn mức vay ký quỹ đang online tại thời điểm audit.</p>
+    </div>
+  </footer>
+</body>
+</html>

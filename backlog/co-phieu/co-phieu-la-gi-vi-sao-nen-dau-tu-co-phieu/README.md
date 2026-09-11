@@ -7,7 +7,6 @@ type: viet-lai
 source_url: https://www.tcbs.com.vn/thong-tin/co-phieu/co-phieu-la-gi-vi-sao-nen-dau-tu-co-phieu/
 target_url: https://www.tcbs.com.vn/thong-tin/co-phieu/co-phieu-la-gi-vi-sao-nen-dau-tu-co-phieu/
 preview_html: index.html
-byline: "Do Đội ngũ nội dung TCBS biên soạn"
 focus_keyword: cổ phiếu là gì
 secondary_keywords:
   - đầu tư cổ phiếu
@@ -21,7 +20,6 @@ long_tail_geo:
   - rủi ro khi đầu tư cổ phiếu là gì
 word_count_target: "1500-2500"
 last_updated: 2026-09-11
-notes: "Bài gốc hiện chỉ khoảng 550-600 từ, thiếu phần rủi ro, cách bắt đầu, FAQ và bài viết liên quan. Không trùng chủ đề với 2 bài Mạnh còn lại trong mục Cổ phiếu (đầu tư chứng khoán là gì, chiến lược đầu tư cổ phiếu) nên viết lại không gây cannibalization. Xem index.html trong cùng thư mục để có bản mô phỏng hiển thị đầy đủ, dùng đúng 2 ảnh gốc trong images/, không gen lại."
 ---
 
 ## Meta description
@@ -34,7 +32,7 @@ Cổ phiếu là gì, có mấy loại, hoạt động ra sao và vì sao nhiề
 
 Cổ phiếu là loại chứng khoán xác nhận quyền và lợi ích hợp pháp của người sở hữu đối với một phần vốn của công ty phát hành. Nói đơn giản, mua một cổ phiếu là mua một phần nhỏ trong công ty đó, và người mua trở thành đồng chủ sở hữu công ty theo tỷ lệ số cổ phiếu đang nắm giữ.
 
-![Phân tích biểu đồ giá cổ phiếu trên thị trường chứng khoán](images/co-phieu-hero-phan-tich.png)
+![Phân tích biểu đồ giá cổ phiếu trên thị trường chứng khoán](co-phieu-hero-phan-tich.png)
 
 Cổ phiếu tồn tại dưới dạng chứng chỉ giấy hoặc phổ biến hơn hiện nay là bút toán ghi sổ trong hệ thống của trung tâm lưu ký. Mỗi công ty cổ phần khi thành lập đều chia vốn điều lệ thành các phần bằng nhau gọi là cổ phần, và cổ phiếu chính là giấy xác nhận quyền sở hữu với các cổ phần đó.
 
@@ -69,7 +67,7 @@ Một cổ phiếu đi qua ba giai đoạn chính trong vòng đời của nó t
 * Niêm yết: cổ phiếu được đưa lên giao dịch chính thức tại một sở giao dịch chứng khoán, chẳng hạn HOSE hoặc HNX, và từ đây có thể mua bán tự do giữa các nhà đầu tư với nhau, không chỉ giới hạn ở nhà đầu tư ban đầu.
 * Giao dịch: nhà đầu tư đặt lệnh mua hoặc bán qua công ty chứng khoán, hệ thống khớp lệnh trên sàn, và giao dịch được thanh toán theo chu kỳ T cộng 2, nghĩa là tiền và cổ phiếu về tài khoản sau 2 ngày làm việc kể từ ngày khớp lệnh.
 
-![Cổ phiếu hoạt động như thế nào, ba bước trong vòng đời một cổ phiếu trên thị trường chứng khoán](images/co-phieu-hoat-dong-nhu-the-nao.png)
+![Cổ phiếu hoạt động như thế nào, ba bước trong vòng đời một cổ phiếu trên thị trường chứng khoán](co-phieu-hoat-dong-nhu-the-nao.png)
 
 ## Vì sao nên đầu tư cổ phiếu
 
@@ -93,8 +91,6 @@ Bên cạnh cơ hội sinh lời, cổ phiếu cũng đi kèm rủi ro thực s�
 
 Để bắt đầu, nhà đầu tư cần mở một tài khoản giao dịch chứng khoán tại một công ty chứng khoán được cấp phép, nộp tiền vào tài khoản, sau đó có thể đặt lệnh mua cổ phiếu ngay qua ứng dụng hoặc nền tảng giao dịch của công ty chứng khoán đó. Trước khi đặt lệnh, nên tìm hiểu cơ bản về doanh nghiệp định mua, bao gồm tình hình kinh doanh, ngành nghề hoạt động và mức giá đang giao dịch trên sàn so với giá trị thực của doanh nghiệp.
 
-CẦN XÁC NHẬN VỚI ĐỘI SẢN PHẨM: đường dẫn chính thức tới trang mở tài khoản chứng khoán và tên nền tảng giao dịch hiện tại của TCBS để gắn CTA.
-
 ## Câu hỏi thường gặp
 
 **Cổ phiếu và chứng khoán có phải là một không?**
@@ -115,7 +111,7 @@ Rủi ro lớn nhất là khả năng mất một phần vốn khi giá cổ phi
 
 ## CTA
 
-Một CTA duy nhất ở cuối bài, dạng "Sẵn sàng mở tài khoản để bắt đầu giao dịch cổ phiếu", dẫn thẳng tới trang mở tài khoản chứng khoán của TCBS khi có đường dẫn chính thức được xác nhận. Đã dựng sẵn nút này trong index.html, hiện trỏ tạm về "#".
+Một CTA duy nhất ở cuối bài, dạng "Sẵn sàng mở tài khoản để bắt đầu giao dịch cổ phiếu", dẫn tới trang mở tài khoản của TCBS: https://onboarding.tcbs.com.vn/onboarding
 
 ## Schema đề xuất
 
@@ -156,7 +152,9 @@ Article, FAQPage (khớp 4 câu hỏi ở trên), BreadcrumbList theo Trang ch�
 
 ## Ảnh dùng trong bài
 
-Hai ảnh gốc, không gen lại, đặt trong `images/` cùng thư mục với file này.
+* `co-phieu-hero-phan-tich.png`: đặt đầu bài.
+* `co-phieu-hoat-dong-nhu-the-nao.png`: đặt trong mục Cổ phiếu hoạt động như thế nào.
 
-* `images/co-phieu-hero-phan-tich.png`: đặt đầu bài.
-* `images/co-phieu-hoat-dong-nhu-the-nao.png`: đặt trong mục Cổ phiếu hoạt động như thế nào.
+## Byline
+
+Do Đội ngũ nội dung TCBS biên soạn

@@ -32,8 +32,6 @@ notes: >
   kênh đầu tư khác" và bỏ các cụm mang tính khuyến khích đầu tư ("lợi nhuận vượt
   trội", "kênh đầu tư được lựa chọn nhiều nhất") để trung lập hơn. Thêm 3 internal
   link tới bài liên quan trong hệ Cổ phiếu, thêm 1 FAQ mới về niêm yết/UPCoM.
-  (Bản nháp đầu tiên có thêm khối "30 giây" và bảng Quick Answer đầu bài cho GEO,
-  nhưng đã bỏ theo yêu cầu vì không phù hợp hình thức một bài đăng.)
 ---
 
 ## Meta description

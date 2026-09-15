@@ -18,7 +18,6 @@ long_tail_geo:
   - nên đầu tư cổ phiếu hay gửi tiết kiệm
   - mua cổ phiếu cần bao nhiêu tiền
   - rủi ro khi đầu tư cổ phiếu là gì
-  - cổ phiếu khác trái phiếu như thế nào
 word_count_target: "1500-2500"
 last_updated: 2026-09-15
 notes: >
@@ -31,9 +30,8 @@ notes: >
   kiện niêm yết thì đăng ký giao dịch trên UPCoM chứ không niêm yết HOSE/HNX. Đổi
   tên mục "Vì sao nên đầu tư cổ phiếu" thành "Đặc điểm của cổ phiếu so với các
   kênh đầu tư khác" và bỏ các cụm mang tính khuyến khích đầu tư ("lợi nhuận vượt
-  trội", "kênh đầu tư được lựa chọn nhiều nhất") để trung lập hơn. Thêm khối
-  30-giây và bảng Quick Answer đầu bài cho GEO, thêm 3 internal link tới bài liên
-  quan trong hệ Cổ phiếu, thêm 1 FAQ mới về niêm yết/UPCoM.
+  trội", "kênh đầu tư được lựa chọn nhiều nhất") để trung lập hơn. Thêm 3 internal
+  link tới bài liên quan trong hệ Cổ phiếu, thêm 1 FAQ mới về niêm yết/UPCoM.
 ---
 
 ## Meta description
@@ -43,19 +41,6 @@ Cổ phiếu là gì, có mấy loại, hoạt động ra sao và vì sao nhiề
 ## Nội dung bài viết
 
 # Cổ phiếu là gì? Vì sao nên đầu tư cổ phiếu?
-
-**⚡ Cổ phiếu là gì? Giải thích trong 30 giây:** Cổ phiếu là chứng khoán xác nhận quyền sở hữu một phần vốn của công ty cổ phần. Người mua trở thành cổ đông, có thể nhận cổ tức khi công ty kinh doanh có lãi và có quyền biểu quyết tùy loại cổ phiếu nắm giữ, nhưng cũng có thể mất một phần vốn nếu giá cổ phiếu giảm, vì khoản đầu tư này không được bảo đảm gốc như tiền gửi tiết kiệm.
-
-**Bảng Quick Answer**
-
-| Câu hỏi | Trả lời ngắn gọn |
-|---|---|
-| Cổ phiếu là gì? | Chứng khoán xác nhận quyền sở hữu một phần vốn của công ty cổ phần. |
-| Cổ đông là gì? | Người sở hữu ít nhất một cổ phiếu của công ty, có quyền nhận cổ tức và biểu quyết tùy loại cổ phiếu. |
-| Lợi nhuận đến từ đâu? | Chênh lệch giá khi bán cao hơn giá mua, và cổ tức nếu công ty chia trong thời gian nắm giữ. |
-| Có thể mất tiền không? | Có. Cổ phiếu không được bảo đảm gốc, giá có thể giảm dưới giá mua và không có cam kết hoàn vốn. |
-| Cần bao nhiêu vốn để bắt đầu? | Nhờ giao dịch lô lẻ (1-99 cổ phiếu), có thể bắt đầu chỉ với vài trăm nghìn đồng tùy giá từng mã. |
-| Khác trái phiếu ở điểm nào? | Cổ phiếu là quyền sở hữu, không cam kết trả lãi/gốc; trái phiếu là quan hệ cho vay, có lãi suất và kỳ hạn cố định. |
 
 Cổ phiếu là loại chứng khoán xác nhận quyền và lợi ích hợp pháp của người sở hữu đối với một phần vốn của công ty phát hành ([Khoản 2, Điều 4, Luật Chứng khoán 2019](https://vanban.chinhphu.vn/default.aspx?pageid=27160&docid=198541)). Nói đơn giản, mua một cổ phiếu là mua một phần nhỏ trong công ty đó, và người mua trở thành đồng chủ sở hữu công ty theo tỷ lệ số cổ phiếu đang nắm giữ.
 

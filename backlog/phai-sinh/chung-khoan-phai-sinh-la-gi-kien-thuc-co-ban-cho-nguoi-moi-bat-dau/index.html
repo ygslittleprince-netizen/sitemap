@@ -40,18 +40,6 @@
     margin: 0 0 16px;
     color: var(--ink);
   }
-  .byline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    align-items: center;
-    color: var(--gray);
-    font-size: 14px;
-    margin-bottom: 28px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--line);
-  }
-  .byline b { color: var(--ink); }
   .img-placeholder {
     width: 100%;
     min-height: 220px;
@@ -132,17 +120,75 @@
     padding-left: 20px;
   }
   .source-list li { font-size: 13.5px; margin-bottom: 4px; }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol {
+    margin: 0;
+    padding: 0 0 16px 20px;
+  }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   .faq-item {
     border-bottom: 1px solid var(--line);
-    padding: 16px 0;
+    padding: 4px 0;
   }
-  .faq-q {
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
     font-weight: 700;
     color: var(--ink);
-    margin-bottom: 8px;
     font-size: 16px;
+    position: relative;
+    padding-right: 24px;
   }
-  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-q { font-weight: 700; color: var(--ink); margin: 0; font-size: 16px; display: inline; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
   .cta {
     margin: 40px 0 8px;
     padding: 28px;
@@ -169,11 +215,6 @@
 
   <div class="kicker">Phái sinh</div>
   <h1>Chứng khoán phái sinh là gì? Kiến thức cơ bản cho người mới bắt đầu</h1>
-  <div class="byline">
-    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
-    <span>·</span>
-    <span>Cập nhật 15/09/2026</span>
-  </div>
 
   <div class="img-placeholder">
     <div>
@@ -185,11 +226,25 @@
 
   <p>Chứng khoán phái sinh là công cụ tài chính có giá trị phụ thuộc vào một tài sản cơ sở khác, ví dụ chỉ số VN30 hay trái phiếu Chính phủ, thay vì có giá trị độc lập như cổ phiếu. Nhà đầu tư không sở hữu tài sản cơ sở, mà giao dịch dựa trên cam kết mua hoặc bán tài sản đó tại một mức giá và thời điểm xác định trước.</p>
 
-  <h2>Chứng khoán phái sinh là gì</h2>
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#chung-khoan-phai-sinh-la-gi">Chứng khoán phái sinh là gì</a></li>
+      <li><a href="#nguyen-tac-hoat-dong">Phái sinh hoạt động dựa trên nguyên tắc nào</a></li>
+      <li><a href="#cac-loai-hop-dong">Các loại chứng khoán phái sinh đang giao dịch tại Việt Nam</a></li>
+      <li><a href="#khac-co-phieu">Phái sinh khác cổ phiếu ở điểm nào</a></li>
+      <li><a href="#uu-diem-rui-ro">Ưu điểm và rủi ro khi giao dịch phái sinh</a></li>
+      <li><a href="#ai-phu-hop">Ai phù hợp giao dịch chứng khoán phái sinh</a></li>
+      <li><a href="#bat-dau-tai-tcbs">Cách bắt đầu giao dịch phái sinh tại TCBS</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="chung-khoan-phai-sinh-la-gi">Chứng khoán phái sinh là gì</h2>
   <p>Nói đơn giản, phái sinh là một hợp đồng. Hai bên tham gia hợp đồng cam kết thực hiện một giao dịch trong tương lai theo các điều khoản đã thỏa thuận sẵn hôm nay: giá bao nhiêu, khối lượng bao nhiêu, đáo hạn khi nào. Vì giá trị hợp đồng biến động theo tài sản cơ sở, nhà đầu tư có thể kiếm lời từ cả xu hướng tăng lẫn giảm của thị trường, đây là điểm khác biệt lớn nhất so với cổ phiếu thường.</p>
   <p>Tại Việt Nam, thị trường chứng khoán phái sinh do Sở Giao dịch Chứng khoán Hà Nội (HNX) vận hành, chính thức đi vào hoạt động từ năm 2017, với Tổng công ty Lưu ký và Bù trừ Chứng khoán Việt Nam (VSDC) đóng vai trò trung tâm thanh toán bù trừ và quản lý ký quỹ cho toàn thị trường.</p>
 
-  <h2>Phái sinh hoạt động dựa trên nguyên tắc nào</h2>
+  <h2 id="nguyen-tac-hoat-dong">Phái sinh hoạt động dựa trên nguyên tắc nào</h2>
 
   <h3>Tài sản cơ sở</h3>
   <p>Mỗi hợp đồng phái sinh gắn với một tài sản cơ sở cụ thể. Tại Việt Nam hiện nay, tài sản cơ sở phổ biến nhất là các chỉ số cổ phiếu VN30 và VN100, ngoài ra còn có trái phiếu Chính phủ kỳ hạn 5 năm và 10 năm. Giá hợp đồng phái sinh biến động theo sát diễn biến của tài sản cơ sở, nhưng không phải lúc nào cũng bằng tuyệt đối, chênh lệch giữa hai mức giá này gọi là basis.</p>
@@ -211,7 +266,7 @@
   <h3>Thanh toán lãi lỗ hàng ngày (T+0)</h3>
   <p>Giao dịch phái sinh áp dụng cơ chế T+0: lãi lỗ của vị thế đang nắm giữ được tính toán và thanh toán mỗi ngày dựa trên giá đóng cửa của hợp đồng, không phải đợi đến khi đóng vị thế. Nếu phát sinh lỗ, nhà đầu tư phải nộp đủ khoản lỗ trước 8:00 sáng ngày giao dịch kế tiếp. Nếu phát sinh lãi, TCBS thanh toán chậm nhất vào ngày giao dịch kế tiếp. Đây là điểm khác cơ bản so với cổ phiếu, nơi lãi lỗ chỉ "thực" khi đã bán ra.</p>
 
-  <h2>Các loại chứng khoán phái sinh đang giao dịch tại Việt Nam</h2>
+  <h2 id="cac-loai-hop-dong">Các loại chứng khoán phái sinh đang giao dịch tại Việt Nam</h2>
 
   <h3>Hợp đồng tương lai chỉ số VN30 và VN100</h3>
   <p>Đây là nhóm sản phẩm phái sinh có thanh khoản cao nhất thị trường. Hợp đồng tương lai VN30 cho phép nhà đầu tư đặt cược vào xu hướng của 30 cổ phiếu vốn hóa lớn nhất sàn HOSE mà không cần mua từng mã riêng lẻ, còn hợp đồng tương lai VN100 là sản phẩm mở rộng phạm vi sang 100 cổ phiếu. Từ khi hệ thống giao dịch KRX được đưa vào vận hành, mã hợp đồng phái sinh đã đổi sang định dạng mới, ví dụ một hợp đồng VN30 đáo hạn tháng 6/2025 trước đây hiển thị dạng VN30F2406, nay hiển thị dạng 41I1F6000. Cách đọc mã hợp đồng và cách chọn kỳ hạn đáo hạn sẽ được giải thích chi tiết trong bài <em>"Hợp đồng tương lai VN30 là gì? Cách giao dịch tại TCBS"</em> (liên kết khi bài này được xuất bản).</p>
@@ -219,7 +274,7 @@
   <h3>Hợp đồng tương lai trái phiếu Chính phủ</h3>
   <p>Sản phẩm dành cho nhà đầu tư muốn phòng ngừa rủi ro lãi suất hoặc tổ chức cần quản trị danh mục trái phiếu, kỳ hạn 5 năm và 10 năm. Thanh khoản nhóm này thấp hơn nhiều so với hợp đồng chỉ số và phù hợp hơn với nhà đầu tư tổ chức.</p>
 
-  <h2>Phái sinh khác cổ phiếu ở điểm nào</h2>
+  <h2 id="khac-co-phieu">Phái sinh khác cổ phiếu ở điểm nào</h2>
   <table>
     <thead>
       <tr><th>Tiêu chí</th><th>Cổ phiếu</th><th>Chứng khoán phái sinh</th></tr>
@@ -234,7 +289,7 @@
     </tbody>
   </table>
 
-  <h2>Ưu điểm và rủi ro khi giao dịch phái sinh</h2>
+  <h2 id="uu-diem-rui-ro">Ưu điểm và rủi ro khi giao dịch phái sinh</h2>
 
   <h3>Ưu điểm</h3>
   <ul>
@@ -252,33 +307,33 @@
     <li>Biến động giá trong phiên thường nhanh và mạnh hơn cổ phiếu, đòi hỏi theo dõi sát và kỷ luật quản lý vốn.</li>
   </ul>
 
-  <h2>Ai phù hợp giao dịch chứng khoán phái sinh</h2>
+  <h2 id="ai-phu-hop">Ai phù hợp giao dịch chứng khoán phái sinh</h2>
   <p>Phái sinh phù hợp với nhà đầu tư đã có kinh nghiệm với cổ phiếu, hiểu rõ cơ chế đòn bẩy và chấp nhận được biến động nhanh trong ngắn hạn. Đây không phải là sản phẩm dành cho người mới hoàn toàn chưa từng giao dịch chứng khoán, vì tốc độ biến động và áp lực ký quỹ đòi hỏi nền tảng kiến thức vững trước khi tham gia.</p>
 
-  <h2>Cách bắt đầu giao dịch phái sinh tại TCBS</h2>
+  <h2 id="bat-dau-tai-tcbs">Cách bắt đầu giao dịch phái sinh tại TCBS</h2>
   <p>TCBS cung cấp dịch vụ giao dịch phái sinh qua sản phẩm <strong>iFuture</strong>. Nhà đầu tư có thể mở tiểu khoản phái sinh cùng lúc với tài khoản chứng khoán cơ sở nếu chưa có tài khoản nào tại TCBS, hoặc mở thêm tiểu khoản phái sinh nếu đã có sẵn tài khoản cơ sở. Toàn bộ thao tác thực hiện qua ký hợp đồng điện tử, và có thể giao dịch ngay trong ngày tiểu khoản được kích hoạt thành công. Thị trường phái sinh mở cửa sớm hơn thị trường cơ sở 15 phút và đóng cửa cùng thời điểm.</p>
 
-  <h2>Câu hỏi thường gặp</h2>
-  <div class="faq-item">
-    <p class="faq-q">Chứng khoán phái sinh có phải là cổ phiếu không?</p>
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary class="faq-q">Chứng khoán phái sinh có phải là cổ phiếu không?</summary>
     <p class="faq-a">Không. Phái sinh là hợp đồng có giá trị phụ thuộc vào tài sản cơ sở như chỉ số VN30, VN100, nhà đầu tư không sở hữu cổ phần của bất kỳ công ty nào khi giao dịch phái sinh.</p>
-  </div>
-  <div class="faq-item">
-    <p class="faq-q">Giao dịch phái sinh có cần vốn lớn không?</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Giao dịch phái sinh có cần vốn lớn không?</summary>
     <p class="faq-a">Không cần vốn bằng 100% giá trị hợp đồng như cổ phiếu, nhưng cần đủ để đáp ứng ký quỹ ban đầu và duy trì ký quỹ trong suốt thời gian giữ vị thế.</p>
-  </div>
-  <div class="faq-item">
-    <p class="faq-q">Rủi ro lớn nhất khi giao dịch phái sinh là gì?</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Rủi ro lớn nhất khi giao dịch phái sinh là gì?</summary>
     <p class="faq-a">Đòn bẩy khiến khoản lỗ có thể lớn hơn nhiều so với phần vốn ký quỹ ban đầu nếu thị trường biến động ngược chiều dự đoán.</p>
-  </div>
-  <div class="faq-item">
-    <p class="faq-q">Giao dịch phái sinh tại TCBS mất phí gì?</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Giao dịch phái sinh tại TCBS mất phí gì?</summary>
     <p class="faq-a">Ngoài phí giao dịch của công ty chứng khoán, nhà đầu tư trả phí thanh toán bù trừ 2.550 VNĐ cho mỗi hợp đồng khớp lệnh, cùng phí quản lý tài sản ký quỹ 0,0024%/ngày trên số dư ký quỹ, tối thiểu 100.000 VNĐ và tối đa 1.600.000 VNĐ mỗi tháng.</p>
-  </div>
-  <div class="faq-item">
-    <p class="faq-q">Người mới nên chuẩn bị gì trước khi giao dịch phái sinh?</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Người mới nên chuẩn bị gì trước khi giao dịch phái sinh?</summary>
     <p class="faq-a">Nên có kinh nghiệm giao dịch cổ phiếu trước, hiểu rõ cơ chế ký quỹ và đòn bẩy, đồng thời xây dựng kỷ luật quản lý vốn chặt chẽ trước khi mở vị thế đầu tiên.</p>
-  </div>
+  </details>
 
   <div class="cta">
     <p>Đã hiểu cơ chế phái sinh? Bắt đầu giao dịch hợp đồng tương lai VN30 và VN100 với iFuture.</p>
@@ -286,6 +341,12 @@
   </div>
 
   <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo số liệu: help.tcbs.com.vn (mở tài khoản phái sinh, ký quỹ, biểu phí, thanh toán lãi lỗ, ý nghĩa mã hợp đồng). Xem đầy đủ danh sách nguồn trong README.md đi kèm.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 15/09/2026</span>
+  </div>
 
 </div>
 </body>

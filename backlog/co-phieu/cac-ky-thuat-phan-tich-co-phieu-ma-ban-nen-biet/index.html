@@ -54,6 +54,33 @@
     border-bottom: 1px solid var(--line);
   }
   .byline b { color: var(--ink); }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
   .hero {
     width: 100%;
     border-radius: 10px;
@@ -160,7 +187,18 @@
 
   <p>Có hai trường phái phân tích chính. Phân tích cơ bản đánh giá giá trị thực của doanh nghiệp qua báo cáo tài chính, còn phân tích kỹ thuật dự đoán xu hướng giá qua biểu đồ và khối lượng giao dịch trong quá khứ. Phần dưới đây trình bày lần lượt từng kỹ thuật thuộc cả hai trường phái, kèm công thức và cách áp dụng.</p>
 
-  <h2>Hai trường phái phân tích cổ phiếu</h2>
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#hai-truong-phai">Hai trường phái phân tích cổ phiếu</a></li>
+      <li><a href="#phan-tich-co-ban">Phân tích cơ bản là gì? 4 chỉ số cốt lõi cần nắm</a></li>
+      <li><a href="#phan-tich-ky-thuat">Phân tích kỹ thuật là gì? 5 công cụ phổ biến</a></li>
+      <li><a href="#sai-lam-thuong-gap">Những sai lầm thường gặp khi phân tích cổ phiếu</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="hai-truong-phai">Hai trường phái phân tích cổ phiếu</h2>
   <table>
     <thead>
       <tr><th></th><th>📊 Phân tích cơ bản</th><th>📈 Phân tích kỹ thuật</th></tr>
@@ -173,7 +211,7 @@
     </tbody>
   </table>
 
-  <h2>Phân tích cơ bản là gì? 4 chỉ số cốt lõi cần nắm</h2>
+  <h2 id="phan-tich-co-ban">Phân tích cơ bản là gì? 4 chỉ số cốt lõi cần nắm</h2>
   <p>Phân tích cơ bản xoay quanh việc trả lời một câu hỏi duy nhất: doanh nghiệp này đáng giá bao nhiêu, và giá cổ phiếu hiện tại đang cao hơn, thấp hơn hay tương đương giá trị đó. Bốn chỉ số dưới đây là công cụ định lượng phổ biến nhất để trả lời câu hỏi này.</p>
 
   <h3>1. P/E: Hệ số giá trên lợi nhuận</h3>
@@ -212,7 +250,7 @@
     <li><b>Bối cảnh vĩ mô và chu kỳ ngành:</b> lãi suất, tỷ giá, chính sách quản lý ngành đang tác động thế nào đến triển vọng kinh doanh.</li>
   </ul>
 
-  <h2>Phân tích kỹ thuật là gì? 5 công cụ phổ biến</h2>
+  <h2 id="phan-tich-ky-thuat">Phân tích kỹ thuật là gì? 5 công cụ phổ biến</h2>
   <p>Phân tích kỹ thuật tập trung vào diễn biến giá và khối lượng để nhận diện xu hướng, động lượng và các tín hiệu giao dịch tham khảo, khác với phân tích cơ bản vốn tập trung vào tình hình tài chính và giá trị doanh nghiệp. Phương pháp này dựa trên giả định rằng thông tin đã phần nào phản ánh vào giá, và giá có xu hướng di chuyển theo các mẫu hình có thể quan sát qua biểu đồ.</p>
 
   <h3>1. Đường trung bình động (MA)</h3>
@@ -230,7 +268,7 @@
   <h3>5. Khối lượng giao dịch</h3>
   <p>Khối lượng đo lường số lượng cổ phiếu được giao dịch trong một phiên, dùng để xác nhận độ tin cậy của một xu hướng giá. Một nhịp tăng giá đi kèm khối lượng tăng mạnh thường được xem là xu hướng có lực đỡ thực sự, trong khi giá tăng nhưng khối lượng èo uột có thể là tín hiệu xu hướng thiếu bền vững.</p>
 
-  <h2>Những sai lầm thường gặp khi phân tích cổ phiếu</h2>
+  <h2 id="sai-lam-thuong-gap">Những sai lầm thường gặp khi phân tích cổ phiếu</h2>
   <ul>
     <li>Chỉ nhìn một chỉ số đơn lẻ, ví dụ chỉ xem P/E thấp, mà bỏ qua bối cảnh ngành và chất lượng lợi nhuận.</li>
     <li>Dùng chỉ báo kỹ thuật máy móc mà không đặt trong bối cảnh xu hướng chung của thị trường.</li>
@@ -239,7 +277,7 @@
     <li>Nhầm lẫn giữa cổ phiếu tốt, tức doanh nghiệp tốt, và thời điểm mua tốt, tức giá hợp lý. Đây là hai câu hỏi khác nhau, cần hai công cụ khác nhau để trả lời.</li>
   </ul>
 
-  <h2>Câu hỏi thường gặp</h2>
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
   <div class="faq-item">
     <p class="faq-q">Phân tích cơ bản và phân tích kỹ thuật khác nhau ở điểm nào?</p>
     <p class="faq-a">Phân tích cơ bản tập trung vào tình hình tài chính và giá trị doanh nghiệp, còn phân tích kỹ thuật tập trung vào diễn biến giá và khối lượng giao dịch để nhận diện xu hướng.</p>

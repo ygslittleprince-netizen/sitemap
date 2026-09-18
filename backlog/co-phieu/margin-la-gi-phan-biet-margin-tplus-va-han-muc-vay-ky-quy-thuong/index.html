@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</title>
+<meta name="description" content="Margin là gì và hoạt động ra sao? So sánh Margin T+ và hạn mức vay ký quỹ thường tại TCBS về lãi suất, kỳ hạn và cách chọn phù hợp.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    margin: 0 6px 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Cổ phiếu</div>
+  <h1>Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Giao diện TCInvest phần quản lý margin/sức mua.<br>
+      Alt text gợi ý: "Giao diện quản lý margin trên TCInvest"
+    </div>
+  </div>
+
+  <p>Margin, hay giao dịch ký quỹ, là dịch vụ cho phép nhà đầu tư vay tiền từ công ty chứng khoán để mua cổ phiếu, dùng tiền và chứng khoán có sẵn trong tài khoản làm tài sản bảo đảm. Tại TCBS, margin có hai hình thức chính: <b>hạn mức vay ký quỹ thường</b> (lãi suất cố định, không giới hạn thời gian vay) và <b>Margin T+</b> (vay theo gói ngày cụ thể, lãi suất ưu đãi hơn cho đúng số ngày nắm giữ).</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#hoat-dong">Margin hoạt động như thế nào</a></li>
+      <li><a href="#rui-ro">Rủi ro cần hiểu trước khi dùng margin</a></li>
+      <li><a href="#bang-so-sanh">Bảng so sánh nhanh</a></li>
+      <li><a href="#margin-tplus">Margin T+ là gì</a></li>
+      <li><a href="#han-muc-thuong">Hạn mức vay ký quỹ thường là gì</a></li>
+      <li><a href="#nen-chon">Nên chọn loại nào?</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="hoat-dong">Margin hoạt động như thế nào</h2>
+  <p>Vay margin giúp tăng sức mua so với vốn tự có, nhưng cũng khuếch đại rủi ro theo cả hai chiều: lãi và lỗ đều tăng theo biến động giá cổ phiếu.</p>
+  <div class="formula">Sức mua giải ngân tối đa = 50% × Giá trị tài sản đảm bảo (tùy tỷ lệ cho vay của từng mã cổ phiếu)</div>
+  <p>Mỗi mã cổ phiếu có một tỷ lệ cho vay riêng theo danh mục TCBS công bố, không phải mọi mã đều được vay margin hoặc được vay cùng một tỷ lệ.</p>
+
+  <h2 id="rui-ro">Rủi ro cần hiểu trước khi dùng margin</h2>
+  <ul>
+    <li><b>Rủi ro lãi vay:</b> vay margin phát sinh lãi hàng ngày trên số dư nợ, dù cổ phiếu có sinh lời hay không.</li>
+    <li><b>Rủi ro biến động bị khuếch đại:</b> giá cổ phiếu giảm sẽ khiến khoản lỗ trên vốn tự có lớn hơn nhiều so với không dùng đòn bẩy.</li>
+    <li><b>Margin call và force-sell:</b> khi tỷ lệ ký quỹ giảm xuống dưới ngưỡng quy định, nhà đầu tư nhận yêu cầu bổ sung tài sản đảm bảo (margin call). Nếu không bổ sung kịp, công ty chứng khoán có quyền bán giải chấp (force-sell) để thu hồi nợ.</li>
+  </ul>
+  <p class="note">Ngưỡng cảnh báo và force-sell cụ thể áp dụng theo từng thời điểm, nhà đầu tư nên kiểm tra trực tiếp trên hợp đồng vay ký quỹ hoặc ứng dụng TCBS trước khi giao dịch.</p>
+
+  <h2 id="bang-so-sanh">Bảng so sánh nhanh: Margin T+ và hạn mức vay ký quỹ thường</h2>
+  <table>
+    <thead>
+      <tr><th>Tiêu chí</th><th>Margin T+</th><th>Hạn mức vay ký quỹ thường</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cách tính lãi</td><td>Theo gói T3/T5/T10, ưu đãi từ 0%/năm cho đúng số ngày đầu</td><td>Lãi suất cố định, khoảng 14%/năm, áp dụng cho mọi kỳ hạn nắm giữ</td></tr>
+      <tr><td>Thời gian vay</td><td>Đăng ký theo từng gói ngày cụ thể</td><td>Không giới hạn thời gian nắm giữ</td></tr>
+      <tr><td>Hạn mức</td><td>Tối đa 10 tỷ đồng/tài khoản</td><td>Theo tỷ lệ cho vay riêng từng mã trong danh mục TCBS công bố</td></tr>
+      <tr><td>Phù hợp với</td><td>Nhà đầu tư giao dịch ngắn hạn, biết trước thời gian nắm giữ</td><td>Nhà đầu tư nắm giữ dài hạn, không chắc thời điểm bán</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="margin-tplus">Margin T+ là gì</h2>
+  <p>Margin T+ là sản phẩm vay ký quỹ linh hoạt của TCBS, cho phép chọn gói vay 3, 5 hoặc 10 ngày theo đúng thời gian dự kiến nắm giữ cổ phiếu, lãi suất ưu đãi từ 0%/năm cho đúng số ngày đó. Hạn mức hỗ trợ tối đa 10 tỷ đồng/tài khoản. Nếu giải ngân nhiều khoản vay trong cùng một ngày, tất cả sẽ áp dụng theo gói đăng ký cuối cùng trước 17:00 ngày giải ngân. Sản phẩm phù hợp với nhà đầu tư giao dịch thường xuyên, đã có kinh nghiệm quản trị rủi ro khi dùng đòn bẩy.</p>
+
+  <h2 id="han-muc-thuong">Hạn mức vay ký quỹ thường là gì</h2>
+  <p>Đây là hình thức vay margin theo lãi suất cố định, áp dụng cho danh mục các mã cổ phiếu đủ điều kiện vay ký quỹ mà TCBS công bố và cập nhật định kỳ, mỗi mã có tỷ lệ cho vay riêng. Khác với Margin T+, hình thức này không giới hạn theo gói ngày cụ thể, phù hợp khi chưa xác định rõ thời điểm sẽ bán cổ phiếu.</p>
+
+  <h2 id="nen-chon">Nên chọn Margin T+ hay margin thường?</h2>
+  <ul>
+    <li><b>Biết trước sẽ nắm giữ trong vài ngày cụ thể:</b> Margin T+ thường tiết kiệm lãi vay hơn nhờ mức ưu đãi theo đúng gói ngày.</li>
+    <li><b>Chưa chắc thời điểm bán, có thể giữ dài hạn:</b> hạn mức vay ký quỹ thường phù hợp hơn vì không bị ràng buộc theo gói ngày.</li>
+  </ul>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Margin có phải là vay tiền để mua cổ phiếu không?</summary>
+    <p class="faq-a">Đúng. Nhà đầu tư vay từ công ty chứng khoán, dùng tiền và chứng khoán có sẵn trong tài khoản làm tài sản bảo đảm.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Margin T+ khác gì margin thường?</summary>
+    <p class="faq-a">Margin T+ chia theo gói T3/T5/T10 với lãi suất ưu đãi từ 0%/năm cho đúng số ngày đầu. Margin thường áp dụng lãi suất cố định khoảng 14%/năm, không giới hạn thời gian nắm giữ.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Margin call là gì?</summary>
+    <p class="faq-a">Là yêu cầu bổ sung tài sản đảm bảo khi tỷ lệ ký quỹ giảm xuống dưới ngưỡng quy định. Nếu không bổ sung kịp, có thể bị bán giải chấp (force-sell).</p>
+  </details>
+  <details class="faq-item">
+    <summary>Cổ phiếu nào được vay margin?</summary>
+    <p class="faq-a">Chỉ những mã nằm trong danh mục cho vay ký quỹ do TCBS công bố, mỗi mã có tỷ lệ cho vay riêng.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn tìm hiểu chi tiết từng sản phẩm vay ký quỹ tại TCBS?</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/margin-t/" target="_blank" rel="noopener">Tìm hiểu Margin T+</a>
+    <a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/han-muc-vay-ky-quy/" target="_blank" rel="noopener">Xem hạn mức vay ký quỹ thường</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: help.tcbs.com.vn (khái niệm vay ký quỹ, cách tính sức mua); trang sản phẩm Margin T+ và Hạn mức vay ký quỹ tại tcbs.com.vn.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 18/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

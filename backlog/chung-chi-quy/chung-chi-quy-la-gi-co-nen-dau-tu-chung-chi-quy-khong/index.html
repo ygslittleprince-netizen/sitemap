@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chứng chỉ quỹ là gì? Có nên đầu tư chứng chỉ quỹ không?</title>
+<meta name="description" content="Chứng chỉ quỹ là gì, hoạt động ra sao và có nên đầu tư không? Giải thích NAV, phí, rủi ro và cách mua chứng chỉ quỹ tại TCBS qua Fundmart.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--red-dark);
+    margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .verify-note {
+    font-size: 13.5px;
+    color: var(--gray);
+    font-style: italic;
+    margin: -8px 0 24px;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol {
+    margin: 0;
+    padding: 0 0 16px 20px;
+  }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Chứng chỉ quỹ</div>
+  <h1>Chứng chỉ quỹ là gì? Có nên đầu tư chứng chỉ quỹ không?</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Giao diện Fundmart hoặc biểu đồ NAV một quỹ trên TCInvest.<br>
+      Alt text gợi ý: "Giao diện nền tảng Fundmart của TCBS"
+    </div>
+  </div>
+
+  <p>Chứng chỉ quỹ là giấy tờ xác nhận quyền sở hữu của nhà đầu tư đối với một phần vốn góp trong quỹ đầu tư. Khi mua chứng chỉ quỹ, tiền của nhà đầu tư được công ty quản lý quỹ gộp chung với nhiều nhà đầu tư khác và đầu tư vào một danh mục cổ phiếu, trái phiếu hoặc tài sản khác theo chiến lược đã công bố, thay vì tự mình chọn từng mã. Chứng chỉ quỹ phù hợp với người muốn đầu tư nhưng không có đủ thời gian hoặc kiến thức để tự phân tích và quản lý danh mục.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#hoat-dong">Chứng chỉ quỹ hoạt động như thế nào</a></li>
+      <li><a href="#khac-gi">Khác gì cổ phiếu và gửi tiết kiệm</a></li>
+      <li><a href="#cac-loai-quy">Các loại chứng chỉ quỹ phổ biến tại TCBS</a></li>
+      <li><a href="#loi-ich">Lợi ích khi đầu tư</a></li>
+      <li><a href="#rui-ro">Rủi ro cần biết</a></li>
+      <li><a href="#chi-phi">Chi phí</a></li>
+      <li><a href="#co-nen-dau-tu">Có nên đầu tư chứng chỉ quỹ không?</a></li>
+      <li><a href="#cach-mua">Cách mua tại TCBS</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="hoat-dong">Chứng chỉ quỹ hoạt động như thế nào</h2>
+  <p>Giá trị của chứng chỉ quỹ được đo bằng NAV (Net Asset Value), tính theo công thức:</p>
+  <div class="formula">NAV/CCQ = (Tổng tài sản quỹ − Nợ phải trả) ÷ Số chứng chỉ quỹ đang lưu hành</div>
+  <p>NAV được công bố định kỳ, phản ánh giá trị thực tế của danh mục quỹ đang nắm giữ tại thời điểm đó. Khi mua, nhà đầu tư trả theo NAV hiện hành cộng phí (nếu có); khi bán lại cho chính quỹ, nhận về theo NAV tại ngày giao dịch. Công ty quản lý quỹ có nghĩa vụ mua lại chứng chỉ quỹ theo yêu cầu, nhưng trong một số trường hợp có thể chỉ đáp ứng một phần yêu cầu bán.</p>
+
+  <h2 id="khac-gi">Chứng chỉ quỹ khác gì cổ phiếu và gửi tiết kiệm</h2>
+  <table>
+    <thead>
+      <tr><th>Tiêu chí</th><th>Chứng chỉ quỹ</th><th>Cổ phiếu</th><th>Gửi tiết kiệm</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ai quản lý danh mục</td><td>Công ty quản lý quỹ chuyên nghiệp</td><td>Tự nhà đầu tư quyết định</td><td>Không áp dụng</td></tr>
+      <tr><td>Mức độ đa dạng hóa</td><td>Cao, một chứng chỉ quỹ đại diện nhiều mã</td><td>Thấp nếu chỉ mua vài mã</td><td>Không áp dụng</td></tr>
+      <tr><td>Lợi nhuận</td><td>Theo NAV, không cố định, không đảm bảo</td><td>Theo giá thị trường, không cố định</td><td>Lãi suất cố định đã cam kết</td></tr>
+      <tr><td>Bảo đảm</td><td>Không được bảo hiểm</td><td>Không được bảo hiểm</td><td>Bảo hiểm tiền gửi tối đa 125 triệu đồng</td></tr>
+      <tr><td>Vốn khởi điểm</td><td>Từ 10.000 đồng</td><td>Theo thị giá, có thể vài trăm nghìn</td><td>Theo quy định từng ngân hàng</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="cac-loai-quy">Các loại chứng chỉ quỹ phổ biến tại TCBS</h2>
+  <ul>
+    <li><b>TCEF (Techcom Equity Fund):</b> quỹ cổ phiếu, tập trung vào cổ phiếu niêm yết, phù hợp nhà đầu tư chấp nhận biến động cao hơn để tìm tăng trưởng dài hạn.</li>
+    <li><b>TCBF (Techcom Bond Fund):</b> quỹ trái phiếu, ưu tiên trái phiếu và công cụ nợ, biến động thấp hơn, phù hợp nhà đầu tư ưu tiên ổn định.</li>
+    <li><b>TCFF (Techcom Flexible Fund):</b> quỹ cân bằng linh hoạt, tập trung trái phiếu doanh nghiệp và công cụ ngắn hạn, mức rủi ro vừa phải giữa hai nhóm trên.</li>
+  </ul>
+
+  <h2 id="loi-ich">Lợi ích khi đầu tư chứng chỉ quỹ</h2>
+  <ul>
+    <li>Được quản lý bởi đội ngũ chuyên môn, không cần tự phân tích từng mã.</li>
+    <li>Tự động đa dạng hóa danh mục ngay từ một khoản đầu tư nhỏ.</li>
+    <li>Vốn khởi điểm thấp, chỉ từ 10.000 đồng.</li>
+  </ul>
+
+  <h2 id="rui-ro">Rủi ro cần biết</h2>
+  <ul>
+    <li>Giá trị chứng chỉ quỹ (NAV) biến động theo thị trường, có thể lãi hoặc lỗ như bất kỳ khoản đầu tư nào khác.</li>
+    <li>Lợi nhuận không được đảm bảo, kết quả trong quá khứ không phản ánh kết quả tương lai.</li>
+    <li>Rủi ro thanh khoản: trong một số trường hợp, yêu cầu bán lại có thể chỉ được đáp ứng một phần.</li>
+  </ul>
+
+  <h2 id="chi-phi">Chi phí khi đầu tư chứng chỉ quỹ</h2>
+  <p>Phí chuyển đổi giữa các quỹ dao động 0-1% tùy thời gian nắm giữ, ví dụ chuyển từ TCBF hoặc TCFF sang quỹ khác chịu phí 1% nếu nắm giữ dưới 3 tháng, giảm dần về 0% sau 6 tháng. Phí chuyển tiền về tài khoản ngân hàng sau khi bán tùy theo ngân hàng lưu ký, dao động từ miễn phí đến khoảng 200.000 đồng tùy giá trị giao dịch. Mức bán tối thiểu là 10 đơn vị quỹ mỗi lần, trừ khi tất toán toàn bộ.</p>
+
+  <h2 id="co-nen-dau-tu">Có nên đầu tư chứng chỉ quỹ không?</h2>
+  <p>Phù hợp hơn với người mới bắt đầu, không có nhiều thời gian theo dõi thị trường, hoặc muốn đa dạng hóa danh mục ngay từ số vốn nhỏ. Có thể không phù hợp với nhà đầu tư muốn tự chọn từng mã cổ phiếu cụ thể hoặc cần rút tiền ngay lập tức, vì lệnh bán chứng chỉ quỹ thường không khớp tức thời như cổ phiếu.</p>
+
+  <h2 id="cach-mua">Cách mua chứng chỉ quỹ tại TCBS</h2>
+  <p>TCBS phân phối chứng chỉ quỹ qua nền tảng <strong>Fundmart</strong>, hiện phân phối khoảng 26 quỹ từ 10 công ty quản lý quỹ khác nhau.</p>
+  <p class="verify-note">Số liệu quỹ/công ty quản lý theo dữ liệu vận hành ghi nhận gần nhất, nên xác nhận lại số liệu cập nhật trên nền tảng trước khi công bố chính thức.</p>
+  <p>Fundmart có các công cụ hỗ trợ chọn quỹ như so sánh quỹ, gợi ý quỹ theo khẩu vị, và mô phỏng lợi nhuận. Lệnh mua cần nộp tiền trước 14 giờ 45 ngày làm việc liền trước ngày giao dịch.</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Chứng chỉ quỹ có an toàn không?</summary>
+    <p class="faq-a">Không có bảo đảm hay bảo hiểm nào cho khoản đầu tư này. Mức an toàn phụ thuộc vào chiến lược và chất lượng quản lý của từng quỹ cụ thể, cũng như biến động chung của thị trường.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Mua chứng chỉ quỹ cần bao nhiêu tiền?</summary>
+    <p class="faq-a">Tối thiểu 10.000 đồng tại TCBS, thấp hơn nhiều so với việc tự mua một danh mục cổ phiếu đa dạng.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Bán chứng chỉ quỹ có nhanh như bán cổ phiếu không?</summary>
+    <p class="faq-a">Không. Lệnh bán chứng chỉ quỹ được xử lý theo NAV công bố định kỳ, không khớp ngay trong phiên như cổ phiếu.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Nên chọn quỹ cổ phiếu hay quỹ trái phiếu?</summary>
+    <p class="faq-a">Tùy khẩu vị rủi ro. Quỹ cổ phiếu biến động mạnh hơn nhưng tiềm năng tăng trưởng cao hơn, quỹ trái phiếu ổn định hơn nhưng lợi nhuận kỳ vọng thấp hơn.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn khám phá các quỹ đầu tư đang phân phối tại TCBS?</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/he-thong/fundmart/" target="_blank" rel="noopener">Khám phá quỹ đầu tư trên Fundmart</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: help.tcbs.com.vn (khái niệm quỹ mở, biểu phí giao dịch quỹ, Fundmart).</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 18/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

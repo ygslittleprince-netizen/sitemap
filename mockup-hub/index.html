@@ -6,16 +6,22 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Đánh giá hiện trạng, đề xuất chỉnh sửa và mô phỏng giao diện sau chỉnh sửa cho hub Khám phá &amp; Chia sẻ của TCBS.">
 <title>Đánh giá, đề xuất &amp; mô phỏng hub Khám phá &amp; Chia sẻ | TCBS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
   :root{
-    --red:#c10829; --red-link:#c41c16; --ink:#212529; --heading:#000;
-    --muted:#5b6675; --nav-gray:#848585; --tag-bg:#f5f5f5; --tag-border:#dddddd;
-    --line:#e9ebee; --section-alt:#f9fbff; --bcbg:#f7f8fa; --soft-red:#fff0f1; --soft-red-line:#f3c3c8;
+    /* --red khớp brand red thật của TCBS (#c41c16, trích từ CSS site chính — nút "Xem thêm", mega menu),
+       thay cho #c10829 đoán trước đây. --amber khớp màu accent thật của filter tag đang chạy trên
+       trang Khám phá & Chia sẻ (#fcb900) — dùng cho trạng thái active của pill/tag trong mockup. */
+    --red:#c41c16; --red-link:#c41c16; --amber:#fcb900; --ink:#212529; --heading:#000;
+    --muted:#616161; --nav-gray:#848585; --tag-bg:#eeeeee; --tag-border:#dddddd;
+    --line:#e9ebee; --section-alt:#f9fbff; --bcbg:#ffffff; --soft-red:#fff0f1; --soft-red-line:#f3c3c8;
     --good:#11735c; --soft-good:#edfaf6; --soft-good-line:#c9ece2;
-    --radius-card:14px; --radius-pill:8px; --radius-btn:6px;
+    --radius-card:14px; --radius-pill:4px; --radius-btn:9999px;
     --shadow-card: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     --maxw:1180px;
-    --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --font:'Roboto',-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   }
   *{box-sizing:border-box}
   /* không đặt scroll-behavior:smooth toàn cục — chỗ nào cần hoạt ảnh thì tự truyền behavior:'smooth',
@@ -88,21 +94,29 @@
   .btn-outline-red{background:#fff;color:var(--red);border:1.2px solid var(--red);border-radius:var(--radius-btn);padding:7px 15px;font-weight:600;font-size:13.5px;display:inline-block}
   .btn-outline-red:hover{background:var(--soft-red)}
 
-  .breadcrumb-bar{background:var(--bcbg);border-bottom:1px solid var(--line)}
-  .breadcrumb-bar .shell{padding:10px 0;font-size:13.5px;color:var(--muted);display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+  /* khớp .rank-math-breadcrumb thật: nền trắng (không thanh nền riêng), chữ đen đậm 14px,
+     dấu phân cách xám nhạt, padding-top 16px thay vì viền dưới */
+  .breadcrumb-bar{background:var(--bcbg)}
+  .breadcrumb-bar .shell{padding:16px 0 10px;font-size:14px;font-weight:700;color:#000;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+  .breadcrumb-bar .sep{color:#a2a2a2;font-weight:400}
+  .breadcrumb-bar a{color:#000}
   .breadcrumb-bar a:hover{color:var(--red-link)}
 
   /* ---------- hero (hub view) ---------- */
-  .hero{background:#fff;padding:40px 0 26px}
-  .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
-  .hero-text{flex:1;min-width:0}
-  .hero h1{margin:0;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--heading);letter-spacing:-0.01em}
-  .hero-tagline{margin:12px 0 0;color:var(--ink);font-size:16.5px;max-width:680px;font-weight:500}
-  .hero-graphic{flex:0 0 auto;width:148px;height:148px;color:var(--red);opacity:.92;animation:heroSpin 90s linear infinite}
-  .hero-graphic svg{width:100%;height:100%}
-  @keyframes heroSpin{to{transform:rotate(360deg)}}
-  @media (prefers-reduced-motion: reduce){.hero-graphic{animation:none}}
-  @media (max-width:780px){.hero-graphic{display:none}}
+  /* khớp .tcbs-banner thật: ảnh nền full-bleed dim 20%, tiêu đề light-weight (300) căn giữa
+     42px/52px, tagline 17px/25px letter-spacing 1px màu nhạt — vì không gắn ảnh thật của TCBS
+     (xem Lưu ý phía trên), nền được dựng bằng gradient + hoạ tiết CSS thay cho ảnh chụp. */
+  .hero{position:relative;min-height:260px;display:flex;align-items:center;justify-content:center;
+    padding:48px 24px;overflow:hidden;
+    background:
+      radial-gradient(520px 320px at 15% 20%, rgba(196,28,22,.35), transparent 60%),
+      radial-gradient(480px 320px at 85% 80%, rgba(252,185,0,.28), transparent 60%),
+      linear-gradient(135deg,#2b2f36 0%,#1a1c20 100%)}
+  .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.2)}
+  .hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:720px}
+  .hero-text{min-width:0}
+  .hero h1{margin:5px 0 0;font-size:42px;line-height:52px;font-weight:300;color:#fff;letter-spacing:normal}
+  .hero-tagline{margin:0;color:rgba(255,255,255,.82);font-size:17px;line-height:25px;font-weight:400;letter-spacing:1px}
 
   /* ---------- hide corporate nav/logo/breadcrumb on hub landing (per redesign) ---------- */
   body.is-hub .breadcrumb-bar{display:none}
@@ -123,9 +137,9 @@
   .feature-track{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1)}
   .feature-card{flex:0 0 260px;width:260px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);overflow:hidden;
     box-shadow:var(--shadow-card);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
-  .feature-card:hover{transform:translateY(-3px);box-shadow:0 12px 22px rgba(193,8,41,.16)}
+  .feature-card:hover{transform:translateY(-3px);box-shadow:0 12px 22px rgba(196,28,22,.18)}
   .feature-thumb{height:132px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;
-    background:linear-gradient(135deg,#7d0b24 0%,#c10829 100%)}
+    background:linear-gradient(135deg,#7a120e 0%,#c41c16 100%)}
   .feature-thumb svg{width:38px;height:38px;opacity:.9}
   .feature-badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.94);color:var(--red-link);font-size:10.5px;font-weight:800;
     padding:3px 10px;border-radius:999px;letter-spacing:.02em}
@@ -164,16 +178,6 @@
   .ic-badge.lg{width:56px;height:56px;border-radius:14px}
   .ic-badge.lg svg{width:28px;height:28px}
 
-  .icon-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-  @media (max-width:980px){.icon-grid{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:620px){.icon-grid{grid-template-columns:repeat(2,1fr)}}
-  .icon-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-card);padding:20px 16px;
-    display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:transform .15s ease,box-shadow .15s ease}
-  .icon-card:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(193,8,41,.14)}
-  .icon-card h3{margin:4px 0 0;font-size:15.5px}
-  .icon-card p{margin:0;font-size:12.5px;color:var(--muted);flex:1;line-height:1.5}
-  .icon-card .btn-outline-red{margin-top:6px;font-size:12px;padding:6px 12px;width:100%;text-align:center}
-
   /* ---------- orbit / radial layout for "Tìm hiểu về đầu tư" ---------- */
   .orbit-wrap{position:relative;width:520px;max-width:100%;height:520px;margin:0 auto}
   .orbit-lines{position:absolute;inset:0;width:100%;height:100%}
@@ -181,14 +185,14 @@
   @keyframes orbitSpin{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion: reduce){.orbit-lines .spin{animation:none}}
   .orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:126px;height:126px;border-radius:50%;
-    background:linear-gradient(135deg,#7d0b24 0%,#c10829 100%);color:#fff;display:flex;flex-direction:column;align-items:center;
-    justify-content:center;gap:6px;box-shadow:0 14px 26px rgba(193,8,41,.3);text-align:center;z-index:3}
+    background:linear-gradient(135deg,#7a120e 0%,#c41c16 100%);color:#fff;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:6px;box-shadow:0 14px 26px rgba(196,28,22,.32);text-align:center;z-index:3}
   .orbit-center-badge{width:34px;height:34px}
   .orbit-center span{font-size:12px;font-weight:800;line-height:1.3}
   .orbit-node{position:absolute;transform:translate(-50%,-50%);width:140px;background:#fff;border:1px solid var(--line);border-radius:14px;
     box-shadow:var(--shadow-card);padding:14px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;
     z-index:2;transition:transform .15s ease,box-shadow .15s ease}
-  .orbit-node:hover{transform:translate(-50%,-50%) translateY(-3px);box-shadow:0 10px 20px rgba(193,8,41,.16)}
+  .orbit-node:hover{transform:translate(-50%,-50%) translateY(-3px);box-shadow:0 10px 20px rgba(196,28,22,.18)}
   .orbit-node h3{margin:2px 0 0;font-size:13.5px}
   .orbit-node .btn-outline-red{font-size:11px;padding:5px 10px;margin-top:2px;width:100%}
   @media (max-width:860px){
@@ -221,7 +225,7 @@
   .step-arrow .btn-outline-red{align-self:flex-start;margin-top:4px}
 
   /* ---------- dictionary preview block ---------- */
-  .dict-preview{background:linear-gradient(120deg,#1a0508 0%,#5c0716 45%,#c10829 100%);border-radius:20px;padding:32px;
+  .dict-preview{background:linear-gradient(120deg,#1a0508 0%,#5c0f0c 45%,#c41c16 100%);border-radius:20px;padding:32px;
     color:#fff;display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
   .dict-preview-text{flex:1 1 280px}
   .dict-preview-text h3{margin:0 0 8px;font-size:20px}
@@ -260,31 +264,50 @@
   .cat-hero .tag{margin:4px 0 0;color:var(--muted);font-size:13.5px}
 
   /* ---------- select rows (level filter) ---------- */
+  /* pill/tag: khớp .ub-content-filter-tag thật trên trang Khám phá & Chia sẻ — nền xám phẳng
+     #eeeeee khi chưa chọn, không viền; nền vàng hổ phách #fcb900 + chữ trắng khi active
+     (đúng màu accent duy nhất trang thật đang dùng, không phải đỏ thương hiệu). */
   .select-row{background:#fff;padding:6px 0 0}
   .select-line{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px}
   .select-label{font-size:14.5px;color:#2a2f36;flex:0 0 auto;font-weight:600}
-  .pill-row{display:flex;gap:10px;flex-wrap:wrap}
-  .pill{background:var(--tag-bg);color:var(--ink);border:0.8px solid var(--tag-border);border-radius:var(--radius-pill);
-    padding:9px 18px;font-size:14px;font-weight:400;white-space:nowrap}
-  .pill:hover{border-color:#bbb}
-  .pill.is-active{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+  .pill-row{display:flex;gap:12px;flex-wrap:wrap;flex:1 1 auto;min-width:0}
+  /* dưới 480px: label xuống hàng riêng, pill-row luôn full-width để flex-wrap tính đúng
+     (tránh trường hợp biên pill-row "auto" giữ nguyên bề rộng nội dung không wrap, gây tràn ngang) */
+  @media (max-width:480px){
+    .select-line{flex-direction:column;align-items:flex-start;gap:8px}
+    .pill-row{width:100%}
+  }
+  .pill{background:var(--tag-bg);color:var(--ink);border:none;border-radius:var(--radius-pill);
+    min-height:32px;padding:8px 16px;font-size:14px;font-weight:400;white-space:nowrap}
+  .pill:hover{background:#e2e2e2}
+  .pill.is-active{background:var(--amber);color:#fff;font-weight:700}
+  .pill.is-active:hover{background:var(--amber)}
   hr.divider{border:none;border-top:1px solid var(--line);margin:16px 0 0}
 
   /* ---------- article rows / cards ---------- */
+  /* khớp .relate-post-bot-page.wp-block-latest-posts__list thật: grid 3 cột, gap 20px 24px,
+     thẻ nền trắng bo góc 14px + đúng box-shadow trang thật đang dùng, padding 24px, tiêu đề
+     1.15rem/600 đen, mô tả xám #616161, "Xem bài" xám #333 (không tô đỏ) — ảnh minh hoạ đầu thẻ
+     dựng bằng CSS/icon thay vì gắn ảnh/logo thật của TCBS (theo đúng quy ước không dùng brand asset
+     đã nêu ở phần Lưu ý phía trên). */
   .cat-block{padding:24px 0 50px}
-  .card{background:#fff;border-radius:var(--radius-card);box-shadow:var(--shadow-card);overflow:hidden}
-  .row-list{display:flex;flex-direction:column;gap:12px}
-  .row-card{display:flex;align-items:center;gap:16px;padding:16px 18px}
-  .row-card .row-icon{width:44px;height:44px;border-radius:10px;background:var(--soft-red);color:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .row-card .row-icon svg{width:22px;height:22px}
-  .row-card .row-txt{flex:1;min-width:0}
-  .row-card h3{margin:0;font-size:15.5px;font-weight:600}
-  .row-card p{margin:4px 0 0;font-size:13px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .row-right{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-  .mini-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#f5f5f5;color:var(--muted);border:1px solid var(--tag-border);white-space:nowrap}
-  .mini-tag.level{background:var(--soft-red);color:var(--red-link);border-color:var(--soft-red-line)}
-  .read-more{font-size:12.5px;color:var(--red-link);font-weight:600}
+  .row-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 24px}
+  @media (max-width:860px){.row-list{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:600px){.row-list{grid-template-columns:1fr}}
+  .row-card{display:flex;flex-direction:column;align-items:stretch;background:#fff;border-radius:var(--radius-card);
+    box-shadow:var(--shadow-card);overflow:hidden}
+  .row-card .row-thumb{aspect-ratio:550/270;background:linear-gradient(135deg,#f2f4f7 0%,#e6e9ee 100%);
+    color:#b9c0cb;display:flex;align-items:center;justify-content:center}
+  .row-card .row-thumb svg{width:34px;height:34px}
+  .row-card .row-txt{flex:1;min-width:0;padding:20px 20px 16px}
+  .row-card h3{margin:0 0 7px;font-size:1.15rem;line-height:1.35;font-weight:600;color:#000}
+  .row-card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .row-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 20px 20px}
+  .mini-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--tag-bg);color:var(--muted);white-space:nowrap}
+  .mini-tag.level{background:#fff6df;color:#8a6600}
+  .read-more{font-size:12.5px;color:#333;font-weight:600}
   .row-card:hover .read-more{text-decoration:underline}
+  .row-card:hover h3{text-decoration:underline}
 
   .placeholder-box{max-width:640px;margin:10px auto 0;text-align:center;background:var(--section-alt);border:1px dashed #cfd8e6;
     border-radius:14px;padding:34px 26px;color:var(--muted);font-size:14.5px}
@@ -333,12 +356,16 @@
   .term-related-ic svg{width:100%;height:100%}
 
   /* ---------- footer ---------- */
-  footer{background:#fff;border-top:1px solid var(--line);padding:34px 0 0;margin-top:10px}
-  .foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;font-size:14.5px;font-weight:600;color:#2a2f36;padding-bottom:22px;border-bottom:1px solid var(--line)}
-  .foot-social{text-align:center;padding:18px 0;color:var(--muted);font-size:14px}
-  .foot-bottom{text-align:center;padding:14px 0 26px;font-size:12.5px;color:var(--muted)}
+  /* khớp .footertcbs thật: nền tối #272728, chữ xám nhạt #a2a2a2 — không gắn logo TCBS thật
+     (xem Lưu ý phía trên), thay bằng chữ "TCBS" dựng riêng bằng CSS. */
+  footer{background:#272728;padding:40px 0 0;margin-top:10px}
+  .foot-logo{text-align:center;font-size:18px;font-weight:800;letter-spacing:.12em;color:#fff;margin-bottom:22px}
+  .foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;font-size:14.5px;font-weight:600;color:#fff;padding-bottom:22px;border-bottom:1px solid #3a3a3b}
+  .foot-social{text-align:center;padding:18px 0;color:#a2a2a2;font-size:14px}
+  .foot-bottom{text-align:center;padding:14px 0 26px;font-size:12.5px;color:#a2a2a2}
   .foot-legal{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px}
-  .foot-legal a:hover{color:var(--red-link)}
+  .foot-legal a{color:#a2a2a2}
+  .foot-legal a:hover{color:#fff}
 </style>
 </head>
 <body>
@@ -415,7 +442,7 @@
 
     <section id="report-luu-y" class="report-section">
       <h2>Lưu ý khi đọc mô phỏng</h2>
-      <div class="note-box"><strong>Đây là mô phỏng thiết kế/IA, không phải trang thật.</strong> Có banner cảnh báo + thẻ <code>robots noindex</code> để tránh nhầm với trang tcbs.com.vn thật; không dùng logo/hình ảnh thương hiệu chính thức, chỉ dùng đúng màu thương hiệu đã trích xuất (<code>#c10829</code>).</div>
+      <div class="note-box"><strong>Đây là mô phỏng thiết kế/IA, không phải trang thật.</strong> Có banner cảnh báo + thẻ <code>robots noindex</code> để tránh nhầm với trang tcbs.com.vn thật; font chữ (Roboto), màu sắc, khoảng cách và layout thẻ bài viết được đối chiếu trực tiếp với CSS đang chạy trên trang Khám phá &amp; Chia sẻ thật (<code>#c41c16</code> đỏ thương hiệu, <code>#fcb900</code> vàng hổ phách cho tag đang chọn) — nhưng không hotlink ảnh/logo thật của TCBS, ảnh minh hoạ (banner hero, thumbnail bài viết) đều dựng lại bằng CSS/SVG trung tính.</div>
       <div class="note-box" style="margin-top:10px"><strong>Tiêu đề bài viết chỉ là minh hoạ.</strong> Lấy từ backlog đề xuất trong báo cáo benchmark, dùng để minh hoạ vị trí bài trong cấu trúc mới — chưa phải nội dung final.</div>
       <div class="note-box" style="margin-top:10px"><strong>Định nghĩa trong từ điển là ví dụ chung.</strong> Cần biên tập lại theo giọng văn và số liệu chính thức của TCBS trước khi xuất bản.</div>
 
@@ -445,7 +472,6 @@
           <h1>Khám phá &amp; Chia sẻ</h1>
           <p class="hero-tagline">Kiến thức cơ bản cần biết khi tích lũy và đầu tư - kiến tạo hành trình tương lai của bạn cùng TCBS.</p>
         </div>
-        <div class="hero-graphic" aria-hidden="true" id="heroGraphic"></div>
       </div>
     </div>
 
@@ -590,6 +616,7 @@
 
 <footer>
   <div class="shell">
+    <div class="foot-logo">TECHCOM SECURITIES</div>
     <div class="foot-links">
       <span>Khách hàng cá nhân</span><span>Khách hàng doanh nghiệp</span><span>Quan hệ nhà đầu tư</span><span>Ngân hàng đầu tư</span><span>Về chúng tôi</span>
     </div>
@@ -857,8 +884,6 @@ const HUB_SECTIONS = [
 ];
 
 function renderHub(){
-  document.getElementById('heroGraphic').innerHTML = HUB_SPOKE_SVG;
-
   document.getElementById('hubRail').innerHTML = HUB_SECTIONS.map((s,i) =>
     `<a class="rail-item${i===0?' active':''}" data-target="${s.id}" onclick="scrollToSection('${s.id}')">${s.label}</a>`
   ).join('');
@@ -1013,19 +1038,19 @@ function renderCategory(product){
   if(state.catPage > totalPages) state.catPage = totalPages;
 
   const pageItems = list.slice((state.catPage-1)*perPage, state.catPage*perPage);
-  area.innerHTML = `<div class="card row-list-wrap"><div class="row-list">${pageItems.map(a => `
+  area.innerHTML = `<div class="row-list">${pageItems.map(a => `
       <div class="row-card">
-        <div class="row-icon">${ICONS['co-phieu']}</div>
+        <div class="row-thumb">${ICONS['co-phieu']}</div>
         <div class="row-txt">
           <h3>${a.title}</h3>
           <p>${a.excerpt}</p>
         </div>
-        <div class="row-right">
+        <div class="row-bottom">
           <span class="mini-tag level">${LEVEL_LABEL[a.level]}</span>
           <span class="read-more">Xem bài →</span>
         </div>
       </div>
-    `).join('')}</div></div>`;
+    `).join('')}</div>`;
 
   pag.innerHTML = buildPagination(state.catPage, totalPages);
 }
@@ -1070,9 +1095,9 @@ function renderBreadcrumb(r){
   if(r.route === 'hub'){
     bc.innerHTML = `<span>Khám phá &amp; Chia sẻ</span>`;
   } else if(r.route === 'category'){
-    bc.innerHTML = `<a onclick="go('/')">Khám phá &amp; Chia sẻ</a> / <span>${PRODUCT_LABEL[state.product]}</span>`;
+    bc.innerHTML = `<a onclick="go('/')">Khám phá &amp; Chia sẻ</a><span class="sep">/</span><span>${PRODUCT_LABEL[state.product]}</span>`;
   } else {
-    bc.innerHTML = `<a onclick="go('/')">Khám phá &amp; Chia sẻ</a> / <span>Từ điển thuật ngữ chứng khoán</span>`;
+    bc.innerHTML = `<a onclick="go('/')">Khám phá &amp; Chia sẻ</a><span class="sep">/</span><span>Từ điển thuật ngữ chứng khoán</span>`;
   }
 }
 

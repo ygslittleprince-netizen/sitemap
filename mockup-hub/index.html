@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Đánh giá hiện trạng, đề xuất chỉnh sửa và mô phỏng giao diện sau chỉnh sửa cho hub Khám phá &amp; Chia sẻ của TCBS.">
+<title>Đánh giá, đề xuất &amp; mô phỏng hub Khám phá &amp; Chia sẻ | TCBS</title>
+<style>
+  :root{
+    --red:#c10829; --red-link:#c41c16; --ink:#212529; --heading:#000;
+    --muted:#5b6675; --nav-gray:#848585; --tag-bg:#f5f5f5; --tag-border:#dddddd;
+    --line:#e9ebee; --section-alt:#f9fbff; --bcbg:#f7f8fa; --soft-red:#fff0f1; --soft-red-line:#f3c3c8;
+    --good:#11735c; --soft-good:#edfaf6; --soft-good-line:#c9ece2;
+    --radius-card:14px; --radius-pill:8px; --radius-btn:6px;
+    --shadow-card: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    --maxw:1180px;
+    --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  /* không đặt scroll-behavior:smooth toàn cục — chỗ nào cần hoạt ảnh thì tự truyền behavior:'smooth',
+     nhờ vậy lệnh nhảy tức thì (đổi trang) luôn tức thì thật. overflow-anchor:none để trình duyệt
+     không tự "neo" lại vị trí cuộn sau khi ẩn/hiện khối lớn. */
+  html{overflow-anchor:none}
+  body{margin:0;background:#fff;color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;}
+  a{text-decoration:none;color:inherit;cursor:pointer}
+  button{font-family:inherit;cursor:pointer;background:none;border:none}
+  h1,h2,h3,h4{font-family:inherit}
+  .shell{width:min(var(--maxw), calc(100% - 40px));margin:0 auto}
+  .view{display:none}
+  .view.active{display:block}
+  .icon{width:1em;height:1em;display:inline-block;vertical-align:middle}
+
+  /* ============================================================
+     BÁO CÁO: đánh giá hiện trạng + đề xuất chỉnh sửa (đứng trước mô phỏng)
+     ============================================================ */
+  .report-hero{background:linear-gradient(135deg,#7d0b24 0%,#c10829 100%);color:#fff;padding:44px 0 32px}
+  .report-eyebrow{margin:0 0 10px;color:#ffd9de;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .report-hero h1{margin:0;color:#fff;font-size:clamp(24px,3.6vw,34px);font-weight:700;letter-spacing:-0.01em;line-height:1.22}
+  .report-hero .lede{max-width:760px;margin:14px 0 0;font-size:15.5px;color:#ffeef0;line-height:1.6}
+  .report-meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin:18px 0 0;font-size:13px;color:#ffd9de}
+  .report-meta strong{color:#fff}
+  .report-meta a{color:inherit;text-decoration:underline}
+
+  .report-toc{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+  .report-toc .shell{display:flex;gap:4px 20px;overflow-x:auto;padding:11px 0;white-space:nowrap}
+  .report-toc a{color:var(--muted);font-size:13.5px;font-weight:600}
+  .report-toc a:hover{color:var(--red-link)}
+
+  .report-wrap{background:#fff}
+  .report-section{padding:34px 0}
+  .report-section + .report-section{border-top:1px solid var(--line)}
+  .report-section h2{margin:0 0 12px;font-size:1.34rem;font-weight:700;color:var(--heading);letter-spacing:-.01em}
+  .report-section h3{margin:22px 0 8px;font-size:1.02rem;font-weight:700;color:var(--heading)}
+  .report-section h3:first-of-type{margin-top:0}
+  .report-section p{margin:0 0 12px;color:var(--ink);line-height:1.65;font-size:15px}
+  .report-section p.report-intro{max-width:760px}
+  .report-section a{color:var(--red-link);text-decoration:underline}
+  .report-section code{padding:.1em .4em;background:#f2f4f7;border-radius:4px;font-size:.92em}
+
+  .finding-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0 0}
+  .finding-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);box-shadow:var(--shadow-card);padding:16px 18px}
+  .finding-card strong{display:block;margin:8px 0 6px;color:var(--heading);font-size:14.5px}
+  .finding-card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.55}
+  .report-badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:800;white-space:nowrap;letter-spacing:.02em}
+  .report-badge.critical{background:var(--soft-red);color:var(--red-link)}
+  .report-badge.good{background:var(--soft-good);color:var(--good)}
+
+  .compare-table{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-card);background:#fff;margin-top:18px}
+  .compare-table table{width:100%;border-collapse:collapse;min-width:560px}
+  .compare-table th,.compare-table td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:13.5px}
+  .compare-table th{background:var(--section-alt);color:var(--ink);font-size:11px;letter-spacing:.03em;text-transform:uppercase}
+  .compare-table tr:last-child td{border-bottom:0}
+
+  .report-cta-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:6px}
+  .report-cta-row p{margin:0;max-width:560px}
+
+  @media (max-width:700px){.report-cta-row{flex-direction:column;align-items:flex-start}}
+
+  /* ---------- mock banner ---------- */
+  .mock-banner{position:sticky;top:0;z-index:50;background:#fff7e6;color:#8a5a00;border-bottom:1px solid #f0d999;
+    font-size:12.5px;font-weight:600;text-align:center;padding:6px 10px;}
+  .mock-banner a{text-decoration:underline;color:#8a5a00}
+
+  /* ---------- buttons ---------- */
+  .btn-red{background:var(--red);color:#f9f9f9;border:none;border-radius:var(--radius-btn);padding:8px 16px;font-weight:600;font-size:13.5px;display:inline-block}
+  .btn-red:hover{background:#a5061f}
+  .btn-outline-red{background:#fff;color:var(--red);border:1.2px solid var(--red);border-radius:var(--radius-btn);padding:7px 15px;font-weight:600;font-size:13.5px;display:inline-block}
+  .btn-outline-red:hover{background:var(--soft-red)}
+
+  .breadcrumb-bar{background:var(--bcbg);border-bottom:1px solid var(--line)}
+  .breadcrumb-bar .shell{padding:10px 0;font-size:13.5px;color:var(--muted);display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+  .breadcrumb-bar a:hover{color:var(--red-link)}
+
+  /* ---------- hero (hub view) ---------- */
+  .hero{background:#fff;padding:40px 0 26px}
+  .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:32px}
+  .hero-text{flex:1;min-width:0}
+  .hero h1{margin:0;font-size:clamp(28px,4vw,40px);font-weight:700;color:var(--heading);letter-spacing:-0.01em}
+  .hero-tagline{margin:12px 0 0;color:var(--ink);font-size:16.5px;max-width:680px;font-weight:500}
+  .hero-graphic{flex:0 0 auto;width:148px;height:148px;color:var(--red);opacity:.92;animation:heroSpin 90s linear infinite}
+  .hero-graphic svg{width:100%;height:100%}
+  @keyframes heroSpin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion: reduce){.hero-graphic{animation:none}}
+  @media (max-width:780px){.hero-graphic{display:none}}
+
+  /* ---------- hide corporate nav/logo/breadcrumb on hub landing (per redesign) ---------- */
+  body.is-hub .breadcrumb-bar{display:none}
+  /* khi đã bấm vào một trang trong mô phỏng: ẩn hẳn phần báo cáo bên trên để trang con
+     nằm ngay đầu cửa sổ như một trang thật (bấm link trên banner để xem lại báo cáo) */
+  body.mock-only .report-hero, body.mock-only .report-toc, body.mock-only .report-wrap{display:none}
+
+  /* ---------- "Bài viết đề xuất" featured carousel (tham khảo "Tin nổi bật" của Pinetree) ---------- */
+  .feature-strip{background:#fff;border-bottom:1px solid var(--line);padding:26px 0 30px}
+  .feature-strip-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
+  .feature-strip-head .section-head{margin-bottom:0}
+  .feature-nav{display:flex;gap:8px;flex:0 0 auto}
+  .feature-arrow{width:36px;height:36px;border-radius:50%;border:1.2px solid var(--tag-border);background:#fff;color:var(--ink);
+    display:flex;align-items:center;justify-content:center;transition:border-color .15s,color .15s,background .15s}
+  .feature-arrow svg{width:16px;height:16px}
+  .feature-arrow:hover{border-color:var(--red);color:var(--red);background:var(--soft-red)}
+  .feature-viewport{overflow:hidden}
+  .feature-track{display:flex;gap:20px;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+  .feature-card{flex:0 0 260px;width:260px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-card);overflow:hidden;
+    box-shadow:var(--shadow-card);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+  .feature-card:hover{transform:translateY(-3px);box-shadow:0 12px 22px rgba(193,8,41,.16)}
+  .feature-thumb{height:132px;position:relative;display:flex;align-items:center;justify-content:center;color:#fff;
+    background:linear-gradient(135deg,#7d0b24 0%,#c10829 100%)}
+  .feature-thumb svg{width:38px;height:38px;opacity:.9}
+  .feature-badge{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.94);color:var(--red-link);font-size:10.5px;font-weight:800;
+    padding:3px 10px;border-radius:999px;letter-spacing:.02em}
+  .feature-body{padding:14px 16px 16px}
+  .feature-date{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:6px}
+  .feature-card h3{margin:0;font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.42;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.84em}
+  @media (prefers-reduced-motion: reduce){.feature-track{transition:none}}
+  @media (max-width:640px){.feature-nav{display:none}.feature-card{flex-basis:220px;width:220px}}
+
+  /* ---------- 3-col layout: rail + main + sidebar ---------- */
+  .hub-layout{display:grid;grid-template-columns:184px minmax(0,1fr) 296px;gap:32px;align-items:start;padding:38px 0 60px}
+  .hub-main{display:flex;flex-direction:column;gap:54px;min-width:0}
+  .hub-main section{scroll-margin-top:24px}
+  .sidebar{position:sticky;top:44px;display:flex;flex-direction:column;gap:18px}
+
+  /* ---------- left scrollspy rail ---------- */
+  .hub-rail{position:sticky;top:44px;display:flex;flex-direction:column;gap:2px;border-left:2px solid var(--line)}
+  .rail-item{padding:9px 16px;font-size:13px;font-weight:600;color:var(--muted);border-left:2px solid transparent;margin-left:-2px;line-height:1.4}
+  .rail-item:hover{color:var(--ink)}
+  .rail-item.active{color:var(--red-link);border-left-color:var(--red);background:var(--soft-red)}
+
+  /* rail only fits when there's room for all 3 columns; drops out below that, page still works via sidebar/search */
+  @media (max-width:1180px){.hub-layout{grid-template-columns:minmax(0,1fr) 296px}.hub-rail{display:none}}
+  @media (max-width:980px){.hub-layout{grid-template-columns:1fr}}
+
+  .section-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}
+  .section-head .bar{flex:0 0 auto;width:5px;height:30px;background:var(--red);border-radius:3px;margin-top:3px}
+  .section-head h2{margin:0;font-size:1.5rem;font-weight:700;color:var(--heading)}
+  .section-head p{margin:6px 0 0;color:var(--muted);font-size:14.5px;max-width:640px}
+
+  /* ---------- icon category cards ---------- */
+  .ic-badge{width:46px;height:46px;border-radius:12px;background:var(--soft-red);color:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .ic-badge svg{width:24px;height:24px}
+  .ic-badge.round{border-radius:50%}
+  .ic-badge.lg{width:56px;height:56px;border-radius:14px}
+  .ic-badge.lg svg{width:28px;height:28px}
+
+  .icon-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  @media (max-width:980px){.icon-grid{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:620px){.icon-grid{grid-template-columns:repeat(2,1fr)}}
+  .icon-card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-card);padding:20px 16px;
+    display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:transform .15s ease,box-shadow .15s ease}
+  .icon-card:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(193,8,41,.14)}
+  .icon-card h3{margin:4px 0 0;font-size:15.5px}
+  .icon-card p{margin:0;font-size:12.5px;color:var(--muted);flex:1;line-height:1.5}
+  .icon-card .btn-outline-red{margin-top:6px;font-size:12px;padding:6px 12px;width:100%;text-align:center}
+
+  /* ---------- orbit / radial layout for "Tìm hiểu về đầu tư" ---------- */
+  .orbit-wrap{position:relative;width:520px;max-width:100%;height:520px;margin:0 auto}
+  .orbit-lines{position:absolute;inset:0;width:100%;height:100%}
+  .orbit-lines .spin{transform-origin:260px 260px;animation:orbitSpin 55s linear infinite}
+  @keyframes orbitSpin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion: reduce){.orbit-lines .spin{animation:none}}
+  .orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:126px;height:126px;border-radius:50%;
+    background:linear-gradient(135deg,#7d0b24 0%,#c10829 100%);color:#fff;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:6px;box-shadow:0 14px 26px rgba(193,8,41,.3);text-align:center;z-index:3}
+  .orbit-center-badge{width:34px;height:34px}
+  .orbit-center span{font-size:12px;font-weight:800;line-height:1.3}
+  .orbit-node{position:absolute;transform:translate(-50%,-50%);width:140px;background:#fff;border:1px solid var(--line);border-radius:14px;
+    box-shadow:var(--shadow-card);padding:14px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;
+    z-index:2;transition:transform .15s ease,box-shadow .15s ease}
+  .orbit-node:hover{transform:translate(-50%,-50%) translateY(-3px);box-shadow:0 10px 20px rgba(193,8,41,.16)}
+  .orbit-node h3{margin:2px 0 0;font-size:13.5px}
+  .orbit-node .btn-outline-red{font-size:11px;padding:5px 10px;margin-top:2px;width:100%}
+  @media (max-width:860px){
+    .orbit-wrap{height:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .orbit-center,.orbit-lines{display:none}
+    .orbit-node{position:static !important;transform:none !important;width:auto}
+    .orbit-node:hover{transform:none !important}
+  }
+  @media (max-width:560px){.orbit-wrap{grid-template-columns:1fr}}
+
+  /* ---------- roadmap arrow steps ("Lộ trình đầu tư cùng TCBS") ---------- */
+  .stepper-arrows{display:flex;position:relative}
+  @media (max-width:860px){.stepper-arrows{flex-direction:column;gap:14px}}
+  .step-arrow{flex:1;min-width:0;background:#fff;border:1px solid var(--line);padding:22px 26px 22px 42px;display:flex;flex-direction:column;gap:8px;position:relative;
+    clip-path:polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%, 18px 50%)}
+  .step-arrow:first-child{padding-left:24px;clip-path:polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%)}
+  .step-arrow:last-child{clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%, 18px 50%)}
+  .step-arrow + .step-arrow{margin-left:-18px}
+  .step-arrow:nth-child(1){z-index:3} .step-arrow:nth-child(2){z-index:2} .step-arrow:nth-child(3){z-index:1}
+  @media (max-width:860px){
+    .step-arrow, .step-arrow:first-child, .step-arrow:last-child{clip-path:none;border-radius:14px;padding:20px 20px}
+    .step-arrow + .step-arrow{margin-left:0}
+  }
+  .step-arrow .step-tag{position:absolute;top:16px;right:16px;font-size:10.5px;font-weight:800;color:#c7cdd6;letter-spacing:.05em}
+  .step-arrow:last-child .step-tag{right:26px}
+  .step-arrow h3{margin:2px 0 0;font-size:17px}
+  .step-articles{margin:0;padding-left:17px;flex:1;color:var(--muted);font-size:13px;line-height:1.5}
+  .step-articles li{margin-bottom:5px}
+  .step-articles li:last-child{margin-bottom:0}
+  .step-arrow .btn-outline-red{align-self:flex-start;margin-top:4px}
+
+  /* ---------- dictionary preview block ---------- */
+  .dict-preview{background:linear-gradient(120deg,#1a0508 0%,#5c0716 45%,#c10829 100%);border-radius:20px;padding:32px;
+    color:#fff;display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
+  .dict-preview-text{flex:1 1 280px}
+  .dict-preview-text h3{margin:0 0 8px;font-size:20px}
+  .dict-preview-text p{margin:0 0 16px;color:#ffd9de;font-size:14px;max-width:420px}
+  .dict-chip-grid{flex:1 1 280px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;align-content:flex-start}
+  .dict-chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:9px 12px;font-size:12.5px}
+  .dict-chip b{display:block;font-size:13.5px;margin-bottom:2px}
+  .dict-chip span{color:#ffd9de;font-size:11.5px}
+
+  /* ---------- sidebar: search + latest ---------- */
+  .search-box{display:flex;align-items:center;gap:8px;border:1.2px solid var(--tag-border);border-radius:999px;padding:10px 16px;background:#fff}
+  .search-box:focus-within{border-color:var(--red)}
+  .search-box svg{width:17px;height:17px;color:var(--muted);flex-shrink:0}
+  .search-box input{border:none;outline:none;flex:1;font-size:14px;font-family:inherit;min-width:0;background:transparent}
+  .search-results{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-card);padding:6px;max-height:360px;overflow:auto;display:none}
+  .search-results.show{display:block}
+  .sr-item{display:flex;flex-direction:column;padding:9px 10px;border-radius:8px}
+  .sr-item:hover{background:var(--section-alt)}
+  .sr-label{font-size:13.5px;font-weight:600;color:var(--ink)}
+  .sr-sub{font-size:11px;color:var(--muted);margin-top:1px}
+  .sr-empty{padding:16px 10px;text-align:center;color:var(--muted);font-size:13px}
+  .latest-list{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow-card)}
+  .latest-list h3{margin:0 0 4px;font-size:14.5px}
+  .latest-item{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .latest-item:last-child{border-bottom:none;padding-bottom:0}
+  .latest-item:first-child{padding-top:12px}
+  .latest-item .li-icon{width:34px;height:34px;border-radius:9px;background:var(--soft-red);color:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .latest-item .li-icon svg{width:17px;height:17px}
+  .latest-item .li-date{font-size:11px;color:var(--red-link);font-weight:700}
+  .latest-item h4{margin:2px 0 0;font-size:13px;font-weight:600;line-height:1.4}
+
+  /* ---------- category page hero ---------- */
+  .cat-hero{background:#fff;padding:28px 0 18px}
+  .cat-hero-inner{display:flex;align-items:center;gap:16px}
+  .cat-hero h1{margin:0;font-size:clamp(22px,3vw,28px)}
+  .cat-hero .tag{margin:4px 0 0;color:var(--muted);font-size:13.5px}
+
+  /* ---------- select rows (level filter) ---------- */
+  .select-row{background:#fff;padding:6px 0 0}
+  .select-line{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+  .select-label{font-size:14.5px;color:#2a2f36;flex:0 0 auto;font-weight:600}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap}
+  .pill{background:var(--tag-bg);color:var(--ink);border:0.8px solid var(--tag-border);border-radius:var(--radius-pill);
+    padding:9px 18px;font-size:14px;font-weight:400;white-space:nowrap}
+  .pill:hover{border-color:#bbb}
+  .pill.is-active{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+  hr.divider{border:none;border-top:1px solid var(--line);margin:16px 0 0}
+
+  /* ---------- article rows / cards ---------- */
+  .cat-block{padding:24px 0 50px}
+  .card{background:#fff;border-radius:var(--radius-card);box-shadow:var(--shadow-card);overflow:hidden}
+  .row-list{display:flex;flex-direction:column;gap:12px}
+  .row-card{display:flex;align-items:center;gap:16px;padding:16px 18px}
+  .row-card .row-icon{width:44px;height:44px;border-radius:10px;background:var(--soft-red);color:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .row-card .row-icon svg{width:22px;height:22px}
+  .row-card .row-txt{flex:1;min-width:0}
+  .row-card h3{margin:0;font-size:15.5px;font-weight:600}
+  .row-card p{margin:4px 0 0;font-size:13px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .row-right{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+  .mini-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#f5f5f5;color:var(--muted);border:1px solid var(--tag-border);white-space:nowrap}
+  .mini-tag.level{background:var(--soft-red);color:var(--red-link);border-color:var(--soft-red-line)}
+  .read-more{font-size:12.5px;color:var(--red-link);font-weight:600}
+  .row-card:hover .read-more{text-decoration:underline}
+
+  .placeholder-box{max-width:640px;margin:10px auto 0;text-align:center;background:var(--section-alt);border:1px dashed #cfd8e6;
+    border-radius:14px;padding:34px 26px;color:var(--muted);font-size:14.5px}
+  .placeholder-box strong{display:block;color:var(--ink);font-size:16px;margin-bottom:8px}
+  .placeholder-box button{margin-top:14px}
+
+  .pagination{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:26px}
+  .page-btn{min-width:34px;height:34px;border-radius:8px;border:1px solid var(--tag-border);background:#fff;
+    display:inline-flex;align-items:center;justify-content:center;font-size:13.5px;font-weight:600;color:var(--ink)}
+  .page-btn.is-active{background:var(--red);border-color:var(--red);color:#fff}
+  .page-btn.arrow,.page-btn.ellipsis{color:var(--muted);border-color:transparent;background:transparent}
+  .note-box{margin:20px 0 0;background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);
+    border-radius:10px;padding:13px 16px;font-size:13px;color:var(--muted)}
+  .note-box strong{color:var(--ink)}
+
+  /* ---------- cross-links (chuyên trang khác) ---------- */
+  .cross-links{margin-top:38px;padding-top:26px;border-top:1px solid var(--line)}
+  .cross-links h3{margin:0 0 14px;font-size:15px;color:var(--ink)}
+  .cross-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media (max-width:760px){.cross-grid{grid-template-columns:repeat(2,1fr)}}
+  .cross-card{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .cross-card:hover{border-color:var(--red)}
+  .cross-card .ic-badge{width:36px;height:36px;border-radius:9px}
+  .cross-card .ic-badge svg{width:18px;height:18px}
+  .cross-card span{font-size:13px;font-weight:600}
+
+  /* ---------- glossary ---------- */
+  .glossary-head{padding:30px 0 0;text-align:center}
+  .glossary-head h1{margin:0;font-size:30px;font-weight:300;color:var(--heading)}
+  .az-strip{position:sticky;top:29px;z-index:9;background:rgba(255,255,255,.96);backdrop-filter:blur(4px);
+    display:flex;flex-wrap:wrap;gap:4px;justify-content:center;padding:16px 0;border-bottom:1px solid var(--line);margin-top:20px}
+  .az-strip button,.az-strip span{width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
+    border-radius:8px;font-size:13.5px;font-weight:700;border:none;background:transparent}
+  .az-strip button{background:#fff;border:1px solid var(--tag-border);color:var(--red-link)}
+  .az-strip span{color:#cbd1da}
+  .glossary-body{padding:20px 0 50px}
+  .letter-group{max-width:820px;margin:0 auto}
+  .letter-group h2{font-size:22px;color:var(--red);margin:34px 0 10px;padding-bottom:6px;border-bottom:2px solid #fde3e6}
+  .letter-group h2:first-child{margin-top:0}
+  .term{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-card)}
+  .term h3{margin:0 0 4px;font-size:15.5px;font-weight:600}
+  .term p{margin:0;font-size:14px;color:var(--muted)}
+  .term-related{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-size:12.5px;font-weight:700;color:var(--red-link)}
+  .term-related:hover{text-decoration:underline}
+  .term-related-ic{display:inline-flex;width:14px;height:14px;flex-shrink:0}
+  .term-related-ic svg{width:100%;height:100%}
+
+  /* ---------- footer ---------- */
+  footer{background:#fff;border-top:1px solid var(--line);padding:34px 0 0;margin-top:10px}
+  .foot-links{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;font-size:14.5px;font-weight:600;color:#2a2f36;padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .foot-social{text-align:center;padding:18px 0;color:var(--muted);font-size:14px}
+  .foot-bottom{text-align:center;padding:14px 0 26px;font-size:12.5px;color:var(--muted)}
+  .foot-legal{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px}
+  .foot-legal a:hover{color:var(--red-link)}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     BÁO CÁO — đánh giá hiện trạng + đề xuất chỉnh sửa
+     (trình tự: đánh giá -> đề xuất -> mô phỏng bên dưới)
+     ============================================================ -->
+<header class="report-hero">
+  <div class="shell">
+    <p class="report-eyebrow">Content Strategy &amp; SEO/GEO — Đề xuất thiết kế lại</p>
+    <h1>Đánh giá hiện trạng &amp; đề xuất chỉnh sửa hub Khám phá &amp; Chia sẻ</h1>
+    <p class="lede">Nhắc lại đánh giá hiện trạng và 3 đề xuất chỉnh sửa đã nêu trong báo cáo benchmark content hub, sau đó mô phỏng giao diện cho thấy trang <strong>Khám phá &amp; Chia sẻ</strong> của TCBS sẽ trông như thế nào nếu áp dụng các đề xuất này — kéo xuống để xem phần mô phỏng có thể bấm thử trực tiếp.</p>
+    <div class="report-meta">
+      <span><strong>Trang đang audit:</strong> <a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">TCBS Khám phá &amp; Chia sẻ</a></span>
+      <span><strong>Mô hình tham khảo:</strong> <a href="https://www.dnse.com.vn/hoc">DNSE — Học đầu tư</a></span>
+      <span><strong>Ngày:</strong> 18/09/2026</span>
+    </div>
+  </div>
+</header>
+
+<nav class="report-toc" aria-label="Mục lục báo cáo">
+  <div class="shell">
+    <a onclick="scrollToReportSection('report-tom-tat')">Tóm tắt</a>
+    <a onclick="scrollToReportSection('report-hien-trang')">1. Đánh giá hiện trạng</a>
+    <a onclick="scrollToReportSection('report-de-xuat')">2. Đề xuất chỉnh sửa</a>
+    <a onclick="scrollToReportSection('report-luu-y')">Lưu ý khi đọc mô phỏng</a>
+    <a onclick="scrollToMockup()">3. Xem mô phỏng ↓</a>
+  </div>
+</nav>
+
+<div class="report-wrap">
+  <div class="shell">
+
+    <section id="report-tom-tat" class="report-section">
+      <h2>Tóm tắt</h2>
+      <p class="report-intro">Hub Khám phá &amp; Chia sẻ hiện chỉ có một trục điều hướng tĩnh và không có nền tảng để mở rộng (không trang danh mục, không pagination); ba đề xuất dưới đây thêm trục trình độ nhà đầu tư, dựng trang danh mục/archive, và mở mục từ điển thuật ngữ — phần mô phỏng bên dưới minh hoạ cụ thể cả ba thay đổi này trên giao diện.</p>
+    </section>
+
+    <section id="report-hien-trang" class="report-section">
+      <h2>1. Đánh giá hiện trạng</h2>
+      <p class="report-intro">Trang <a href="https://www.tcbs.com.vn/thong-tin/kham-pha-chia-se/">Khám phá &amp; Chia sẻ</a> của TCBS hiện tổ chức theo <strong>5 tab chủ đề tĩnh</strong> (Cổ phiếu, Trái phiếu, Phái sinh, Chứng chỉ quỹ, Chứng quyền), không có ô tìm kiếm, không có pagination. Không tồn tại trang danh mục/archive riêng cho từng chủ đề — các URL đoán được theo pattern category (ví dụ dạng <code>/danh-muc/co-phieu/</code>) đều trả về danh sách công bố thông tin (CBTT) của khối Quan hệ nhà đầu tư, không phải bài blog. Nói cách khác, hub hiện tại không có "nền" kỹ thuật để mở rộng nội dung — mỗi bài viết mới thêm vào chỉ có thể nằm rải rác dưới 1 trong 5 tab, không có cách nào để phân trang, lọc theo trình độ, hay tạo thêm điểm vào (entry point) mới cho các cụm từ khóa dài.</p>
+      <div class="finding-grid">
+        <div class="finding-card"><span class="report-badge critical">Hạn chế</span><strong>Trục điều hướng đơn, tĩnh</strong><p>5 tab sản phẩm là toàn bộ cấu trúc điều hướng — không có lớp cá nhân hoá theo trình độ đọc, không phân biệt người mới với nhà đầu tư có kinh nghiệm.</p></div>
+        <div class="finding-card"><span class="report-badge critical">Hạn chế</span><strong>Không có trang danh mục/archive</strong><p>Không pagination, không URL category riêng cho bài blog — hub không thể mở rộng vượt quá số bài hiển thị trên 1 màn hình tab.</p></div>
+        <div class="finding-card"><span class="report-badge critical">Hạn chế</span><strong>URL category trỏ nhầm sang CBTT</strong><p>Pattern URL danh mục đoán được đều trả về danh sách công bố thông tin IR, không phải nội dung giáo dục — gây nhầm lẫn nếu đoán URL hoặc index sai.</p></div>
+      </div>
+    </section>
+
+    <section id="report-de-xuat" class="report-section">
+      <h2>2. Đề xuất chỉnh sửa</h2>
+      <p class="report-intro">Giữ nguyên trục chuyên mục sản phẩm hiện có, bổ sung 3 hạng mục nền tảng để hub mở rộng dài hạn.</p>
+
+      <h3>2.1 Thêm trục trình độ nhà đầu tư (mô hình DNSE)</h3>
+      <p>Thêm trục thứ hai theo <strong>trình độ nhà đầu tư</strong> (Mới bắt đầu / Có kinh nghiệm / Chuyên sâu) bên cạnh trục sản phẩm — tham khảo mô hình <a href="https://www.dnse.com.vn/hoc">DNSE</a> — giúp cá nhân hoá hành trình đọc và mở thêm nhiều URL long-tail (sản phẩm × trình độ).</p>
+
+      <h3>2.2 Xây trang danh mục/archive riêng cho từng chuyên mục, có pagination</h3>
+      <p>Nền tảng bắt buộc để hub mở rộng được — hiện chưa có. Mỗi chuyên mục cần 1 URL archive riêng, hỗ trợ phân trang và lọc theo trình độ nhà đầu tư.</p>
+
+      <h3>2.3 Thêm mục Từ điển thuật ngữ chứng khoán (glossary A–Z)</h3>
+      <p>Dạng A–Z, mỗi thuật ngữ 1 URL riêng — dư địa SEO long-tail lớn, chưa đối thủ nào trong nhóm khảo sát khai thác theo hướng mỗi thuật ngữ 1 URL riêng như đề xuất.</p>
+
+      <div class="compare-table">
+        <table>
+          <thead><tr><th>Hạng mục</th><th>Hiện trạng</th><th>Sau khi mô phỏng</th></tr></thead>
+          <tbody>
+            <tr><td>Trục điều hướng</td><td><span class="report-badge critical">1 trục</span> — 5 tab sản phẩm tĩnh</td><td><span class="report-badge good">2 trục</span> — sản phẩm × trình độ nhà đầu tư</td></tr>
+            <tr><td>Trang danh mục/archive</td><td><span class="report-badge critical">Không có</span> — URL category trả về CBTT</td><td><span class="report-badge good">Có</span> — 1 URL/chuyên mục, có pagination + lọc trình độ</td></tr>
+            <tr><td>Từ điển thuật ngữ</td><td><span class="report-badge critical">Không có</span></td><td><span class="report-badge good">Có</span> — dạng A–Z, mỗi thuật ngữ 1 URL riêng</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="report-luu-y" class="report-section">
+      <h2>Lưu ý khi đọc mô phỏng</h2>
+      <div class="note-box"><strong>Đây là mô phỏng thiết kế/IA, không phải trang thật.</strong> Có banner cảnh báo + thẻ <code>robots noindex</code> để tránh nhầm với trang tcbs.com.vn thật; không dùng logo/hình ảnh thương hiệu chính thức, chỉ dùng đúng màu thương hiệu đã trích xuất (<code>#c10829</code>).</div>
+      <div class="note-box" style="margin-top:10px"><strong>Tiêu đề bài viết chỉ là minh hoạ.</strong> Lấy từ backlog đề xuất trong báo cáo benchmark, dùng để minh hoạ vị trí bài trong cấu trúc mới — chưa phải nội dung final.</div>
+      <div class="note-box" style="margin-top:10px"><strong>Định nghĩa trong từ điển là ví dụ chung.</strong> Cần biên tập lại theo giọng văn và số liệu chính thức của TCBS trước khi xuất bản.</div>
+
+      <div class="report-cta-row">
+        <p>Phần bên dưới là mô phỏng có thể bấm thử trực tiếp — điều hướng qua lại như một trang thật (đổi breadcrumb, đổi nội dung) thay vì mở file rời.</p>
+        <button class="btn-red" onclick="scrollToMockup()">Xem mô phỏng ↓</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div id="mockup-start"></div>
+<div class="mock-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;margin-right:4px"><path d="M12 9v4M12 17h.01"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>MÔ PHỎNG THIẾT KẾ nội bộ — dựng để minh hoạ đề xuất, không phải trang tcbs.com.vn thật · <a onclick="scrollToReportTop()">↑ Xem lại đánh giá &amp; đề xuất bên trên</a></div>
+
+<div class="breadcrumb-bar">
+  <div class="shell" id="breadcrumb"></div>
+</div>
+
+<main>
+
+  <!-- ============ HUB VIEW ============ -->
+  <section id="view-hub" class="view">
+    <div class="hero">
+      <div class="shell hero-inner">
+        <div class="hero-text">
+          <h1>Khám phá &amp; Chia sẻ</h1>
+          <p class="hero-tagline">Kiến thức cơ bản cần biết khi tích lũy và đầu tư - kiến tạo hành trình tương lai của bạn cùng TCBS.</p>
+        </div>
+        <div class="hero-graphic" aria-hidden="true" id="heroGraphic"></div>
+      </div>
+    </div>
+
+    <div class="feature-strip" onmouseenter="pauseFeatureAutoplay()" onmouseleave="startFeatureAutoplay()">
+      <div class="shell">
+        <div class="feature-strip-head">
+          <div class="section-head">
+            <div class="bar"></div>
+            <div>
+              <h2>Bài viết đề xuất</h2>
+            </div>
+          </div>
+          <div class="feature-nav">
+            <button class="feature-arrow" onclick="featureNav(-1)" aria-label="Xem mục trước">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="feature-arrow" onclick="featureNav(1)" aria-label="Xem mục tiếp theo">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="feature-viewport" id="featureViewport">
+          <div class="feature-track" id="featureTrack"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="shell hub-layout">
+      <nav class="hub-rail" id="hubRail" aria-label="Mục lục trang"></nav>
+
+      <div class="hub-main">
+
+        <section id="sec-explore">
+          <div class="section-head">
+            <div class="bar"></div>
+            <div>
+              <h2>Tìm hiểu về đầu tư</h2>
+            </div>
+          </div>
+          <div class="orbit-wrap" id="orbitWrap">
+            <svg class="orbit-lines" viewBox="0 0 520 520" aria-hidden="true">
+              <g class="spin" id="orbitLinesGroup" stroke="var(--soft-red-line)" stroke-width="2"></g>
+            </svg>
+            <div class="orbit-center">
+              <div class="orbit-center-badge" id="orbitCenterIcon"></div>
+              <span>Kiến thức<br>đầu tư</span>
+            </div>
+            <div id="orbitNodes"></div>
+          </div>
+        </section>
+
+        <section id="sec-roadmap">
+          <div class="section-head">
+            <div class="bar"></div>
+            <div>
+              <h2>Lộ trình đầu tư cùng TCBS</h2>
+            </div>
+          </div>
+          <div class="stepper-arrows" id="levelStepper"></div>
+        </section>
+
+        <section id="sec-dict">
+          <div class="section-head">
+            <div class="bar"></div>
+            <div>
+              <h2>Từ điển thuật ngữ chứng khoán</h2>
+            </div>
+          </div>
+          <div class="dict-preview">
+            <div class="dict-preview-text">
+              <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:19px;height:19px;vertical-align:-4px;margin-right:6px"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Từ điển A–Z</h3>
+              <p>Đủ định nghĩa ngắn gọn, chính xác cho mọi thuật ngữ đầu tư — từ cơ bản đến chuyên sâu, mỗi thuật ngữ có URL riêng để dễ tra cứu và dễ được tìm thấy.</p>
+              <button class="btn-outline-red" style="background:#fff" onclick="go('/tu-dien')">Xem toàn bộ từ điển →</button>
+            </div>
+            <div class="dict-chip-grid" id="dictChips"></div>
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="sidebar">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="siteSearch" placeholder="Tìm bài viết, thuật ngữ, chuyên mục..." oninput="onSearchInput(this.value)">
+        </div>
+        <div class="search-results" id="searchResults"></div>
+        <div class="latest-list" id="latestList"></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORY / ARCHIVE VIEW ============ -->
+  <section id="view-category" class="view">
+    <div class="cat-hero">
+      <div class="shell cat-hero-inner">
+        <div class="ic-badge lg" id="catIcon"></div>
+        <div>
+          <h1 id="catViewTitle">Cổ phiếu</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="select-row">
+      <div class="shell">
+        <div class="select-line">
+          <span class="select-label">Chuyên mục</span>
+          <div class="pill-row" id="productPillsCat"></div>
+        </div>
+        <div class="select-line">
+          <span class="select-label">Lọc theo trình độ</span>
+          <div class="pill-row" id="levelPillsCat"></div>
+        </div>
+        <hr class="divider">
+      </div>
+    </div>
+
+    <div class="cat-block">
+      <div class="shell">
+        <div id="catArticleArea"></div>
+        <div class="pagination" id="catPagination"></div>
+
+        <div class="cross-links">
+          <h3>Khám phá thêm chuyên mục khác</h3>
+          <div class="cross-grid" id="crossLinks"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GLOSSARY VIEW ============ -->
+  <section id="view-glossary" class="view">
+    <div class="glossary-head">
+      <h1>Từ điển thuật ngữ chứng khoán (A–Z)</h1>
+    </div>
+    <nav class="az-strip" id="azStrip"></nav>
+    <div class="glossary-body">
+      <div class="shell letter-group" id="glossaryBody"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot-links">
+      <span>Khách hàng cá nhân</span><span>Khách hàng doanh nghiệp</span><span>Quan hệ nhà đầu tư</span><span>Ngân hàng đầu tư</span><span>Về chúng tôi</span>
+    </div>
+    <div class="foot-social">Kết nối với Techcom Securities nhiều hơn tại đây</div>
+    <div class="foot-bottom">
+      Bản quyền © 2026 thuộc về Công ty Cổ phần Chứng khoán Kỹ Thương
+      <div class="foot-legal">
+        <a>Điều khoản sử dụng</a><a>Công bố rủi ro</a><a>Bảo mật và Riêng tư Dữ liệu</a><a>Liên hệ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ==================== ICONS (inline SVG, stroke, currentColor) ====================
+const SVG_HEAD = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"';
+const ICONS = {
+  'co-phieu': `<svg ${SVG_HEAD}><line x1="5" y1="3" x2="5" y2="21"/><rect x="3" y="9" width="4" height="6" rx="1"/><line x1="12" y1="3" x2="12" y2="21"/><rect x="10" y="5" width="4" height="9" rx="1"/><line x1="19" y1="3" x2="19" y2="21"/><rect x="17" y="11" width="4" height="6" rx="1"/></svg>`,
+  'trai-phieu': `<svg ${SVG_HEAD}><circle cx="12" cy="9" r="6"/><path d="M9 14.3 7 21l5-3 5 3-2-6.7"/></svg>`,
+  'phai-sinh': `<svg ${SVG_HEAD}><path d="M4 7h13M17 7l-3-3M17 7l-3 3"/><path d="M20 17H7M7 17l3-3M7 17l3 3"/></svg>`,
+  'chung-chi-quy': `<svg ${SVG_HEAD}><path d="M12 2v10l7 7"/><circle cx="12" cy="12" r="10"/></svg>`,
+  'chung-quyen': `<svg ${SVG_HEAD}><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4Z"/><line x1="12" y1="6" x2="12" y2="18" stroke-dasharray="2.2 2.2"/></svg>`,
+  'dict': `<svg ${SVG_HEAD}><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>`,
+  'article': `<svg ${SVG_HEAD}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>`,
+  'tag': `<svg ${SVG_HEAD}><path d="M12.59 2.59 20.41 10.41a2 2 0 0 1 0 2.83l-6.17 6.17a2 2 0 0 1-2.83 0L3.59 11.59A2 2 0 0 1 3 10.17V4a1 1 0 0 1 1-1h6.17a2 2 0 0 1 1.42.59Z"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor" stroke="none"/></svg>`,
+};
+function barsIcon(active){
+  const op = i => i <= active ? '1' : '.28';
+  return `<svg ${SVG_HEAD}><rect x="3" y="14" width="4" height="7" opacity="${op(1)}"/><rect x="10" y="9" width="4" height="12" opacity="${op(2)}"/><rect x="17" y="4" width="4" height="17" opacity="${op(3)}"/></svg>`;
+}
+// hub-and-spoke graphic — recolored (currentColor) riff on the illustration at the top of the real
+// tcbs.com.vn/thong-tin/kham-pha-chia-se/ page, reused for the hero graphic and the orbit center badge
+const HUB_SPOKE_SVG = `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+  <line x1="50" y1="50" x2="88" y2="50"/><line x1="50" y1="50" x2="69" y2="82.9"/><line x1="50" y1="50" x2="31" y2="82.9"/>
+  <line x1="50" y1="50" x2="12" y2="50"/><line x1="50" y1="50" x2="31" y2="17.1"/><line x1="50" y1="50" x2="69" y2="17.1"/>
+  <circle cx="50" cy="50" r="12" fill="currentColor" stroke="none"/>
+  <circle cx="88" cy="50" r="6" fill="currentColor" stroke="none"/><circle cx="69" cy="82.9" r="6" fill="currentColor" stroke="none"/>
+  <circle cx="31" cy="82.9" r="6" fill="currentColor" stroke="none"/><circle cx="12" cy="50" r="6" fill="currentColor" stroke="none"/>
+  <circle cx="31" cy="17.1" r="6" fill="currentColor" stroke="none"/><circle cx="69" cy="17.1" r="6" fill="currentColor" stroke="none"/>
+</svg>`;
+
+// ==================== DATA ====================
+const PRODUCTS = [
+  {id:'co-phieu', label:'Cổ phiếu', desc:'Kiến thức nền tảng đến chuyên sâu về đầu tư cổ phiếu.'},
+  {id:'trai-phieu', label:'Trái phiếu', desc:'Từ khái niệm cơ bản đến cách đánh giá rủi ro trái phiếu doanh nghiệp.'},
+  {id:'phai-sinh', label:'Phái sinh', desc:'Hợp đồng tương lai, ký quỹ phái sinh và chiến lược phòng vệ rủi ro.'},
+  {id:'chung-chi-quy', label:'Chứng chỉ quỹ', desc:'Đầu tư uỷ thác qua quỹ mở, quỹ ETF — dễ tiếp cận, chuyên gia quản lý.'},
+  {id:'chung-quyen', label:'Chứng quyền', desc:'Kiến thức về chứng quyền có bảo đảm, từ định nghĩa đến chiến lược giao dịch.'},
+];
+const LEVELS = [
+  {id:'all', label:'Tất cả'},
+  {id:'moi-bat-dau', label:'Mới bắt đầu'},
+  {id:'co-kinh-nghiem', label:'Có kinh nghiệm'},
+  {id:'chuyen-sau', label:'Chuyên sâu'},
+];
+const LEVEL_LABEL = Object.fromEntries(LEVELS.map(l=>[l.id,l.label]));
+const PRODUCT_LABEL = Object.fromEntries(PRODUCTS.map(p=>[p.id,p.label]));
+const LEVEL_INFO = {
+  'moi-bat-dau':   {sub:'Beginner',     bars:1},
+  'co-kinh-nghiem':{sub:'Intermediate', bars:2},
+  'chuyen-sau':    {sub:'Advanced',     bars:3},
+};
+
+// only "co-phieu" has a full illustrative dataset (titles reused from the proposed backlog)
+const ARTICLES_CO_PHIEU = [
+  {title:'Cổ phiếu là gì? Vì sao nên đầu tư cổ phiếu?', excerpt:'Khái niệm nền tảng cho người mới bắt đầu tìm hiểu thị trường cổ phiếu.', level:'moi-bat-dau', date:'Mới đăng'},
+  {title:'Đầu tư chứng khoán là gì? Hướng dẫn cơ bản cho người mới', excerpt:'Tổng quan cách bắt đầu đầu tư chứng khoán, từ mở tài khoản đến đặt lệnh đầu tiên.', level:'moi-bat-dau', date:'3 ngày trước'},
+  {title:'Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường', excerpt:'Giải thích khái niệm giao dịch ký quỹ và 2 hình thức margin đang có tại TCBS.', level:'moi-bat-dau', date:'5 ngày trước'},
+  {title:'Cách chọn cổ phiếu đầu tiên: 5 tiêu chí cho người mới', excerpt:'Khung tiêu chí đơn giản giúp nhà đầu tư mới rút gọn danh sách cổ phiếu cần theo dõi.', level:'moi-bat-dau', date:'1 tuần trước'},
+  {title:'Cách lựa chọn chiến lược đầu tư cổ phiếu phù hợp cho từng nhà đầu tư', excerpt:'So sánh 5 chiến lược đầu tư phổ biến, giúp chọn hướng đi phù hợp khẩu vị rủi ro.', level:'co-kinh-nghiem', date:'1 tuần trước'},
+  {title:'ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu', excerpt:'Cách đọc chỉ số ROE và ứng dụng khi sàng lọc cổ phiếu tiềm năng.', level:'co-kinh-nghiem', date:'2 tuần trước'},
+  {title:'Các kỹ thuật phân tích cổ phiếu mà bạn nên biết', excerpt:'Tổng quan phân tích cơ bản và phân tích kỹ thuật khi đánh giá cổ phiếu.', level:'co-kinh-nghiem', date:'2 tuần trước'},
+  {title:'Portfolio: Tối ưu hoá danh mục đầu tư bằng Mean-Variance Analysis (Markowitz)', excerpt:'Phân tích định lượng cách phân bổ danh mục cổ phiếu theo lý thuyết Markowitz.', level:'chuyen-sau', date:'3 tuần trước'},
+  {title:'Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn', excerpt:'Dấu hiệu nhận biết margin call và các bước xử lý để bảo vệ danh mục.', level:'chuyen-sau', date:'1 tháng trước'},
+];
+
+const GLOSSARY = [
+  {letter:'C', terms:[
+    {term:'Cổ phiếu penny', url:'/tu-dien/co-phieu-penny-la-gi/', def:'Cổ phiếu của doanh nghiệp có vốn hoá nhỏ và thị giá thấp, thường biến động mạnh và rủi ro cao hơn cổ phiếu vốn hoá lớn.',
+      related:{type:'category', label:'Chuyên mục Cổ phiếu', path:'/danh-muc/co-phieu'}},
+    {term:'Chứng chỉ quỹ', url:'/tu-dien/chung-chi-quy-la-gi/', def:'Giấy tờ xác nhận quyền sở hữu một phần vốn góp trong quỹ đầu tư, do công ty quản lý quỹ phát hành.',
+      related:{type:'category', label:'Chuyên mục Chứng chỉ quỹ', path:'/danh-muc/chung-chi-quy'}},
+    {term:'Chứng quyền có bảo đảm (CW)', url:'/tu-dien/chung-quyen-co-bao-dam-la-gi/', def:'Sản phẩm cho phép nhà đầu tư có quyền mua/bán cổ phiếu cơ sở tại mức giá xác định trước, do công ty chứng khoán phát hành và bảo đảm.',
+      related:{type:'category', label:'Chuyên mục Chứng quyền', path:'/danh-muc/chung-quyen'}},
+  ]},
+  {letter:'E', terms:[
+    {term:'EBIT', url:'/tu-dien/ebit-la-gi/', def:'Lợi nhuận trước lãi vay và thuế — chỉ số phản ánh hiệu quả hoạt động kinh doanh cốt lõi của doanh nghiệp.',
+      related:{type:'category', label:'Chuyên mục Cổ phiếu', path:'/danh-muc/co-phieu/co-kinh-nghiem'}},
+    {term:'EPS', url:'/tu-dien/eps-la-gi/', def:'Lợi nhuận sau thuế tính trên mỗi cổ phiếu đang lưu hành — thường dùng kết hợp với P/E để định giá cổ phiếu.',
+      related:{type:'category', label:'Chuyên mục Cổ phiếu', path:'/danh-muc/co-phieu/co-kinh-nghiem'}},
+    {term:'ETF', url:'/tu-dien/etf-la-gi/', def:'Quỹ hoán đổi danh mục, mô phỏng theo một chỉ số hoặc rổ tài sản, được giao dịch trên sàn như một cổ phiếu thông thường.',
+      related:{type:'category', label:'Chuyên mục Chứng chỉ quỹ', path:'/danh-muc/chung-chi-quy'}},
+  ]},
+  {letter:'I', terms:[
+    {term:'IPO', url:'/tu-dien/ipo-la-gi/', def:'Đợt phát hành cổ phiếu lần đầu ra công chúng, đánh dấu việc doanh nghiệp chính thức niêm yết trên sàn chứng khoán.',
+      related:{type:'article', label:'Cổ phiếu là gì? Vì sao nên đầu tư cổ phiếu?', path:'/danh-muc/co-phieu/moi-bat-dau'}},
+  ]},
+  {letter:'M', terms:[
+    {term:'Margin', url:'/tu-dien/margin-la-gi/', def:'Hình thức vay ký quỹ từ công ty chứng khoán để tăng sức mua cổ phiếu, đi kèm rủi ro đòn bẩy.',
+      related:{type:'article', label:'Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường', path:'/danh-muc/co-phieu/moi-bat-dau'}},
+    {term:'Margin call', url:'/tu-dien/margin-call-la-gi/', def:'Yêu cầu bổ sung tài sản đảm bảo khi tỷ lệ ký quỹ giảm xuống dưới ngưỡng an toàn quy định.',
+      related:{type:'article', label:'Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn', path:'/danh-muc/co-phieu/chuyen-sau'}},
+  ]},
+  {letter:'N', terms:[
+    {term:'NAV', url:'/tu-dien/nav-la-gi/', def:'Giá trị tài sản ròng của một quỹ đầu tư, dùng để tính giá mỗi chứng chỉ quỹ tại một thời điểm.',
+      related:{type:'category', label:'Chuyên mục Chứng chỉ quỹ', path:'/danh-muc/chung-chi-quy'}},
+  ]},
+  {letter:'O', terms:[
+    {term:'OTC', url:'/tu-dien/otc-la-gi/', def:'Thị trường giao dịch phi tập trung, nơi cổ phiếu chưa niêm yết trên sàn chính thức được mua bán trực tiếp giữa các bên.',
+      related:{type:'category', label:'Chuyên mục Cổ phiếu', path:'/danh-muc/co-phieu'}},
+  ]},
+  {letter:'P', terms:[
+    {term:'P/E', url:'/tu-dien/pe-la-gi/', def:'Hệ số giá trên lợi nhuận mỗi cổ phiếu — thước đo phổ biến để đánh giá cổ phiếu đang được định giá đắt hay rẻ so với lợi nhuận.',
+      related:{type:'article', label:'Các kỹ thuật phân tích cổ phiếu mà bạn nên biết', path:'/danh-muc/co-phieu/co-kinh-nghiem'}},
+    {term:'P/B', url:'/tu-dien/pb-la-gi/', def:'Hệ số giá trên giá trị sổ sách — so sánh thị giá cổ phiếu với giá trị tài sản ròng trên mỗi cổ phiếu.',
+      related:{type:'article', label:'Các kỹ thuật phân tích cổ phiếu mà bạn nên biết', path:'/danh-muc/co-phieu/co-kinh-nghiem'}},
+  ]},
+  {letter:'R', terms:[
+    {term:'ROE', url:'/tu-dien/roe-la-gi/', def:'Tỷ suất lợi nhuận trên vốn chủ sở hữu — đo lường hiệu quả doanh nghiệp sử dụng vốn của cổ đông để tạo ra lợi nhuận.',
+      related:{type:'article', label:'ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu', path:'/danh-muc/co-phieu/co-kinh-nghiem'}},
+    {term:'ROA', url:'/tu-dien/roa-la-gi/', def:'Tỷ suất lợi nhuận trên tổng tài sản — đo lường hiệu quả sử dụng toàn bộ tài sản của doanh nghiệp để sinh lời.',
+      related:{type:'article', label:'ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu', path:'/danh-muc/co-phieu/co-kinh-nghiem'}},
+  ]},
+  {letter:'T', terms:[
+    {term:'Trái phiếu chuyển đổi', url:'/tu-dien/trai-phieu-chuyen-doi-la-gi/', def:'Loại trái phiếu cho phép người nắm giữ chuyển đổi thành cổ phiếu của tổ chức phát hành theo điều kiện đã thoả thuận trước.',
+      related:{type:'category', label:'Chuyên mục Trái phiếu', path:'/danh-muc/trai-phieu'}},
+  ]},
+  {letter:'V', terms:[
+    {term:'VN-Index', url:'/tu-dien/vn-index-la-gi/', def:'Chỉ số phản ánh biến động giá của toàn bộ cổ phiếu niêm yết trên Sở Giao dịch Chứng khoán TP.HCM (HOSE).',
+      related:{type:'article', label:'Cổ phiếu là gì? Vì sao nên đầu tư cổ phiếu?', path:'/danh-muc/co-phieu/moi-bat-dau'}},
+  ]},
+];
+const ALL_LETTERS = 'ABCDĐEGHIKLMNOPQRSTUVXY'.split('');
+const HAS_LETTER = new Set(GLOSSARY.map(g=>g.letter));
+
+const FEATURE_ITEMS = [
+  {icon:'co-phieu', badge:'Cổ phiếu', date:ARTICLES_CO_PHIEU[0].date, title:ARTICLES_CO_PHIEU[0].title, action:()=>go('/danh-muc/co-phieu/moi-bat-dau')},
+  {icon:'co-phieu', badge:'Cổ phiếu', date:ARTICLES_CO_PHIEU[2].date, title:ARTICLES_CO_PHIEU[2].title, action:()=>go('/danh-muc/co-phieu/moi-bat-dau')},
+  {icon:'dict', badge:'Từ điển', date:'Thuật ngữ', title:'Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn', action:()=>goToTerm('M')},
+  {icon:'co-phieu', badge:'Cổ phiếu', date:ARTICLES_CO_PHIEU[5].date, title:ARTICLES_CO_PHIEU[5].title, action:()=>go('/danh-muc/co-phieu/co-kinh-nghiem')},
+  {icon:'dict', badge:'Từ điển', date:'Thuật ngữ', title:'ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu', action:()=>goToTerm('R')},
+  {icon:'phai-sinh', badge:'Sắp ra mắt', date:'Phái sinh', title:'Phái sinh cho người mới bắt đầu — hợp đồng tương lai là gì?', action:()=>go('/danh-muc/phai-sinh')},
+  {icon:'co-phieu', badge:'Cổ phiếu', date:ARTICLES_CO_PHIEU[7].date, title:ARTICLES_CO_PHIEU[7].title, action:()=>go('/danh-muc/co-phieu/chuyen-sau')},
+  {icon:'chung-chi-quy', badge:'Sắp ra mắt', date:'Chứng chỉ quỹ', title:'Chứng chỉ quỹ là gì? Nên bắt đầu từ đâu', action:()=>go('/danh-muc/chung-chi-quy')},
+];
+
+// ==================== search index ====================
+const SEARCH_INDEX = [
+  ...PRODUCTS.map(p=>({label:p.label, sub:'Chuyên mục', run:()=>go('/danh-muc/'+p.id)})),
+  ...ARTICLES_CO_PHIEU.map(a=>({label:a.title, sub:'Bài viết · Cổ phiếu · '+LEVEL_LABEL[a.level], run:()=>go('/danh-muc/co-phieu/'+a.level)})),
+  ...GLOSSARY.flatMap(g=>g.terms.map(t=>({label:t.term, sub:'Từ điển thuật ngữ', run:()=>goToTerm(g.letter)}))),
+];
+
+// ==================== state ====================
+const state = { route:'hub', product:'co-phieu', level:'all', catPage:1 };
+let currentSearchResults = [];
+
+function go(path){ location.hash = '#' + path; }
+function goToTerm(letter){ go('/tu-dien'); setTimeout(()=>scrollToLetter(letter), 60); }
+
+// ==================== report section scrolling (không đụng tới location.hash — hash chỉ dành cho router bên dưới) ====================
+function scrollToReportSection(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function scrollToMockup(){
+  const el = document.getElementById('mockup-start');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+// Nhảy tức thì về đầu trang khi đổi trang trong mô phỏng.
+// Hai thứ từng làm lệnh cuộn này bị "ăn" mất và trang rơi lại về phần báo cáo bên trên:
+//  (1) một hoạt ảnh cuộn mượt đang chạy dở (ví dụ vừa bấm "Xem mô phỏng ↓" hay một mục ở thanh
+//      bên trái rồi bấm tiếp nút điều hướng) vẫn tiếp tục chạy tới đích cũ sau khi đã nhảy;
+//  (2) scroll anchoring của trình duyệt tự chỉnh lại vị trí cuộn ở frame kế tiếp.
+// => huỷ hoạt ảnh đang chạy bằng một lệnh cuộn tức thì tại chỗ, nhảy về 0, rồi ép lại ở 2 frame sau.
+function jumpToTop(){
+  window.scrollTo({top: window.scrollY, behavior:'auto'});
+  window.scrollTo({top: 0, behavior:'auto'});
+  requestAnimationFrame(() => {
+    window.scrollTo({top: 0, behavior:'auto'});
+    requestAnimationFrame(() => window.scrollTo({top: 0, behavior:'auto'}));
+  });
+}
+
+function parseHash(){
+  const h = location.hash.replace(/^#/,'') || '/';
+  if(h === '/' || h === ''){ return {route:'hub'}; }
+  let m = h.match(/^\/danh-muc\/([a-z-]+)(?:\/([a-z-]+))?$/);
+  if(m){ return {route:'category', product:m[1], level:m[2]}; }
+  if(h === '/tu-dien'){ return {route:'glossary'}; }
+  return {route:'hub'};
+}
+
+// ==================== "Bài viết đề xuất" carousel (tham khảo bố cục "Tin nổi bật" của Pinetree) ====================
+let featureIndex = 0;
+let featureTimer = null;
+
+function renderFeature(){
+  const track = document.getElementById('featureTrack');
+  // render the set twice back-to-back so forward auto-play can loop seamlessly
+  const cardHtml = (f,i) => `
+    <div class="feature-card" onclick="FEATURE_ITEMS[${i}].action()">
+      <div class="feature-thumb">
+        <span class="feature-badge">${f.badge}</span>
+        ${ICONS[f.icon] || ICONS['article']}
+      </div>
+      <div class="feature-body">
+        <span class="feature-date">${f.date}</span>
+        <h3>${f.title}</h3>
+      </div>
+    </div>`;
+  track.innerHTML = FEATURE_ITEMS.map(cardHtml).join('') + FEATURE_ITEMS.map((f,i)=>cardHtml(f,i)).join('');
+  featureIndex = 0;
+  setFeatureTrackX(0, false);
+  startFeatureAutoplay();
+}
+
+function featureStepPx(){
+  const track = document.getElementById('featureTrack');
+  const first = track && track.querySelector('.feature-card');
+  if(!first) return 280;
+  const gap = parseFloat(getComputedStyle(track).columnGap || '20') || 20;
+  return first.getBoundingClientRect().width + gap;
+}
+function setFeatureTrackX(i, animate){
+  const track = document.getElementById('featureTrack');
+  if(!track) return;
+  track.style.transition = animate ? '' : 'none';
+  track.style.transform = `translateX(${-i * featureStepPx()}px)`;
+}
+function advanceFeature(dir){
+  const n = FEATURE_ITEMS.length;
+  const track = document.getElementById('featureTrack');
+  if(dir > 0){
+    featureIndex += 1;
+    setFeatureTrackX(featureIndex, true);
+    if(featureIndex >= n){
+      setTimeout(()=>{ featureIndex -= n; setFeatureTrackX(featureIndex, false); }, 520);
+    }
+  } else {
+    if(featureIndex <= 0){
+      featureIndex = n;
+      setFeatureTrackX(featureIndex, false);
+      if(track) track.getBoundingClientRect(); // force reflow so the next transform animates
+      featureIndex = n - 1;
+      setFeatureTrackX(featureIndex, true);
+    } else {
+      featureIndex -= 1;
+      setFeatureTrackX(featureIndex, true);
+    }
+  }
+}
+function startFeatureAutoplay(){
+  clearInterval(featureTimer);
+  featureTimer = setInterval(()=>advanceFeature(1), 2800);
+}
+function pauseFeatureAutoplay(){ clearInterval(featureTimer); }
+function featureNav(dir){ pauseFeatureAutoplay(); advanceFeature(dir); startFeatureAutoplay(); }
+
+// ==================== hub view ====================
+const HUB_SECTIONS = [
+  {id:'sec-explore', label:'Tìm hiểu về đầu tư'},
+  {id:'sec-roadmap', label:'Lộ trình đầu tư cùng TCBS'},
+  {id:'sec-dict', label:'Từ điển thuật ngữ'},
+];
+
+function renderHub(){
+  document.getElementById('heroGraphic').innerHTML = HUB_SPOKE_SVG;
+
+  document.getElementById('hubRail').innerHTML = HUB_SECTIONS.map((s,i) =>
+    `<a class="rail-item${i===0?' active':''}" data-target="${s.id}" onclick="scrollToSection('${s.id}')">${s.label}</a>`
+  ).join('');
+
+  renderOrbit();
+
+  document.getElementById('levelStepper').innerHTML = LEVELS.filter(l=>l.id!=='all').map(l => {
+    const info = LEVEL_INFO[l.id];
+    const articles = ARTICLES_CO_PHIEU.filter(a=>a.level===l.id).slice(0,3);
+    return `
+    <div class="step-arrow">
+      <span class="step-tag">${info.sub.toUpperCase()}</span>
+      <div class="ic-badge round">${barsIcon(info.bars)}</div>
+      <h3>${l.label}</h3>
+      <ul class="step-articles">${articles.map(a=>`<li>${a.title}</li>`).join('')}</ul>
+      <button class="btn-outline-red" onclick="go('/danh-muc/co-phieu/${l.id}')">Tìm hiểu</button>
+    </div>`;
+  }).join('');
+
+  document.getElementById('dictChips').innerHTML = [
+    ['ROE là gì?','Chỉ số tài chính'], ['Margin call là gì?','Rủi ro ký quỹ'],
+    ['IPO là gì?','Thị trường sơ cấp'], ['NAV là gì?','Chứng chỉ quỹ'],
+  ].map(([term,sub])=>`<div class="dict-chip"><b>${term}</b><span>${sub}</span></div>`).join('');
+
+  renderLatestList();
+  setupScrollSpy();
+}
+
+function renderOrbit(){
+  const C = 260, R = 175;
+  const pts = PRODUCTS.map((p,i) => {
+    const angle = (-90 + i*72) * Math.PI/180;
+    return {p, x: C + R*Math.cos(angle), y: C + R*Math.sin(angle)};
+  });
+  document.getElementById('orbitCenterIcon').innerHTML = HUB_SPOKE_SVG;
+  document.getElementById('orbitNodes').innerHTML = pts.map(({p,x,y}) => `
+    <div class="orbit-node" style="left:${x}px;top:${y}px">
+      <div class="ic-badge">${ICONS[p.id]}</div>
+      <h3>${p.label}</h3>
+      <button class="btn-outline-red" onclick="go('/danh-muc/${p.id}')">Xem chuyên trang →</button>
+    </div>
+  `).join('');
+  document.getElementById('orbitLinesGroup').innerHTML = pts.map(({x,y}) =>
+    `<line x1="${C}" y1="${C}" x2="${x}" y2="${y}"/>`
+  ).join('');
+}
+
+// ==================== scrollspy (left rail) ====================
+let railObserver = null;
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function setupScrollSpy(){
+  if(railObserver){ railObserver.disconnect(); railObserver = null; }
+  const sections = HUB_SECTIONS.map(s=>document.getElementById(s.id)).filter(Boolean);
+  if(!sections.length || !('IntersectionObserver' in window)) return;
+  railObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        document.querySelectorAll('.rail-item').forEach(a=>a.classList.remove('active'));
+        const match = document.querySelector(`.rail-item[data-target="${entry.target.id}"]`);
+        if(match) match.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-25% 0px -55% 0px', threshold:0});
+  sections.forEach(s=>railObserver.observe(s));
+}
+
+function renderLatestList(){
+  const box = document.getElementById('latestList');
+  box.innerHTML = `<h3>Bài viết mới nhất</h3>` + ARTICLES_CO_PHIEU.slice(0,5).map(a => `
+    <div class="latest-item" onclick="go('/danh-muc/co-phieu/${a.level}')" style="cursor:pointer">
+      <div class="li-icon">${ICONS['article']}</div>
+      <div>
+        <div class="li-date">${a.date}</div>
+        <h4>${a.title}</h4>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ==================== search ====================
+function onSearchInput(q){
+  const results = document.getElementById('searchResults');
+  const latest = document.getElementById('latestList');
+  const query = q.trim().toLowerCase();
+  if(!query){ results.classList.remove('show'); latest.style.display=''; return; }
+  latest.style.display='none';
+  currentSearchResults = SEARCH_INDEX.filter(item => item.label.toLowerCase().includes(query)).slice(0,7);
+  if(currentSearchResults.length === 0){
+    results.innerHTML = `<div class="sr-empty">Không tìm thấy kết quả phù hợp với "${q}"</div>`;
+  } else {
+    results.innerHTML = currentSearchResults.map((r,i) => `
+      <div class="sr-item" onclick="currentSearchResults[${i}].run()">
+        <span class="sr-label">${r.label}</span>
+        <span class="sr-sub">${r.sub}</span>
+      </div>
+    `).join('');
+  }
+  results.classList.add('show');
+}
+
+// ==================== category view ====================
+function placeholderHtml(targetProduct){
+  return `<div class="placeholder-box">
+    <strong>Chuyên mục "${PRODUCT_LABEL[targetProduct]}" dùng chung khuôn mẫu này</strong>
+    Bản mô phỏng chỉ dựng đầy đủ dữ liệu minh hoạ cho chuyên mục Cổ phiếu.
+    <div><button class="btn-outline-red" onclick="go('/danh-muc/co-phieu')">Xem ví dụ đầy đủ ở Cổ phiếu →</button></div>
+  </div>`;
+}
+
+function buildPagination(current, total){
+  if(total <= 1) return '';
+  const btn = (n,label,extraClass='') => `<span class="page-btn ${extraClass} ${n===current?'is-active':''}" onclick="setCatPage(${n})">${label}</span>`;
+  let pages = [];
+  const add = n => pages.push(btn(n,n));
+  if(total <= 6){
+    for(let n=1;n<=total;n++) add(n);
+  } else {
+    add(1);
+    if(current>3) pages.push(`<span class="page-btn ellipsis">…</span>`);
+    for(let n=Math.max(2,current-1); n<=Math.min(total-1,current+1); n++) add(n);
+    if(current<total-2) pages.push(`<span class="page-btn ellipsis">…</span>`);
+    add(total);
+  }
+  const prev = `<span class="page-btn arrow" onclick="setCatPage(${Math.max(1,current-1)})">«</span>`;
+  const next = `<span class="page-btn arrow" onclick="setCatPage(${Math.min(total,current+1)})">»</span>`;
+  return prev + pages.join('') + next;
+}
+
+function renderCategory(product){
+  state.product = product;
+  renderPills('productPillsCat', PRODUCTS, state.product, 'setProductCat');
+  renderPills('levelPillsCat', LEVELS, state.level, 'setLevelCat');
+  document.getElementById('catViewTitle').textContent = PRODUCT_LABEL[state.product];
+  document.getElementById('catIcon').innerHTML = ICONS[state.product];
+  renderCrossLinks(state.product);
+
+  const area = document.getElementById('catArticleArea');
+  const pag = document.getElementById('catPagination');
+
+  if(state.product !== 'co-phieu'){
+    area.innerHTML = placeholderHtml(state.product);
+    pag.innerHTML = '';
+    return;
+  }
+
+  const list = state.level==='all' ? ARTICLES_CO_PHIEU : ARTICLES_CO_PHIEU.filter(a=>a.level===state.level);
+  const perPage = 3;
+  const totalPages = Math.max(1, Math.ceil(list.length / perPage));
+  if(state.catPage > totalPages) state.catPage = totalPages;
+
+  const pageItems = list.slice((state.catPage-1)*perPage, state.catPage*perPage);
+  area.innerHTML = `<div class="card row-list-wrap"><div class="row-list">${pageItems.map(a => `
+      <div class="row-card">
+        <div class="row-icon">${ICONS['co-phieu']}</div>
+        <div class="row-txt">
+          <h3>${a.title}</h3>
+          <p>${a.excerpt}</p>
+        </div>
+        <div class="row-right">
+          <span class="mini-tag level">${LEVEL_LABEL[a.level]}</span>
+          <span class="read-more">Xem bài →</span>
+        </div>
+      </div>
+    `).join('')}</div></div>`;
+
+  pag.innerHTML = buildPagination(state.catPage, totalPages);
+}
+function renderPills(containerId, items, activeId, onClick){
+  const el = document.getElementById(containerId);
+  el.innerHTML = items.map(it =>
+    `<button class="pill ${it.id===activeId?'is-active':''}" onclick="${onClick}('${it.id}')">${it.label}</button>`
+  ).join('');
+}
+function renderCrossLinks(currentProduct){
+  document.getElementById('crossLinks').innerHTML = PRODUCTS.filter(p=>p.id!==currentProduct).map(p => `
+    <a class="cross-card" onclick="go('/danh-muc/${p.id}')">
+      <span class="ic-badge">${ICONS[p.id]}</span>
+      <span>${p.label}</span>
+    </a>
+  `).join('');
+}
+function setProductCat(p){ go('/danh-muc/' + p); }
+function setLevelCat(l){ state.level = l; state.catPage = 1; render(); }
+function setCatPage(n){ state.catPage = n; render(); }
+
+// ==================== glossary view ====================
+function renderGlossary(){
+  document.getElementById('azStrip').innerHTML = ALL_LETTERS.map(l =>
+    HAS_LETTER.has(l) ? `<button onclick="scrollToLetter('${l}')">${l}</button>` : `<span>${l}</span>`
+  ).join('');
+  document.getElementById('glossaryBody').innerHTML = GLOSSARY.map(g => `
+    <div id="letter-${g.letter}">
+      <h2>${g.letter}</h2>
+      ${g.terms.map(t=>`<div class="term"><h3>${t.term}</h3><p>${t.def}</p>${t.related?`<a class="term-related" onclick="go('${t.related.path}')"><span class="term-related-ic">${ICONS[t.related.type==='article'?'article':'tag']}</span>${t.related.type==='article'?'Bài viết liên quan: ':''}${t.related.label} →</a>`:''}</div>`).join('')}
+    </div>
+  `).join('');
+}
+function scrollToLetter(l){
+  const el = document.getElementById('letter-' + l);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ==================== breadcrumb + router ====================
+function renderBreadcrumb(r){
+  const bc = document.getElementById('breadcrumb');
+  if(r.route === 'hub'){
+    bc.innerHTML = `<span>Khám phá &amp; Chia sẻ</span>`;
+  } else if(r.route === 'category'){
+    bc.innerHTML = `<a onclick="go('/')">Khám phá &amp; Chia sẻ</a> / <span>${PRODUCT_LABEL[state.product]}</span>`;
+  } else {
+    bc.innerHTML = `<a onclick="go('/')">Khám phá &amp; Chia sẻ</a> / <span>Từ điển thuật ngữ chứng khoán</span>`;
+  }
+}
+
+let lastRouteKey = null;
+let hasRenderedOnce = false;
+function render(){
+  const r = parseHash();
+  const routeKey = r.route + '|' + (r.product || '') + '|' + (r.level || '');
+  const isNewRouteEntry = routeKey !== lastRouteKey;
+  if(isNewRouteEntry && r.route === 'category'){
+    // fresh navigation into a category (not just an in-page filter/page click): apply level from URL if given, else reset
+    state.level = r.level && LEVEL_LABEL[r.level] ? r.level : 'all';
+    state.catPage = 1;
+  }
+  lastRouteKey = routeKey;
+  state.route = r.route;
+  document.body.classList.toggle('is-hub', r.route === 'hub');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  if(r.route === 'hub'){
+    document.getElementById('view-hub').classList.add('active');
+    renderHub();
+  } else if(r.route === 'category'){
+    if(railObserver){ railObserver.disconnect(); railObserver = null; }
+    document.getElementById('view-category').classList.add('active');
+    renderCategory(r.product);
+  } else {
+    if(railObserver){ railObserver.disconnect(); railObserver = null; }
+    document.getElementById('view-glossary').classList.add('active');
+    renderGlossary();
+  }
+  renderBreadcrumb(r);
+  // Bấm bất kỳ nút điều hướng nào trong mô phỏng (Xem chuyên trang, Tìm hiểu, Xem toàn bộ từ điển,
+  // breadcrumb...) => ẩn hẳn phần báo cáo bên trên và về đầu cửa sổ, nên trang con nằm ngay đầu
+  // màn hình đúng như một trang thật, không còn cách nào rơi lại vào phần đánh giá.
+  // Đổi bộ lọc/trang trong cùng 1 route thì giữ nguyên vị trí cuộn.
+  if(isNewRouteEntry && hasRenderedOnce){
+    enterMockOnly();
+  }
+  hasRenderedOnce = true;
+}
+
+function enterMockOnly(){
+  document.body.classList.add('mock-only');
+  jumpToTop();
+}
+// link "↑ Xem lại đánh giá & đề xuất bên trên" trên banner: hiện lại phần báo cáo rồi về đầu trang
+function scrollToReportTop(){
+  document.body.classList.remove('mock-only');
+  jumpToTop();
+}
+
+window.addEventListener('hashchange', render);
+renderFeature();
+render();
+// mở file bằng link trỏ thẳng vào một route cụ thể (ví dụ mockup.html#/danh-muc/co-phieu từ index.html)
+// -> vào luôn phần mô phỏng; mở trơn mockup.html (không có hash) thì đọc báo cáo trước như bình thường
+if(location.hash && location.hash !== '#'){
+  enterMockOnly();
+}
+</script>
+</body>
+</html>

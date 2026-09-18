@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hợp đồng tương lai VN30 là gì? Cách giao dịch tại TCBS</title>
+<meta name="description" content="Hợp đồng tương lai VN30 là gì, đặc điểm và kỳ hạn đáo hạn ra sao? Cách đọc mã hợp đồng, mức ký quỹ và cách giao dịch VN30 futures tại TCBS qua iFuture.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--red-dark);
+    margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+  }
+  .formula .label {
+    font-weight: 700;
+    color: var(--red-dark);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .formula code {
+    display: block;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+    background: #FFFFFF;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .formula p { margin: 0; font-size: 14.5px; color: var(--gray); }
+  .verify-note {
+    font-size: 13.5px;
+    color: var(--gray);
+    font-style: italic;
+    margin: -8px 0 24px;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol {
+    margin: 0;
+    padding: 0 0 16px 20px;
+  }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Phái sinh</div>
+  <h1>Hợp đồng tương lai VN30 là gì? Cách giao dịch tại TCBS</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Biểu đồ điểm số VN30 kèm bảng giá phái sinh trên TCInvest.<br>
+      Alt text gợi ý: "Giao diện giao dịch hợp đồng tương lai VN30 trên TCInvest"
+    </div>
+  </div>
+
+  <p>Hợp đồng tương lai VN30 là một hợp đồng phái sinh có giá trị phụ thuộc vào chỉ số VN30, cho phép nhà đầu tư đặt cược vào xu hướng tăng hoặc giảm của rổ 30 cổ phiếu vốn hóa lớn nhất sàn HOSE mà không cần mua từng mã riêng lẻ. Tại TCBS, sản phẩm này được giao dịch qua nền tảng <strong>iFuture</strong>.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#dac-diem">Đặc điểm hợp đồng tương lai VN30</a></li>
+      <li><a href="#doc-ma-hop-dong">Cách đọc mã hợp đồng</a></li>
+      <li><a href="#ky-han-dao-han">Các kỳ hạn đáo hạn đang niêm yết</a></li>
+      <li><a href="#gio-giao-dich">Giờ giao dịch</a></li>
+      <li><a href="#ky-quy">Ký quỹ khi giao dịch VN30</a></li>
+      <li><a href="#loai-lenh">Các loại lệnh giao dịch</a></li>
+      <li><a href="#cach-giao-dich-tcbs">Cách giao dịch tại TCBS</a></li>
+      <li><a href="#vi-du">Ví dụ minh họa lãi lỗ</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="dac-diem">Đặc điểm hợp đồng tương lai VN30</h2>
+  <ul>
+    <li><b>Tài sản cơ sở:</b> chỉ số VN30</li>
+    <li><b>Hệ số nhân hợp đồng:</b> 100.000 đồng × điểm chỉ số</li>
+    <li><b>Đơn vị yết giá tối thiểu:</b> 0,1 điểm chỉ số, tương đương 10.000 đồng/hợp đồng</li>
+    <li><b>Biên độ dao động giá:</b> ±7% mỗi phiên</li>
+    <li><b>Giới hạn vị thế:</b> tối đa 5.000 hợp đồng với nhà đầu tư cá nhân, 10.000 hợp đồng với nhà đầu tư tổ chức</li>
+    <li><b>Thanh toán khi đáo hạn:</b> bằng tiền mặt theo chỉ số VN30 đóng cửa ngày đáo hạn, không giao nhận cổ phiếu thực tế</li>
+  </ul>
+
+  <h2 id="doc-ma-hop-dong">Cách đọc mã hợp đồng tương lai VN30</h2>
+  <p>Từ khi hệ thống giao dịch KRX vận hành, mã hợp đồng gồm 9 ký tự theo cấu trúc: loại chứng khoán, nhóm sản phẩm, tài sản cơ sở, năm đáo hạn, tháng đáo hạn và định danh. Ví dụ, hợp đồng VN30 đáo hạn tháng 6/2025 hiển thị dưới dạng "41I1F6000", thay cho định dạng cũ "VN30F2406" trước đây. Ký hiệu tháng trong mã mới không theo cách đọc trực quan như tên tháng, nên nhà đầu tư nên xem đúng mã đang giao dịch trực tiếp trên TCInvest thay vì tự suy đoán.</p>
+
+  <h2 id="ky-han-dao-han">Các kỳ hạn đáo hạn đang niêm yết đồng thời</h2>
+  <p>Thị trường luôn niêm yết đồng thời 4 mã hợp đồng VN30: tháng hiện tại, tháng kế tiếp, và tháng cuối của 2 quý gần nhất tiếp theo. Ngày đáo hạn là thứ Năm của tuần thứ ba trong tháng đáo hạn. Hợp đồng tháng hiện tại thường có thanh khoản cao nhất nên được giao dịch phổ biến nhất.</p>
+
+  <h2 id="gio-giao-dich">Giờ giao dịch</h2>
+  <ul>
+    <li>Phiên sáng: 8:45–9:00 (khớp lệnh định kỳ mở cửa ATO), 9:00–11:30 (khớp lệnh liên tục)</li>
+    <li>Phiên chiều: 13:00–14:30 (khớp lệnh liên tục), 14:30–14:45 (khớp lệnh định kỳ đóng cửa ATC)</li>
+  </ul>
+  <p>Thị trường phái sinh mở cửa sớm hơn thị trường cơ sở 15 phút.</p>
+
+  <h2 id="ky-quy">Ký quỹ khi giao dịch hợp đồng tương lai VN30</h2>
+
+  <div class="formula">
+    <div class="label">📐 Công thức ước tính ký quỹ ban đầu</div>
+    <code>Ký quỹ ban đầu ≈ 17% × Giá trị hợp đồng = 17% × (Điểm chỉ số × 100.000 đồng)</code>
+    <p>Ví dụ, nếu VN30 đang ở 1.250 điểm, giá trị một hợp đồng tương ứng 125.000.000 đồng, ký quỹ ban đầu ước tính khoảng 21.250.000 đồng.</p>
+  </div>
+  <p class="verify-note">Đây là ví dụ minh họa theo tỷ lệ ký quỹ ban đầu 17% do VSDC quy định, điểm số thực tế thay đổi liên tục nên số tiền ký quỹ cụ thể cần xem trên ứng dụng tại thời điểm giao dịch.</p>
+
+  <p>Khi mức sử dụng ký quỹ chạm ngưỡng 87%, tài khoản nhận cảnh báo bổ sung ký quỹ. Nếu chạm ngưỡng 90%, vị thế có thể bị xử lý bắt buộc (force-sell). Cơ chế ký quỹ ban đầu, ký quỹ duy trì và cách quản lý an toàn sẽ được giải thích đầy đủ hơn trong bài <em>"Ký quỹ phái sinh là gì? Cách tính và quản lý an toàn"</em> (liên kết khi bài này được xuất bản).</p>
+
+  <h2 id="loai-lenh">Các loại lệnh giao dịch phái sinh</h2>
+  <table>
+    <thead>
+      <tr><th>Loại lệnh</th><th>Ý nghĩa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LO</td><td>Lệnh giới hạn, đặt tại một mức giá cụ thể</td></tr>
+      <tr><td>ATO</td><td>Lệnh khớp giá mở cửa, chỉ đặt trong phiên ATO đầu ngày</td></tr>
+      <tr><td>ATC</td><td>Lệnh khớp giá đóng cửa, chỉ đặt trong phiên ATC cuối ngày</td></tr>
+      <tr><td>MTL</td><td>Lệnh thị trường giới hạn, khớp ngay theo giá tốt nhất, phần chưa khớp chuyển thành lệnh LO</td></tr>
+      <tr><td>MOK</td><td>Khớp toàn bộ khối lượng đặt hoặc hủy toàn bộ nếu không khớp hết</td></tr>
+      <tr><td>MAK</td><td>Khớp toàn bộ hoặc một phần, phần còn lại tự động hủy</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="cach-giao-dich-tcbs">Cách giao dịch hợp đồng tương lai VN30 tại TCBS</h2>
+  <p>Nếu chưa có tài khoản chứng khoán tại TCBS, nhà đầu tư mở tài khoản cơ sở và tiểu khoản phái sinh cùng lúc. Nếu đã có sẵn tài khoản cơ sở, chỉ cần mở thêm tiểu khoản phái sinh. Toàn bộ thao tác thực hiện qua hợp đồng điện tử và có thể giao dịch ngay trong ngày tiểu khoản được kích hoạt. Sau khi có tiểu khoản, đặt lệnh trực tiếp trên TCInvest, chọn đúng mã hợp đồng theo kỳ hạn muốn giao dịch.</p>
+  <p>Xem thêm kiến thức nền tảng về đòn bẩy, thanh toán lãi lỗ hàng ngày (T+0) và các loại chứng khoán phái sinh khác tại <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/phai-sinh/chung-khoan-phai-sinh-la-gi-kien-thuc-co-ban-cho-nguoi-moi-bat-dau/" target="_blank" rel="noopener">Chứng khoán phái sinh là gì? Kiến thức cơ bản cho người mới bắt đầu</a>.</p>
+
+  <h2 id="vi-du">Ví dụ minh họa lãi lỗ</h2>
+  <p>Giả sử nhà đầu tư mua (Long) 1 hợp đồng VN30 tại 1.250 điểm. Nếu cuối phiên chỉ số đóng cửa ở 1.260 điểm, lãi tạm tính là (1.260 − 1.250) × 100.000 = 1.000.000 đồng, được ghi nhận theo cơ chế thanh toán lãi lỗ hàng ngày T+0. Ngược lại, nếu đóng cửa ở 1.235 điểm, khoản lỗ tương ứng 1.500.000 đồng và phải nộp bổ sung trước 8 giờ sáng ngày giao dịch kế tiếp.</p>
+  <p class="verify-note">Đây là ví dụ minh họa nguyên lý tính toán, không phải khuyến nghị giao dịch.</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Mua hợp đồng tương lai VN30 có phải là mua cổ phiếu VN30 không?</summary>
+    <p class="faq-a">Không. Đây là hợp đồng phái sinh có giá trị theo chỉ số, nhà đầu tư không sở hữu bất kỳ cổ phiếu nào trong rổ VN30.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Nên giao dịch mã hợp đồng tháng nào?</summary>
+    <p class="faq-a">Hợp đồng tháng hiện tại thường có thanh khoản cao nhất nên được giao dịch phổ biến nhất, trừ khi nhà đầu tư có chiến lược riêng cho kỳ hạn xa hơn.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Không đóng vị thế trước ngày đáo hạn thì sao?</summary>
+    <p class="faq-a">Vị thế tự động tất toán theo chỉ số VN30 đóng cửa ngày đáo hạn, thanh toán bằng tiền mặt, không cần thao tác thêm.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Ký quỹ giao dịch VN30 hiện nay bao nhiêu?</summary>
+    <p class="faq-a">Theo quy định VSDC, tỷ lệ ký quỹ ban đầu là 17% giá trị hợp đồng. Số tiền cụ thể thay đổi theo điểm số chỉ số mỗi ngày.</p>
+  </details>
+
+  <div class="cta">
+    <p>Đã hiểu cơ chế VN30 futures? Bắt đầu giao dịch với iFuture tại TCBS.</p>
+    <a href="https://www.tcbs.com.vn/en/individual/ifuture/" target="_blank" rel="noopener">Tìm hiểu về iFuture tại TCBS</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: help.tcbs.com.vn (đặc điểm hợp đồng, mã hợp đồng KRX, mở tiểu khoản phái sinh, tỷ lệ ký quỹ VSDC); đối chiếu giờ giao dịch với tài liệu công khai của các công ty chứng khoán khác.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 18/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

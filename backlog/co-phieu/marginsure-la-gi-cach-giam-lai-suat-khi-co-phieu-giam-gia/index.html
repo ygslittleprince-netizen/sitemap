@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MargInsure là gì? Cách giảm lãi suất khi cổ phiếu giảm giá</title>
+<meta name="description" content="MargInsure là gì và hoạt động ra sao? Cách gói Cân bằng, Phòng ngự giúp giảm lãi vay margin khi giá cổ phiếu giảm, kèm ví dụ tính cụ thể tại TCBS.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Cổ phiếu</div>
+  <h1>MargInsure là gì? Cách giảm lãi suất khi cổ phiếu giảm giá</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Giao diện TCInvest mục "Quản lý Margin" phần Gói bổ trợ.<br>
+      Alt text gợi ý: "Giao diện đăng ký MargInsure trên TCInvest"
+    </div>
+  </div>
+
+  <p>MargInsure là sản phẩm bổ trợ lãi vay margin của TCBS. Khi giá đóng cửa của cổ phiếu giảm xuống dưới giá vốn, lãi suất khoản vay margin được giảm cho những ngày đó thay vì giữ nguyên như bình thường. MargInsure gồm hai gói <b>Cân bằng</b> và <b>Phòng ngự</b>, áp dụng cho từng khoản vay riêng lẻ. Xem khái niệm margin cơ bản tại <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-la-gi-phan-biet-margin-tplus-va-han-muc-vay-ky-quy-thuong/" target="_blank" rel="noopener">Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</a>.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#hoat-dong">MargInsure hoạt động như thế nào</a></li>
+      <li><a href="#so-sanh">So sánh 2 gói: Cân bằng và Phòng ngự</a></li>
+      <li><a href="#vi-du">Ví dụ cách tính điều chỉnh lãi vay</a></li>
+      <li><a href="#dieu-kien">Điều kiện áp dụng</a></li>
+      <li><a href="#dang-ky">Cách đăng ký MargInsure trên TCInvest</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="hoat-dong">MargInsure hoạt động như thế nào</h2>
+  <p>Lãi vay ký quỹ thông thường được tính theo ngày và không phụ thuộc việc danh mục đang lãi hay lỗ, lãi vay vẫn chạy đều kể cả khi giá cổ phiếu đi xuống. MargInsure can thiệp đúng vào điểm này: lãi suất khoản vay được giảm cho những ngày giá đóng cửa nằm dưới giá vốn, giúp giảm chi phí nắm giữ ở giai đoạn giá biến động.</p>
+
+  <h2 id="so-sanh">So sánh 2 gói: Cân bằng và Phòng ngự</h2>
+  <table>
+    <thead>
+      <tr><th></th><th>MargInsure – Cân bằng</th><th>MargInsure – Phòng ngự</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Phí tham gia</td><td>Miễn phí</td><td>0,15%/giá trị giải ngân</td></tr>
+      <tr><td>Chính sách lãi suất</td><td>Giảm 3%/năm khi giá đóng cửa thấp hơn giá vốn; tăng 3%/năm khi giá đóng cửa cao hơn giá vốn</td><td>Giảm 3%/năm khi giá đóng cửa giảm hơn 3% so với giá vốn, không tăng lãi khi giá lên</td></tr>
+      <tr><td>Phù hợp khi</td><td>Giá cổ phiếu dao động nhẹ quanh giá vốn, chấp nhận lãi tăng nhẹ nếu giá lên</td><td>Giá có thể giảm sâu rồi phục hồi, muốn chắc chắn lãi không tăng thêm</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Mức điều chỉnh 3%/năm và mức phí trên theo tài liệu nội bộ TCBS, cần xác nhận lại với đội sản phẩm trước khi công bố chính thức vì có thể thay đổi theo từng thời kỳ.</p>
+  <p>Giá vốn là giá khớp mua cổ phiếu tại ngày giải ngân khoản vay. MargInsure áp dụng đồng thời với các chính sách lãi vay khác do TCBS ban hành, ngoại trừ gói Margin T3, T5 và T10.</p>
+
+  <h2 id="vi-du">Ví dụ cách tính điều chỉnh lãi vay</h2>
+  <div class="formula">Mức điều chỉnh mỗi ngày = Giá trị khoản vay × 3% ÷ 365</div>
+  <p>Với khoản vay 100.000.000 đồng, mức điều chỉnh mỗi ngày là 8.219 đồng. Giả sử trong kỳ có 20 ngày giá đóng cửa thấp hơn giá vốn và 10 ngày cao hơn: gói Cân bằng giảm 164.384 đồng và tăng lại 82.192 đồng, chênh lệch có lợi 82.192 đồng, phí tham gia 0 đồng. Gói Phòng ngự chỉ tính những ngày giá giảm hơn 3% so với giá vốn nên số ngày được giảm có thể ít hơn, bù lại không phát sinh phần tăng lãi, phí tham gia 150.000 đồng.</p>
+  <p class="note">Đây là ví dụ minh hoạ cách tính với số liệu giả định, không phải cam kết mức tiết kiệm thực tế.</p>
+
+  <h2 id="dieu-kien">Điều kiện áp dụng</h2>
+  <ul>
+    <li>Tại một thời điểm, mỗi khoản vay chỉ được áp dụng 1 gói MargInsure.</li>
+    <li>Thời hạn áp dụng từ ngày giải ngân đến ngày đáo hạn khoản vay, không quá 89 ngày.</li>
+    <li>Có thể huỷ bất kỳ lúc nào, không mất phí huỷ.</li>
+    <li>TCBS điều chỉnh chính sách theo từng thời kỳ và có thông báo trước khi áp dụng.</li>
+  </ul>
+  <p>Giao dịch ký quỹ chứng khoán tại Việt Nam được thực hiện theo quy định tại <a href="https://thuvienphapluat.vn/van-ban/Chung-khoan/Thong-tu-120-2020-TT-BTC-giao-dich-co-phieu-niem-yet-dang-ky-giao-dich-chung-khoan-chung-khoan-phai-sinh-437767.aspx" target="_blank" rel="noopener">Thông tư 120/2020/TT-BTC</a>.</p>
+
+  <h2 id="dang-ky">Cách đăng ký MargInsure trên TCInvest</h2>
+  <ol>
+    <li>Vào TCInvest, gõ "Quản lý Margin" vào ô tìm kiếm.</li>
+    <li>Chọn tab <b>Gói bổ trợ</b> trong mục "Áp dụng thêm".</li>
+    <li>Chọn thẻ <b>Cân bằng</b> hoặc <b>Phòng ngự</b> (chỉ chọn 1 trong 2 cho mỗi khoản vay), bấm <b>Chi tiết</b> để xác nhận đăng ký.</li>
+  </ol>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>MargInsure có mất phí huỷ không?</summary>
+    <p class="faq-a">Không. Có thể huỷ ngay lập tức, không mất phí.</p>
+  </details>
+  <details class="faq-item">
+    <summary>MargInsure áp dụng cùng lúc với gói Margin T3, T5, T10 được không?</summary>
+    <p class="faq-a">Không. MargInsure áp dụng đồng thời với các chính sách lãi vay khác, ngoại trừ gói Margin T3, T5 và T10.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Nên chọn gói Cân bằng hay Phòng ngự?</summary>
+    <p class="faq-a">Cân bằng phù hợp nếu không muốn trả phí trước và chấp nhận lãi tăng nhẹ khi giá lên. Phòng ngự phù hợp nếu muốn chắc chắn lãi không tăng thêm trong mọi trường hợp, đổi lại trả phí tham gia trước.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Mỗi khoản vay có thể dùng nhiều gói MargInsure cùng lúc không?</summary>
+    <p class="faq-a">Không. Tại một thời điểm, mỗi khoản vay chỉ được áp dụng đúng 1 gói.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn giảm chi phí vay margin khi giá cổ phiếu biến động?</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/co-phieu-istock/vay-ky-quy-margin/MargInsure/" target="_blank" rel="noopener">Đăng ký MargInsure trên TCInvest</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: help.tcbs.com.vn (huỷ gói không mất phí, tương thích với ưu đãi lãi suất giải ngân lần đầu); tài liệu nội bộ TCBS về MargInsure (mức điều chỉnh, phí, điều kiện áp dụng — cần xác nhận trước khi công bố); Thông tư 120/2020/TT-BTC.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 18/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

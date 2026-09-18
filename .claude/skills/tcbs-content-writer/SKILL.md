@@ -17,6 +17,15 @@ Whichever topic you land on, check it against TCBS's existing 10 articles (and a
 
 When rewriting an existing TCBS article rather than starting from scratch, default to keeping its existing title/URL slug as-is unless the user asks for a new title — preserving the slug preserves whatever ranking signal that URL already has. A sharper title (a concrete number, a hook) can still be offered as a suggestion, but the user's existing title wins unless they say otherwise.
 
+## Nguồn tham khảo chuyên môn
+
+Nội dung chuyên môn (định nghĩa, công thức, cơ chế sản phẩm, quy định) phải dựa trên nguồn uy tín, không bịa hoặc suy diễn từ kiến thức chung chung:
+
+- **Nguồn chính**: [help.tcbs.com.vn](https://help.tcbs.com.vn/) — ưu tiên hàng đầu vì đây là mô tả chính thức của TCBS về sản phẩm/dịch vụ/quy trình của chính mình (margin, CW, chứng chỉ quỹ, phái sinh...). Khi bài viết đề cập đến cơ chế hoặc sản phẩm cụ thể của TCBS, luôn đối chiếu với trang này trước.
+- **Nguồn bổ trợ**: các trang kiến thức đầu tư uy tín của công ty chứng khoán/ngân hàng khác — DNSE, VPBank(S) — dùng để bổ sung kiến thức nền tảng (định nghĩa chỉ số, cơ chế thị trường chung) khi help.tcbs.com.vn không có hoặc không đủ chi tiết.
+- **Không dùng** nguồn ngoài không rõ uy tín (blog cá nhân, diễn đàn, trang tổng hợp không ghi nguồn, nội dung không xác minh được). Nếu không có nguồn uy tín cho một chi tiết cụ thể, áp dụng kỷ luật xác minh ở mục "Verification discipline" bên dưới (đặt placeholder, không bịa).
+- Khi trích dẫn hoặc diễn giải từ các nguồn này, viết lại bằng giọng văn riêng của TCBS — không sao chép nguyên văn (xem mục "Reusing another outlet's content" ở phần lỗi cần tránh).
+
 ## The four patterns that actually work, in order of effect
 
 These aren't stylistic preferences — they came from comparing which of VPBankS's 44 articles behaved like strong SEO/GEO assets and why, then checking that against TCBS's own thin 3-Mạnh-out-of-10 record. Lean on whichever pattern fits the topic; the strongest articles usually combine two of them.
@@ -37,7 +46,7 @@ These aren't stylistic preferences — they came from comparing which of VPBankS
 
 ## Structure to actually write
 
-Produce these pieces, in this order, the same way past SEO/GEO audits in this project present recommendations (short label, then the text, then an HTML snippet where relevant) so the output drops straight into a report or a CMS field:
+Cách viết và cấu trúc trang cần **linh hoạt theo từng bài**, không rập khuôn máy móc theo một khung cố định cho mọi chủ đề. Danh sách dưới đây là các thành phần cần chuẩn bị trước khi viết (checklist nội bộ để không bỏ sót gì), không phải một dàn bài phải theo đúng thứ tự/hình thức cho mọi bài — ví dụ một bài so sánh A-vs-B có thể mở bằng bảng so sánh thay vì định nghĩa, một bài glossary có thể không cần mục FAQ riêng vì mỗi mục con đã tự trả lời một câu hỏi. Sản xuất các phần sau, theo cùng cách các báo cáo audit SEO/GEO trước đây trong project này trình bày đề xuất (nhãn ngắn, rồi nội dung, rồi đoạn HTML nếu liên quan) để output có thể đưa thẳng vào báo cáo hoặc một CMS field:
 
 1. **Focus keywords** — primary, secondary/LSI, and 2-4 long-tail GEO phrasings shaped like real questions ("X là gì", "nên chọn X hay Y") since that's the shape AI engines answer directly.
 2. **Title** — matches a real search phrasing, includes the primary keyword, states a concrete number or specific hook where one genuinely exists (word counts in past audits favored titles like "Phễu lọc 5 bước" over vague ones). When rewriting an existing article, default to keeping its current title/slug (see above) unless the user asks for a new one.
@@ -48,9 +57,19 @@ Produce these pieces, in this order, the same way past SEO/GEO audits in this pr
 7. **Suggested schema** — `Article` always; `FAQPage` if there's an FAQ section; `BreadcrumbList` matching the category path (`Trang chủ / Thông tin / {Chuyên mục}`, TCBS's existing pattern). Give the JSON-LD block.
 8. **Byline note** — remind the user this needs a visible author/reviewer name on publish (not just hidden in meta, TCBS's current pattern). Don't invent a person's name; "Do Đội ngũ nội dung TCBS biên soạn" (a team byline) is an acceptable default when the user hasn't named an individual reviewer.
 
-## Writing voice — things to strip out
+## Writing voice — human-writing checklist (luôn kiểm tra trước khi giao bài)
 
-When the user asks for content that reads as human-written rather than AI-written (this comes up often for TCBS work), specifically avoid: the hyphen/em-dash used as a clause connector (write two sentences, or use "và", "nhưng", "vì" instead), decorative quotation marks around ordinary terms, and stock AI-essay openers/transitions ("trong thế giới đầy biến động", "hãy cùng khám phá", "không thể phủ nhận rằng", "đóng vai trò quan trọng"). Markdown list markers (`-` or `*`) and table separator rows are formatting syntax, not prose, so they're exempt from the hyphen rule.
+Trước khi trình bày bản nháp cuối cùng, tự rà lại toàn bộ bài theo checklist "có dấu hiệu AI không?" sau đây — đây là bước bắt buộc, không phải gợi ý tùy chọn:
+
+1. **Lạm dụng gạch ngang "—" / "-" làm liên từ nối mệnh đề.** Viết thành hai câu riêng, hoặc dùng "và", "nhưng", "vì", "nên" thay thế. (Dấu gạch đầu dòng của markdown list và dòng phân cách của bảng là cú pháp định dạng, không phải văn xuôi, nên không tính vào lỗi này.)
+2. **Lạm dụng dấu "..." không cần thiết** — cắt bỏ, viết câu đầy đủ và dứt khoát thay vì để lửng.
+3. **Mở bài sáo rỗng** — tránh các câu mở đầu kiểu "trong thế giới đầy biến động", "hãy cùng khám phá", "không thể phủ nhận rằng", "đóng vai trò quan trọng". Mở bài nên đi thẳng vào câu trả lời/định nghĩa cốt lõi.
+4. **Quá nhiều hình ảnh ví von** (ẩn dụ, so sánh hoa mỹ dồn dập) — mỗi bài chỉ nên có tối đa một, hai hình ảnh ví von thực sự đắt giá, còn lại diễn đạt trực tiếp.
+5. **Lặp cấu trúc "không phải..., mà là..."** — đây là một khuôn câu AI hay lạm dụng lặp đi lặp lại; nếu dùng, chỉ dùng một lần trong cả bài, còn lại diễn đạt khác đi.
+6. **Văn nói quá mức** — tránh khẩu ngữ, thán từ, cách xưng hô quá suồng sã không phù hợp với nội dung tài chính (YMYL); giữ giọng văn chuyên nghiệp nhưng dễ hiểu, không cứng nhắc.
+7. **Câu chữ kiểu "AI essay"** — câu văn đối xứng máy móc, liệt kê ba vế đều nhau một cách gượng ép, hoặc kết luận kiểu tổng kết lại những gì vừa nói ("Tóm lại, có thể thấy rằng..."). Ưu tiên câu văn có nhịp điệu tự nhiên, độ dài câu không đều nhau như người thật viết.
+
+Đây là bước rà soát bắt buộc cho mọi bài, áp dụng cùng với — không thay thế — mục "What makes an article weak" ở trên.
 
 ## Verification discipline
 
@@ -64,13 +83,12 @@ When the user hasn't supplied images yet, proactively suggest 1-2 concrete image
 
 Default to presenting the draft directly in the chat response first (this is a writing task the user will read, react to, and likely revise — not a report file). Only move to building files once the user has approved the content itself. If several articles are requested at once (e.g. clearing the backlog for an empty category), it's fine to draft them one at a time and check in, rather than producing all of them unreviewed.
 
-Once the content is approved and the user wants it turned into something they can put in front of TCBS or into their own backlog repo, build exactly two files plus the article's images, never more:
+Once the content is approved and the user wants it turned into something they can put in front of TCBS or into their own backlog repo, build exactly one file plus the article's images, never more — **no `README.md`** (dropped per user direction; the frontmatter/notes/schema that used to live there now just stay in the chat draft, not persisted to a file):
 
-- **`index.html`** — a clean visual mockup of the published article: title, byline, images, body content (headings, lists, tables, FAQ), and a CTA. No site navigation/hub chrome in this file — it's a preview of the reader-facing page, not the whole site shell. Embed the article's images as base64 `data:` URIs directly in this file so it's one self-contained, portable file that renders correctly in any real browser (this is different from a `.md` file — GitHub's own Markdown renderer strips `data:` image sources for security, so base64 only works reliably inside an actual `.html` file, never rely on it rendering inside a `.md` preview on GitHub).
-- **`README.md`** — the same content restructured for a machine/agent to read and act on: YAML frontmatter (title, category, status, priority, source_url/target_url, focus keyword, secondary/long-tail keywords, byline, last_updated, a free-text notes field for cannibalization/rewrite context), then Meta description, the full body (using ordinary `![alt](filename.png)` image references, not base64 — point at the flat filename, not a subfolder), FAQ, CTA, the JSON-LD schema block, and a byline note.
+- **`index.html`** — a clean visual mockup of the published article: title, byline, images, body content (headings, lists, tables, FAQ), and a CTA. No site navigation/hub chrome in this file — it's a preview of the reader-facing page, not the whole site shell. Embed the article's images as base64 `data:` URIs directly in this file so it's one self-contained, portable file that renders correctly in any real browser. If real images aren't supplied yet, ship the mockup with a dashed-border placeholder box in their place (label + suggested content + alt text) instead of waiting — add the real base64 embed later once the user supplies the file.
 - **The 1-2 real images** the user supplied, untouched — never regenerate or re-render them (risk of getting a logo or chart subtly wrong), just reuse the exact original file bytes.
 
-Keep all of these **flat in one folder together** (`index.html`, `README.md`, `image-one.png`, `image-two.png`, no `images/` subfolder). This is a hard-won lesson, not a style preference: a nested subfolder does not reliably survive a browser drag-and-drop upload into GitHub's web UI — files can silently land flat, breaking any `images/...` relative paths in the README. Deliver these as loose files, never as a `.zip` — GitHub's "Upload files" does not extract archives, so a zipped bundle just lands as one opaque binary file instead of the files it contains.
+Keep all of these **flat in one folder together** (`index.html`, `image-one.png`, `image-two.png`, no `images/` subfolder). This is a hard-won lesson, not a style preference: a nested subfolder does not reliably survive a browser drag-and-drop upload into GitHub's web UI — files can silently land flat and break relative paths. Deliver these as loose files, never as a `.zip` — GitHub's "Upload files" does not extract archives, so a zipped bundle just lands as one opaque binary file instead of the files it contains.
 
 ### Publishing to the user's GitHub backlog repo
 
@@ -79,4 +97,4 @@ When the user's backlog lives in a GitHub repo (as with the `ygslittleprince-net
 1. Use a stable folder convention: `backlog/<category-slug>/<article-slug>/` (category slug matches the real hub category, e.g. `co-phieu`, `trai-phieu`).
 2. Hand the user a single upload URL that deep-links straight into that exact folder path, e.g. `https://github.com/<owner>/<repo>/upload/main/backlog/<category-slug>/<article-slug>` — this avoids the single riskiest failure mode seen in practice: the user's browser sitting at the repo root when they click "Add file", so an uploaded `index.html` silently overwrites the site's real root `index.html` (this happened once and took down the live page until the original was restored from a clean local clone). Never hand over a plain "go to your repo and add a file" instruction when a direct deep link is possible.
 3. After the user confirms the commit, verify it yourself by cloning the repo read-only (`git clone --depth 1`) and checking the resulting file tree and the root `index.html`'s title/size are still correct — read access through the proxy is normally fine even when push is blocked.
-4. Only then hand over the small, low-risk edit to the hub's own listing page (e.g. the sitemap's "Backlog bài viết Khám phá & Chia sẻ" section): a short CSS line for a new status tag if one doesn't exist yet, and one `<li>` with two links — the human-facing link (GitHub Pages URL of the `index.html` mockup, e.g. `https://<owner>.github.io/<repo>/backlog/<category-slug>/<article-slug>/`) and a small adjacent tag/link to the machine-facing file (raw URL of `README.md`, e.g. `https://raw.githubusercontent.com/<owner>/<repo>/main/backlog/<category-slug>/<article-slug>/README.md`) so a future agent can find both the preview and the structured source next to the article's name.
+4. Only then hand over the small, low-risk edit to the hub's own listing page (e.g. the sitemap's "Backlog bài viết Khám phá & Chia sẻ" section): a short CSS line for a new status tag if one doesn't exist yet, and one `<li>` with the human-facing link (GitHub Pages URL of the `index.html` mockup, e.g. `https://<owner>.github.io/<repo>/backlog/<category-slug>/<article-slug>/`), its status tag, and a word-count tag (`.tag-wordcount`, e.g. `<span class="tag tag-wordcount">1.461 từ</span>`, Vietnamese thousands-dot format) — count only rendered content text (strip `<title>`, `<style>`, `<script>`, the `.img-placeholder` note, and `.byline-footer`, since those aren't the article body a reader counts), not raw file size or markup. Recompute and update this tag whenever the article's body content changes. No README link to add alongside it anymore, since the article folder no longer ships one.

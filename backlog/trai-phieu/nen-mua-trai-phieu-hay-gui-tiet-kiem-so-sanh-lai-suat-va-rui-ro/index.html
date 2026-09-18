@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nên mua trái phiếu hay gửi tiết kiệm? So sánh lãi suất và rủi ro</title>
+<meta name="description" content="Trái phiếu doanh nghiệp và gửi tiết kiệm khác nhau ra sao về lãi suất, rủi ro và thanh khoản? Bảng so sánh chi tiết giúp chọn đúng kênh phù hợp.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--red-dark);
+    margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol {
+    margin: 0;
+    padding: 0 0 16px 20px;
+  }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Trái phiếu</div>
+  <h1>Nên mua trái phiếu hay gửi tiết kiệm? So sánh lãi suất và rủi ro</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Hai biểu tượng đối lập (sổ tiết kiệm / trái phiếu) hoặc giao diện TCInvest phần trái phiếu.<br>
+      Alt text gợi ý: "So sánh trái phiếu doanh nghiệp và gửi tiết kiệm ngân hàng"
+    </div>
+  </div>
+
+  <p>Gửi tiết kiệm an toàn hơn nhờ được bảo hiểm tiền gửi và có thể rút bất kỳ lúc nào, dù mất phần lãi nếu rút trước hạn. Trái phiếu doanh nghiệp thường trả lãi suất cao hơn, nhưng đổi lại nhà đầu tư gánh rủi ro tín dụng của tổ chức phát hành và không có cơ chế bảo đảm nào từ Nhà nước. Không có lựa chọn đúng cho mọi người, quyết định phụ thuộc vào mức độ chấp nhận rủi ro và mục tiêu sử dụng tiền của từng người.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#bang-so-sanh">Bảng so sánh nhanh</a></li>
+      <li><a href="#ban-chat">Khác nhau về bản chất: đang cho ai vay tiền</a></li>
+      <li><a href="#lai-suat">Khác biệt về lãi suất</a></li>
+      <li><a href="#an-toan">Khác biệt về mức độ an toàn</a></li>
+      <li><a href="#thanh-khoan">Khác biệt về thanh khoản</a></li>
+      <li><a href="#nen-chon-kenh-nao">Nên chọn kênh nào?</a></li>
+      <li><a href="#ket-hop">Có thể kết hợp cả hai không?</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="bang-so-sanh">Bảng so sánh nhanh: trái phiếu doanh nghiệp và gửi tiết kiệm</h2>
+  <table>
+    <thead>
+      <tr><th>Tiêu chí</th><th>Trái phiếu doanh nghiệp</th><th>Gửi tiết kiệm ngân hàng</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Bản chất</td><td>Cho doanh nghiệp vay tiền, nhà đầu tư là chủ nợ của doanh nghiệp</td><td>Cho ngân hàng vay tiền dưới hình thức tiền gửi</td></tr>
+      <tr><td>Lãi suất</td><td>Thường cao hơn tiết kiệm, khác nhau theo từng tổ chức phát hành và kỳ hạn</td><td>Thấp hơn, niêm yết công khai theo từng kỳ hạn tại ngân hàng</td></tr>
+      <tr><td>Bảo đảm</td><td>Không được bảo hiểm, phụ thuộc năng lực trả nợ của doanh nghiệp phát hành</td><td>Được bảo hiểm tiền gửi tối đa 125 triệu đồng mỗi người tại mỗi ngân hàng</td></tr>
+      <tr><td>Thanh khoản</td><td>Phụ thuộc trái phiếu có niêm yết hoặc giao dịch thứ cấp hay không</td><td>Rút trước hạn dễ dàng, chỉ mất phần lãi nếu rút sớm</td></tr>
+      <tr><td>Rủi ro chính</td><td>Tín dụng, thanh khoản, lãi suất</td><td>Gần như không mất gốc trong hạn mức bảo hiểm</td></tr>
+      <tr><td>Phù hợp với</td><td>Nhà đầu tư chấp nhận rủi ro cao hơn để tìm lợi suất tốt hơn</td><td>Người ưu tiên an toàn vốn và cần rút tiền linh hoạt</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="ban-chat">Khác nhau về bản chất: đang cho ai vay tiền</h2>
+  <p>Mua trái phiếu doanh nghiệp nghĩa là cho chính doanh nghiệp phát hành vay tiền, khả năng nhận lại gốc và lãi phụ thuộc trực tiếp vào năng lực tài chính của doanh nghiệp đó. Gửi tiết kiệm về bản chất cũng là một khoản cho vay, nhưng bên vay là ngân hàng, một tổ chức chịu sự giám sát chặt của Ngân hàng Nhà nước về tỷ lệ an toàn vốn và dự trữ bắt buộc. Đây là lý do gửi tiết kiệm thường được xem an toàn hơn ở cấp độ hệ thống, không phụ thuộc vào một doanh nghiệp riêng lẻ.</p>
+
+  <h2 id="lai-suat">Khác biệt về lãi suất: vì sao trái phiếu thường cao hơn</h2>
+  <p>Lãi suất trái phiếu doanh nghiệp cao hơn tiết kiệm không phải một khoản thưởng thêm, mà là phần bù cho rủi ro tín dụng cao hơn mà nhà đầu tư đang chấp nhận. Mức chênh lệch cụ thể thay đổi theo từng đợt phát hành, uy tín của doanh nghiệp và điều kiện thị trường tại thời điểm đó, không có một con số cố định áp dụng chung cho mọi trái phiếu. Một trái phiếu có lãi suất cao bất thường so với mặt bằng chung thường là dấu hiệu rủi ro tín dụng cao hơn, không phải cơ hội tốt hơn.</p>
+
+  <h2 id="an-toan">Khác biệt về mức độ an toàn: bảo hiểm tiền gửi và không có bảo đảm</h2>
+  <p>Tiền gửi tiết kiệm tại tổ chức tín dụng có tham gia bảo hiểm tiền gửi (hầu hết ngân hàng thương mại tại Việt Nam) được Bảo hiểm tiền gửi Việt Nam chi trả tối đa 125 triệu đồng cho cả gốc và lãi của một người tại một ngân hàng, theo Quyết định 32/2021/QĐ-TTg có hiệu lực từ 12/12/2021. Phần số dư vượt quá 125 triệu đồng sẽ không được bảo hiểm chi trả nếu ngân hàng gặp sự cố, nên gửi tiết kiệm không đồng nghĩa với an toàn tuyệt đối 100% với mọi số dư.</p>
+  <p>Trái phiếu doanh nghiệp không có cơ chế bảo hiểm hay bảo đảm nào tương tự. Toàn bộ mức độ an toàn phụ thuộc vào năng lực trả nợ thực tế của doanh nghiệp phát hành, đó là lý do khâu thẩm định trước khi mua quan trọng hơn nhiều so với gửi tiết kiệm.</p>
+
+  <h2 id="thanh-khoan">Khác biệt về thanh khoản: rút tiết kiệm dễ hơn bán trái phiếu</h2>
+  <p>Tiết kiệm có thể tất toán trước hạn bất kỳ lúc nào, cái giá phải trả thường chỉ là hưởng lãi suất không kỳ hạn thấp hơn lãi suất đã cam kết. Trái phiếu doanh nghiệp không có cơ chế tất toán trước hạn tương tự, muốn thu hồi tiền trước ngày đáo hạn phải bán lại trên thị trường thứ cấp hoặc qua đơn vị phân phối, và không phải trái phiếu nào cũng dễ bán ở mức giá mong muốn. Phần rủi ro thanh khoản này được phân tích sâu hơn tại <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/trai-phieu/nhan-dien-rui-ro-khi-dau-tu-trai-phieu-doanh-nghiep/" target="_blank" rel="noopener">Nhận diện rủi ro khi đầu tư trái phiếu doanh nghiệp</a>.</p>
+
+  <h2 id="nen-chon-kenh-nao">Nên chọn kênh nào?</h2>
+  <ul>
+    <li><b>Ưu tiên an toàn vốn tuyệt đối và có thể cần dùng tiền bất kỳ lúc nào:</b> gửi tiết kiệm phù hợp hơn.</li>
+    <li><b>Chấp nhận rủi ro cao hơn để tìm lợi suất tốt hơn, và có thể giữ vốn đến hết kỳ hạn mà không cần rút gấp:</b> trái phiếu doanh nghiệp là lựa chọn đáng cân nhắc, với điều kiện thẩm định kỹ tổ chức phát hành trước khi mua theo <a href="https://www.tcbs.com.vn/thong-tin/trai-phieu/cach-chon-trai-phieu-doanh-nghiep-an-toan-pheu-loc-5-buoc-nha-dau-tu-nen-biet/" target="_blank" rel="noopener">Phễu lọc 5 bước</a>.</li>
+  </ul>
+
+  <h2 id="ket-hop">Có thể kết hợp cả hai không?</h2>
+  <p>Nhiều nhà đầu tư chia danh mục thay vì chọn tuyệt đối một kênh: giữ một phần trong tiết kiệm để đảm bảo thanh khoản cho nhu cầu chi tiêu gần, phần còn lại phân bổ vào trái phiếu doanh nghiệp đã thẩm định kỹ để tìm lợi suất tốt hơn cho phần vốn có thể giữ dài hạn. Tỷ lệ phân bổ cụ thể tùy thuộc khẩu vị rủi ro và kế hoạch tài chính của từng người.</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Trái phiếu doanh nghiệp có được bảo hiểm tiền gửi như sổ tiết kiệm không?</summary>
+    <p class="faq-a">Không. Bảo hiểm tiền gửi chỉ áp dụng cho tiền gửi tại tổ chức tín dụng, không áp dụng cho trái phiếu doanh nghiệp dưới bất kỳ hình thức nào.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Lãi suất trái phiếu doanh nghiệp có luôn cao hơn gửi tiết kiệm không?</summary>
+    <p class="faq-a">Thường cao hơn nhưng không phải tuyệt đối trong mọi trường hợp. Mức chênh lệch phụ thuộc uy tín tổ chức phát hành, kỳ hạn và điều kiện thị trường tại thời điểm phát hành.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Rút tiền trước hạn, kênh nào dễ hơn?</summary>
+    <p class="faq-a">Gửi tiết kiệm dễ hơn nhiều, chỉ mất phần lãi nếu rút trước hạn. Trái phiếu doanh nghiệp phải bán lại trên thị trường thứ cấp hoặc qua đơn vị phân phối, không đảm bảo bán được ở mức giá mong muốn.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Có nên chia vốn cho cả hai kênh không?</summary>
+    <p class="faq-a">Có. Đây là cách tiếp cận phổ biến, giữ phần thanh khoản trong tiết kiệm và phần còn lại tìm lợi suất qua trái phiếu doanh nghiệp đã thẩm định kỹ, tùy khẩu vị rủi ro của từng người.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn tìm hiểu các sản phẩm trái phiếu doanh nghiệp đang phân phối tại TCBS?</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/trai-phieu-ibond/" target="_blank" rel="noopener">Tìm hiểu trái phiếu iBond tại TCBS</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: help.tcbs.com.vn (rủi ro trái phiếu, đặc điểm trái phiếu); Quyết định 32/2021/QĐ-TTg về hạn mức trả tiền bảo hiểm tiền gửi.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 18/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

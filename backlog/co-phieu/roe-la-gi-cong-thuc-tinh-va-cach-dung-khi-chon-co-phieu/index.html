@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu</title>
+<meta name="description" content="ROE là gì, công thức tính từ báo cáo tài chính, ROE bao nhiêu là tốt và 5 bước dùng ROE khi chọn cổ phiếu, kèm mô hình DuPont và các bẫy cần tránh.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu",
+      "description": "ROE là gì, công thức tính từ báo cáo tài chính, ROE bao nhiêu là tốt và 5 bước dùng ROE khi chọn cổ phiếu, kèm mô hình DuPont và các bẫy cần tránh.",
+      "inLanguage": "vi",
+      "dateModified": "2026-09-21",
+      "author": { "@type": "Organization", "name": "Đội ngũ nội dung TCBS" },
+      "publisher": { "@type": "Organization", "name": "Techcom Securities (TCBS)" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ROE là gì?",
+          "acceptedAnswer": { "@type": "Answer", "text": "ROE là tỷ suất lợi nhuận trên vốn chủ sở hữu, cho biết doanh nghiệp tạo ra bao nhiêu đồng lợi nhuận sau thuế từ mỗi 100 đồng vốn của cổ đông." }
+        },
+        {
+          "@type": "Question",
+          "name": "Công thức tính ROE?",
+          "acceptedAnswer": { "@type": "Answer", "text": "ROE = Lợi nhuận sau thuế ÷ Vốn chủ sở hữu bình quân × 100%." }
+        },
+        {
+          "@type": "Question",
+          "name": "ROE bao nhiêu là tốt?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Mức từ khoảng 15% trở lên, duy trì ổn định nhiều năm, thường được xem là tốt. Cần so trong cùng ngành, vì mặt bằng ROE khác nhau giữa các ngành." }
+        },
+        {
+          "@type": "Question",
+          "name": "ROE cao có phải cổ phiếu tốt không?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Chưa chắc. ROE có thể cao nhờ đòn bẩy nợ lớn, vốn chủ nhỏ hoặc lợi nhuận bất thường. Cần xem thêm mô hình DuPont, nợ vay, dòng tiền và định giá." }
+        },
+        {
+          "@type": "Question",
+          "name": "ROE âm nghĩa là gì?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Doanh nghiệp đang lỗ. Nếu vốn chủ sở hữu cũng âm thì không nên dùng ROE để đánh giá." }
+        },
+        {
+          "@type": "Question",
+          "name": "ROE lấy ở đâu?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Tính từ báo cáo tài chính (kết quả kinh doanh và cân đối kế toán), hoặc xem sẵn trong phần chỉ số tài chính trên nền tảng giao dịch." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://www.tcbs.com.vn/" },
+        { "@type": "ListItem", "position": 2, "name": "Thông tin" },
+        { "@type": "ListItem", "position": 3, "name": "Cổ phiếu" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--red-dark);
+    margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol.steps { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+  }
+  .formula .label {
+    font-weight: 700;
+    color: var(--red-dark);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .formula code {
+    display: block;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+    background: #FFFFFF;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .formula p { margin: 0; font-size: 14.5px; color: var(--gray); }
+  .verify-note {
+    font-size: 13.5px;
+    color: var(--gray);
+    font-style: italic;
+    margin: -8px 0 24px;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol {
+    margin: 0;
+    padding: 0 0 16px 20px;
+  }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-q { font-weight: 700; color: var(--ink); margin: 0; font-size: 16px; display: inline; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+  .disclaimer { font-size: 13px; color: var(--gray); margin-top: 24px; }
+  @media (max-width: 600px) {
+    h1 { font-size: 26px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Cổ phiếu</div>
+  <h1>ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Trang chỉ số tài chính của một cổ phiếu trên TCInvest, hiển thị ROE, ROA, EPS theo quý và theo năm.<br>
+      Alt text gợi ý: "Chỉ số ROE của cổ phiếu trên bảng chỉ số tài chính TCInvest"
+    </div>
+  </div>
+
+  <p>ROE (Return on Equity, tỷ suất lợi nhuận trên vốn chủ sở hữu) cho biết doanh nghiệp tạo ra bao nhiêu đồng lợi nhuận từ mỗi 100 đồng vốn của cổ đông. Công thức: ROE = Lợi nhuận sau thuế ÷ Vốn chủ sở hữu bình quân × 100%. Doanh nghiệp duy trì ROE từ khoảng 15% trở lên trong nhiều năm thường được xem là sử dụng vốn hiệu quả.</p>
+  <p>Chỉ số này hữu ích để lọc nhanh danh sách cổ phiếu, nhưng một con số ROE cao chưa đủ để kết luận cổ phiếu tốt. Bài này giải thích cách tính, cách đọc và cách dùng ROE cùng các chỉ số khác.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#roe-la-gi">ROE là gì</a></li>
+      <li><a href="#cong-thuc">Công thức tính ROE</a></li>
+      <li><a href="#roe-bao-nhieu-la-tot">ROE bao nhiêu là tốt</a></li>
+      <li><a href="#dupont">Mô hình DuPont: ROE đến từ đâu</a></li>
+      <li><a href="#cach-dung">Cách dùng ROE khi chọn cổ phiếu</a></li>
+      <li><a href="#han-che">Những hạn chế và bẫy thường gặp của ROE</a></li>
+      <li><a href="#roe-va-roa">ROE khác ROA như thế nào</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="roe-la-gi">ROE là gì</h2>
+  <p>ROE đo hiệu quả sử dụng vốn của cổ đông. Vốn chủ sở hữu là phần tài sản thuộc về cổ đông sau khi trừ mọi khoản nợ. ROE càng cao, mỗi đồng vốn cổ đông tạo ra càng nhiều lợi nhuận.</p>
+  <p>Nhà đầu tư dùng ROE vì hai lý do. Thứ nhất, nó cho phép so sánh các doanh nghiệp có quy mô khác nhau trên cùng một thước đo. Thứ hai, nó phản ánh chất lượng quản trị vốn qua nhiều năm, không chỉ kết quả một quý.</p>
+
+  <h2 id="cong-thuc">Công thức tính ROE</h2>
+  <div class="formula">
+    <div class="label">📐 Công thức ROE</div>
+    <code>ROE = Lợi nhuận sau thuế ÷ Vốn chủ sở hữu bình quân × 100%</code>
+    <code>Vốn chủ sở hữu bình quân = (Vốn chủ sở hữu đầu kỳ + Vốn chủ sở hữu cuối kỳ) ÷ 2</code>
+    <p>Một số nguồn dùng vốn chủ sở hữu cuối kỳ cho đơn giản. Dùng số bình quân sát thực tế hơn khi vốn thay đổi nhiều trong năm.</p>
+  </div>
+
+  <h3>Ví dụ tính ROE từng bước</h3>
+  <p>Giả định (số minh họa) công ty A có:</p>
+  <ul>
+    <li>Lợi nhuận sau thuế cả năm: 900 tỷ đồng</li>
+    <li>Vốn chủ sở hữu đầu năm: 4.000 tỷ đồng</li>
+    <li>Vốn chủ sở hữu cuối năm: 5.000 tỷ đồng</li>
+  </ul>
+  <p>Cách tính:</p>
+  <ol class="steps">
+    <li>Vốn chủ sở hữu bình quân = (4.000 + 5.000) ÷ 2 = 4.500 tỷ đồng</li>
+    <li>ROE = 900 ÷ 4.500 × 100% = <strong>20%</strong></li>
+  </ol>
+
+  <h3>Lấy số liệu ở đâu</h3>
+  <p>Lợi nhuận sau thuế nằm trong báo cáo kết quả kinh doanh. Vốn chủ sở hữu nằm trong bảng cân đối kế toán. Với ROE của cả năm, dùng lợi nhuận 4 quý gần nhất. TCBS cũng cung cấp sẵn các chỉ số tài chính như ROE, ROA, EPS, P/E, P/B dưới dạng chuỗi lịch sử và cho phép so sánh với bình quân ngành, nên bạn không cần tự tính từng lần.</p>
+  <p class="verify-note">Số liệu ROE giữa các nguồn có thể lệch nhau do cách chọn kỳ tính và vốn chủ sở hữu (bình quân hay cuối kỳ). Hãy đọc ghi chú công thức của từng nguồn trước khi so sánh.</p>
+
+  <h2 id="roe-bao-nhieu-la-tot">ROE bao nhiêu là tốt</h2>
+  <table>
+    <thead>
+      <tr><th>Mức ROE</th><th>Cách hiểu thường gặp</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Dưới 8%</td><td>Thấp. Có thể do kinh doanh kém hiệu quả, hoặc doanh nghiệp giữ quá nhiều vốn nhàn rỗi</td></tr>
+      <tr><td>Khoảng 8% đến 15%</td><td>Trung bình, cần so với ngành và xu hướng của chính doanh nghiệp</td></tr>
+      <tr><td>Từ 15% trở lên, duy trì nhiều năm</td><td>Thường được đánh giá là hiệu quả tốt</td></tr>
+    </tbody>
+  </table>
+  <p>Các mốc này là quy ước phổ biến trong phân tích cơ bản, không phải quy định. Hai lưu ý khi áp dụng:</p>
+  <ul>
+    <li><strong>So trong cùng ngành.</strong> Ngân hàng, bán lẻ, bất động sản, sản xuất có cấu trúc vốn khác nhau nên mặt bằng ROE khác nhau.</li>
+    <li><strong>Nhìn xu hướng nhiều năm.</strong> ROE duy trì ổn định hoặc tăng dần trong 3 đến 5 năm đáng tin hơn một năm đột biến.</li>
+  </ul>
+
+  <h2 id="dupont">Mô hình DuPont: ROE đến từ đâu</h2>
+  <p>Mô hình DuPont tách ROE thành ba yếu tố:</p>
+  <div class="formula">
+    <div class="label">📐 Công thức DuPont</div>
+    <code>ROE = Biên lợi nhuận ròng × Vòng quay tổng tài sản × Đòn bẩy tài chính</code>
+    <p>Biên lợi nhuận ròng = Lợi nhuận ÷ Doanh thu. Vòng quay tổng tài sản = Doanh thu ÷ Tổng tài sản. Đòn bẩy tài chính = Tổng tài sản ÷ Vốn chủ sở hữu.</p>
+  </div>
+  <ul>
+    <li><strong>Biên lợi nhuận ròng:</strong> doanh nghiệp giữ lại bao nhiêu lợi nhuận trên mỗi đồng doanh thu.</li>
+    <li><strong>Vòng quay tổng tài sản:</strong> mỗi đồng tài sản tạo ra bao nhiêu doanh thu.</li>
+    <li><strong>Đòn bẩy tài chính:</strong> doanh nghiệp dùng bao nhiêu nợ để vận hành.</li>
+  </ul>
+  <p>Ví dụ minh họa: hai công ty cùng có ROE 20%, nhưng nguồn gốc khác nhau.</p>
+  <table>
+    <thead>
+      <tr><th></th><th>Công ty X</th><th>Công ty Y</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Biên lợi nhuận ròng</td><td>10%</td><td>5%</td></tr>
+      <tr><td>Vòng quay tổng tài sản</td><td>1,0</td><td>1,0</td></tr>
+      <tr><td>Đòn bẩy tài chính</td><td>2,0</td><td>4,0</td></tr>
+      <tr><td><strong>ROE</strong></td><td><strong>20%</strong></td><td><strong>20%</strong></td></tr>
+    </tbody>
+  </table>
+  <p>Công ty X có ROE nhờ kinh doanh sinh lời tốt hơn. Công ty Y đạt cùng con số chủ yếu nhờ vay nợ nhiều gấp đôi, nên rủi ro cao hơn khi lãi suất tăng hoặc doanh thu giảm. Nhìn riêng ROE sẽ không phân biệt được hai trường hợp này.</p>
+
+  <h2 id="cach-dung">Cách dùng ROE khi chọn cổ phiếu</h2>
+  <ol class="steps">
+    <li><strong>Lọc sơ bộ.</strong> Đặt ngưỡng ROE (ví dụ từ 15% trở lên) để thu hẹp danh sách cổ phiếu cần xem kỹ.</li>
+    <li><strong>So với ngành.</strong> Xếp doanh nghiệp cạnh các công ty cùng ngành thay vì so ngành này với ngành khác.</li>
+    <li><strong>Xem xu hướng 3 đến 5 năm.</strong> Ưu tiên ROE ổn định hoặc tăng, tránh ROE chỉ cao một năm.</li>
+    <li><strong>Phân tích DuPont.</strong> Kiểm tra ROE đến từ biên lợi nhuận, vòng quay tài sản hay đòn bẩy. Ưu tiên ROE đến từ hiệu quả kinh doanh.</li>
+    <li><strong>Đối chiếu chỉ số khác.</strong> Xem thêm nợ vay trên vốn chủ, dòng tiền kinh doanh, tăng trưởng lợi nhuận và định giá (ví dụ P/E). ROE cao nhưng giá đã quá đắt vẫn có thể là khoản đầu tư kém.</li>
+  </ol>
+
+  <h2 id="han-che">Những hạn chế và bẫy thường gặp của ROE</h2>
+  <ul>
+    <li><strong>Đòn bẩy che khuất rủi ro.</strong> Vay nhiều làm vốn chủ sở hữu nhỏ đi so với tài sản, đẩy ROE lên.</li>
+    <li><strong>Vốn chủ sở hữu quá nhỏ.</strong> Doanh nghiệp có vốn chủ nhỏ có thể cho ROE cao dù lợi nhuận tuyệt đối thấp.</li>
+    <li><strong>Vốn chủ sở hữu âm.</strong> Không tính ROE khi vốn chủ sở hữu âm, con số khi đó không có ý nghĩa.</li>
+    <li><strong>Lợi nhuận bất thường.</strong> Khoản lãi từ bán tài sản hoặc thoái vốn có thể làm ROE tăng một lần, không lặp lại được.</li>
+    <li><strong>Mua lại cổ phiếu quỹ.</strong> Việc mua lại làm giảm vốn chủ sở hữu và có thể đẩy ROE lên mà hoạt động kinh doanh không đổi.</li>
+    <li><strong>Ngành có lợi nhuận biến động.</strong> Với các ngành chu kỳ như bất động sản, ROE dao động mạnh giữa các năm.</li>
+  </ul>
+
+  <h2 id="roe-va-roa">ROE khác ROA như thế nào</h2>
+  <table>
+    <thead>
+      <tr><th>Tiêu chí</th><th>ROE</th><th>ROA</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Đo gì</td><td>Lợi nhuận trên vốn chủ sở hữu</td><td>Lợi nhuận trên tổng tài sản</td></tr>
+      <tr><td>Công thức</td><td>Lợi nhuận sau thuế ÷ Vốn chủ sở hữu bình quân</td><td>Lợi nhuận sau thuế ÷ Tổng tài sản bình quân</td></tr>
+      <tr><td>Chịu ảnh hưởng của nợ vay</td><td>Có, nợ nhiều thì ROE thường cao hơn</td><td>Ít hơn, tính trên toàn bộ tài sản</td></tr>
+      <tr><td>Dùng để</td><td>Đánh giá lợi nhuận cho cổ đông</td><td>Đánh giá hiệu quả sử dụng toàn bộ tài sản</td></tr>
+    </tbody>
+  </table>
+  <p>Nếu ROE cao hơn ROA rất nhiều, doanh nghiệp đang dùng đòn bẩy lớn.</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary class="faq-q">ROE là gì?</summary>
+    <p class="faq-a">ROE là tỷ suất lợi nhuận trên vốn chủ sở hữu, cho biết doanh nghiệp tạo ra bao nhiêu đồng lợi nhuận sau thuế từ mỗi 100 đồng vốn của cổ đông.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Công thức tính ROE?</summary>
+    <p class="faq-a">ROE = Lợi nhuận sau thuế ÷ Vốn chủ sở hữu bình quân × 100%.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">ROE bao nhiêu là tốt?</summary>
+    <p class="faq-a">Mức từ khoảng 15% trở lên, duy trì ổn định nhiều năm, thường được xem là tốt. Cần so trong cùng ngành, vì mặt bằng ROE khác nhau giữa các ngành.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">ROE cao có phải cổ phiếu tốt không?</summary>
+    <p class="faq-a">Chưa chắc. ROE có thể cao nhờ đòn bẩy nợ lớn, vốn chủ nhỏ hoặc lợi nhuận bất thường. Cần xem thêm mô hình DuPont, nợ vay, dòng tiền và định giá.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">ROE âm nghĩa là gì?</summary>
+    <p class="faq-a">Doanh nghiệp đang lỗ. Nếu vốn chủ sở hữu cũng âm thì không nên dùng ROE để đánh giá.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">ROE lấy ở đâu?</summary>
+    <p class="faq-a">Tính từ báo cáo tài chính (kết quả kinh doanh và cân đối kế toán), hoặc xem sẵn trong phần chỉ số tài chính trên nền tảng giao dịch.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn tra ROE và các chỉ số tài chính của cổ phiếu bạn quan tâm? Dùng công cụ phân tích và bảng giá thời gian thực của TCBS.</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/san-pham/co-phieu/" target="_blank" rel="noopener">Tìm hiểu Cổ phiếu iStock tại TCBS</a>
+  </div>
+
+  <p class="disclaimer">Nội dung chỉ mang tính giáo dục, không phải khuyến nghị đầu tư. Các ví dụ số trong bài là số giả định để minh họa.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 21/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chứng chỉ quỹ và cổ phiếu khác nhau như thế nào?</title>
+<meta name="description" content="So sánh chứng chỉ quỹ và cổ phiếu về cách giao dịch, chi phí, rủi ro và thanh khoản. Gợi ý chọn kênh phù hợp với từng nhà đầu tư tại TCBS.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Chứng chỉ quỹ</div>
+  <h1>Chứng chỉ quỹ và cổ phiếu khác nhau như thế nào?</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Ảnh so sánh hai kênh (giao diện Fundmart và bảng giá cổ phiếu trên TCInvest).<br>
+      Alt text gợi ý: "So sánh chứng chỉ quỹ và cổ phiếu"
+    </div>
+  </div>
+
+  <p>Khi mua cổ phiếu, nhà đầu tư sở hữu một phần một công ty cụ thể và tự quyết định mua, bán. Khi mua chứng chỉ quỹ, nhà đầu tư sở hữu một phần danh mục do công ty quản lý quỹ vận hành. Hai kênh khác nhau rõ nhất ở ba điểm: ai chọn mã, giá giao dịch hình thành thế nào, và tiền về tài khoản ra sao. Khái niệm chứng chỉ quỹ được giải thích ở <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/chung-chi-quy/chung-chi-quy-la-gi-co-nen-dau-tu-chung-chi-quy-khong/" target="_blank" rel="noopener">Chứng chỉ quỹ là gì?</a>, khái niệm cổ phiếu ở <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/co-phieu-la-gi-vi-sao-nen-dau-tu-co-phieu/" target="_blank" rel="noopener">Cổ phiếu là gì?</a></p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#bang-so-sanh">Bảng so sánh nhanh</a></li>
+      <li><a href="#giao-dich">Khác nhau về cách giao dịch</a></li>
+      <li><a href="#quyet-dinh">Khác nhau về người ra quyết định</a></li>
+      <li><a href="#chi-phi">Khác nhau về chi phí</a></li>
+      <li><a href="#rui-ro">Khác nhau về rủi ro</a></li>
+      <li><a href="#nen-chon">Nên chọn kênh nào</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="bang-so-sanh">Bảng so sánh nhanh</h2>
+  <table>
+    <thead>
+      <tr><th>Tiêu chí</th><th>Chứng chỉ quỹ</th><th>Cổ phiếu</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Đối tượng sở hữu</td><td>Một phần danh mục nhiều tài sản</td><td>Một phần vốn của một công ty</td></tr>
+      <tr><td>Ai chọn mã</td><td>Công ty quản lý quỹ</td><td>Nhà đầu tư tự chọn</td></tr>
+      <tr><td>Giá giao dịch</td><td>Theo NAV của ngày giao dịch</td><td>Giá khớp trên sàn theo từng lệnh</td></tr>
+      <tr><td>Thời điểm khớp lệnh</td><td>Không khớp tức thời trong phiên</td><td>Khớp trong phiên giao dịch</td></tr>
+      <tr><td>Nộp tiền mua</td><td>Trước 14h45 ngày làm việc liền trước ngày giao dịch (tại TCBS)</td><td>Có tiền khi đặt lệnh, thanh toán T+2</td></tr>
+      <tr><td>Vốn khởi điểm</td><td>Từ 10.000 đồng</td><td>Theo thị giá, lô lẻ 1-99 cổ phiếu</td></tr>
+      <tr><td>Đa dạng hóa</td><td>Có sẵn trong một chứng chỉ</td><td>Phải tự mua nhiều mã</td></tr>
+      <tr><td>Bảo đảm</td><td>Không bảo đảm gốc hay lợi nhuận</td><td>Không bảo đảm gốc hay lợi nhuận</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="giao-dich">Khác nhau về cách giao dịch</h2>
+  <p>Cổ phiếu được đặt lệnh trong phiên và khớp theo giá thị trường, nhà đầu tư thấy ngay giá mình mua. Chứng chỉ quỹ được xử lý theo NAV của ngày giao dịch đã chỉ định, nên nhà đầu tư không biết chính xác giá mua khi đặt lệnh. Với quỹ trên Fundmart, tiền mua cần nộp trước 14h45 ngày làm việc liền trước ngày giao dịch, và lệnh bán tối thiểu là 10 đơn vị quỹ, trừ khi bán hết toàn bộ.</p>
+
+  <h2 id="quyet-dinh">Khác nhau về người ra quyết định</h2>
+  <p>Mua cổ phiếu nghĩa là tự phân tích doanh nghiệp, tự chọn thời điểm mua và bán. Mua chứng chỉ quỹ nghĩa là giao việc chọn mã cho công ty quản lý quỹ theo chiến lược quỹ đã công bố. Đổi lại, nhà đầu tư trả phí quản lý và không kiểm soát được từng mã cụ thể trong danh mục.</p>
+
+  <h2 id="chi-phi">Khác nhau về chi phí</h2>
+  <p>Cổ phiếu chịu phí giao dịch mỗi lần mua bán. Chứng chỉ quỹ có phí chuyển đổi giữa các quỹ từ 0% đến 1% tùy thời gian nắm giữ (ví dụ chuyển từ TCBF hoặc TCFF sang quỹ khác chịu 1% nếu giữ dưới 3 tháng), và phí chuyển tiền về ngân hàng sau khi bán tùy ngân hàng lưu ký.</p>
+
+  <h2 id="rui-ro">Khác nhau về rủi ro</h2>
+  <p>Cả hai đều không bảo đảm gốc. Cổ phiếu tập trung rủi ro vào từng doanh nghiệp, nên một mã giảm mạnh có thể ảnh hưởng lớn tới cả danh mục nếu mua ít mã. Chứng chỉ quỹ phân tán qua nhiều tài sản nhưng vẫn giảm khi thị trường chung giảm, và có rủi ro thanh khoản khi yêu cầu bán có thể chỉ được đáp ứng một phần.</p>
+
+  <h2 id="nen-chon">Nên chọn kênh nào</h2>
+  <ul>
+    <li><b>Chọn chứng chỉ quỹ nếu:</b> ít thời gian theo dõi thị trường, muốn bắt đầu với vốn nhỏ và đa dạng hóa ngay, chấp nhận không chọn được từng mã.</li>
+    <li><b>Chọn cổ phiếu nếu:</b> muốn tự phân tích và chọn doanh nghiệp, cần khớp lệnh trong phiên, muốn kiểm soát thời điểm mua bán.</li>
+    <li><b>Kết hợp cả hai:</b> phần vốn dài hạn vào quỹ, phần còn lại tự chọn cổ phiếu.</li>
+  </ul>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Chứng chỉ quỹ có lời hơn cổ phiếu không?</summary>
+    <p class="faq-a">Không có kênh nào chắc chắn lời hơn. Lợi nhuận phụ thuộc thị trường, mã cổ phiếu và chiến lược quỹ cụ thể.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Có mua chứng chỉ quỹ và cổ phiếu cùng lúc được không?</summary>
+    <p class="faq-a">Được. Đây là cách nhiều nhà đầu tư phân bổ vốn.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Bán chứng chỉ quỹ có nhanh như bán cổ phiếu không?</summary>
+    <p class="faq-a">Không. Lệnh quỹ xử lý theo NAV ngày giao dịch, không khớp tức thời trong phiên.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Người mới nên bắt đầu từ đâu?</summary>
+    <p class="faq-a">Tùy khả năng theo dõi thị trường. Vốn nhỏ và ít thời gian thì quỹ dễ bắt đầu hơn; muốn học phân tích thì bắt đầu với vài mã cổ phiếu vốn nhỏ.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn khám phá các quỹ đầu tư đang phân phối tại TCBS?</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/he-thong/fundmart/" target="_blank" rel="noopener">Khám phá quỹ đầu tư trên Fundmart</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: help.tcbs.com.vn (đặt lệnh quỹ tại Fundmart, biểu phí giao dịch quỹ); quy định chu kỳ thanh toán cổ phiếu T+2.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 21/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

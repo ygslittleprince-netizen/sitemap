@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ký quỹ phái sinh là gì? Cách tính và quản lý an toàn</title>
+<meta name="description" content="Ký quỹ phái sinh gồm những gì, tính ra sao và ngưỡng cảnh báo, xử lý ở đâu. Có ví dụ tính trên hợp đồng VN30 và 5 nguyên tắc giữ tài khoản an toàn.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Ký quỹ phái sinh là gì? Cách tính và quản lý an toàn",
+      "description": "Ký quỹ phái sinh gồm những gì, tính ra sao và ngưỡng cảnh báo, xử lý ở đâu. Có ví dụ tính trên hợp đồng VN30 và 5 nguyên tắc giữ tài khoản an toàn.",
+      "inLanguage": "vi",
+      "dateModified": "2026-09-21",
+      "author": { "@type": "Organization", "name": "Đội ngũ nội dung TCBS" },
+      "publisher": { "@type": "Organization", "name": "Techcom Securities (TCBS)" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ký quỹ phái sinh là gì?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Là khoản tiền hoặc tài sản nhà đầu tư nộp để bảo đảm thanh toán lãi lỗ khi giữ hợp đồng phái sinh, thay vì trả đủ toàn bộ giá trị hợp đồng." }
+        },
+        {
+          "@type": "Question",
+          "name": "Ký quỹ ban đầu hợp đồng VN30 là bao nhiêu?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Bằng 17% giá trị hợp đồng theo quy định của VSDC tại thời điểm viết bài. Ví dụ hợp đồng có giá trị 125 triệu đồng cần 21,25 triệu đồng. Nhà đầu tư nên kiểm tra số liệu cập nhật trên ứng dụng trước khi giao dịch." }
+        },
+        {
+          "@type": "Question",
+          "name": "Khi nào bị force sell phái sinh?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Khi tỷ lệ sử dụng tài sản ký quỹ chạm ngưỡng 90% mà chưa bổ sung ký quỹ đúng hạn, hoặc khi không nộp đủ khoản lỗ ròng trước 8h sáng ngày giao dịch kế tiếp (T+1)." }
+        },
+        {
+          "@type": "Question",
+          "name": "Có thể lỗ nhiều hơn số tiền ký quỹ không?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Có. Lãi lỗ được tính trên toàn bộ giá trị hợp đồng nên khoản lỗ có thể vượt phần ký quỹ ban đầu, và nhà đầu tư phải bù lại phần thiếu." }
+        },
+        {
+          "@type": "Question",
+          "name": "Ký quỹ duy trì khác ký quỹ ban đầu thế nào?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ký quỹ ban đầu là mức cần có để mở vị thế. Ký quỹ duy trì (bằng ký quỹ ban đầu cộng ký quỹ biến đổi) là mức phải giữ trong suốt thời gian nắm giữ vị thế, thay đổi theo lãi lỗ hằng ngày." }
+        },
+        {
+          "@type": "Question",
+          "name": "Khi nào được rút ký quỹ phái sinh?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Khi tỷ lệ sử dụng tài sản ký quỹ sau khi rút không vượt 80%." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://www.tcbs.com.vn/" },
+        { "@type": "ListItem", "position": 2, "name": "Thông tin" },
+        { "@type": "ListItem", "position": 3, "name": "Phái sinh" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--red-dark);
+    margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol.steps { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+  }
+  .formula .label {
+    font-weight: 700;
+    color: var(--red-dark);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .formula code {
+    display: block;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+    background: #FFFFFF;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .formula p { margin: 0; font-size: 14.5px; color: var(--gray); }
+  .verify-note {
+    font-size: 13.5px;
+    color: var(--gray);
+    font-style: italic;
+    margin: -8px 0 24px;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol {
+    margin: 0;
+    padding: 0 0 16px 20px;
+  }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-q { font-weight: 700; color: var(--ink); margin: 0; font-size: 16px; display: inline; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+  .cta .note { margin-top: 12px; font-size: 12.5px; color: var(--gray); }
+  .disclaimer { font-size: 13px; color: var(--gray); margin-top: 24px; }
+  @media (max-width: 600px) {
+    h1 { font-size: 26px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Phái sinh</div>
+  <h1>Ký quỹ phái sinh là gì? Cách tính và quản lý an toàn</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Màn hình tài khoản phái sinh trên TCInvest, hiển thị tỷ lệ sử dụng tài sản ký quỹ.<br>
+      Alt text gợi ý: "Tỷ lệ sử dụng tài sản ký quỹ trên tài khoản phái sinh TCInvest"
+    </div>
+  </div>
+
+  <p>Ký quỹ phái sinh là khoản tiền hoặc tài sản nhà đầu tư phải nộp và duy trì để bảo đảm khả năng thanh toán lãi lỗ khi giữ hợp đồng phái sinh. Với hợp đồng tương lai chỉ số cổ phiếu tại TCBS, ký quỹ ban đầu là 17% giá trị hợp đồng theo quy định của VSDC. Nhà đầu tư còn phải giữ tỷ lệ sử dụng tài sản ký quỹ dưới các ngưỡng 85%, 87% và 90%, nếu không sẽ bị yêu cầu bổ sung hoặc bị đóng vị thế.</p>
+  <p>Nhiều tài khoản phái sinh bị xử lý không vì nhận định sai xu hướng, mà vì không tính trước lượng ký quỹ đủ dày khi thị trường đi ngược. Bài này giải thích từng khoản ký quỹ, cách tính và cách giữ tài khoản xa các ngưỡng nguy hiểm.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#ky-quy-la-gi">Ký quỹ phái sinh là gì</a></li>
+      <li><a href="#ba-loai-ky-quy">Ba loại ký quỹ cần phân biệt</a></li>
+      <li><a href="#cach-tinh">Cách tính ký quỹ</a></li>
+      <li><a href="#nguong-canh-bao">Các ngưỡng cảnh báo tại TCBS</a></li>
+      <li><a href="#vi-du">Ví dụ: tài khoản đi từ an toàn đến bị xử lý</a></li>
+      <li><a href="#nguyen-tac">5 nguyên tắc quản lý ký quỹ an toàn</a></li>
+      <li><a href="#nop-rut">Nộp và rút ký quỹ</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="ky-quy-la-gi">Ký quỹ phái sinh là gì</h2>
+  <p>Khi mua cổ phiếu, bạn trả đủ 100% giá trị. Khi giao dịch phái sinh, bạn chỉ cần nộp một phần giá trị hợp đồng làm ký quỹ. Đây là cơ chế tạo ra đòn bẩy: lãi lỗ tính trên toàn bộ giá trị hợp đồng, trong khi vốn bỏ ra chỉ là phần ký quỹ.</p>
+  <p>Khoản ký quỹ đóng vai trò bảo đảm. Nếu vị thế thua lỗ, phần lỗ được trừ vào ký quỹ, và bạn phải bù lại khi tài khoản không còn đủ mức yêu cầu. Tổng công ty Lưu ký và Bù trừ Chứng khoán Việt Nam (VSDC) là đơn vị bù trừ thanh toán và quản lý ký quỹ cho toàn thị trường.</p>
+  <p>Về cơ chế đòn bẩy và các đặc điểm chung của phái sinh, bạn có thể đọc thêm ở bài <a href="../chung-khoan-phai-sinh-la-gi-kien-thuc-co-ban-cho-nguoi-moi-bat-dau/">Chứng khoán phái sinh là gì? Kiến thức cơ bản cho người mới bắt đầu</a>.</p>
+
+  <h2 id="ba-loai-ky-quy">Ba loại ký quỹ cần phân biệt</h2>
+  <table>
+    <thead>
+      <tr><th>Loại ký quỹ</th><th>Ý nghĩa</th><th>Khi nào phát sinh</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Ký quỹ ban đầu (IM)</strong></td><td>Mức tối thiểu phải có để mở vị thế</td><td>Khi đặt lệnh mở hợp đồng</td></tr>
+      <tr><td><strong>Ký quỹ biến đổi (VM)</strong></td><td>Khoản lãi hoặc lỗ hằng ngày của vị thế, được bù trừ theo giá thanh toán</td><td>Mỗi ngày giao dịch có biến động giá</td></tr>
+      <tr><td><strong>Ký quỹ duy trì (MR)</strong></td><td>Tổng mức ký quỹ tối thiểu phải giữ để tiếp tục nắm giữ vị thế, bằng IM + VM</td><td>Suốt thời gian giữ vị thế</td></tr>
+    </tbody>
+  </table>
+  <p>Với hợp đồng tương lai trái phiếu Chính phủ còn có thêm ký quỹ bảo đảm thực hiện hợp đồng. Bài này tập trung vào hợp đồng tương lai chỉ số cổ phiếu, là sản phẩm phổ biến nhất.</p>
+
+  <h2 id="cach-tinh">Cách tính ký quỹ</h2>
+
+  <h3>Ký quỹ ban đầu</h3>
+  <div class="formula">
+    <div class="label">📐 Công thức ký quỹ ban đầu (IM)</div>
+    <code>IM = Giá giao dịch × Hệ số nhân × Số hợp đồng × Tỷ lệ ký quỹ ban đầu</code>
+    <p>Hệ số nhân của hợp đồng tương lai chỉ số cổ phiếu là 100.000 đồng mỗi điểm (10.000 đồng mỗi điểm với hợp đồng trái phiếu Chính phủ). Tỷ lệ ký quỹ ban đầu tại TCBS là 17%, theo quy định của VSDC.</p>
+  </div>
+  <p><strong>Ví dụ (số giả định):</strong> chỉ số hợp đồng ở 1.250 điểm, mua 1 hợp đồng.</p>
+  <ul>
+    <li>Giá trị hợp đồng: 1.250 × 100.000 = 125.000.000 đồng.</li>
+    <li>Ký quỹ ban đầu: 125.000.000 × 17% = 21.250.000 đồng.</li>
+  </ul>
+  <p class="verify-note">Mức ký quỹ tối thiểu thực tế có thể thay đổi theo công bố của VSDC và chính sách TCBS. Hãy kiểm tra số liệu cập nhật trên ứng dụng trước khi mở vị thế.</p>
+
+  <h3>Lãi lỗ hằng ngày và ký quỹ biến đổi</h3>
+  <p>Lãi lỗ của vị thế đang giữ được tính mỗi ngày:</p>
+  <ul>
+    <li>Vị thế mua (long): (Giá thị trường − Giá trung bình) × Khối lượng × Hệ số nhân</li>
+    <li>Vị thế bán (short): (Giá trung bình − Giá thị trường) × Khối lượng × Hệ số nhân</li>
+  </ul>
+  <p>Nếu tài khoản ở trạng thái lỗ ròng, nhà đầu tư phải nộp đủ khoản lỗ vào tiểu khoản phái sinh trước 8h sáng ngày giao dịch kế tiếp (T+1). Nếu ở trạng thái lãi, TCBS thanh toán khoản lãi chậm nhất trong ngày giao dịch kế tiếp. Nếu quá hạn, vị thế có thể bị đóng bắt buộc và khoản nợ chịu lãi 11,5%/năm.</p>
+
+  <h3>Ký quỹ duy trì và tỷ lệ sử dụng tài sản ký quỹ</h3>
+  <div class="formula">
+    <div class="label">📐 Công thức ký quỹ duy trì (MR)</div>
+    <code>MR = IM + VM</code>
+    <p>Tỷ lệ sử dụng tài sản ký quỹ phản ánh phần ký quỹ yêu cầu so với tổng tài sản ký quỹ của bạn. Tỷ lệ càng thấp thì tài khoản càng an toàn.</p>
+  </div>
+
+  <h2 id="nguong-canh-bao">Các ngưỡng cảnh báo tại TCBS</h2>
+  <p>Với hợp đồng tương lai chỉ số cổ phiếu, TCBS áp dụng các mốc theo tỷ lệ sử dụng tài sản ký quỹ:</p>
+  <table>
+    <thead>
+      <tr><th>Mức</th><th>Tỷ lệ</th><th>Ý nghĩa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Duy trì</td><td>85%</td><td>Mức tối đa để mở thêm vị thế mới</td></tr>
+      <tr><td>Cảnh báo</td><td>87%</td><td>TCBS yêu cầu bổ sung ký quỹ</td></tr>
+      <tr><td>Xử lý</td><td>90%</td><td>Ngưỡng đóng vị thế bắt buộc (force sell)</td></tr>
+      <tr><td>Sau rút ký quỹ</td><td>80%</td><td>Điều kiện để được rút tiền</td></tr>
+    </tbody>
+  </table>
+  <p>Khi rơi vào cảnh báo mức 3, nhà đầu tư cần bổ sung ký quỹ trong ngày T theo thời hạn TCBS thông báo. Phần hỗ trợ giải ngân được tính phí 11,5%/năm.</p>
+  <p class="verify-note">Các tỷ lệ có thể thay đổi. Hãy xem chính sách mới nhất tại help.tcbs.com.vn (mục "Chính sách CK phái sinh với HĐTL chỉ số cổ phiếu") trước khi giao dịch.</p>
+
+  <h2 id="vi-du">Ví dụ: tài khoản đi từ an toàn đến bị xử lý</h2>
+  <p>Giả định bạn mua 1 hợp đồng ở 1.250 điểm. Hai phương án nộp vốn:</p>
+
+  <h3>Phương án A: nộp vừa đủ (25 triệu đồng)</h3>
+  <p>Ký quỹ ban đầu 21,25 triệu đồng chia cho ngưỡng 85% cho ra mức tối thiểu khoảng 25 triệu đồng để mở vị thế. Khi chỉ số giảm dần, tỷ lệ sử dụng thay đổi như sau:</p>
+  <table>
+    <thead>
+      <tr><th>Chỉ số</th><th>Lỗ tạm tính</th><th>IM mới (17%)</th><th>MR = IM + VM</th><th>Tỷ lệ sử dụng</th><th>Trạng thái</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1.250</td><td>0</td><td>21,25 tr</td><td>21,25 tr</td><td>85,0%</td><td>Mức tối đa</td></tr>
+      <tr><td>1.240</td><td>1,0 tr</td><td>21,08 tr</td><td>22,08 tr</td><td>88,3%</td><td>Vượt ngưỡng cảnh báo 87%</td></tr>
+      <tr><td>1.230</td><td>2,0 tr</td><td>20,91 tr</td><td>22,91 tr</td><td>91,6%</td><td>Vượt ngưỡng xử lý 90%</td></tr>
+    </tbody>
+  </table>
+  <p>Chỉ số giảm 20 điểm (khoảng 1,6%) đã đủ để tài khoản chạm ngưỡng xử lý.</p>
+
+  <h3>Phương án B: nộp 50 triệu đồng</h3>
+  <p>Cùng kịch bản giảm 20 điểm, MR là 22,91 triệu đồng trên tài sản 50 triệu đồng, tức khoảng 45,8%. Tài khoản còn nhiều dư địa để chịu thêm biến động.</p>
+  <p class="verify-note">Các con số trên chỉ để minh họa. Tài sản ký quỹ thực tế, giá thanh toán và tỷ lệ áp dụng có thể khác.</p>
+
+  <h2 id="nguyen-tac">5 nguyên tắc quản lý ký quỹ an toàn</h2>
+  <ol class="steps">
+    <li><strong>Nộp dư ký quỹ so với mức tối thiểu.</strong> Đừng nộp sát mức mở vị thế. Giữ tỷ lệ sử dụng thấp hơn nhiều so với 85% để có chỗ chịu biến động.</li>
+    <li><strong>Chọn số hợp đồng theo mức lỗ chấp nhận được.</strong> Trước khi vào lệnh, hãy tính: nếu chỉ số đi ngược 20 hoặc 30 điểm, tài khoản mất bao nhiêu và tỷ lệ sử dụng lên bao nhiêu.</li>
+    <li><strong>Đặt điểm cắt lỗ.</strong> Quyết định thoát vị thế khi còn bình tĩnh, thay vì chờ hệ thống xử lý ở ngưỡng 90%.</li>
+    <li><strong>Chuẩn bị tiền cho hạn 8h sáng T+1.</strong> Lỗ ròng cuối ngày cần được bù vào tiểu khoản phái sinh trước giờ này. Hãy để sẵn tiền, tránh chuyển vội sát giờ.</li>
+    <li><strong>Cẩn trọng khi giữ vị thế qua đêm hoặc trước sự kiện lớn.</strong> Khoảng trống giá giữa hai phiên có thể làm tỷ lệ sử dụng tăng nhanh hơn dự tính.</li>
+  </ol>
+
+  <h2 id="nop-rut">Nộp và rút ký quỹ</h2>
+  <p>Bạn có thể nộp tiền vào tiểu khoản phái sinh bằng chuyển khoản ngân hàng hoặc chuyển nội bộ từ các tiểu khoản khác trong tài khoản chứng khoán. Số tài khoản chứng khoán TCBS trong nội dung chuyển khoản phải chính xác, vì nhập sai có thể khiến tiền vào nhầm tài khoản khách hàng khác. Hãy tránh chuyển từ ví điện tử hoặc qua Napas.</p>
+  <p>Bạn chỉ được rút tiền khi tỷ lệ sử dụng tài sản ký quỹ sau khi rút không vượt 80%. Hướng dẫn chi tiết có tại help.tcbs.com.vn, mục "Chuyển tiền giao dịch và rút ký quỹ phái sinh".</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary class="faq-q">Ký quỹ phái sinh là gì?</summary>
+    <p class="faq-a">Là khoản tiền hoặc tài sản nhà đầu tư nộp để bảo đảm thanh toán lãi lỗ khi giữ hợp đồng phái sinh, thay vì trả đủ toàn bộ giá trị hợp đồng.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Ký quỹ ban đầu hợp đồng VN30 là bao nhiêu?</summary>
+    <p class="faq-a">Bằng 17% giá trị hợp đồng theo quy định của VSDC tại thời điểm viết bài. Ví dụ hợp đồng có giá trị 125 triệu đồng cần 21,25 triệu đồng. Hãy kiểm tra số liệu cập nhật trên ứng dụng trước khi giao dịch.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Khi nào bị force sell phái sinh?</summary>
+    <p class="faq-a">Khi tỷ lệ sử dụng tài sản ký quỹ chạm ngưỡng 90% mà chưa bổ sung ký quỹ đúng hạn, hoặc khi không nộp đủ khoản lỗ ròng trước 8h sáng ngày giao dịch kế tiếp (T+1).</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Có thể lỗ nhiều hơn số tiền ký quỹ không?</summary>
+    <p class="faq-a">Có. Lãi lỗ được tính trên toàn bộ giá trị hợp đồng nên khoản lỗ có thể vượt phần ký quỹ ban đầu, và nhà đầu tư phải bù lại phần thiếu.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Ký quỹ duy trì khác ký quỹ ban đầu thế nào?</summary>
+    <p class="faq-a">Ký quỹ ban đầu là mức cần có để mở vị thế. Ký quỹ duy trì (bằng ký quỹ ban đầu cộng ký quỹ biến đổi) là mức phải giữ trong suốt thời gian nắm giữ vị thế, thay đổi theo lãi lỗ hằng ngày.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Khi nào được rút ký quỹ phái sinh?</summary>
+    <p class="faq-a">Khi tỷ lệ sử dụng tài sản ký quỹ sau khi rút không vượt 80%.</p>
+  </details>
+
+  <div class="cta">
+    <p>Đã nắm cơ chế ký quỹ? Bắt đầu giao dịch hợp đồng tương lai VN30 và VN100 với iFuture.</p>
+    <a href="https://www.tcbs.com.vn/en/individual/ifuture/" target="_blank" rel="noopener">Tìm hiểu về iFuture tại TCBS</a>
+  </div>
+
+  <p class="disclaimer">Nội dung chỉ mang tính giáo dục, không phải khuyến nghị đầu tư. Phái sinh có đòn bẩy cao và có thể gây thua lỗ vượt vốn ký quỹ. Nguồn tham khảo: help.tcbs.com.vn (chính sách phái sinh, thanh toán lãi lỗ, chuyển tiền và rút ký quỹ).</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 21/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

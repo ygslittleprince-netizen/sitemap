@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P/E là gì? Cách ứng dụng khi định giá cổ phiếu tại TCBS</title>
+<meta name="description" content="P/E là gì, công thức tính, P/E trailing và forward khác nhau ra sao, và 5 bước dùng P/E để định giá cổ phiếu kèm ví dụ số cụ thể và các bẫy cần tránh.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "P/E là gì? Cách ứng dụng khi định giá cổ phiếu tại TCBS",
+      "description": "P/E là gì, công thức tính, P/E trailing và forward khác nhau ra sao, và 5 bước dùng P/E để định giá cổ phiếu kèm ví dụ số cụ thể và các bẫy cần tránh.",
+      "inLanguage": "vi",
+      "dateModified": "2026-09-21",
+      "author": { "@type": "Organization", "name": "Đội ngũ nội dung TCBS" },
+      "publisher": { "@type": "Organization", "name": "Techcom Securities (TCBS)" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "P/E là gì?",
+          "acceptedAnswer": { "@type": "Answer", "text": "P/E là tỷ lệ giữa giá cổ phiếu và lợi nhuận trên mỗi cổ phiếu (EPS), cho biết nhà đầu tư trả bao nhiêu đồng cho mỗi đồng lợi nhuận." }
+        },
+        {
+          "@type": "Question",
+          "name": "Công thức tính P/E?",
+          "acceptedAnswer": { "@type": "Answer", "text": "P/E = Giá thị trường của cổ phiếu ÷ EPS." }
+        },
+        {
+          "@type": "Question",
+          "name": "P/E bao nhiêu là hợp lý?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Không có mức chung cho mọi cổ phiếu. Cần so với P/E trung bình của ngành và với lịch sử của chính doanh nghiệp, đồng thời xét tốc độ tăng trưởng lợi nhuận." }
+        },
+        {
+          "@type": "Question",
+          "name": "P/E thấp có phải cổ phiếu rẻ không?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Chưa chắc. P/E thấp có thể do cổ phiếu đang rẻ, hoặc do doanh nghiệp ít triển vọng, lợi nhuận bất thường hoặc đang ở đỉnh chu kỳ." }
+        },
+        {
+          "@type": "Question",
+          "name": "P/E trailing và P/E forward khác nhau thế nào?",
+          "acceptedAnswer": { "@type": "Answer", "text": "P/E trailing dùng EPS thực tế 12 tháng gần nhất. P/E forward dùng EPS dự phóng cho kỳ tới, nên phụ thuộc chất lượng dự báo." }
+        },
+        {
+          "@type": "Question",
+          "name": "P/E khác P/B thế nào?",
+          "acceptedAnswer": { "@type": "Answer", "text": "P/E so giá với lợi nhuận. P/B so giá với giá trị sổ sách (vốn chủ sở hữu) trên mỗi cổ phiếu. Hai chỉ số bổ sung cho nhau, không thay thế nhau." }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://www.tcbs.com.vn/" },
+        { "@type": "ListItem", "position": 2, "name": "Thông tin" },
+        { "@type": "ListItem", "position": 3, "name": "Cổ phiếu" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--red-dark);
+    margin: 24px 0 10px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol.steps { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  a { color: var(--red-dark); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+  }
+  .formula .label {
+    font-weight: 700;
+    color: var(--red-dark);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .formula code {
+    display: block;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+    background: #FFFFFF;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .formula p { margin: 0; font-size: 14.5px; color: var(--gray); }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol {
+    margin: 0;
+    padding: 0 0 16px 20px;
+  }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-q { font-weight: 700; color: var(--ink); margin: 0; font-size: 16px; display: inline; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+  .disclaimer { font-size: 13px; color: var(--gray); margin-top: 24px; }
+  @media (max-width: 600px) {
+    h1 { font-size: 26px; }
+    table { font-size: 13px; }
+    th, td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Cổ phiếu</div>
+  <h1>P/E là gì? Cách ứng dụng khi định giá cổ phiếu tại TCBS</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Chỉ số định giá của một cổ phiếu (P/E, P/B, EPS) trên nền tảng TCBS.<br>
+      Alt text gợi ý: "Chỉ số P/E và EPS của cổ phiếu trên nền tảng TCBS"
+    </div>
+  </div>
+
+  <p>P/E (Price to Earnings) là tỷ lệ giữa giá thị trường của cổ phiếu và lợi nhuận trên mỗi cổ phiếu (EPS). Công thức: P/E = Giá cổ phiếu ÷ EPS. Chỉ số này cho biết nhà đầu tư đang trả bao nhiêu đồng cho mỗi đồng lợi nhuận của doanh nghiệp, và cũng là thước đo tương đối về thời gian hoàn vốn.</p>
+  <p>P/E là chỉ số định giá được dùng nhiều nhất vì dễ tính và dễ so sánh. Nhưng một con số P/E thấp không tự động có nghĩa là cổ phiếu rẻ. Bài này giải thích cách tính, cách đọc và cách dùng P/E đúng để định giá.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#pe-la-gi">P/E là gì</a></li>
+      <li><a href="#cong-thuc">Công thức tính P/E</a></li>
+      <li><a href="#pe-cao-thap">P/E cao, P/E thấp nói lên điều gì</a></li>
+      <li><a href="#cach-ung-dung">Cách ứng dụng P/E khi định giá cổ phiếu</a></li>
+      <li><a href="#bay-thuong-gap">Những bẫy thường gặp khi dùng P/E</a></li>
+      <li><a href="#tra-cuu-tcbs">Tra cứu P/E trên nền tảng TCBS</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="pe-la-gi">P/E là gì</h2>
+  <p>P/E phản ánh mối quan hệ giữa giá và lợi nhuận. Khi P/E của một cổ phiếu là 15, thị trường đang định giá doanh nghiệp bằng 15 lần lợi nhuận một năm của nó. Nếu lợi nhuận giữ nguyên, về lý thuyết cần khoảng 15 năm để lợi nhuận tích lũy bù lại số tiền bạn bỏ ra.</p>
+  <p>Con số này còn phản ánh kỳ vọng. Nhà đầu tư chấp nhận trả P/E cao khi tin doanh nghiệp sẽ tăng trưởng mạnh, và chỉ trả P/E thấp khi kỳ vọng tăng trưởng yếu hoặc rủi ro cao.</p>
+
+  <h2 id="cong-thuc">Công thức tính P/E</h2>
+  <div class="formula">
+    <div class="label">📐 Công thức P/E</div>
+    <code>P/E = Giá thị trường của cổ phiếu ÷ EPS</code>
+    <code>EPS = Lợi nhuận sau thuế thuộc về cổ đông ÷ Số cổ phiếu đang lưu hành bình quân</code>
+    <p>Giá và EPS phải cùng một mốc thời gian để con số nhất quán.</p>
+  </div>
+
+  <h3>Ví dụ tính P/E</h3>
+  <p>Giả định (số minh họa) cổ phiếu A có:</p>
+  <ul>
+    <li>Giá thị trường: 60.000 đồng</li>
+    <li>EPS 4 quý gần nhất: 4.000 đồng</li>
+  </ul>
+  <p>P/E = 60.000 ÷ 4.000 = <strong>15</strong>. Nghĩa là thị trường đang trả 15 đồng cho mỗi đồng lợi nhuận.</p>
+
+  <h3>P/E trailing và P/E forward</h3>
+  <table>
+    <thead>
+      <tr><th>Tiêu chí</th><th>P/E trailing</th><th>P/E forward</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>EPS dùng để tính</td><td>EPS thực tế của 12 tháng gần nhất</td><td>EPS dự phóng của kỳ tới</td></tr>
+      <tr><td>Dựa trên</td><td>Số liệu đã công bố</td><td>Dự báo, có thể sai</td></tr>
+      <tr><td>Ưu điểm</td><td>Khách quan, kiểm chứng được</td><td>Phản ánh kỳ vọng tương lai</td></tr>
+      <tr><td>Hạn chế</td><td>Chậm với doanh nghiệp đang thay đổi nhanh</td><td>Phụ thuộc chất lượng dự báo</td></tr>
+    </tbody>
+  </table>
+  <p>Tiếp ví dụ trên: nếu EPS dự phóng năm tới là 5.000 đồng, P/E forward = 60.000 ÷ 5.000 = 12. P/E forward thấp hơn P/E trailing cho thấy lợi nhuận được kỳ vọng tăng.</p>
+
+  <h2 id="pe-cao-thap">P/E cao, P/E thấp nói lên điều gì</h2>
+  <ul>
+    <li><strong>P/E cao</strong> có thể do thị trường kỳ vọng tăng trưởng mạnh, hoặc cổ phiếu đang bị định giá quá đắt.</li>
+    <li><strong>P/E thấp</strong> có thể do cổ phiếu đang rẻ, hoặc doanh nghiệp ít triển vọng, gặp khó khăn.</li>
+  </ul>
+  <p>Không có mức P/E "chuẩn" áp dụng cho mọi cổ phiếu. Có nguồn gợi ý nhà đầu tư mới tìm hiểu các cổ phiếu có P/E dưới 10, nhưng đây chỉ là điểm xuất phát để lọc. Mặt bằng P/E khác nhau giữa các ngành, nên con số chỉ có ý nghĩa khi đặt cạnh đối thủ cùng ngành và lịch sử của chính doanh nghiệp.</p>
+
+  <h2 id="cach-ung-dung">Cách ứng dụng P/E khi định giá cổ phiếu</h2>
+  <ol class="steps">
+    <li><strong>Tra P/E hiện tại.</strong> Lấy P/E trailing làm điểm bắt đầu, xem thêm P/E forward nếu có dự phóng.</li>
+    <li><strong>So với các cổ phiếu cùng ngành.</strong> Xếp doanh nghiệp cạnh các công ty cùng phân ngành. P/E cao hơn hẳn mặt bằng ngành cần có lý do, ví dụ tăng trưởng vượt trội.</li>
+    <li><strong>So với lịch sử của chính nó.</strong> Xem P/E hiện tại nằm ở đâu so với mức trung bình nhiều năm. P/E thấp hơn trung bình dài hạn đáng được xem xét kỹ, nhưng cần hiểu vì sao nó thấp.</li>
+    <li><strong>Đặt P/E cạnh tăng trưởng lợi nhuận.</strong> Dùng chỉ số PEG (xem bên dưới).</li>
+    <li><strong>Đối chiếu chỉ số khác.</strong> Xem thêm ROE, nợ vay, dòng tiền và P/B để tránh chọn cổ phiếu chỉ vì P/E thấp. Về ROE, bạn có thể đọc bài <a href="../roe-la-gi-cong-thuc-tinh-va-cach-dung-khi-chon-co-phieu/">ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu</a>.</li>
+  </ol>
+
+  <h3>Ước tính giá tham chiếu từ P/E</h3>
+  <div class="formula">
+    <div class="label">📐 Giá tham chiếu theo P/E</div>
+    <code>Giá tham chiếu = EPS × P/E kỳ vọng</code>
+    <p>Con số này chỉ là điểm tham chiếu, không phải giá mục tiêu.</p>
+  </div>
+  <p><strong>Ví dụ (số giả định):</strong> cổ phiếu A có EPS 4.000 đồng. P/E trung bình của ngành là 12. Giá tham chiếu = 4.000 × 12 = 48.000 đồng. So với giá thị trường 60.000 đồng, cổ phiếu đang giao dịch cao hơn mức tham chiếu theo ngành khoảng 25%. Để kết luận "đắt", bạn cần kiểm tra thêm A có tăng trưởng nhanh hơn ngành hay không.</p>
+
+  <h3>Kết hợp P/E với tăng trưởng: chỉ số PEG</h3>
+  <div class="formula">
+    <div class="label">📐 Công thức PEG</div>
+    <code>PEG = P/E ÷ Tốc độ tăng trưởng EPS hằng năm (%)</code>
+    <p>Ví dụ: P/E là 15, EPS tăng 20% mỗi năm thì PEG = 15 ÷ 20 = 0,75.</p>
+  </div>
+  <p>PEG thấp hơn 1 thường được xem là hấp dẫn hơn so với tăng trưởng, còn PEG cao hơn 1 cho thấy giá đang đắt tương đối. Đây là ngưỡng tham khảo, phụ thuộc chất lượng của dự báo tăng trưởng.</p>
+
+  <h2 id="bay-thuong-gap">Những bẫy thường gặp khi dùng P/E</h2>
+  <ul>
+    <li><strong>So P/E giữa các ngành khác nhau.</strong> Ngân hàng, bán lẻ, công nghệ, bất động sản có mặt bằng P/E khác nhau. So xuyên ngành dễ dẫn đến kết luận sai.</li>
+    <li><strong>EPS âm hoặc quá nhỏ.</strong> Doanh nghiệp lỗ không có P/E có nghĩa. EPS rất nhỏ làm P/E vọt lên cao dù doanh nghiệp bình thường.</li>
+    <li><strong>Lợi nhuận bất thường.</strong> Khoản lãi thoái vốn hoặc bán tài sản làm EPS tăng một lần, khiến P/E thấp giả tạo.</li>
+    <li><strong>Ngành chu kỳ.</strong> Ở đỉnh chu kỳ, lợi nhuận cao khiến P/E thấp, nhưng lợi nhuận có thể giảm sau đó. Ngược lại, ở đáy chu kỳ, P/E thường cao.</li>
+    <li><strong>Bỏ qua chất lượng lợi nhuận.</strong> Lợi nhuận kế toán cao nhưng dòng tiền yếu là tín hiệu cần thận trọng.</li>
+    <li><strong>Dùng P/E một mình.</strong> P/E không cho thấy nợ vay, dòng tiền hay rủi ro của doanh nghiệp.</li>
+  </ul>
+
+  <h2 id="tra-cuu-tcbs">Tra cứu P/E trên nền tảng TCBS</h2>
+  <p>TCBS cung cấp các chỉ số định giá như P/E, P/B, ROE, ROA, EPS dưới dạng chuỗi lịch sử qua nhiều kỳ. Bạn cũng có thể đối chiếu danh sách cổ phiếu cùng phân ngành kèm P/E, P/B, ROE, và xem chỉ số dự phóng như P/E, EPS dự kiến. Đây đều là dữ liệu cần cho các bước 2, 3 và 4 ở trên.</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary class="faq-q">P/E là gì?</summary>
+    <p class="faq-a">P/E là tỷ lệ giữa giá cổ phiếu và lợi nhuận trên mỗi cổ phiếu (EPS), cho biết nhà đầu tư trả bao nhiêu đồng cho mỗi đồng lợi nhuận.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">Công thức tính P/E?</summary>
+    <p class="faq-a">P/E = Giá thị trường của cổ phiếu ÷ EPS.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">P/E bao nhiêu là hợp lý?</summary>
+    <p class="faq-a">Không có mức chung cho mọi cổ phiếu. Cần so với P/E trung bình của ngành và với lịch sử của chính doanh nghiệp, đồng thời xét tốc độ tăng trưởng lợi nhuận.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">P/E thấp có phải cổ phiếu rẻ không?</summary>
+    <p class="faq-a">Chưa chắc. P/E thấp có thể do cổ phiếu đang rẻ, hoặc do doanh nghiệp ít triển vọng, lợi nhuận bất thường hoặc đang ở đỉnh chu kỳ.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">P/E trailing và P/E forward khác nhau thế nào?</summary>
+    <p class="faq-a">P/E trailing dùng EPS thực tế 12 tháng gần nhất. P/E forward dùng EPS dự phóng cho kỳ tới, nên phụ thuộc chất lượng dự báo.</p>
+  </details>
+  <details class="faq-item">
+    <summary class="faq-q">P/E khác P/B thế nào?</summary>
+    <p class="faq-a">P/E so giá với lợi nhuận. P/B so giá với giá trị sổ sách (vốn chủ sở hữu) trên mỗi cổ phiếu. Hai chỉ số bổ sung cho nhau, không thay thế nhau.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn tra P/E, EPS và so sánh cổ phiếu cùng ngành? Dùng công cụ phân tích và bảng giá thời gian thực của TCBS.</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/san-pham/co-phieu/" target="_blank" rel="noopener">Tìm hiểu Cổ phiếu iStock tại TCBS</a>
+  </div>
+
+  <p class="disclaimer">Nội dung chỉ mang tính giáo dục, không phải khuyến nghị đầu tư. Các ví dụ số trong bài là số giả định để minh họa.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 21/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

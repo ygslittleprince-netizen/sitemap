@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chứng quyền có đảm bảo (CW): Khi nào nên đóng/đổi vị thế?</title>
+<meta name="description" content="Khi nào nên bán chứng quyền có đảm bảo (CW) hoặc đổi sang CW kỳ hạn dài hơn? 3 tình huống chính, cách kiểm tra và công cụ hỗ trợ tại TCBS.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Chứng quyền</div>
+  <h1>Chứng quyền có đảm bảo (CW): Khi nào nên đóng/đổi vị thế?</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Bảng giá chứng quyền trên TCInvest (thời gian còn lại, GAP hòa vốn).<br>
+      Alt text gợi ý: "Bảng giá chứng quyền có đảm bảo trên TCInvest"
+    </div>
+  </div>
+
+  <p>Nên đóng vị thế CW (bán) khi cổ phiếu cơ sở không còn triển vọng tăng hoặc phần lớn kỳ vọng đã phản ánh vào giá. Nên đổi vị thế (bán CW hiện tại, mua CW khác cùng cổ phiếu cơ sở nhưng kỳ hạn dài hơn) khi CW sắp đáo hạn mà nhà đầu tư vẫn tin vào cổ phiếu đó. CW có đòn bẩy cao và mất giá theo thời gian, nên quyết định đóng hay đổi cần đưa ra trước khi ngày đáo hạn đến gần.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#khai-niem">Đóng vị thế và đổi vị thế là gì</a></li>
+      <li><a href="#vi-sao">Vì sao CW cần theo dõi thời điểm thoát</a></li>
+      <li><a href="#tinh-huong">3 tình huống nên đóng hoặc đổi vị thế</a></li>
+      <li><a href="#bang-quyet-dinh">Bảng quyết định nhanh</a></li>
+      <li><a href="#luu-y-doi">Lưu ý khi đổi vị thế</a></li>
+      <li><a href="#cong-cu">Công cụ hỗ trợ tại TCBS</a></li>
+      <li><a href="#rui-ro">Rủi ro cần nhớ</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="khai-niem">Đóng vị thế và đổi vị thế là gì</h2>
+  <ul>
+    <li><b>Đóng vị thế:</b> bán CW đang nắm giữ, chốt lãi hoặc cắt lỗ.</li>
+    <li><b>Đổi vị thế:</b> bán CW hiện tại và mua CW khác của cùng cổ phiếu cơ sở, kỳ hạn dài hơn.</li>
+  </ul>
+
+  <h2 id="vi-sao">Vì sao CW cần theo dõi thời điểm thoát</h2>
+  <p>CW có thời hạn từ 3 tháng đến 2 năm và chỉ thực hiện quyền tại ngày đáo hạn (kiểu châu Âu). Khi đáo hạn, nếu lỗ hoặc hòa vốn thì nhà đầu tư không nhận được khoản thanh toán nào. Nếu có lãi, nhà đầu tư nhận tiền mặt theo công thức dưới đây.</p>
+  <div class="formula">Tiền thanh toán = (Giá bình quân cổ phiếu cơ sở 5 phiên trước đáo hạn − Giá thực hiện) × (Số CW ÷ Tỷ lệ chuyển đổi)</div>
+  <p>Vì vậy, giữ CW mà không có kế hoạch thoát có thể dẫn đến mất toàn bộ vốn đầu tư.</p>
+
+  <h2 id="tinh-huong">3 tình huống nên đóng hoặc đổi vị thế</h2>
+  <p><b>Tình huống 1: Cổ phiếu cơ sở không tăng như kỳ vọng.</b> Nếu sau một thời gian giá cổ phiếu đi ngang hoặc giảm, luận điểm mua ban đầu không còn đứng vững. Nên đóng vị thế thay vì chờ, vì CW vẫn mất giá theo thời gian dù cổ phiếu đứng yên.</p>
+  <p><b>Tình huống 2: Giá cổ phiếu đã phản ánh phần lớn kỳ vọng.</b> Khi mục tiêu giá gần đạt, dư địa tăng thêm của CW không còn hấp dẫn so với rủi ro. Nên đóng vị thế để chốt lãi.</p>
+  <p><b>Tình huống 3: CW gần đáo hạn.</b> CW mất giá trị theo thời gian, tốc độ mất giá tăng nhanh khi gần ngày đáo hạn. Nếu còn tin vào cổ phiếu, cân nhắc đổi sang CW kỳ hạn dài hơn. Nếu không còn tin, đóng vị thế.</p>
+
+  <h2 id="bang-quyet-dinh">Bảng quyết định nhanh</h2>
+  <table>
+    <thead>
+      <tr><th>Tình huống</th><th>Hành động gợi ý</th><th>Lý do chính</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Cổ phiếu cơ sở đi ngang hoặc giảm, triển vọng thấp</td><td>Đóng</td><td>Luận điểm mua không còn, CW tiếp tục mất giá theo thời gian</td></tr>
+      <tr><td>Giá đã gần mục tiêu, kỳ vọng phản ánh phần lớn</td><td>Đóng</td><td>Dư địa tăng thêm nhỏ so với rủi ro</td></tr>
+      <tr><td>Gần đáo hạn, vẫn tin cổ phiếu</td><td>Đổi</td><td>Kéo dài thời gian cho luận điểm, giảm áp lực đáo hạn</td></tr>
+      <tr><td>Gần đáo hạn, không còn tin cổ phiếu</td><td>Đóng</td><td>Tránh mất toàn bộ giá trị khi đáo hạn</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="luu-y-doi">Lưu ý khi đổi vị thế</h2>
+  <ul>
+    <li>Đổi vị thế gồm 2 lệnh (bán rồi mua), nên chịu phí giao dịch hai lần.</li>
+    <li>CW kỳ hạn dài hơn thường có giá cao hơn, cần so sánh giá thực hiện, tỷ lệ chuyển đổi và giá hòa vốn của CW mới trước khi mua.</li>
+    <li>Đổi vị thế chỉ hợp lý khi luận điểm đầu tư vẫn còn. Nếu luận điểm đã sai, đổi sang kỳ hạn dài hơn chỉ kéo dài khoản lỗ.</li>
+  </ul>
+
+  <h2 id="cong-cu">Công cụ hỗ trợ tại TCBS</h2>
+  <p>Bảng giá chứng quyền của TCBS hiển thị thời gian còn lại, GAP hòa vốn và mức độ biến động, giúp nhà đầu tư đánh giá nhanh CW đang nắm giữ còn bao lâu và cần cổ phiếu cơ sở biến động thêm bao nhiêu để hòa vốn.</p>
+  <p class="note">[Cần xác nhận với đội sản phẩm: định nghĩa chính xác của "GAP hòa vốn" trước khi công bố.]</p>
+
+  <h2 id="rui-ro">Rủi ro cần nhớ</h2>
+  <p>CW có đòn bẩy cao nên giá biến động mạnh. Ngoài ra còn rủi ro mất giá theo thời gian và rủi ro tổ chức phát hành mất khả năng thanh toán. Nên đặt trước ngưỡng chốt lãi và cắt lỗ thay vì quyết định theo cảm tính khi giá đang biến động. Giao dịch CW không được vay margin.</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>CW đáo hạn thì nhận được gì?</summary>
+    <p class="faq-a">Nếu lỗ hoặc hòa vốn, không nhận được gì. Nếu có lãi, nhận tiền mặt chênh lệch theo công thức thanh toán.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Nên bán CW trước đáo hạn bao lâu?</summary>
+    <p class="faq-a">Không có mốc cố định. CW mất giá nhanh hơn khi gần đáo hạn, nên quyết định sớm thay vì chờ sát ngày.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Đổi vị thế khác đóng vị thế ở điểm nào?</summary>
+    <p class="faq-a">Đóng là thoát hẳn. Đổi là bán CW cũ và mua CW mới cùng cổ phiếu cơ sở, giữ lại quan điểm đầu tư.</p>
+  </details>
+  <details class="faq-item">
+    <summary>CW có vay margin được không?</summary>
+    <p class="faq-a">Không. Giao dịch CW không áp dụng vay ký quỹ.</p>
+  </details>
+
+  <div class="cta">
+    <p>Muốn tìm hiểu thêm về chứng quyền tại TCBS?</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/san-pham/chung-quyen-tcbs/" target="_blank" rel="noopener">Tìm hiểu Chứng quyền TCBS</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: bài gốc "Chứng quyền có đảm bảo: Khi nào nên chủ động đóng/đổi vị thế?" (tcbs.com.vn, 16/01/2026); help.tcbs.com.vn (Chứng quyền có bảo đảm, Lợi ích và rủi ro khi giao dịch chứng quyền).</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 21/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

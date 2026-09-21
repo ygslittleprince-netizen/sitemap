@@ -198,6 +198,10 @@
   <details class="toc">
     <summary>Mục lục</summary>
     <ol>
+            <li><a href="#cw-la-gi">Chứng quyền có đảm bảo (CW) là gì</a></li>
+      <li><a href="#thuat-ngu">Thuật ngữ cần biết</a></li>
+      <li><a href="#cong-thuc">Các công thức tính liên quan</a></li>
+      <li><a href="#vi-du">Ví dụ minh họa</a></li>
       <li><a href="#khai-niem">Đóng vị thế và đổi vị thế là gì</a></li>
       <li><a href="#vi-sao">Vì sao CW cần theo dõi thời điểm thoát</a></li>
       <li><a href="#tinh-huong">3 tình huống nên đóng hoặc đổi vị thế</a></li>
@@ -215,10 +219,53 @@
     <li><b>Đổi vị thế:</b> bán CW hiện tại và mua CW khác của cùng cổ phiếu cơ sở, kỳ hạn dài hơn.</li>
   </ul>
 
+  <h2 id="cw-la-gi">Chứng quyền có đảm bảo (CW) là gì</h2>
+  <p>Chứng quyền có đảm bảo (CW) là chứng khoán do công ty chứng khoán phát hành, được niêm yết trên sàn và có mã giao dịch riêng. Chứng khoán cơ sở thường là cổ phiếu trong rổ VN30. CW giao dịch tương tự cổ phiếu, nhưng có thời hạn nhất định và không được vay margin.</p>
+
+  <h2 id="thuat-ngu">Thuật ngữ cần biết</h2>
+  <table>
+    <thead>
+      <tr><th>Thuật ngữ</th><th>Ý nghĩa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tổ chức phát hành</td><td>Công ty chứng khoán phát hành CW</td></tr>
+      <tr><td>Giá thực hiện</td><td>Mức giá quyền mua hoặc bán cổ phiếu cơ sở khi CW đáo hạn</td></tr>
+      <tr><td>Tỷ lệ chuyển đổi</td><td>Tỷ lệ quy đổi CW sang cổ phiếu cơ sở, ví dụ 4:1 là 4 CW quy đổi 1 cổ phiếu</td></tr>
+      <tr><td>Ngày đáo hạn</td><td>Thời hạn CW tối thiểu 3 tháng, tối đa 2 năm</td></tr>
+      <tr><td>Kiểu thực hiện</td><td>Kiểu châu Âu, chỉ thực hiện quyền vào ngày đáo hạn</td></tr>
+      <tr><td>Phương thức thanh toán</td><td>Tiền mặt theo chênh lệch, không giao nhận cổ phiếu</td></tr>
+      <tr><td>Giá thanh toán</td><td>Bình quân giá cổ phiếu cơ sở 5 phiên giao dịch trước ngày đáo hạn</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="cong-thuc">Các công thức tính liên quan</h2>
+  <p><b>Lãi khi bán trước đáo hạn.</b> Phương thức giao dịch, phí và thuế giống chứng khoán cơ sở.</p>
+  <div class="formula">Lợi nhuận = (Giá CW bán − Giá CW mua) × Số lượng CW</div>
+  <p><b>Tiền nhận khi đáo hạn</b> (chỉ khi có lãi, nhận vào T+5). Nếu lỗ hoặc hòa vốn, nhà đầu tư không nhận được gì.</p>
+  <div class="formula">Tiền nhận = (Giá thanh toán − Giá thực hiện) × (Số lượng CW ÷ Tỷ lệ chuyển đổi)</div>
+  <p><b>Thuế khi đáo hạn.</b></p>
+  <div class="formula">Thuế = 0,1% × Giá thanh toán × (Số lượng CW ÷ Tỷ lệ chuyển đổi)</div>
+  <p><b>Giá trần của CW trong phiên.</b></p>
+  <div class="formula">Giá trần CW = Giá tham chiếu CW + (Giá trần cơ sở − Giá tham chiếu cơ sở) ÷ Tỷ lệ chuyển đổi</div>
+  <p><b>Giá cổ phiếu cơ sở hòa vốn khi giữ đến đáo hạn</b> (công thức suy ra từ công thức tiền nhận, chưa tính phí và thuế):</p>
+  <div class="formula">Giá hòa vốn ≈ Giá thực hiện + Tỷ lệ chuyển đổi × Giá CW mua</div>
+
+  <h2 id="vi-du">Ví dụ minh họa</h2>
+  <p>Giả định giá thực hiện 30.000 đồng, tỷ lệ chuyển đổi 4:1, nhà đầu tư mua 1.000 CW giá 1.500 đồng (vốn 1.500.000 đồng). Giá cổ phiếu cơ sở hòa vốn khi đáo hạn là 30.000 + 4 × 1.500 = 36.000 đồng.</p>
+  <table>
+    <thead>
+      <tr><th>Giá thanh toán</th><th>Tiền nhận</th><th>Thuế</th><th>Kết quả (chưa tính phí mua)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>38.000 đồng</td><td>2.000.000 đồng</td><td>9.500 đồng</td><td>Lãi khoảng 490.500 đồng</td></tr>
+      <tr><td>34.000 đồng</td><td>1.000.000 đồng</td><td>8.500 đồng</td><td>Vẫn nhận tiền nhưng lỗ khoảng 508.500 đồng</td></tr>
+      <tr><td>29.000 đồng</td><td>0 đồng</td><td>0 đồng</td><td>Lỗ toàn bộ 1.500.000 đồng</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Số liệu giả định nhằm minh họa cách tính, không phải cam kết hay dự báo. Dòng thứ hai cho thấy nhận được tiền khi đáo hạn chưa chắc là có lãi, vì tiền nhận có thể thấp hơn vốn đã bỏ ra.</p>
+
   <h2 id="vi-sao">Vì sao CW cần theo dõi thời điểm thoát</h2>
-  <p>CW có thời hạn từ 3 tháng đến 2 năm và chỉ thực hiện quyền tại ngày đáo hạn (kiểu châu Âu). Khi đáo hạn, nếu lỗ hoặc hòa vốn thì nhà đầu tư không nhận được khoản thanh toán nào. Nếu có lãi, nhà đầu tư nhận tiền mặt theo công thức dưới đây.</p>
-  <div class="formula">Tiền thanh toán = (Giá bình quân cổ phiếu cơ sở 5 phiên trước đáo hạn − Giá thực hiện) × (Số CW ÷ Tỷ lệ chuyển đổi)</div>
-  <p>Vì vậy, giữ CW mà không có kế hoạch thoát có thể dẫn đến mất toàn bộ vốn đầu tư.</p>
+  <p>CW có thời hạn từ 3 tháng đến 2 năm và chỉ thực hiện quyền tại ngày đáo hạn. Khi đáo hạn, nếu lỗ hoặc hòa vốn thì nhà đầu tư không nhận được khoản thanh toán nào, và tiền nhận nếu có lãi được tính theo công thức ở mục trên. Vì vậy, giữ CW mà không có kế hoạch thoát có thể dẫn đến mất toàn bộ vốn đầu tư.</p>
 
   <h2 id="tinh-huong">3 tình huống nên đóng hoặc đổi vị thế</h2>
   <p><b>Tình huống 1: Cổ phiếu cơ sở không tăng như kỳ vọng.</b> Nếu sau một thời gian giá cổ phiếu đi ngang hoặc giảm, luận điểm mua ban đầu không còn đứng vững. Nên đóng vị thế thay vì chờ, vì CW vẫn mất giá theo thời gian dù cổ phiếu đứng yên.</p>
@@ -253,6 +300,10 @@
   <p>CW có đòn bẩy cao nên giá biến động mạnh. Ngoài ra còn rủi ro mất giá theo thời gian và rủi ro tổ chức phát hành mất khả năng thanh toán. Nên đặt trước ngưỡng chốt lãi và cắt lỗ thay vì quyết định theo cảm tính khi giá đang biến động. Giao dịch CW không được vay margin.</p>
 
   <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Nhận được tiền khi đáo hạn có phải là có lãi không?</summary>
+    <p class="faq-a">Không chắc. Nếu tiền nhận thấp hơn vốn đã bỏ ra mua CW thì vẫn lỗ, giá cổ phiếu cơ sở cần vượt mức hòa vốn (giá thực hiện + tỷ lệ chuyển đổi × giá CW mua) mới có lãi.</p>
+  </details>
   <details class="faq-item">
     <summary>CW đáo hạn thì nhận được gì?</summary>
     <p class="faq-a">Nếu lỗ hoặc hòa vốn, không nhận được gì. Nếu có lãi, nhận tiền mặt chênh lệch theo công thức thanh toán.</p>

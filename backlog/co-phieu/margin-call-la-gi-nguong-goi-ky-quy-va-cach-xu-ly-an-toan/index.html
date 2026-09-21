@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn</title>
+<meta name="description" content="Margin call là gì, ngưỡng gọi ký quỹ và ngưỡng force-sell tại TCBS bao nhiêu %? Cách tính tỷ lệ ký quỹ và xử lý an toàn khi tài khoản bị cảnh báo.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .img-placeholder {
+    width: 100%;
+    min-height: 220px;
+    border-radius: 10px;
+    margin: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-soft);
+    border: 1.5px dashed #C9C9C9;
+    color: var(--gray);
+    font-size: 13.5px;
+  }
+  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px 28px;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Cổ phiếu</div>
+  <h1>Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn</h1>
+
+  <div class="img-placeholder">
+    <div>
+      <b>Ảnh hero cần bổ sung</b>
+      Giao diện TCInvest hiển thị tỷ lệ ký quỹ (Rtt) của tài khoản.<br>
+      Alt text gợi ý: "Tỷ lệ ký quỹ Rtt trên TCInvest"
+    </div>
+  </div>
+
+  <p>Margin call là lệnh yêu cầu bổ sung tài sản đảm bảo khi tỷ lệ ký quỹ của tài khoản giảm xuống dưới tỷ lệ duy trì. Tại TCBS, tỷ lệ ký quỹ duy trì là <b>85%</b>. Nếu tỷ lệ tiếp tục giảm xuống dưới <b>80%</b> (tỷ lệ xử lý tài sản đảm bảo), tài khoản sẽ bị bán giải chấp bắt buộc (force-sell) vào ngày làm việc liền sau. Xem khái niệm margin cơ bản tại <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-la-gi-phan-biet-margin-tplus-va-han-muc-vay-ky-quy-thuong/" target="_blank" rel="noopener">Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</a>.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#rtt">Tỷ lệ ký quỹ (Rtt) là gì và tính như thế nào</a></li>
+      <li><a href="#nguong">Ngưỡng gọi ký quỹ và ngưỡng xử lý bắt buộc</a></li>
+      <li><a href="#dieu-gi-xay-ra">Điều gì xảy ra khi bị margin call</a></li>
+      <li><a href="#xu-ly-an-toan">Cách xử lý an toàn khi tài khoản bị cảnh báo</a></li>
+      <li><a href="#phong-tranh">Cách phòng tránh margin call từ đầu</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="rtt">Tỷ lệ ký quỹ (Rtt) là gì và tính như thế nào</h2>
+  <p>Rtt là tỷ lệ giữa giá trị tài sản chứng khoán (tính theo tỷ lệ và giá quy định của TCBS) trên tổng nợ vay.</p>
+  <div class="formula">Rtt = Σ(Số lượng CK thực có × Tỷ lệ tính tài sản × Giá tính tài sản) ÷ (Tổng nợ đã giải ngân + Nợ phí + Dư nợ chờ giải ngân − Tiền mặt − Tiền chờ về)</div>
+  <p>Rtt càng cao, tài khoản càng an toàn. Khi giá cổ phiếu giảm, Rtt giảm dần và tài khoản lần lượt đi qua các mốc cảnh báo dưới đây.</p>
+
+  <h2 id="nguong">Ngưỡng gọi ký quỹ và ngưỡng xử lý bắt buộc tại TCBS</h2>
+  <table>
+    <thead>
+      <tr><th>Mốc</th><th>Tỷ lệ</th><th>Ý nghĩa</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Tỷ lệ ký quỹ ban đầu</td><td>100%</td><td>Yêu cầu tối thiểu khi mở khoản vay</td></tr>
+      <tr><td>Tỷ lệ ký quỹ duy trì</td><td>85%</td><td>Dưới mức này, tài khoản nhận lệnh gọi ký quỹ bổ sung (margin call)</td></tr>
+      <tr><td>Tỷ lệ xử lý tài sản đảm bảo</td><td>80%</td><td>Dưới mức này, tài khoản bị bán giải chấp bắt buộc (force-sell)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Chính sách áp dụng từ 07/11/2022 theo help.tcbs.com.vn, có thể được TCBS điều chỉnh theo từng thời kỳ, nên kiểm tra lại thông báo mới nhất trên ứng dụng.</p>
+
+  <h2 id="dieu-gi-xay-ra">Điều gì xảy ra khi bị margin call</h2>
+  <ul>
+    <li><b>Rtt giảm xuống dưới 85% nhưng vẫn trên 80%:</b> tài khoản nhận lệnh gọi ký quỹ bổ sung lần đầu tiên. Nếu không bổ sung, TCBS bán tài sản đảm bảo vào ngày làm việc thứ 3 kể từ ngày nhận lệnh gọi ký quỹ.</li>
+    <li><b>Rtt giảm xuống dưới 80%:</b> TCBS bán tài sản đảm bảo vào ngày làm việc liền sau ngày tỷ lệ xuống dưới ngưỡng này, không có thời gian gia hạn.</li>
+  </ul>
+
+  <h2 id="xu-ly-an-toan">Cách xử lý an toàn khi tài khoản bị cảnh báo ký quỹ</h2>
+  <ul>
+    <li>Nộp thêm tiền hoặc chuyển thêm chứng khoán vào tài khoản để nâng Rtt lên trên 85% trong thời gian còn lại của 3 ngày làm việc.</li>
+    <li>Chủ động bán bớt một phần danh mục để giảm dư nợ, thay vì chờ bị bán giải chấp theo lệnh của TCBS.</li>
+    <li>Theo dõi Rtt thường xuyên trên TCInvest thay vì chỉ chờ thông báo, vì giá cổ phiếu có thể giảm nhanh trong phiên.</li>
+  </ul>
+
+  <h2 id="phong-tranh">Cách phòng tránh margin call từ đầu</h2>
+  <ul>
+    <li>Không vay margin ở mức tối đa hạn mức được cấp, giữ một khoảng đệm để chịu được biến động giá.</li>
+    <li>Ưu tiên các mã có tỷ lệ tính tài sản cao và thanh khoản tốt trong danh mục dùng làm tài sản đảm bảo.</li>
+    <li>Cân nhắc đăng ký <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/marginsure-la-gi-cach-giam-lai-suat-khi-co-phieu-giam-gia/" target="_blank" rel="noopener">MargInsure</a> để giảm lãi vay đúng những ngày giá cổ phiếu giảm dưới giá vốn, giảm bớt áp lực chi phí trong giai đoạn dễ bị margin call.</li>
+  </ul>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Margin call khác force-sell ở điểm nào?</summary>
+    <p class="faq-a">Margin call là lệnh yêu cầu bổ sung tài sản khi Rtt dưới 85%, nhà đầu tư còn thời gian xử lý. Force-sell là việc TCBS chủ động bán tài sản đảm bảo khi Rtt dưới 80% hoặc không bổ sung sau lệnh gọi ký quỹ.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Sau khi nhận margin call, có bao nhiêu ngày để xử lý?</summary>
+    <p class="faq-a">Nếu Rtt ở giữa 80% và 85%, có đến ngày làm việc thứ 3 kể từ ngày nhận lệnh gọi ký quỹ bổ sung lần đầu để xử lý trước khi bị bán bắt buộc.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Bị force-sell có được chọn bán mã nào không?</summary>
+    <p class="faq-a">Chính sách công khai không nêu quyền chọn mã khi bị bán giải chấp bắt buộc, đây là lý do nên chủ động xử lý trước khi bị force-sell.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Làm sao biết tỷ lệ ký quỹ hiện tại của mình?</summary>
+    <p class="faq-a">Xem trực tiếp trên TCInvest ở mục quản lý margin, nơi Rtt được cập nhật theo biến động giá thị trường.</p>
+  </details>
+
+  <div class="cta">
+    <p>Theo dõi tỷ lệ ký quỹ tài khoản của bạn mọi lúc?</p>
+    <a href="https://tcinvest.tcbs.com.vn/" target="_blank" rel="noopener">Kiểm tra tỷ lệ ký quỹ trên TCInvest</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nguồn tham khảo: help.tcbs.com.vn (Chính sách giao dịch ký quỹ; Rtt là gì và được tính như thế nào).</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 21/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

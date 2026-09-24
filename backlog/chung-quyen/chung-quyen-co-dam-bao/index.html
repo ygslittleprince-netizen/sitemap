@@ -41,22 +41,14 @@
     margin: 0 0 16px;
     color: var(--ink);
   }
-  .img-placeholder {
+  .hero-img {
     width: 100%;
-    min-height: 220px;
     border-radius: 10px;
-    margin: 0 0 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 24px;
-    background: var(--bg-soft);
-    border: 1.5px dashed #C9C9C9;
-    color: var(--gray);
-    font-size: 13.5px;
+    margin: 0 0 24px;
+    display: block;
+    object-fit: cover;
+    max-height: 380px;
   }
-  .img-placeholder b { display: block; color: var(--ink); font-size: 14px; margin-bottom: 6px; }
   h2 {
     font-size: 22px;
     color: var(--ink);
@@ -93,6 +85,39 @@
     margin-top: 8px;
     font-size: 12.5px;
     color: #9A9A9A;
+  }
+  .case-list {
+    display: grid;
+    gap: 14px;
+    margin: 8px 0 28px;
+  }
+  .case-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--red);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .case-icon {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FBEAEC;
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .case-icon svg { width: 22px; height: 22px; display: block; }
+  .case-body { min-width: 0; }
+  .case-body b { display: block; margin-bottom: 4px; font-size: 16px; }
+  .case-body p { margin: 0; font-size: 15.5px; }
+  @media (max-width: 480px) {
+    .case-card { flex-direction: column; gap: 10px; }
   }
   .toc {
     background: var(--bg-soft);
@@ -185,13 +210,7 @@
   <div class="kicker">Chứng quyền</div>
   <h1>Chứng quyền có đảm bảo (CW): Khi nào nên đóng/đổi vị thế?</h1>
 
-  <div class="img-placeholder">
-    <div>
-      <b>Ảnh hero cần bổ sung</b>
-      Bảng giá chứng quyền trên TCInvest (thời gian còn lại, GAP hòa vốn).<br>
-      Alt text gợi ý: "Bảng giá chứng quyền có đảm bảo trên TCInvest"
-    </div>
-  </div>
+  <img class="hero-img" src="chung-quyen-hero-tcbs.png" alt="Chứng quyền có đảm bảo: hai người bắt tay bên bàn làm việc, hai điện thoại hiển thị biểu đồ CW và mũi tên chuyển đổi giữa hai vị thế">
 
   <p>Nên đóng vị thế CW (bán) khi cổ phiếu cơ sở không còn triển vọng tăng hoặc phần lớn kỳ vọng đã phản ánh vào giá. Nên đổi vị thế (bán CW hiện tại, mua CW khác cùng cổ phiếu cơ sở nhưng kỳ hạn dài hơn) khi CW sắp đáo hạn mà nhà đầu tư vẫn tin vào cổ phiếu đó. CW có đòn bẩy cao và mất giá theo thời gian, nên quyết định đóng hay đổi cần đưa ra trước khi ngày đáo hạn đến gần.</p>
 
@@ -268,9 +287,50 @@
   <p>CW có thời hạn từ 3 tháng đến 2 năm và chỉ thực hiện quyền tại ngày đáo hạn. Khi đáo hạn, nếu lỗ hoặc hòa vốn thì nhà đầu tư không nhận được khoản thanh toán nào, và tiền nhận nếu có lãi được tính theo công thức ở mục trên. Vì vậy, giữ CW mà không có kế hoạch thoát có thể dẫn đến mất toàn bộ vốn đầu tư.</p>
 
   <h2 id="tinh-huong">3 tình huống nên đóng hoặc đổi vị thế</h2>
-  <p><b>Tình huống 1: Cổ phiếu cơ sở không tăng như kỳ vọng.</b> Nếu sau một thời gian giá cổ phiếu đi ngang hoặc giảm, luận điểm mua ban đầu không còn đứng vững. Nên đóng vị thế thay vì chờ, vì CW vẫn mất giá theo thời gian dù cổ phiếu đứng yên.</p>
-  <p><b>Tình huống 2: Giá cổ phiếu đã phản ánh phần lớn kỳ vọng.</b> Khi mục tiêu giá gần đạt, dư địa tăng thêm của CW không còn hấp dẫn so với rủi ro. Nên đóng vị thế để chốt lãi.</p>
-  <p><b>Tình huống 3: CW gần đáo hạn.</b> CW mất giá trị theo thời gian, tốc độ mất giá tăng nhanh khi gần ngày đáo hạn. Nếu còn tin vào cổ phiếu, cân nhắc đổi sang CW kỳ hạn dài hơn. Nếu không còn tin, đóng vị thế.</p>
+  <div class="case-list">
+
+    <div class="case-card">
+      <div class="case-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 7 9 13 13 9 21 17"></polyline>
+          <polyline points="21 12 21 17 16 17"></polyline>
+        </svg>
+      </div>
+      <div class="case-body">
+        <b>Tình huống 1: Cổ phiếu cơ sở không tăng như kỳ vọng</b>
+        <p>Nếu sau một thời gian giá cổ phiếu đi ngang hoặc giảm, luận điểm mua ban đầu không còn đứng vững. Nên đóng vị thế thay vì chờ, vì CW vẫn mất giá theo thời gian dù cổ phiếu đứng yên.</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <circle cx="12" cy="12" r="5"></circle>
+          <circle cx="12" cy="12" r="1.5"></circle>
+        </svg>
+      </div>
+      <div class="case-body">
+        <b>Tình huống 2: Giá cổ phiếu đã phản ánh phần lớn kỳ vọng</b>
+        <p>Khi mục tiêu giá gần đạt, dư địa tăng thêm của CW không còn hấp dẫn so với rủi ro. Nên đóng vị thế để chốt lãi.</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 3h10M7 21h10"></path>
+          <path d="M8 3v3.5c0 1.6 1.2 2.7 2.4 3.6.8.6 1.2.9 1.6.9s.8-.3 1.6-.9c1.2-.9 2.4-2 2.4-3.6V3"></path>
+          <path d="M8 21v-3.5c0-1.6 1.2-2.7 2.4-3.6.8-.6 1.2-.9 1.6-.9s.8.3 1.6.9c1.2.9 2.4 2 2.4 3.6V21"></path>
+        </svg>
+      </div>
+      <div class="case-body">
+        <b>Tình huống 3: CW gần đáo hạn</b>
+        <p>CW mất giá trị theo thời gian, tốc độ mất giá tăng nhanh khi gần ngày đáo hạn. Nếu còn tin vào cổ phiếu, cân nhắc đổi sang CW kỳ hạn dài hơn. Nếu không còn tin, đóng vị thế.</p>
+      </div>
+    </div>
+
+  </div>
 
   <h2 id="bang-quyet-dinh">Bảng quyết định nhanh</h2>
   <table>

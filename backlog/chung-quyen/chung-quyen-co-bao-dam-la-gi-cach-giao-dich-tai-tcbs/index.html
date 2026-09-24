@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chứng quyền có bảo đảm là gì? Cách giao dịch tại TCBS</title>
+<meta name="description" content="Chứng quyền có bảo đảm (CW) là gì, các thông số cần đọc, công thức tính lãi lỗ kèm ví dụ ba kịch bản, và cách giao dịch CW tại TCBS.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .hero-img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 0 24px;
+    display: block;
+    object-fit: cover;
+    max-height: 380px;
+  }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  a { color: var(--red-dark); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 24px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    vertical-align: top;
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 8px 0 20px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.8;
+  }
+  .img-placeholder {
+    border: 2px dashed #D8D8D8;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    color: #9A9A9A;
+    font-size: 13.5px;
+    background: var(--bg-soft);
+    margin: 0 0 24px;
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    margin: 0 6px 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Chứng quyền</div>
+  <h1>Chứng quyền có bảo đảm là gì? Cách giao dịch tại TCBS</h1>
+
+  <div class="img-placeholder">
+    <b>[Ảnh hero cần bổ sung]</b><br>
+    Ảnh chụp bảng giá chứng quyền trên ứng dụng TCInvest, thấy rõ mã CW cùng giá thực hiện và ngày đáo hạn, có logo TCBS.<br>
+    <i>Alt đề xuất: "Bảng giá chứng quyền có bảo đảm trên ứng dụng TCInvest của TCBS"</i>
+  </div>
+
+  <p>Chứng quyền có bảo đảm (CW) là chứng khoán do công ty chứng khoán phát hành, niêm yết trên sàn với mã riêng và mua bán như cổ phiếu. Chữ "có bảo đảm" nói về nghĩa vụ của tổ chức phát hành, không phải về khoản lãi của người mua.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#quyen-loi">Quyền lợi của khách hàng</a></li>
+      <li><a href="#thong-so">Các thông số quan trọng</a></li>
+      <li><a href="#tinh-lai-lo">Cách tính lãi lỗ</a></li>
+      <li><a href="#loi-ich-rui-ro">Lợi ích và rủi ro</a></li>
+      <li><a href="#giao-dich-tcbs">Cách giao dịch chứng quyền tại TCBS</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="quyen-loi">Quyền lợi của khách hàng</h2>
+  <p>Ba nghĩa vụ mà tổ chức phát hành phải giữ suốt vòng đời chứng quyền:</p>
+  <ul>
+    <li><b>Ký quỹ bảo đảm thanh toán.</b> Tổ chức phát hành phải ký quỹ tại ngân hàng lưu ký, tài sản bị phong tỏa tới khi chứng quyền đáo hạn.</li>
+    <li><b>Phòng ngừa rủi ro hằng ngày.</b> Tổ chức phát hành phải mua bán chứng khoán cơ sở để cân vị thế tương ứng lượng CW lưu hành, báo cáo Sở giao dịch mỗi ngày.</li>
+    <li><b>Tạo lập thị trường.</b> Tổ chức phát hành phải liên tục yết giá mua và giá bán để nhà đầu tư luôn có đối tác giao dịch.</li>
+  </ul>
+  <p>Ba nghĩa vụ đó bảo đảm rằng đến ngày đáo hạn, nếu bạn có lãi thì chắc chắn có tiền để trả. Chúng không bảo đảm bạn có lãi, cũng không bảo đảm bạn giữ được vốn. Giá cơ sở đi sai hướng thì bạn vẫn mất tiền, tối đa bằng số tiền đã bỏ ra mua CW.</p>
+
+  <h2 id="thong-so">Các thông số quan trọng</h2>
+  <table>
+    <thead>
+      <tr><th>Thông số</th><th>Nghĩa là gì</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Chứng khoán cơ sở</td><td>Cổ phiếu CW bám theo, thường thuộc rổ VN30</td></tr>
+      <tr><td>Giá thực hiện</td><td>Mức giá cố định để đối chiếu khi đáo hạn</td></tr>
+      <tr><td>Tỷ lệ chuyển đổi</td><td>Bao nhiêu CW đổi được một cổ phiếu, ví dụ 4:1</td></tr>
+      <tr><td>Ngày đáo hạn</td><td>CW sống 3 đến 24 tháng. Ngày giao dịch cuối cùng trước đáo hạn 2 ngày</td></tr>
+      <tr><td>Giá thanh toán</td><td>Bình quân giá cổ phiếu cơ sở 5 phiên trước ngày đáo hạn</td></tr>
+      <tr><td>Kiểu thực hiện</td><td>Kiểu châu Âu, chỉ thực hiện đúng ngày đáo hạn</td></tr>
+    </tbody>
+  </table>
+  <p>Dòng hay bị bỏ qua nhất là giá thanh toán: bình quân 5 phiên chứ không phải giá đóng cửa ngày cuối, nên một phiên tăng mạnh sát đáo hạn không cứu được vị thế.</p>
+
+  <h2 id="tinh-lai-lo">Cách tính lãi lỗ</h2>
+  <p>Bán trước ngày giao dịch cuối cùng, tính như bán cổ phiếu:</p>
+  <div class="formula">Lãi/lỗ = (Giá bán − Giá mua) × Số lượng CW</div>
+
+  <p>Giữ đến đáo hạn, nhận tiền chênh lệch:</p>
+  <div class="formula">Tiền nhận = (Giá thanh toán − Giá thực hiện) × (Số lượng CW ÷ Tỷ lệ chuyển đổi)<br>
+  Thuế = 0,1% × Giá thanh toán × (Số lượng CW ÷ Tỷ lệ chuyển đổi)</div>
+
+  <p>Con số quan trọng nhất:</p>
+  <div class="formula">Điểm hòa vốn = Giá thực hiện + (Giá mua CW × Tỷ lệ chuyển đổi)</div>
+
+  <div class="img-placeholder">
+    <b>[Ảnh minh họa cần bổ sung]</b><br>
+    Đồ thị lãi lỗ: trục ngang là giá cổ phiếu cơ sở, đánh dấu giá thực hiện 50.000 và điểm hòa vốn 58.000, tô vùng lỗ và vùng lãi.<br>
+    <i>Alt đề xuất: "Đồ thị lãi lỗ chứng quyền mua với giá thực hiện 50.000 đồng và điểm hòa vốn 58.000 đồng"</i>
+  </div>
+
+  <p>Giả định CW giá 2.000 đồng, giá thực hiện 50.000 đồng, tỷ lệ chuyển đổi 4:1, điểm hòa vốn 58.000 đồng. Mua 10.000 CW hết 20 triệu đồng, quy đổi 2.500 cổ phiếu:</p>
+  <ul>
+    <li><b>Giá thanh toán 65.000 đồng:</b> nhận 37,5 triệu, trừ thuế 162.500 đồng, lãi ròng khoảng <b>17,3 triệu</b>.</li>
+    <li><b>Giá thanh toán 55.000 đồng:</b> cao hơn giá thực hiện nhưng dưới điểm hòa vốn, chỉ nhận 12,5 triệu, <b>lỗ khoảng 7,6 triệu</b>.</li>
+    <li><b>Giá thanh toán 48.000 đồng:</b> không nhận đồng nào, <b>mất trọn 20 triệu</b>.</li>
+  </ul>
+  <p>Kịch bản giữa là chỗ nhiều người mới bất ngờ nhất: cổ phiếu cơ sở vượt giá thực hiện chưa có nghĩa là có lãi, phải vượt qua điểm hòa vốn.</p>
+
+  <h2 id="loi-ich-rui-ro">Lợi ích và rủi ro</h2>
+  <table>
+    <thead>
+      <tr><th>Lợi ích</th><th>Rủi ro</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vốn ban đầu thấp, giá CW rẻ hơn nhiều so với cổ phiếu cơ sở</td>
+        <td>Đòn bẩy cao, biên độ có thể tới 100–200% một phiên</td>
+      </tr>
+      <tr>
+        <td>Lỗ tối đa đúng bằng số tiền bỏ ra mua CW</td>
+        <td>Lỗ hoặc hòa vốn khi đáo hạn thì mất toàn bộ tiền mua</td>
+      </tr>
+      <tr>
+        <td>Không cần ký quỹ, không bị gọi ký quỹ như phái sinh</td>
+        <td>Vòng đời chỉ 3 đến 24 tháng, không hợp nắm giữ dài hạn</td>
+      </tr>
+      <tr>
+        <td>Giao dịch quen thuộc như cổ phiếu, không cần tiểu khoản riêng</td>
+        <td>Phụ thuộc khả năng thanh toán của tổ chức phát hành</td>
+      </tr>
+      <tr>
+        <td>Nhà đầu tư nước ngoài được tham gia</td>
+        <td>Không có cổ tức, không có quyền cổ đông</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="giao-dich-tcbs">Cách giao dịch chứng quyền tại TCBS</h2>
+  <p>Đặt lệnh CW dùng chung tài khoản chứng khoán, không cần tiểu khoản riêng.</p>
+  <ol>
+    <li>Mở bảng giá chứng quyền trên TCInvest để xem các mã đang niêm yết.</li>
+    <li>Đối chiếu các thông số ở trên, nhất là điểm hòa vốn và thời gian còn lại đến đáo hạn.</li>
+    <li>Đặt lệnh mua theo mã CW, bước giá 10 đồng. Không được dùng margin để mua CW.</li>
+    <li>Chọn đường ra: bán trước ngày giao dịch cuối cùng, hoặc giữ đến đáo hạn nhận tiền chênh lệch vào T+5.</li>
+  </ol>
+  <p>TCBS miễn phí giao dịch chứng quyền, mỗi lệnh chỉ còn 0,03% giá trị trả cho Sở giao dịch. Giữ đến đáo hạn và có lãi thì chịu thêm thuế 0,1%.</p>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Chứng quyền có bảo đảm thì có được bảo đảm vốn không?</summary>
+    <p class="faq-a">Không. "Bảo đảm" nói về nghĩa vụ thanh toán của tổ chức phát hành, không phải bảo toàn vốn của nhà đầu tư. Bạn vẫn có thể mất toàn bộ tiền mua CW.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Đến đáo hạn mà chưa bán thì sao?</summary>
+    <p class="faq-a">Giá thanh toán cao hơn giá thực hiện thì bạn nhận tiền chênh lệch vào ngày T+5 sau khi trừ thuế. Bằng hoặc thấp hơn thì không nhận gì và mất khoản tiền đã mua CW.</p>
+  </details>
+
+  <div class="cta">
+    <p>Xem giá thực hiện, tỷ lệ chuyển đổi và ngày đáo hạn của từng mã CW.</p>
+    <a href="https://www.tcbs.com.vn/bang-gia-chung-quyen" target="_blank" rel="noopener">Xem bảng giá chứng quyền</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nội dung chỉ mang tính giáo dục, không phải khuyến nghị đầu tư. Chứng quyền có đòn bẩy cao và có thể mất toàn bộ vốn khi đáo hạn. Nguồn: <a href="https://help.tcbs.com.vn/chung-quyen-co-bao-dam-cw/" target="_blank" rel="noopener">Chứng quyền có bảo đảm (CW)</a>, <a href="https://help.tcbs.com.vn/loi-ich-va-rui-ro-giao-dich-chung-quyen/" target="_blank" rel="noopener">Lợi ích và rủi ro khi giao dịch chứng quyền</a> (help.tcbs.com.vn).</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 24/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -104,6 +104,37 @@
   }
   .aside ul { margin-bottom: 0; }
   .aside li { font-size: 15px; }
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 8px 0 24px;
+  }
+  .step {
+    flex: 1 1 180px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 16px 20px;
+    text-align: center;
+    background: var(--bg-soft);
+  }
+  .step img {
+    height: 96px;
+    width: auto;
+    display: block;
+    margin: 0 auto 12px;
+  }
+  .step-num {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 2px 10px;
+    margin-bottom: 8px;
+  }
+  .step p { margin: 0; font-size: 14.5px; }
   .img-placeholder {
     border: 2px dashed #D8D8D8;
     border-radius: 10px;
@@ -225,11 +256,11 @@
     <summary>Mục lục</summary>
     <ol>
       <li><a href="#cac-khoan-phi">Phí giao dịch chứng khoán gồm những khoản nào</a></li>
-      <li><a href="#mien-den-dau">"Miễn phí giao dịch" tại TCBS miễn đến đâu</a></li>
-      <li><a href="#vi-du">Tính thử chi phí một vòng mua bán 100 triệu đồng</a></li>
-      <li><a href="#uu-dai-margin">Ưu đãi margin 7,89%/năm cho tài khoản giải ngân lần đầu</a></li>
+      <li><a href="#mien-den-dau">"Miễn phí giao dịch" tại TCBS</a></li>
+      <li><a href="#vi-du">Ví dụ</a></li>
+      <li><a href="#luu-y">Lưu ý trước khi vay margin</a></li>
+      <li><a href="#uu-dai-margin">Ưu đãi</a></li>
       <li><a href="#mo-tai-khoan">Các bước mở tài khoản chứng khoán tại TCBS</a></li>
-      <li><a href="#luu-y">Ba điều nên đọc kỹ trước khi bật margin</a></li>
       <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
     </ol>
   </details>
@@ -294,12 +325,12 @@
     <i>Alt đề xuất: "So sánh các khoản phí được miễn và không được miễn khi giao dịch chứng khoán tại TCBS"</i>
   </div>
 
-  <h2 id="mien-den-dau">"Miễn phí giao dịch" tại TCBS miễn đến đâu</h2>
+  <h2 id="mien-den-dau">"Miễn phí giao dịch" tại TCBS</h2>
   <p>TCBS miễn phần phí giao dịch của chính mình trên cổ phiếu, chứng quyền và chứng chỉ quỹ niêm yết, ở mọi kênh đặt lệnh. Khoản duy nhất còn lại trên mỗi lệnh là 0,03% giá trị giao dịch, thu theo quy định để thanh toán cho Sở giao dịch chứng khoán.</p>
   <p>TCBS công bố mức tiết kiệm lên tới 40 triệu đồng với mỗi 1 tỷ đồng giá trị giao dịch. Cần đọc con số này kèm giả định của nó. Với biểu phí môi giới phổ thông quanh 0,15% đến 0,2% mỗi chiều, một tỷ đồng giá trị giao dịch chỉ tiết kiệm khoảng 1,5 đến 2 triệu đồng. Mức 40 triệu ứng với một danh mục 1 tỷ đồng được quay vòng mua bán khoảng hai mươi lần trong năm, tức tần suất của nhà đầu tư giao dịch chủ động. Người mua và nắm giữ dài hạn sẽ thấy khoản tiết kiệm nhỏ hơn nhiều.</p>
   <p>Phần không được miễn thì giữ nguyên ở mọi công ty chứng khoán. Thuế 0,1% trên giá bán là nghĩa vụ theo luật thuế thu nhập cá nhân, công ty chứng khoán khấu trừ tự động khi lệnh bán khớp. Phí lưu ký do VSDC ấn định, tính trên số chứng khoán bạn đang giữ trong kho mỗi tháng.</p>
 
-  <h2 id="vi-du">Tính thử chi phí một vòng mua bán 100 triệu đồng</h2>
+  <h2 id="vi-du">Ví dụ</h2>
   <div class="formula">Chi phí một vòng giao dịch = 0,03% × Giá trị mua + 0,03% × Giá trị bán + 0,1% × Giá trị bán + Phí lưu ký + Lãi margin (nếu vay)</div>
   <p>Giả sử bạn mua 2.000 cổ phiếu giá 50.000 đồng bằng vốn tự có, giữ một tháng rồi bán ra được 110 triệu đồng:</p>
   <ul>
@@ -311,10 +342,17 @@
   </ul>
   <p>Tổng chi phí khoảng <b>173.600 đồng</b> trên khoản lãi gộp 10 triệu đồng. Điểm đáng chú ý nằm ở tỷ trọng: riêng tiền thuế đã lớn hơn toàn bộ phí giao dịch hai chiều cộng lại. Khoản không ai miễn được mới là khoản nặng nhất trong cấu trúc chi phí.</p>
 
-  <h2 id="uu-dai-margin">Ưu đãi margin 7,89%/năm cho tài khoản giải ngân lần đầu</h2>
-  <p>Margin là dịch vụ vay tiền từ công ty chứng khoán để mua thêm cổ phiếu, dùng tài sản sẵn có trong tài khoản làm bảo đảm. Mở tài khoản xong chưa dùng được ngay, bạn cần đăng ký thêm dịch vụ giao dịch ký quỹ và ký hợp đồng riêng.</p>
+  <h2 id="luu-y">Lưu ý trước khi vay margin</h2>
+  <ul>
+    <li><b>Đòn bẩy khuếch đại cả hai chiều.</b> Vay để mua nhiều hơn làm lãi to hơn khi đúng, và lỗ sâu hơn khi sai. Khoản vay vẫn phải trả đủ kể cả khi cổ phiếu giảm giá.</li>
+    <li><b>Ưu đãi có thời hạn, khoản vay cũng có kỳ hạn.</b> Mức 7,89%/năm chạy trong 180 ngày đầu. Mỗi khoản vay có kỳ hạn 89 ngày, gia hạn online trên TCInvest trong vòng 10 ngày trước ngày đáo hạn và không giới hạn số lần. Để quá hạn, lãi suất tính bằng 150% lãi trong hạn nhưng không vượt 20%/năm.</li>
+    <li><b>Tỷ lệ ký quỹ duy trì là 85%.</b> Giá cổ phiếu giảm kéo tỷ lệ này xuống dưới ngưỡng thì bạn nhận yêu cầu bổ sung tài sản bảo đảm, không bổ sung kịp có thể bị bán giải chấp. Cách xử lý tình huống này có trong bài <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-call-la-gi-nguong-goi-ky-quy-va-cach-xu-ly-an-toan/" target="_blank" rel="noopener">Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn</a>.</li>
+  </ul>
 
-  <h3>Điều kiện và phạm vi áp dụng</h3>
+  <h2 id="uu-dai-margin">Ưu đãi</h2>
+  <p>Margin là dịch vụ vay tiền từ công ty chứng khoán để mua thêm cổ phiếu, dùng tài sản sẵn có trong tài khoản làm bảo đảm. Mở tài khoản xong chưa dùng được ngay, bạn cần đăng ký thêm dịch vụ giao dịch ký quỹ và ký hợp đồng riêng. TCBS có hai mức ưu đãi vay ký quỹ, áp dụng cho hai tình huống khác nhau.</p>
+
+  <h3>Ưu đãi cho khách hàng giải ngân lần đầu</h3>
   <table>
     <thead>
       <tr><th>Tiêu chí</th><th>Mức áp dụng</th></tr>
@@ -330,25 +368,33 @@
   </table>
   <p>So với mức phổ thông từ 13,5%/năm, chênh lệch vào khoảng 5,6 điểm phần trăm. Vay kín hạn mức 5 tỷ đồng suốt 180 ngày, khoản tiết kiệm rơi vào quãng 123 triệu đồng. Con số này tính theo chênh lệch tròn 5 điểm phần trăm, chưa tính phần lãi suất thay đổi theo từng mã cổ phiếu.</p>
 
-  <h3>Margin T+: lựa chọn còn lại</h3>
-  <p>Margin T+ là sản phẩm vay riêng, chia theo gói 3, 5 hoặc 10 ngày với lãi suất ưu đãi từ 0%/năm cho đúng số ngày trong gói. Đây là hai cơ chế khác nhau, không phải hai tên gọi của cùng một ưu đãi. Cách chọn giữa chúng và cách tính lãi từng loại có trong bài <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-la-gi-phan-biet-margin-tplus-va-han-muc-vay-ky-quy-thuong/" target="_blank" rel="noopener">Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</a>.</p>
+  <h3>Margin T+</h3>
+  <p>Margin T+ là sản phẩm vay riêng, chia theo gói 3, 5 hoặc 10 ngày với lãi suất ưu đãi từ 0%/năm cho đúng số ngày trong gói. Hạn mức hỗ trợ tối đa 10 tỷ đồng mỗi tài khoản. Nếu giải ngân nhiều khoản vay trong cùng một ngày, tất cả áp theo gói đăng ký cuối cùng trước 17:00 của ngày giải ngân.</p>
+  <p>Hai mức ưu đãi trên là hai cơ chế khác nhau, không phải hai tên gọi của cùng một chương trình. Mức 7,89%/năm gắn với lần giải ngân đầu tiên và chạy liên tục 180 ngày, phù hợp khi bạn chưa xác định rõ thời điểm bán. Margin T+ tính theo đúng số ngày trong gói, tiết kiệm hơn khi bạn đã có kế hoạch mua bán trong vài ngày. Cách tính lãi từng loại có trong bài <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-la-gi-phan-biet-margin-tplus-va-han-muc-vay-ky-quy-thuong/" target="_blank" rel="noopener">Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</a>.</p>
 
   <h2 id="mo-tai-khoan">Các bước mở tài khoản chứng khoán tại TCBS</h2>
-  <ol>
-    <li>Tải ứng dụng TCInvest hoặc truy cập website TCBS, chọn mở tài khoản.</li>
-    <li>Xác thực danh tính trực tuyến bằng căn cước công dân gắn chip và khuôn mặt (eKYC).</li>
-    <li>Nhận số tài khoản, đặt mật khẩu và thiết lập phương thức xác thực giao dịch.</li>
-    <li>Nạp tiền vào tài khoản từ ngân hàng liên kết. Không có mức nạp tối thiểu bắt buộc để duy trì tài khoản.</li>
-    <li>Nếu có nhu cầu dùng đòn bẩy, đăng ký thêm dịch vụ giao dịch ký quỹ và đọc kỹ hợp đồng trước khi ký.</li>
-  </ol>
-  <p class="note">Mở và đóng tài khoản đều miễn phí. Toàn bộ quy trình làm trực tuyến, không cần đến quầy giao dịch.</p>
+  <p>Toàn bộ quy trình làm trực tuyến qua eKYC, không cần đến quầy giao dịch. TCBS chia thành ba bước:</p>
 
-  <h2 id="luu-y">Ba điều nên đọc kỹ trước khi bật margin</h2>
-  <ul>
-    <li><b>Đòn bẩy khuếch đại cả hai chiều.</b> Vay để mua nhiều hơn làm lãi to hơn khi đúng, và lỗ sâu hơn khi sai. Khoản vay vẫn phải trả đủ kể cả khi cổ phiếu giảm giá.</li>
-    <li><b>Ưu đãi có thời hạn, khoản vay cũng có kỳ hạn.</b> Mức 7,89%/năm chạy trong 180 ngày đầu. Mỗi khoản vay có kỳ hạn 89 ngày, gia hạn online trên TCInvest trong vòng 10 ngày trước ngày đáo hạn và không giới hạn số lần. Để quá hạn, lãi suất tính bằng 150% lãi trong hạn nhưng không vượt 20%/năm.</li>
-    <li><b>Tỷ lệ ký quỹ duy trì là 85%.</b> Giá cổ phiếu giảm kéo tỷ lệ này xuống dưới ngưỡng thì bạn nhận yêu cầu bổ sung tài sản bảo đảm, không bổ sung kịp có thể bị bán giải chấp. Cách xử lý tình huống này có trong bài <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-call-la-gi-nguong-goi-ky-quy-va-cach-xu-ly-an-toan/" target="_blank" rel="noopener">Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn</a>.</li>
-  </ul>
+  <div class="steps">
+    <div class="step">
+      <img src="buoc-1-dien-thong-tin.png" alt="Bước 1 mở tài khoản TCBS: điền thông tin cá nhân và chọn số tài khoản">
+      <span class="step-num">Bước 1</span>
+      <p>Điền thông tin cá nhân và chọn số tài khoản đẹp như ý</p>
+    </div>
+    <div class="step">
+      <img src="buoc-2-xac-thuc-danh-tinh.png" alt="Bước 2 mở tài khoản TCBS: xác thực danh tính bằng thiết bị có camera">
+      <span class="step-num">Bước 2</span>
+      <p>Xác thực danh tính, cần thiết bị có camera</p>
+    </div>
+    <div class="step">
+      <img src="buoc-3-ky-hop-dong-dien-tu.png" alt="Bước 3 mở tài khoản TCBS: ký hợp đồng điện tử">
+      <span class="step-num">Bước 3</span>
+      <p>Ký hợp đồng điện tử</p>
+    </div>
+  </div>
+
+  <p>Tài khoản được kích hoạt trong vòng 8 giờ làm việc kể từ khi TCBS nhận hồ sơ đầy đủ và hợp lệ. Sau khi kích hoạt, bạn nạp tiền từ ngân hàng liên kết là giao dịch được. Muốn dùng đòn bẩy thì đăng ký thêm dịch vụ giao dịch ký quỹ và đọc kỹ hợp đồng trước khi ký.</p>
+  <p class="note">Mở và đóng tài khoản đều miễn phí. Nguồn ảnh và quy trình: trang mở tài khoản tcbs.com.vn và help.tcbs.com.vn.</p>
 
   <div class="aside">
     <p class="aside-title">Giới thiệu bạn bè mở tài khoản</p>

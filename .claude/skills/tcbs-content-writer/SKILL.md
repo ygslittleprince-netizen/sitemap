@@ -102,6 +102,34 @@ Rút ra từ phiên rà soát bài "Trái phiếu doanh nghiệp là gì", nơi 
 
 **10. Khối E-E-A-T cuối bài** gồm ba thành phần: căn cứ pháp lý ghi rõ số hiệu văn bản, ngày đăng cùng ngày cập nhật, và byline. Không bịa tên người kiểm duyệt, xem mục Verification discipline.
 
+**11. Khi viết "an toàn hơn", phải giới hạn phạm vi.** Câu "gửi tiết kiệm an toàn hơn" đứng một mình dễ bị đọc thành "tiết kiệm không có rủi ro". Viết rõ an toàn hơn xét theo khía cạnh nào và áp dụng cho khoản nào: *"xét về rủi ro tín dụng đối với khoản tiền gửi được bảo hiểm, gửi tiết kiệm tại tổ chức tín dụng tham gia bảo hiểm tiền gửi có cơ chế bảo vệ người gửi tiền theo quy định pháp luật"*.
+
+**12. Không khái quát hóa cơ chế của cả một nhóm sản phẩm.** "Tiết kiệm có thể rút bất kỳ lúc nào" là sai với nhiều sản phẩm tiền gửi. Viết theo điều khoản: *"có thể được tất toán trước hạn theo điều kiện của sản phẩm; khi rút trước hạn, lãi suất áp dụng có thể thấp hơn mức lãi suất kỳ hạn ban đầu theo quy định"*.
+
+**13. Mục "nên chọn cái nào" viết thành khung quyết định, không viết thành khuyến nghị.** Thay danh sách "ưu tiên A thì chọn X" bằng bảng hai cột *Nhu cầu → Đặc điểm cần ưu tiên*, rồi kết bằng một câu nói rõ không có lựa chọn phù hợp cho mọi nhà đầu tư và việc chọn phụ thuộc mục tiêu sử dụng tiền, thời hạn đầu tư, mức độ chấp nhận rủi ro. Tiêu đề mục cũng đổi từ "Nên chọn kênh nào?" sang "Nên cân nhắc yếu tố nào trước khi lựa chọn?".
+
+**14. Thứ tự cuối bài: FAQ → disclaimer và căn cứ pháp lý → CTA → byline.** CTA đặt sau phần disclaimer và hạ giọng, vì người đọc một bài so sánh hay một bài rủi ro đang hỏi "tiền của tôi nên nằm ở đâu", chưa chắc đã có ý định mua sản phẩm cụ thể. Mạch đúng là so sánh, hiểu rủi ro, khung quyết định, FAQ, rồi mới tới sản phẩm.
+
+## Bảng so sánh: luôn là bảng chữ, không phải ảnh
+
+Bảng so sánh thường là phần có giá trị nhất của một bài A-vs-B, nên nó phải tồn tại dưới dạng `<table>` HTML. Lỗi thật đã gặp: một bài có mục "Bảng so sánh nhanh" nhưng bên dưới chỉ là một tấm ảnh, khiến phần quan trọng nhất của bài không crawl được, không được AI engine trích dẫn, và không đọc được bằng trình đọc màn hình. Ảnh chỉ đóng vai trò minh họa đi kèm, không thay thế bảng chữ.
+
+Trong bảng so sánh, **không dùng cột đánh giá kiểu "An toàn: Cao / Thấp"**. Cách đó biến một bảng so sánh khách quan thành bảng xếp hạng sản phẩm. Mỗi ô mô tả đặc điểm thực tế, để người đọc tự kết luận: thay vì "An toàn: Cao", viết "Có cơ chế bảo hiểm tiền gửi trong phạm vi luật định".
+
+## Số liệu có hạn sử dụng — rà lại trước mỗi lần publish hoặc cập nhật
+
+Ngày cập nhật trên bài **không chứng minh số liệu trong bài còn đúng**. Ca thực tế: một bài ghi "Cập nhật 23/09/2026" nhưng vẫn để hạn mức bảo hiểm tiền gửi 125 triệu đồng, trong khi Thông tư 05/2026/TT-NHNN đã nâng lên 350 triệu đồng từ 13/07/2026, tức bài sai suốt hơn hai tháng mà vẫn mang nhãn vừa cập nhật.
+
+Vì vậy, mỗi lần đụng vào một bài cũ, liệt kê các con số thuộc nhóm "có hạn sử dụng" rồi tra lại từng con số, không tin vào ngày cập nhật:
+
+- Hạn mức bảo hiểm tiền gửi
+- Thuế suất và phí giao dịch, phí lưu ký, phí ứng trước tiền bán
+- Lãi suất margin, tỷ lệ ký quỹ, ngưỡng margin call
+- Điều kiện và ngưỡng xác định nhà đầu tư chứng khoán chuyên nghiệp
+- Số hiệu các văn bản pháp luật được viện dẫn, gồm cả việc văn bản đó đã bị thay thế chưa
+
+Về nguồn: ưu tiên trang của chính cơ quan quản lý hoặc cơ quan ban hành (`vanban.chinhphu.vn`, `div.gov.vn`, `ssc.gov.vn`) hơn báo chí đưa tin lại, và **kiểm tra URL trả về mã 200 trước khi gắn link vào bài**. Khi một văn bản thay thế văn bản cũ, có thể nhắc mức cũ như mốc lịch sử nhưng phải ghi rõ văn bản nào đang là căn cứ hiện hành.
+
 ## Verification discipline
 
 Do not invent specific facts you can't back up: exact interest rates, fee percentages, contract names, fund tickers, or dates. Where the article needs a number you don't have (e.g. TCBS's actual margin ratio, a specific CW's terms), write the sentence with a clear placeholder and flag it, e.g. *"[Cần xác nhận với đội sản phẩm: tỷ lệ ký quỹ hiện tại]"* — this is the same discipline already used for TCBS's other content review reports, and matters more here because this is YMYL financial content going out under TCBS's name. Internal links should point to real, existing TCBS URLs — if you're not sure a page exists, say so rather than guessing a URL.

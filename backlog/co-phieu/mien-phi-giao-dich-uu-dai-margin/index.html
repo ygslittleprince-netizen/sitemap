@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miễn phí giao dịch và ưu đãi margin khi mở tài khoản chứng khoán tại TCBS</title>
+<meta name="description" content="Mở tài khoản chứng khoán TCBS: miễn phí giao dịch gồm những khoản nào, khoản nào vẫn phải trả, và ưu đãi margin 7,89%/năm áp dụng ra sao. Kèm ví dụ tính chi phí.">
+<style>
+  :root {
+    --red: #C8102E;
+    --red-dark: #9E0B22;
+    --ink: #1A1A1A;
+    --gray: #5B5B5B;
+    --line: #E6E6E6;
+    --bg-soft: #FAFAFA;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .kicker {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .hero-img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 0 24px;
+    display: block;
+    object-fit: cover;
+    max-height: 380px;
+  }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    margin: 40px 0 14px;
+    padding-top: 4px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--ink);
+    margin: 28px 0 10px;
+  }
+  p { margin: 0 0 16px; font-size: 16px; color: #2B2B2B; }
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 10px; font-size: 16px; color: #2B2B2B; }
+  a { color: var(--red-dark); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 28px;
+    font-size: 14.5px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+  }
+  th { background: var(--bg-soft); color: var(--ink); }
+  td { color: #2B2B2B; }
+  td.no { color: var(--red-dark); font-weight: 600; }
+  td.yes { color: #1E7A3C; font-weight: 600; }
+  .formula {
+    background: #FBEAEC;
+    border-left: 4px solid var(--red);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 8px 0 28px;
+    font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .aside {
+    background: #FFF8F2;
+    border: 1px solid #F0DCC8;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin: 32px 0;
+  }
+  .aside .aside-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin: 0 0 10px;
+  }
+  .aside ul { margin-bottom: 0; }
+  .aside li { font-size: 15px; }
+  .img-placeholder {
+    border: 2px dashed #D8D8D8;
+    border-radius: 10px;
+    padding: 30px 20px;
+    text-align: center;
+    color: #9A9A9A;
+    font-size: 13.5px;
+    background: var(--bg-soft);
+    margin: 0 0 24px;
+  }
+  .note {
+    margin-top: 8px;
+    font-size: 12.5px;
+    color: #9A9A9A;
+  }
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 4px 20px;
+    margin: 0 0 32px;
+  }
+  .toc summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 0;
+    list-style: none;
+  }
+  .toc summary::-webkit-details-marker { display: none; }
+  .toc summary::after {
+    content: "▾";
+    float: right;
+    color: var(--red);
+    transition: transform 0.15s ease;
+  }
+  .toc[open] summary::after { transform: rotate(180deg); }
+  .toc ol { margin: 0; padding: 0 0 16px 20px; }
+  .toc li { font-size: 14.5px; margin-bottom: 8px; }
+  .toc a { color: var(--red-dark); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 4px 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 0;
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 16px;
+    position: relative;
+    padding-right: 24px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 0;
+    top: 10px;
+    color: var(--red);
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-a { color: #2B2B2B; font-size: 15.5px; margin: 0 0 16px; }
+  .byline-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: center;
+    color: var(--gray);
+    font-size: 14px;
+    margin: 40px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+  .byline-footer b { color: var(--ink); }
+  .cta {
+    margin: 40px 0 8px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta p { margin: 0 0 16px; font-size: 16px; }
+  .cta a {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    margin: 0 6px 8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Cổ phiếu</div>
+  <h1>Miễn phí giao dịch và ưu đãi margin khi mở tài khoản chứng khoán tại TCBS</h1>
+
+  <div class="img-placeholder">
+    <b>[Ảnh hero cần bổ sung]</b><br>
+    Ảnh chụp màn hình luồng mở tài khoản trên ứng dụng TCInvest (bước xác thực eKYC hoặc màn hình mở tài khoản thành công), có logo TCBS.<br>
+    <i>Alt đề xuất: "Màn hình mở tài khoản chứng khoán trực tuyến trên ứng dụng TCInvest của TCBS"</i>
+  </div>
+
+  <p>Mở tài khoản chứng khoán tại TCBS không mất phí mở, được miễn phí giao dịch cổ phiếu, chứng quyền và chứng chỉ quỹ niêm yết, kèm lãi suất vay ký quỹ <b>7,89%/năm</b> cho khách hàng giải ngân margin lần đầu. Tuy nhiên chữ "miễn phí giao dịch" chỉ bao phủ phần phí do công ty chứng khoán thu. Bạn vẫn trả <b>0,03%</b> giá trị mỗi lệnh cho Sở giao dịch chứng khoán, <b>0,1%</b> thuế thu nhập cá nhân khi bán và phí lưu ký tính theo tháng.</p>
+
+  <p>Biết rõ ranh giới đó giúp bạn tính đúng số tiền thực nhận sau mỗi lần chốt lời, thay vì thắc mắc vì sao tiền về tài khoản ít hơn dự tính.</p>
+
+  <details class="toc">
+    <summary>Mục lục</summary>
+    <ol>
+      <li><a href="#cac-khoan-phi">Phí giao dịch chứng khoán gồm những khoản nào</a></li>
+      <li><a href="#mien-den-dau">"Miễn phí giao dịch" tại TCBS miễn đến đâu</a></li>
+      <li><a href="#vi-du">Tính thử chi phí một vòng mua bán 100 triệu đồng</a></li>
+      <li><a href="#uu-dai-margin">Ưu đãi margin 7,89%/năm cho tài khoản giải ngân lần đầu</a></li>
+      <li><a href="#mo-tai-khoan">Các bước mở tài khoản chứng khoán tại TCBS</a></li>
+      <li><a href="#luu-y">Ba điều nên đọc kỹ trước khi bật margin</a></li>
+      <li><a href="#cau-hoi-thuong-gap">Câu hỏi thường gặp</a></li>
+    </ol>
+  </details>
+
+  <h2 id="cac-khoan-phi">Phí giao dịch chứng khoán gồm những khoản nào</h2>
+  <p>Một vòng mua rồi bán cổ phiếu có thể phát sinh chi phí từ ba bên khác nhau: công ty chứng khoán, Sở giao dịch và cơ quan thuế. Chỉ nhóm đầu tiên nằm trong quyền quyết định của công ty chứng khoán.</p>
+
+  <table>
+    <thead>
+      <tr><th>Khoản mục</th><th>Bên thu</th><th>Mức</th><th>Có được miễn?</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Phí giao dịch của công ty chứng khoán</td>
+        <td>TCBS</td>
+        <td>0 đồng</td>
+        <td class="yes">Được miễn</td>
+      </tr>
+      <tr>
+        <td>Phí thanh toán cho Sở giao dịch chứng khoán</td>
+        <td>Sở giao dịch, TCBS thu hộ</td>
+        <td>0,03% giá trị mỗi lệnh</td>
+        <td class="no">Không, theo quy định</td>
+      </tr>
+      <tr>
+        <td>Thuế thu nhập cá nhân khi bán</td>
+        <td>Ngân sách nhà nước</td>
+        <td>0,1% giá bán</td>
+        <td class="no">Không, thu cả khi lỗ</td>
+      </tr>
+      <tr>
+        <td>Phí lưu ký chứng khoán</td>
+        <td>VSDC, thu qua TCBS</td>
+        <td>0,3 đồng/cổ phiếu/tháng</td>
+        <td class="no">Không</td>
+      </tr>
+      <tr>
+        <td>Lãi vay ký quỹ (margin)</td>
+        <td>TCBS</td>
+        <td>Từ 13,5%/năm</td>
+        <td class="yes">Có ưu đãi riêng</td>
+      </tr>
+      <tr>
+        <td>Phí ứng trước tiền bán</td>
+        <td>TCBS</td>
+        <td>14,5%/năm</td>
+        <td class="no">Chỉ phát sinh khi dùng</td>
+      </tr>
+      <tr>
+        <td><b>Lãi tiền chờ đầu tư</b></td>
+        <td>TCBS trả cho nhà đầu tư</td>
+        <td>7%/năm</td>
+        <td class="yes">Khoản thu về</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">Biểu phí áp dụng từ ngày 01/07/2025. Trong khoản phí lưu ký 0,3 đồng/cổ phiếu/tháng, VSDC nhận 0,27 đồng, phần còn lại là phí thu hộ của công ty chứng khoán.</p>
+
+  <div class="img-placeholder">
+    <b>[Ảnh minh họa trong bài cần bổ sung]</b><br>
+    Đồ họa chia đôi: cột trái "Khoản TCBS miễn" (phí giao dịch), cột phải "Khoản luật bắt buộc vẫn phải trả" (0,03% Sở giao dịch, 0,1% thuế, phí lưu ký).<br>
+    <i>Alt đề xuất: "So sánh các khoản phí được miễn và không được miễn khi giao dịch chứng khoán tại TCBS"</i>
+  </div>
+
+  <h2 id="mien-den-dau">"Miễn phí giao dịch" tại TCBS miễn đến đâu</h2>
+  <p>TCBS miễn phần phí giao dịch của chính mình trên cổ phiếu, chứng quyền và chứng chỉ quỹ niêm yết, ở mọi kênh đặt lệnh. Khoản duy nhất còn lại trên mỗi lệnh là 0,03% giá trị giao dịch, thu theo quy định để thanh toán cho Sở giao dịch chứng khoán.</p>
+  <p>TCBS công bố mức tiết kiệm lên tới 40 triệu đồng với mỗi 1 tỷ đồng giá trị giao dịch. Cần đọc con số này kèm giả định của nó. Với biểu phí môi giới phổ thông quanh 0,15% đến 0,2% mỗi chiều, một tỷ đồng giá trị giao dịch chỉ tiết kiệm khoảng 1,5 đến 2 triệu đồng. Mức 40 triệu ứng với một danh mục 1 tỷ đồng được quay vòng mua bán khoảng hai mươi lần trong năm, tức tần suất của nhà đầu tư giao dịch chủ động. Người mua và nắm giữ dài hạn sẽ thấy khoản tiết kiệm nhỏ hơn nhiều.</p>
+  <p>Phần không được miễn thì giữ nguyên ở mọi công ty chứng khoán. Thuế 0,1% trên giá bán là nghĩa vụ theo luật thuế thu nhập cá nhân, công ty chứng khoán khấu trừ tự động khi lệnh bán khớp. Phí lưu ký do VSDC ấn định, tính trên số chứng khoán bạn đang giữ trong kho mỗi tháng.</p>
+
+  <h2 id="vi-du">Tính thử chi phí một vòng mua bán 100 triệu đồng</h2>
+  <div class="formula">Chi phí một vòng giao dịch = 0,03% × Giá trị mua + 0,03% × Giá trị bán + 0,1% × Giá trị bán + Phí lưu ký + Lãi margin (nếu vay)</div>
+  <p>Giả sử bạn mua 2.000 cổ phiếu giá 50.000 đồng bằng vốn tự có, giữ một tháng rồi bán ra được 110 triệu đồng:</p>
+  <ul>
+    <li>Phí giao dịch chiều mua: 0,03% × 100.000.000 = <b>30.000 đồng</b></li>
+    <li>Phí giao dịch chiều bán: 0,03% × 110.000.000 = <b>33.000 đồng</b></li>
+    <li>Thuế thu nhập cá nhân: 0,1% × 110.000.000 = <b>110.000 đồng</b></li>
+    <li>Phí lưu ký: 0,3 đồng × 2.000 cổ phiếu × 1 tháng = <b>600 đồng</b></li>
+    <li>Lãi margin: <b>0 đồng</b>, vì không vay</li>
+  </ul>
+  <p>Tổng chi phí khoảng <b>173.600 đồng</b> trên khoản lãi gộp 10 triệu đồng. Điểm đáng chú ý nằm ở tỷ trọng: riêng tiền thuế đã lớn hơn toàn bộ phí giao dịch hai chiều cộng lại. Khoản không ai miễn được mới là khoản nặng nhất trong cấu trúc chi phí.</p>
+
+  <h2 id="uu-dai-margin">Ưu đãi margin 7,89%/năm cho tài khoản giải ngân lần đầu</h2>
+  <p>Margin là dịch vụ vay tiền từ công ty chứng khoán để mua thêm cổ phiếu, dùng tài sản sẵn có trong tài khoản làm bảo đảm. Mở tài khoản xong chưa dùng được ngay, bạn cần đăng ký thêm dịch vụ giao dịch ký quỹ và ký hợp đồng riêng.</p>
+
+  <h3>Điều kiện và phạm vi áp dụng</h3>
+  <table>
+    <thead>
+      <tr><th>Tiêu chí</th><th>Mức áp dụng</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Lãi suất ưu đãi</td><td>7,89%/năm</td></tr>
+      <tr><td>Đối tượng</td><td>Khách hàng giải ngân margin lần đầu</td></tr>
+      <tr><td>Hạn mức hưởng ưu đãi</td><td>Tối đa 5 tỷ đồng dư nợ mỗi khách hàng</td></tr>
+      <tr><td>Thời gian ưu đãi</td><td>180 ngày kể từ ngày giải ngân đầu tiên</td></tr>
+      <tr><td>Danh mục cho vay</td><td>Hơn 200 mã cổ phiếu</td></tr>
+      <tr><td>Phần dư nợ vượt 5 tỷ</td><td>Tính theo lãi suất thông thường của từng mã</td></tr>
+    </tbody>
+  </table>
+  <p>So với mức phổ thông từ 13,5%/năm, chênh lệch vào khoảng 5,6 điểm phần trăm. Vay kín hạn mức 5 tỷ đồng suốt 180 ngày, khoản tiết kiệm rơi vào quãng 123 triệu đồng. Con số này tính theo chênh lệch tròn 5 điểm phần trăm, chưa tính phần lãi suất thay đổi theo từng mã cổ phiếu.</p>
+
+  <h3>Margin T+: lựa chọn còn lại</h3>
+  <p>Margin T+ là sản phẩm vay riêng, chia theo gói 3, 5 hoặc 10 ngày với lãi suất ưu đãi từ 0%/năm cho đúng số ngày trong gói. Đây là hai cơ chế khác nhau, không phải hai tên gọi của cùng một ưu đãi. Cách chọn giữa chúng và cách tính lãi từng loại có trong bài <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-la-gi-phan-biet-margin-tplus-va-han-muc-vay-ky-quy-thuong/" target="_blank" rel="noopener">Margin là gì? Phân biệt Margin T+ và hạn mức vay ký quỹ thường</a>.</p>
+
+  <h2 id="mo-tai-khoan">Các bước mở tài khoản chứng khoán tại TCBS</h2>
+  <ol>
+    <li>Tải ứng dụng TCInvest hoặc truy cập website TCBS, chọn mở tài khoản.</li>
+    <li>Xác thực danh tính trực tuyến bằng căn cước công dân gắn chip và khuôn mặt (eKYC).</li>
+    <li>Nhận số tài khoản, đặt mật khẩu và thiết lập phương thức xác thực giao dịch.</li>
+    <li>Nạp tiền vào tài khoản từ ngân hàng liên kết. Không có mức nạp tối thiểu bắt buộc để duy trì tài khoản.</li>
+    <li>Nếu có nhu cầu dùng đòn bẩy, đăng ký thêm dịch vụ giao dịch ký quỹ và đọc kỹ hợp đồng trước khi ký.</li>
+  </ol>
+  <p class="note">Mở và đóng tài khoản đều miễn phí. Toàn bộ quy trình làm trực tuyến, không cần đến quầy giao dịch.</p>
+
+  <h2 id="luu-y">Ba điều nên đọc kỹ trước khi bật margin</h2>
+  <ul>
+    <li><b>Đòn bẩy khuếch đại cả hai chiều.</b> Vay để mua nhiều hơn làm lãi to hơn khi đúng, và lỗ sâu hơn khi sai. Khoản vay vẫn phải trả đủ kể cả khi cổ phiếu giảm giá.</li>
+    <li><b>Ưu đãi có thời hạn, khoản vay cũng có kỳ hạn.</b> Mức 7,89%/năm chạy trong 180 ngày đầu. Mỗi khoản vay có kỳ hạn 89 ngày, gia hạn online trên TCInvest trong vòng 10 ngày trước ngày đáo hạn và không giới hạn số lần. Để quá hạn, lãi suất tính bằng 150% lãi trong hạn nhưng không vượt 20%/năm.</li>
+    <li><b>Tỷ lệ ký quỹ duy trì là 85%.</b> Giá cổ phiếu giảm kéo tỷ lệ này xuống dưới ngưỡng thì bạn nhận yêu cầu bổ sung tài sản bảo đảm, không bổ sung kịp có thể bị bán giải chấp. Cách xử lý tình huống này có trong bài <a href="https://ygslittleprince-netizen.github.io/sitemap/backlog/co-phieu/margin-call-la-gi-nguong-goi-ky-quy-va-cach-xu-ly-an-toan/" target="_blank" rel="noopener">Margin call là gì? Ngưỡng gọi ký quỹ và cách xử lý an toàn</a>.</li>
+  </ul>
+
+  <div class="aside">
+    <p class="aside-title">Giới thiệu bạn bè mở tài khoản</p>
+    <p>Ngoài phần phí và lãi suất, TCBS có chương trình thưởng khi bạn giới thiệu người quen mở tài khoản:</p>
+    <ul>
+      <li>50 iXu (tương đương 50.000 đồng) cho mỗi tài khoản mở mới thành công qua lời giới thiệu.</li>
+      <li>Thưởng thêm khi tài khoản được giới thiệu đạt mốc 100 triệu đồng tài sản trong 30 ngày.</li>
+      <li>0,1% giá trị giao dịch trái phiếu iBond của người được giới thiệu.</li>
+      <li>1% số dư nợ margin phát sinh trong 30 ngày đầu của người được giới thiệu.</li>
+    </ul>
+    <p class="note">Điều kiện và mức thưởng áp dụng theo chương trình tại từng thời điểm, nên kiểm tra lại trên TCInvest trước khi giới thiệu.</p>
+  </div>
+
+  <h2 id="cau-hoi-thuong-gap">Câu hỏi thường gặp</h2>
+  <details class="faq-item">
+    <summary>Mở tài khoản chứng khoán TCBS có mất phí không?</summary>
+    <p class="faq-a">Không. Mở và đóng tài khoản đều miễn phí, làm trực tuyến qua eKYC bằng căn cước công dân gắn chip, không cần đến quầy giao dịch.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Miễn phí giao dịch là miễn những phí nào?</summary>
+    <p class="faq-a">Miễn phần phí giao dịch do TCBS thu trên cổ phiếu, chứng quyền và chứng chỉ quỹ niêm yết. Mỗi lệnh vẫn chịu 0,03% giá trị giao dịch để thanh toán cho Sở giao dịch chứng khoán, cùng 0,1% thuế thu nhập cá nhân khi bán và phí lưu ký 0,3 đồng/cổ phiếu/tháng. Đây là các khoản do cơ quan quản lý ấn định nên không công ty chứng khoán nào miễn được.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Mở tài khoản xong dùng margin được ngay không?</summary>
+    <p class="faq-a">Chưa. Bạn cần đăng ký thêm dịch vụ giao dịch ký quỹ và ký hợp đồng riêng. Cổ phiếu được vay cũng giới hạn trong danh mục hơn 200 mã do TCBS công bố và cập nhật định kỳ.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Ưu đãi margin 7,89%/năm áp dụng trong bao lâu?</summary>
+    <p class="faq-a">Trong 180 ngày kể từ ngày giải ngân đầu tiên, cho phần dư nợ tối đa 5 tỷ đồng và chỉ dành cho khách hàng giải ngân lần đầu. Phần dư nợ vượt 5 tỷ đồng tính theo lãi suất thông thường của từng mã cổ phiếu.</p>
+  </details>
+  <details class="faq-item">
+    <summary>Cần tối thiểu bao nhiêu tiền để bắt đầu?</summary>
+    <p class="faq-a">Không có mức nạp tối thiểu bắt buộc để duy trì tài khoản. Số tiền thực tế cần có phụ thuộc vào giá cổ phiếu bạn muốn mua, vì lệnh trên sàn HOSE giao dịch theo lô 100 cổ phiếu.</p>
+  </details>
+
+  <div class="cta">
+    <p>Mở tài khoản chứng khoán TCBS trực tuyến trong vài phút, miễn phí mở tài khoản và miễn phí giao dịch theo chính sách hiện hành.</p>
+    <a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/mo-tai-khoan-chung-khoan-tcbs/" target="_blank" rel="noopener">Mở tài khoản ngay</a>
+    <a href="https://www.tcbs.com.vn/margin-789" target="_blank" rel="noopener">Xem ưu đãi margin 7,89%</a>
+  </div>
+
+  <p style="margin-top:32px; font-size:12.5px; color:var(--gray);">Nội dung chỉ mang tính giáo dục, không phải khuyến nghị đầu tư. Biểu phí, lãi suất và điều kiện ưu đãi có thể thay đổi theo từng thời điểm, nhà đầu tư nên kiểm tra lại trước khi giao dịch. Nguồn tham khảo: <a href="https://help.tcbs.com.vn/bieu-phi-dich-vu-chung-khoan/" target="_blank" rel="noopener">Biểu phí dịch vụ chứng khoán</a>, <a href="https://help.tcbs.com.vn/chinh-sach-margin/" target="_blank" rel="noopener">Chính sách giao dịch ký quỹ</a>, <a href="https://help.tcbs.com.vn/uu-dai-mien-phi-giao-dich-va-lai-margin-thap-mo-tai-khoan-tcbs/" target="_blank" rel="noopener">Ưu đãi miễn phí giao dịch và lãi margin thấp</a> (help.tcbs.com.vn); trang <a href="https://www.tcbs.com.vn/margin-789" target="_blank" rel="noopener">Lãi suất vay ký quỹ 7,89%/năm</a> tại tcbs.com.vn.</p>
+
+  <div class="byline-footer">
+    <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
+    <span>·</span>
+    <span>Cập nhật 24/09/2026</span>
+  </div>
+
+</div>
+</body>
+</html>

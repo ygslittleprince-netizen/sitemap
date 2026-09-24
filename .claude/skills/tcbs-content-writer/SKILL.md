@@ -71,9 +71,44 @@ Trước khi trình bày bản nháp cuối cùng, tự rà lại toàn bộ bà
 
 Đây là bước rà soát bắt buộc cho mọi bài, áp dụng cùng với — không thay thế — mục "What makes an article weak" ở trên.
 
+## Trung tính hóa diễn đạt cho nội dung YMYL (bắt buộc rà trước khi giao bài)
+
+Rút ra từ phiên rà soát bài "Trái phiếu doanh nghiệp là gì", nơi bản nháp đạt về cấu trúc nhưng phải sửa tám chỗ diễn đạt vì tuyệt đối hóa rủi ro và mang giọng định vị sản phẩm. Đây là lỗi tốn nhiều vòng sửa nhất, nên rà trước khi trình bản nháp chứ không đợi bị nhặt.
+
+**1. Không tuyệt đối hóa rủi ro.** Với nội dung tài chính, mọi mệnh đề về rủi ro phải để ngỏ ngoại lệ. Các khuôn bị cấm và cách thay:
+
+| Không viết | Viết thành |
+|---|---|
+| "gần như không có rủi ro", "rủi ro gần như không đáng kể" | "rủi ro tín dụng thường thấp hơn [mốc so chiếu]" |
+| "lãi suất cao hơn **luôn** đi kèm rủi ro cao hơn tương ứng" | "lãi suất cao hơn **thường phản ánh** rủi ro cao hơn" |
+| "Đây là rủi ro **lớn nhất và trực tiếp nhất**" | "Đây là rủi ro **được quan tâm nhiều nhất** khi đánh giá…" |
+| "**Phần lớn là có.**" (mở đầu câu trả lời FAQ) | Nêu quan hệ kèm giới hạn, rồi chỉ ra cần xem thêm gì |
+
+**2. So sánh phải có mốc so chiếu.** "Rủi ro thấp" là claim tuyệt đối trá hình. Luôn viết "thấp hơn cái gì": *"trái phiếu Chính phủ thường có rủi ro tín dụng thấp hơn trái phiếu doanh nghiệp"*.
+
+**3. Không dùng từ định vị sản phẩm trong bài giáo dục.** Các cụm như "cân bằng giữa an toàn và lợi suất", "lãi suất hấp dẫn" (nhất là khi gắn với sản phẩm rủi ro cao hơn) là ngôn ngữ marketing, làm bài mất tư cách nguồn trung lập. Dùng từ mô tả: "lãi suất cao hơn". Tiêu đề mục cũng vậy: "Vì sao nhà đầu tư quan tâm đến X?" mang giọng chào hàng, đổi thành "X phù hợp với nhu cầu nào?".
+
+**4. Mô tả quyền pháp lý phải kèm điều kiện, không nói trống.** Không viết "được ưu tiên trả nợ trước cổ đông". Viết "có quyền yêu cầu thanh toán theo điều khoản trái phiếu và thứ tự ưu tiên theo quy định pháp luật; thông thường chủ nợ được thanh toán trước cổ đông khi doanh nghiệp giải thể hoặc phá sản".
+
+**5. Câu trả lời FAQ nên dẫn tới việc cần kiểm chứng, không dừng ở kết luận.** Thay vì chốt "lãi suất cao nghĩa là rủi ro cao", nêu quan hệ rồi liệt kê các yếu tố phải xem đồng thời (năng lực tài chính, tài sản bảo đảm, xếp hạng tín nhiệm, kỳ hạn, điều khoản). Cách này vừa trung tính hơn vừa mạnh hơn về AEO, vì nó trả lời được câu hỏi kế tiếp "vậy cần xem gì".
+
+**6. Mỗi ô trong bảng phải trả lời đúng nhãn của hàng.** Lỗi thật đã gặp: hàng "Thứ tự ưu tiên khi phá sản" nhưng ô của trái phiếu Chính phủ lại ghi "Gần như không có rủi ro vỡ nợ", vừa tuyệt đối hóa vừa lạc đề. Đọc dò từng ô theo nhãn hàng trước khi giao bài.
+
+**7. Claim pháp lý phải gắn số hiệu văn bản và phải rà lại theo năm hiện tại.** "Theo quy định hiện hành" là cách viết tự lão hóa: bài đó viết đúng tại thời điểm viết rồi âm thầm sai khi luật đổi. Với mọi claim pháp lý, tra lại văn bản còn hiệu lực rồi ghi số hiệu vào bài. Ví dụ đã gặp: Nghị định 200/2026/NĐ-CP thay thế cùng lúc Nghị định 153/2020, 65/2022 và 08/2023, kéo theo điều kiện mua trái phiếu riêng lẻ của nhà đầu tư cá nhân đổi hoàn toàn.
+
+**8. Liều lượng luật phải khớp cấp độ bài.** Bài nhập môn chỉ nêu số hiệu văn bản cộng điều kiện cốt lõi ảnh hưởng trực tiếp tới việc người đọc có mua được hay không. Các chi tiết còn lại (ngưỡng tài sản, thời gian nắm giữ, quy định chuyển tiếp) đẩy xuống khối nguồn cuối bài. Không biến bài nhập môn thành bản tóm tắt nghị định.
+
+**9. Xếp phần rủi ro và phần thẩm định trước phần thuyết phục.** Nếu bài có mục kiểu "phù hợp với ai", đặt nó sau mục rủi ro và mục cách đánh giá. Người đọc gặp cảnh báo và bộ tiêu chí trước khi gặp lý do nên mua.
+
+**10. Khối E-E-A-T cuối bài** gồm ba thành phần: căn cứ pháp lý ghi rõ số hiệu văn bản, ngày đăng cùng ngày cập nhật, và byline. Không bịa tên người kiểm duyệt, xem mục Verification discipline.
+
 ## Verification discipline
 
 Do not invent specific facts you can't back up: exact interest rates, fee percentages, contract names, fund tickers, or dates. Where the article needs a number you don't have (e.g. TCBS's actual margin ratio, a specific CW's terms), write the sentence with a clear placeholder and flag it, e.g. *"[Cần xác nhận với đội sản phẩm: tỷ lệ ký quỹ hiện tại]"* — this is the same discipline already used for TCBS's other content review reports, and matters more here because this is YMYL financial content going out under TCBS's name. Internal links should point to real, existing TCBS URLs — if you're not sure a page exists, say so rather than guessing a URL.
+
+Khi không tìm được nguồn uy tín cho một chi tiết, mặc định là **bỏ chi tiết đó ra khỏi bài**, không suy diễn từ bối cảnh xung quanh. Ví dụ đã gặp: không xác nhận được iBond là trái phiếu phát hành riêng lẻ hay ra công chúng (trang help trả về 404), nên bài không gắn bất kỳ liên hệ nào giữa iBond và điều kiện pháp lý của trái phiếu riêng lẻ, thay vì đoán. Placeholder chỉ dùng khi chi tiết đó bắt buộc phải có để câu văn đứng được.
+
+Tên người cũng là dữ kiện không được bịa. Khi bài cần người kiểm duyệt đứng tên cho E-E-A-T, **hỏi người dùng tên và chức danh thật**; nếu họ chưa có ai đứng tên thì giữ byline tập thể "Đội ngũ nội dung TCBS" và bù lại bằng nguồn pháp lý cùng mốc thời gian cập nhật.
 
 ## Image suggestions
 

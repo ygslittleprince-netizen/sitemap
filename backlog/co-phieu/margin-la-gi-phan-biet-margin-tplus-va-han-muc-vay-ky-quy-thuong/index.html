@@ -201,14 +201,17 @@
   <div class="formula">Số tiền được vay tối đa = Tỷ lệ cho vay của mã × Giá trị chứng khoán mua<br><br>Sức mua = Vốn tự có + Số tiền được vay</div>
   <p class="note">Số tiền vay và sức mua là hai đại lượng khác nhau: sức mua là tổng giá trị cổ phiếu có thể mua, gồm cả phần vốn tự có lẫn phần vay thêm.</p>
   <p>Mỗi mã cổ phiếu có một tỷ lệ cho vay riêng theo danh mục TCBS công bố, không phải mọi mã đều được vay margin hoặc được vay cùng một tỷ lệ.</p>
-  <p>TCBS áp dụng <b>tỷ lệ ký quỹ ban đầu 100%</b>, nghĩa là tại thời điểm giải ngân, giá trị tài sản bảo đảm phải tương đương toàn bộ dư nợ vay.</p>
+  <p>Tỷ lệ ký quỹ của tài khoản tại TCBS, ký hiệu <b>Rtt</b>, bằng giá trị tài sản đã quy đổi theo tỷ lệ tính tài sản và giá tính tài sản do TCBS quy định, chia cho dư nợ thuần:</p>
+  <div class="formula">Rtt = ∑(Số lượng CK thực có × tỷ lệ tính tài sản × giá tính tài sản)<br>÷ (Tổng nợ đã giải ngân + nợ các loại phí + dư nợ chờ giải ngân − tiền mặt − tiền chờ về)</div>
+  <p class="note">Tỷ lệ tính tài sản và giá tính tài sản của từng mã theo danh mục cho vay TCBS công bố. Giá tính tài sản lấy mức thấp hơn giữa giá tham chiếu và giá trần cho vay, nên giá trị tài sản dùng để tính Rtt thường thấp hơn thị giá.</p>
+  <p><b>Rtt ban đầu phải đạt 100%</b> tại thời điểm giải ngân. Con số Rtt cụ thể được xác định hàng ngày và hiển thị trên tài khoản giao dịch trực tuyến.</p>
 
   <h2 id="rui-ro">Rủi ro cần hiểu trước khi dùng margin</h2>
   <ul>
     <li><b>Rủi ro lãi vay:</b> vay margin phát sinh lãi hàng ngày trên số dư nợ, dù cổ phiếu có sinh lời hay không.</li>
     <li><b>Rủi ro biến động bị khuếch đại:</b> giá cổ phiếu giảm sẽ khiến khoản lỗ trên vốn tự có lớn hơn nhiều so với không dùng đòn bẩy.</li>
     <li><b>Margin call và force-sell:</b> khi tỷ lệ ký quỹ giảm xuống dưới ngưỡng duy trì, nhà đầu tư nhận yêu cầu bổ sung tài sản đảm bảo (margin call). Nếu không bổ sung kịp, TCBS có quyền bán giải chấp (force-sell) để thu hồi nợ.</li>
-    <li><b>Rủi ro quá hạn khoản vay:</b> khoản vay có thời hạn 89 ngày. Nếu đến hạn mà chưa tất toán, cổ phiếu bị bán giải chấp vào ngày làm việc liền sau, kể cả khi tỷ lệ ký quỹ vẫn an toàn.</li>
+    <li><b>Rủi ro quá hạn khoản vay:</b> khoản vay có thời hạn 89 ngày. Nếu đến hạn mà chưa tất toán, cổ phiếu bị bán giải chấp vào ngày làm việc liền sau, kể cả khi tỷ lệ ký quỹ vẫn trên mức duy trì 85%.</li>
   </ul>
 
   <h2 id="nguong-call-margin">Ngưỡng call margin và xử lý tài sản bảo đảm tại TCBS</h2>
@@ -227,19 +230,26 @@
       <tr><th>Tiêu chí</th><th>Margin T+</th><th>Hạn mức vay ký quỹ thường</th></tr>
     </thead>
     <tbody>
-      <tr><td>Cách tính lãi</td><td>Theo gói T3/T5/T10, ưu đãi từ 0%/năm cho đúng số ngày đầu. Hết ưu đãi, dư nợ còn lại tính theo lãi suất ký quỹ thường</td><td>Từ 13,5%/năm, theo lãi suất của mã mua xác định tại thời điểm giải ngân, công bố theo từng thời kỳ</td></tr>
+      <tr><td>Cách tính lãi</td><td>Ưu đãi theo gói T3/T5/T10 cho đúng số ngày đầu. Hết số ngày đó, dư nợ chưa tất toán tính lãi 0,05%/ngày (khoảng 18,25%/năm) cho đến khi trả hết nợ</td><td>Từ 13,5%/năm, theo lãi suất của mã mua xác định tại thời điểm giải ngân, công bố theo từng thời kỳ</td></tr>
       <tr><td>Thời hạn khoản vay</td><td colspan="2" style="text-align:center">89 ngày, áp dụng cho cả hai hình thức</td></tr>
       <tr><td>Gói ngày ưu đãi</td><td>Đăng ký theo gói T3/T5/T10 cụ thể</td><td>Không chia theo gói ngày</td></tr>
-      <tr><td>Hạn mức</td><td>Theo hạn mức vay ký quỹ của tài khoản</td><td>Hạn mức vay ký quỹ phổ thông 10 tỷ đồng</td></tr>
+      <tr><td>Hạn mức</td><td>Tối đa 10 tỷ đồng/tài khoản</td><td>Hạn mức vay ký quỹ phổ thông 10 tỷ đồng</td></tr>
       <tr><td>Phù hợp với</td><td>Nhà đầu tư giao dịch ngắn hạn, biết trước thời gian nắm giữ</td><td>Nhà đầu tư chưa xác định rõ thời điểm bán, trong phạm vi 89 ngày</td></tr>
     </tbody>
   </table>
 
   <h2 id="margin-tplus">Margin T+ là gì</h2>
-  <p>Margin T+ là sản phẩm vay ký quỹ linh hoạt của TCBS, cho phép chọn gói vay 3, 5 hoặc 10 ngày theo đúng thời gian dự kiến nắm giữ cổ phiếu, lãi suất ưu đãi từ 0%/năm cho đúng số ngày đó. Khi đăng ký gói T5 hoặc T10, hệ thống tính lãi suất ưu đãi từ ngày giải ngân cho đến hết 5 hoặc 10 ngày đầu tiên của khoản vay, bao gồm cả thứ bảy, chủ nhật và ngày lễ. Sản phẩm phù hợp với nhà đầu tư giao dịch thường xuyên, đã có kinh nghiệm quản trị rủi ro khi dùng đòn bẩy.</p>
+  <p>Margin T+ là sản phẩm vay ký quỹ linh hoạt của TCBS, cho phép chọn gói vay 3, 5 hoặc 10 ngày theo đúng thời gian dự kiến nắm giữ cổ phiếu, với hạn mức tối đa 10 tỷ đồng/tài khoản. Mức ưu đãi của từng gói:</p>
+  <ul>
+    <li><b>Gói T3:</b> 0%/năm trong 3 ngày đầu của khoản vay.</li>
+    <li><b>Gói T5:</b> 5%/năm trong 5 ngày đầu của khoản vay.</li>
+    <li><b>Gói T10:</b> 10%/năm trong 10 ngày đầu của khoản vay.</li>
+  </ul>
+  <p>Khi đăng ký gói T5 hoặc T10, hệ thống tính lãi suất ưu đãi từ ngày giải ngân cho đến hết 5 hoặc 10 ngày đầu tiên của khoản vay, bao gồm cả thứ bảy, chủ nhật và ngày lễ. Sản phẩm phù hợp với nhà đầu tư giao dịch thường xuyên, đã có kinh nghiệm quản trị rủi ro khi dùng đòn bẩy.</p>
 
   <h3 style="font-size:18px; margin:28px 0 12px;">Hết gói ưu đãi thì khoản vay tính lãi thế nào?</h3>
-  <p>Ưu đãi chỉ áp dụng cho đúng số ngày của gói đã đăng ký. Hết số ngày đó, phần dư nợ chưa tất toán tiếp tục tính lãi theo <b>lãi suất ký quỹ thường của mã chứng khoán</b>, công bố theo từng thời kỳ. Toàn bộ khoản vay vẫn nằm trong thời hạn 89 ngày, nên hết gói không có nghĩa là đến hạn trả nợ.</p>
+  <p>Ưu đãi chỉ áp dụng cho đúng số ngày của gói đã đăng ký. Hết số ngày đó, phần dư nợ chưa tất toán tính lãi <b>0,05%/ngày</b>, tương đương khoảng 18,25%/năm, cho đến khi trả hết nợ. Khoản vay vẫn giữ chính sách Margin T+ đến khi tất toán, và toàn bộ khoản vay nằm trong thời hạn 89 ngày, nên hết gói không có nghĩa là đến hạn trả nợ.</p>
+  <p>Mức 0,05%/ngày cao hơn lãi suất vay ký quỹ thường từ 13,5%/năm. Đây là điểm cần cân nhắc khi chọn gói: ưu đãi chỉ có lợi nếu bán đúng trong số ngày đã đăng ký.</p>
   <p>Gói Margin T+ không áp dụng cho khách hàng đã có thỏa thuận riêng về lãi suất và danh mục ký quỹ với TCBS. Nhóm khách hàng này áp dụng biểu lãi suất và danh mục do TCBS thông báo riêng theo từng thời kỳ.</p>
   <p>Muốn quay về hình thức vay thường, nhà đầu tư vào TCInvest, chọn "Quản lý margin" để đăng ký lại gói "Ký quỹ thường". Thời gian hủy gói Vay T+ đã đăng ký là 24 giờ làm việc.</p>
 
@@ -250,7 +260,7 @@
 
   <h2 id="nen-chon">Nên chọn Margin T+ hay margin thường?</h2>
   <ul>
-    <li><b>Biết trước sẽ nắm giữ trong vài ngày cụ thể:</b> Margin T+ thường tiết kiệm lãi vay hơn nhờ mức ưu đãi theo đúng gói ngày.</li>
+    <li><b>Biết trước sẽ nắm giữ trong vài ngày cụ thể:</b> Margin T+ tiết kiệm lãi hơn khi bán trong đúng số ngày của gói. Giữ quá gói thì lãi 0,05%/ngày có thể cao hơn vay thường.</li>
     <li><b>Chưa chắc thời điểm bán:</b> hạn mức vay ký quỹ thường phù hợp hơn vì không bị ràng buộc theo gói ngày ưu đãi.</li>
     <li><b>Dù chọn hình thức nào:</b> đều cần theo dõi mốc 89 ngày và tỷ lệ ký quỹ. Vay margin không phải công cụ nắm giữ dài hạn không giới hạn.</li>
   </ul>
@@ -262,7 +272,7 @@
   </details>
   <details class="faq-item">
     <summary>Margin T+ khác gì margin thường?</summary>
-    <p class="faq-a">Margin T+ chia theo gói T3/T5/T10 với lãi suất ưu đãi từ 0%/năm cho đúng số ngày đầu, hết ưu đãi thì dư nợ còn lại tính theo lãi suất ký quỹ thường. Margin thường áp dụng lãi suất từ 13,5%/năm theo mã chứng khoán, không chia theo gói ngày. Cả hai đều có thời hạn khoản vay 89 ngày.</p>
+    <p class="faq-a">Margin T+ chia theo gói T3 (0%/năm trong 3 ngày đầu), T5 (5%/năm trong 5 ngày đầu) và T10 (10%/năm trong 10 ngày đầu). Hết số ngày ưu đãi, dư nợ chưa tất toán tính lãi 0,05%/ngày cho đến khi trả hết. Margin thường áp dụng lãi suất từ 13,5%/năm theo mã chứng khoán, không chia theo gói ngày. Cả hai đều có thời hạn khoản vay 89 ngày.</p>
   </details>
   <details class="faq-item">
     <summary>Vay margin tối đa được bao lâu?</summary>

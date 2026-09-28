@@ -202,7 +202,6 @@
     <ol>
       <li><a href="#rtt">Tỷ lệ ký quỹ (Rtt) là gì và tính như thế nào</a></li>
       <li><a href="#nguong">Ngưỡng gọi ký quỹ và ngưỡng xử lý bắt buộc</a></li>
-      <li><a href="#vi-du">Ví dụ tính margin call</a></li>
       <li><a href="#dieu-gi-xay-ra">Điều gì xảy ra khi bị margin call</a></li>
       <li><a href="#xu-ly-an-toan">Cách xử lý an toàn khi tài khoản bị cảnh báo</a></li>
       <li><a href="#phong-tranh">Cách phòng tránh margin call từ đầu</a></li>
@@ -229,20 +228,7 @@
   </table>
   <p class="note">Chính sách áp dụng từ 07/11/2022 theo help.tcbs.com.vn, có thể được TCBS điều chỉnh theo từng thời kỳ, nên kiểm tra lại thông báo mới nhất trên ứng dụng.</p>
 
-  <h2 id="vi-du">Ví dụ tính margin call</h2>
-  <p>Ví dụ dưới đây là giả định, bỏ qua lãi và phí, chỉ nhằm minh họa cách Rtt thay đổi theo giá.</p>
-  <p>Anh A có 100 triệu đồng, vay thêm 100 triệu đồng để mua 20.000 cổ phiếu giá 10.000 đồng. Giả sử tỷ lệ tính tài sản của mã này là 50%. Khi đó:</p>
-  <div class="formula">Rtt = 20.000 × 50% × 10.000 ÷ 100 triệu = 100%</div>
-  <table>
-    <thead>
-      <tr><th>Giá cổ phiếu</th><th>Mức giảm</th><th>Rtt</th><th>Trạng thái tài khoản</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>10.000 đồng</td><td>—</td><td>100%</td><td>Bình thường</td></tr>
-      <tr><td>8.500 đồng</td><td>−15%</td><td>85%</td><td>Chạm ngưỡng gọi ký quỹ</td></tr>
-      <tr><td>Dưới 8.000 đồng</td><td>−20%</td><td>Dưới 80%</td><td>TCBS bán giải chấp vào ngày làm việc liền sau</td></tr>
-    </tbody>
-  </table>
+  <p>Ví dụ giả định, bỏ qua lãi và phí: anh A có 100 triệu đồng, vay thêm 100 triệu đồng để mua 20.000 cổ phiếu giá 10.000 đồng, tỷ lệ tính tài sản của mã này là 50%. Khi đó Rtt = 20.000 × 50% × 10.000 ÷ 100 triệu = 100%. Giá giảm về 8.500 đồng (giảm 15%), Rtt còn 85% và tài khoản chạm ngưỡng gọi ký quỹ. Giá giảm tiếp xuống dưới 8.000 đồng (giảm 20%), Rtt dưới 80% và TCBS bán giải chấp vào ngày làm việc liền sau.</p>
 
   <h2 id="dieu-gi-xay-ra">Điều gì xảy ra khi bị margin call</h2>
   <ul>

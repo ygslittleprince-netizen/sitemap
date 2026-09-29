@@ -100,6 +100,14 @@
     margin: 0 0 16px;
     color: var(--ink);
   }
+  .hero-img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 0 24px;
+    display: block;
+    object-fit: cover;
+    max-height: 380px;
+  }
   .img-placeholder {
     width: 100%;
     min-height: 220px;
@@ -161,6 +169,7 @@
     display: block;
     font-family: "SF Mono", "Cascadia Code", Consolas, monospace;
     font-size: 15px;
+    font-weight: 700;
     color: var(--ink);
     background: #FFFFFF;
     padding: 10px 12px;
@@ -269,16 +278,10 @@
   <div class="kicker">Cổ phiếu</div>
   <h1>P/E là gì? Cách ứng dụng khi định giá cổ phiếu tại TCBS</h1>
 
-  <div class="img-placeholder">
-    <div>
-      <b>Ảnh hero cần bổ sung</b>
-      Chỉ số định giá của một cổ phiếu (P/E, P/B, EPS) trên nền tảng TCBS.<br>
-      Alt text gợi ý: "Chỉ số P/E và EPS của cổ phiếu trên nền tảng TCBS"
-    </div>
-  </div>
+  <img class="hero-img" src="pe-hero-tcbs.png" alt="P/E là gì? Tờ tài liệu P/E Ratio minh họa công thức lấy Price chia cho EPS, bên cạnh máy tính, kính mắt và các chồng đồng xu, logo Techcomsecurities">
 
   <p>P/E (Price to Earnings) là tỷ lệ giữa giá thị trường của cổ phiếu và lợi nhuận trên mỗi cổ phiếu (EPS). Công thức: P/E = Giá cổ phiếu ÷ EPS. Chỉ số này cho biết nhà đầu tư đang trả bao nhiêu đồng cho mỗi đồng lợi nhuận của doanh nghiệp, và cũng là thước đo tương đối về thời gian hoàn vốn.</p>
-  <p>P/E là chỉ số định giá được dùng nhiều nhất vì dễ tính và dễ so sánh. Nhưng một con số P/E thấp không tự động có nghĩa là cổ phiếu rẻ. Bài này giải thích cách tính, cách đọc và cách dùng P/E đúng để định giá.</p>
+  <p>P/E là chỉ số định giá được dùng nhiều nhất vì dễ tính và dễ so sánh. Nhưng P/E thấp chưa chắc là cổ phiếu rẻ. Bài này giải thích cách tính, cách đọc và cách dùng P/E đúng để định giá.</p>
 
   <details class="toc">
     <summary>Mục lục</summary>
@@ -299,7 +302,7 @@
 
   <h2 id="cong-thuc">Công thức tính P/E</h2>
   <div class="formula">
-    <div class="label">📐 Công thức P/E</div>
+    <div class="label">Công thức P/E</div>
     <code>P/E = Giá thị trường của cổ phiếu ÷ EPS</code>
     <code>EPS = Lợi nhuận sau thuế thuộc về cổ đông ÷ Số cổ phiếu đang lưu hành bình quân</code>
     <p>Giá và EPS phải cùng một mốc thời gian để con số nhất quán.</p>
@@ -332,12 +335,12 @@
     <li><strong>P/E cao</strong> có thể do thị trường kỳ vọng tăng trưởng mạnh, hoặc cổ phiếu đang bị định giá quá đắt.</li>
     <li><strong>P/E thấp</strong> có thể do cổ phiếu đang rẻ, hoặc doanh nghiệp ít triển vọng, gặp khó khăn.</li>
   </ul>
-  <p>Không có mức P/E "chuẩn" áp dụng cho mọi cổ phiếu. Có nguồn gợi ý nhà đầu tư mới tìm hiểu các cổ phiếu có P/E dưới 10, nhưng đây chỉ là điểm xuất phát để lọc. Mặt bằng P/E khác nhau giữa các ngành, nên con số chỉ có ý nghĩa khi đặt cạnh đối thủ cùng ngành và lịch sử của chính doanh nghiệp.</p>
+  <p>Không có một mức P/E chuẩn dùng chung cho mọi cổ phiếu. Mặt bằng P/E khác nhau giữa các ngành, nên con số chỉ có ý nghĩa khi đặt cạnh đối thủ cùng ngành và lịch sử của chính doanh nghiệp.</p>
 
   <h2 id="cach-ung-dung">Cách ứng dụng P/E khi định giá cổ phiếu</h2>
   <ol class="steps">
     <li><strong>Tra P/E hiện tại.</strong> Lấy P/E trailing làm điểm bắt đầu, xem thêm P/E forward nếu có dự phóng.</li>
-    <li><strong>So với các cổ phiếu cùng ngành.</strong> Xếp doanh nghiệp cạnh các công ty cùng phân ngành. P/E cao hơn hẳn mặt bằng ngành cần có lý do, ví dụ tăng trưởng vượt trội.</li>
+    <li><strong>So với các cổ phiếu cùng ngành.</strong> Xếp doanh nghiệp cạnh các công ty cùng phân ngành. P/E cao hơn hẳn mặt bằng ngành cần có lý do, ví dụ lợi nhuận tăng nhanh hơn các công ty cùng ngành.</li>
     <li><strong>So với lịch sử của chính nó.</strong> Xem P/E hiện tại nằm ở đâu so với mức trung bình nhiều năm. P/E thấp hơn trung bình dài hạn đáng được xem xét kỹ, nhưng cần hiểu vì sao nó thấp.</li>
     <li><strong>Đặt P/E cạnh tăng trưởng lợi nhuận.</strong> Dùng chỉ số PEG (xem bên dưới).</li>
     <li><strong>Đối chiếu chỉ số khác.</strong> Xem thêm ROE, nợ vay, dòng tiền và P/B để tránh chọn cổ phiếu chỉ vì P/E thấp. Về ROE, bạn có thể đọc bài <a href="../roe-la-gi-cong-thuc-tinh-va-cach-dung-khi-chon-co-phieu/">ROE là gì? Công thức tính và cách dùng khi chọn cổ phiếu</a>.</li>
@@ -345,15 +348,15 @@
 
   <h3>Ước tính giá tham chiếu từ P/E</h3>
   <div class="formula">
-    <div class="label">📐 Giá tham chiếu theo P/E</div>
+    <div class="label">Giá tham chiếu theo P/E</div>
     <code>Giá tham chiếu = EPS × P/E kỳ vọng</code>
     <p>Con số này chỉ là điểm tham chiếu, không phải giá mục tiêu.</p>
   </div>
-  <p><strong>Ví dụ (số giả định):</strong> cổ phiếu A có EPS 4.000 đồng. P/E trung bình của ngành là 12. Giá tham chiếu = 4.000 × 12 = 48.000 đồng. So với giá thị trường 60.000 đồng, cổ phiếu đang giao dịch cao hơn mức tham chiếu theo ngành khoảng 25%. Để kết luận "đắt", bạn cần kiểm tra thêm A có tăng trưởng nhanh hơn ngành hay không.</p>
+  <p><strong>Ví dụ (số giả định):</strong> cổ phiếu A có EPS 4.000 đồng. P/E trung bình của ngành là 12. Giá tham chiếu = 4.000 × 12 = 48.000 đồng. So với giá thị trường 60.000 đồng, cổ phiếu đang giao dịch cao hơn mức tham chiếu theo ngành khoảng 25%. Trước khi kết luận A đắt, bạn cần xem lợi nhuận của A có tăng nhanh hơn ngành không.</p>
 
   <h3>Kết hợp P/E với tăng trưởng: chỉ số PEG</h3>
   <div class="formula">
-    <div class="label">📐 Công thức PEG</div>
+    <div class="label">Công thức PEG</div>
     <code>PEG = P/E ÷ Tốc độ tăng trưởng EPS hằng năm (%)</code>
     <p>Ví dụ: P/E là 15, EPS tăng 20% mỗi năm thì PEG = 15 ÷ 20 = 0,75.</p>
   </div>
@@ -410,7 +413,7 @@
   <div class="byline-footer">
     <span>Do <b>Đội ngũ nội dung TCBS</b> biên soạn</span>
     <span>·</span>
-    <span>Cập nhật 21/09/2026</span>
+    <span>Cập nhật 29/09/2026</span>
   </div>
 
 </div>

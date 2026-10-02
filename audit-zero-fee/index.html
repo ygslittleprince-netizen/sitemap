@@ -245,14 +245,15 @@ Xem thêm Biểu phí giao dịch chứng khoán của TCBS
   </div>
   <div class="blk">
     <h3>Khối 5: Tham khảo các sản phẩm tại TCBS</h3>
-    <div class="text-block"><span class="k">2 thẻ</span>Cổ phiếu iStock → /ca-nhan/co-phieu-istock/ · Sản phẩm vay Margin → /ca-nhan/co-phieu-istock/vay-ky-quy-margin/. Giữ nguyên mô tả Canva.<br>
+    <div class="text-block"><span class="k">Kho 7 sản phẩm</span>Cổ phiếu iStock → /ca-nhan/co-phieu-istock/ · Sản phẩm vay Margin → /ca-nhan/co-phieu-istock/vay-ky-quy-margin/ · Trái phiếu iBond → /ca-nhan/trai-phieu-ibond/ · Gói vay MargInsure → /ca-nhan/co-phieu-istock/vay-ky-quy-margin/marginsure/ · Phái sinh Future → /ca-nhan/chung-khoan-phai-sinh/ · Chứng quyền TCBS → /ca-nhan/chung-quyen-co-bao-dam/ · Quỹ đầu tư iFund → /ca-nhan/quy-dau-tu-ifund/. Giữ nguyên mô tả Canva cho 2 thẻ cũ.<br>
+    <span class="k">Hiển thị</span>Luôn giữ 4 thẻ trên trang. Mỗi 4 giây, 1 thẻ đổi sang sản phẩm khác lấy ngẫu nhiên từ kho, không trùng 3 thẻ đang hiện. Dừng xoay khi người dùng rê chuột / focus bàn phím vào lưới và khi trình duyệt bật giảm chuyển động.<br>
     <span class="k">CTA cuối</span>Đừng bỏ lỡ cơ hội bứt phá gia tăng tài sản của bạn tại TCBS! · Giao dịch ngay</div>
   </div>
 </section>
 
 <section id="mockup">
   <h2>4. Mockup giao diện sau khi dựng</h2>
-  <p class="intro">Dựng theo hệ giao diện của trang iPower. Có 2 tương tác: con dấu ZERO FEE đóng xuống khi tải trang, và tab chọn sản phẩm để xem mức phí. Khung nét đứt là vị trí ảnh cần chuẩn bị.</p>
+  <p class="intro">Dựng theo hệ giao diện của trang iPower. Có 3 tương tác: con dấu ZERO FEE đóng xuống khi tải trang, tab chọn sản phẩm để xem mức phí, và lưới sản phẩm liên quan luôn hiện 4 thẻ rồi tự đổi 1 thẻ sau mỗi 4 giây. Khung nét đứt là vị trí ảnh cần chuẩn bị.</p>
 
   <div class="card-grid">
     <div class="card"><h4>Màu</h4><p><span class="swatch" style="background:#c41c16"></span>Đỏ chính #c41c16<br><span class="swatch" style="background:#009565"></span>Icon #009565 trên nền #e4f6eb<br><span class="swatch" style="background:#f4f6f9"></span>Nền khối xen kẽ #f4f6f9</p></div>
@@ -381,13 +382,15 @@ h2{font-size:34px;font-weight:600;letter-spacing:-.6px;line-height:1.25;color:va
 
 /* Product cards */
 .prods{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.prod{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px;display:flex;gap:20px;align-items:flex-start;transition:transform .2s,border-color .2s}
+.prod{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px;display:flex;gap:20px;align-items:flex-start;transition:transform .2s,border-color .2s,opacity .3s ease}
 .prod:hover{transform:translateY(-3px);border-color:#f0b9b6}
 .prod .ph{width:96px;height:96px;flex:none;border-radius:16px;padding:8px}
 .prod .ph span{font-size:11px}
 .prod h3{margin:0 0 8px;font-size:18px;font-weight:600;color:var(--ink2)}
 .prod p{margin:0;color:var(--text);font-size:15px}
 .prod .more{display:inline-block;margin-top:10px;font-weight:600;font-size:15px}
+.prod.swap{opacity:0;transform:translateY(6px)}
+.prod-note{margin:18px 0 0;text-align:center;font-size:13px;color:var(--text)}
 
 /* CTA band */
 .cta-band{background:linear-gradient(135deg,#eadeff,#dfeaff 25%,#f1fcff 70%,#e5fffc);padding:64px 0;text-align:center}
@@ -547,16 +550,13 @@ footer .row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-b
       &lt;div class=&quot;eyebrow&quot;&gt;Sản phẩm liên quan&lt;/div&gt;
       &lt;h2&gt;Tham khảo các sản phẩm tại TCBS&lt;/h2&gt;
     &lt;/div&gt;
-    &lt;div class=&quot;prods&quot;&gt;
-      &lt;a class=&quot;prod&quot; href=&quot;#&quot;&gt;
-        &lt;div class=&quot;ph&quot;&gt;&lt;b&gt;ICON&lt;/b&gt;&lt;span&gt;iStock (có sẵn)&lt;/span&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;h3&gt;Cổ phiếu iStock&lt;/h3&gt;&lt;p&gt;Hệ thống hàng đầu dành cho quản lý danh mục đầu tư hiệu quả, với đa dạng công cụ hỗ trợ và phân tích đầu tư vượt trội: Báo cáo 1-click, Định giá, Backtest, AI phân tích,...&lt;/p&gt;&lt;span class=&quot;more&quot;&gt;Tìm hiểu thêm →&lt;/span&gt;&lt;/div&gt;
-      &lt;/a&gt;
-      &lt;a class=&quot;prod&quot; href=&quot;#&quot;&gt;
-        &lt;div class=&quot;ph&quot;&gt;&lt;b&gt;ICON&lt;/b&gt;&lt;span&gt;Margin (có sẵn)&lt;/span&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;h3&gt;Sản phẩm vay Margin&lt;/h3&gt;&lt;p&gt;Trải nghiệm bộ sản phẩm vay ký quỹ toàn diện: Lãi vay lần đầu chỉ 7.89%/năm, hạn mức 5 tỷ VND, Vay linh hoạt Margin T+ từ 0%/năm, và giảm lãi vay 3%/năm với gói vay Marginsure.&lt;/p&gt;&lt;span class=&quot;more&quot;&gt;Tìm hiểu thêm →&lt;/span&gt;&lt;/div&gt;
-      &lt;/a&gt;
+    &lt;div class=&quot;prods&quot; id=&quot;prods&quot; aria-live=&quot;polite&quot;&gt;
+      &lt;a class=&quot;prod&quot; href=&quot;#&quot;&gt;&lt;div class=&quot;ph&quot;&gt;&lt;b&gt;ICON&lt;/b&gt;&lt;span class=&quot;pi&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;span class=&quot;more&quot;&gt;Tìm hiểu thêm →&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;
+      &lt;a class=&quot;prod&quot; href=&quot;#&quot;&gt;&lt;div class=&quot;ph&quot;&gt;&lt;b&gt;ICON&lt;/b&gt;&lt;span class=&quot;pi&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;span class=&quot;more&quot;&gt;Tìm hiểu thêm →&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;
+      &lt;a class=&quot;prod&quot; href=&quot;#&quot;&gt;&lt;div class=&quot;ph&quot;&gt;&lt;b&gt;ICON&lt;/b&gt;&lt;span class=&quot;pi&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;span class=&quot;more&quot;&gt;Tìm hiểu thêm →&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;
+      &lt;a class=&quot;prod&quot; href=&quot;#&quot;&gt;&lt;div class=&quot;ph&quot;&gt;&lt;b&gt;ICON&lt;/b&gt;&lt;span class=&quot;pi&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;span class=&quot;more&quot;&gt;Tìm hiểu thêm →&lt;/span&gt;&lt;/div&gt;&lt;/a&gt;
     &lt;/div&gt;
+    &lt;p class=&quot;prod-note&quot;&gt;Luôn hiện 4 sản phẩm, tự đổi 1 thẻ sau mỗi 4 giây. Rê chuột vào lưới để tạm dừng.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/section&gt;
 
@@ -592,7 +592,50 @@ footer .row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-b
     t.addEventListener(&#x27;click&#x27;, () =&gt; sel(t));
     t.addEventListener(&#x27;keydown&#x27;, e =&gt; { if (e.key === &#x27;ArrowRight&#x27; || e.key === &#x27;ArrowLeft&#x27;) { const n = tabs[(i + (e.key === &#x27;ArrowRight&#x27; ? 1 : tabs.length - 1)) % tabs.length]; sel(n); n.focus(); } });
   });
-})();
+
+  /* Khoi 5: luan phien 4 the san pham moi 4 giay */
+  var PRODS = [
+    {t:&#x27;Cổ phiếu iStock&#x27;, i:&#x27;iStock&#x27;, d:&#x27;Hệ thống hàng đầu dành cho quản lý danh mục đầu tư hiệu quả, với đa dạng công cụ hỗ trợ và phân tích đầu tư vượt trội: Báo cáo 1-click, Định giá, Backtest, AI phân tích,...&#x27;},
+    {t:&#x27;Sản phẩm vay Margin&#x27;, i:&#x27;Margin&#x27;, d:&#x27;Trải nghiệm bộ sản phẩm vay ký quỹ toàn diện: Lãi vay lần đầu chỉ 7.89%/năm, hạn mức 5 tỷ VND, Vay linh hoạt Margin T+ từ 0%/năm, và giảm lãi vay 3%/năm với gói vay Marginsure.&#x27;},
+    {t:&#x27;Trái phiếu iBond&#x27;, i:&#x27;iBond&#x27;, d:&#x27;Đầu tư trái phiếu doanh nghiệp với lợi suất hấp dẫn hơn tiền gửi, kỳ hạn linh hoạt từ 1 tháng và có thể bán lại trước hạn trên nền tảng TCInvest.&#x27;},
+    {t:&#x27;Gói vay MargInsure&#x27;, i:&#x27;MargInsure&#x27;, d:&#x27;Gói vay ký quỹ tích hợp bảo hiểm khoản vay, giảm lãi vay tới 3%/năm và bảo vệ nhà đầu tư trước rủi ro biến động mạnh của thị trường.&#x27;},
+    {t:&#x27;Phái sinh Future&#x27;, i:&#x27;Future&#x27;, d:&#x27;Giao dịch hợp đồng tương lai chỉ số VN30 với mức phí TCBS thu 0 VNĐ, đòn bẩy cao và cơ hội sinh lời cả khi thị trường tăng lẫn giảm.&#x27;},
+    {t:&#x27;Chứng quyền TCBS&#x27;, i:&#x27;Chứng quyền&#x27;, d:&#x27;Chứng quyền có bảo đảm với vốn đầu tư ban đầu thấp, đòn bẩy lớn và mức lỗ tối đa giới hạn bằng đúng số tiền đã bỏ ra để mua chứng quyền.&#x27;},
+    {t:&#x27;Quỹ đầu tư iFund&#x27;, i:&#x27;iFund&#x27;, d:&#x27;Đầu tư vào danh mục quỹ mở được quản lý chuyên nghiệp, chỉ từ 100.000 VND, phù hợp với nhà đầu tư bận rộn muốn tích lũy dài hạn.&#x27;}
+  ];
+  var grid = document.getElementById(&#x27;prods&#x27;);
+  if (grid) {
+    var cards = [].slice.call(grid.querySelectorAll(&#x27;.prod&#x27;));
+    var shown = [];
+    function paint(card, p){
+      card.querySelector(&#x27;h3&#x27;).textContent = p.t;
+      card.querySelector(&#x27;p&#x27;).textContent = p.d;
+      card.querySelector(&#x27;.pi&#x27;).textContent = p.i;
+    }
+    for (var k = 0; k &lt; cards.length; k++) { shown[k] = k; paint(cards[k], PRODS[k]); }
+    var paused = false, timer = null;
+    grid.addEventListener(&#x27;mouseenter&#x27;, function(){ paused = true; });
+    grid.addEventListener(&#x27;mouseleave&#x27;, function(){ paused = false; });
+    grid.addEventListener(&#x27;focusin&#x27;, function(){ paused = true; });
+    grid.addEventListener(&#x27;focusout&#x27;, function(){ paused = false; });
+    function rotate(){
+      if (paused) return;
+      var slot = Math.floor(Math.random() * cards.length);
+      var pool = [];
+      for (var j = 0; j &lt; PRODS.length; j++) { if (shown.indexOf(j) === -1) pool.push(j); }
+      if (!pool.length) return;
+      var pick = pool[Math.floor(Math.random() * pool.length)];
+      var card = cards[slot];
+      card.classList.add(&#x27;swap&#x27;);
+      setTimeout(function(){
+        shown[slot] = pick;
+        paint(card, PRODS[pick]);
+        card.classList.remove(&#x27;swap&#x27;);
+      }, 320);
+    }
+    var reduce = window.matchMedia &amp;&amp; window.matchMedia(&#x27;(prefers-reduced-motion:reduce)&#x27;).matches;
+    if (!reduce) timer = setInterval(rotate, 4000);
+  }})();
 &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;

@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="description" content="Audit SEO/GEO và mockup dựng lại trang Quỹ ETF Techcom Capital VNX50 (FUETCC50) của TCBS.">
+<title>Audit Quỹ ETF VNX50 TCBS</title>
+<style>
+:root{--ink:#182338;--muted:#57657c;--paper:#fff;--canvas:#f5f7fb;--line:#e0e6f0;--brand:#b41334;--brand-dark:#871027;--good:#11735c;--watch:#9a5b00;--critical:#ae2538;--soft-good:#edfaf6;--soft-watch:#fff7e9;--soft-critical:#fff0f2;--radius:12px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--canvas);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--brand-dark)}a:hover{color:var(--brand)}
+code{padding:.1em .35em;background:#edf1f6;border-radius:4px;font-size:.92em}
+.shell{width:min(1060px,calc(100% - 32px));margin:0 auto}
+header.hero{padding:44px 0 30px;background:linear-gradient(135deg,#7d0b24 0%,#b41334 100%);color:#fff}
+.eyebrow{margin:0 0 10px;color:#ffd8df;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tier-pill{display:inline-block;padding:.16rem .6rem;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.72rem}
+h1{margin:0;font-size:clamp(1.6rem,4vw,2.3rem);letter-spacing:-.02em;line-height:1.2}
+.lede{max-width:800px;margin:14px 0 0;font-size:1rem;color:#ffeef0}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin:18px 0 0;font-size:.86rem;color:#ffd8df}
+.meta strong{color:#fff}
+.meta a{color:#fff}
+nav.toc{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+nav.toc .shell{display:flex;gap:6px 16px;overflow-x:auto;padding:10px 0;white-space:nowrap}
+nav.toc a{color:var(--muted);font-size:.84rem;font-weight:600;text-decoration:none}
+nav.toc a:hover{color:var(--brand)}
+main{padding:30px 0 60px}
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{margin:0 0 12px;font-size:1.35rem;letter-spacing:-.01em}
+h3{margin:22px 0 8px;font-size:1.02rem}
+h4{margin:0 0 5px;font-size:.93rem}
+p{margin:0 0 12px}
+.intro{max-width:820px;color:var(--muted)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper)}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:.91rem}
+th{background:#f8fafc;color:#37455c;font-size:.75rem;letter-spacing:.03em;text-transform:uppercase}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;white-space:nowrap}
+td.src{font-style:italic;color:#37455c}
+.badge{display:inline-block;padding:.18rem .55rem;border-radius:999px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.good{background:var(--soft-good);color:var(--good)}
+.watch{background:var(--soft-watch);color:var(--watch)}
+.critical{background:var(--soft-critical);color:var(--critical)}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 16px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.stat b{display:block;font-size:1.7rem;line-height:1.1}
+.stat span{font-size:.82rem;color:var(--muted)}
+.stat.s-good b{color:var(--good)}.stat.s-watch b{color:var(--watch)}.stat.s-critical b{color:var(--critical)}
+.callout{border-radius:var(--radius);padding:14px 18px;margin:16px 0 0;font-size:.93rem;border:1px solid}
+.callout p:last-child{margin:0}
+.callout ul{margin:6px 0 0;padding-left:20px}
+.callout li+li{margin-top:4px}
+.critical-box{background:var(--soft-critical);border-color:#f3c6cd}
+.watch-box{background:var(--soft-watch);border-color:#f1dcb5}
+.good-box{background:var(--soft-good);border-color:#bfe6d9}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:.9rem}
+.card h4{margin:0 0 6px}
+.card p{margin:0;color:var(--muted)}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px;border:1px solid rgba(0,0,0,.08)}
+
+/* Mockup viewer */
+.viewer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0 10px}
+.seg{display:inline-flex;background:#e9edf4;border-radius:999px;padding:4px}
+.seg button{border:0;background:transparent;font:inherit;font-size:.85rem;font-weight:700;color:var(--muted);padding:.4rem 1rem;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:var(--brand);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.viewer-hint{font-size:.83rem;color:var(--muted)}
+.browser{margin:0 auto;border:1px solid #cfd7e3;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 18px 40px rgba(15,23,42,.12);transition:max-width .35s ease}
+.browser.mobile{max-width:412px;border-radius:28px;border-width:8px;border-color:#1f2937}
+.chrome{display:flex;align-items:center;gap:10px;background:#eef1f6;padding:9px 14px;border-bottom:1px solid #d9e0ea}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#cbd3df}
+.dots i:nth-child(1){background:#f87171}.dots i:nth-child(2){background:#fbbf24}.dots i:nth-child(3){background:#34d399}
+.url{flex:1;background:#fff;border-radius:999px;padding:4px 14px;font-size:.78rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-tag{font-size:.68rem;font-weight:800;letter-spacing:.06em;color:var(--watch);background:var(--soft-watch);border-radius:999px;padding:.12rem .55rem}
+.browser.mobile .dots,.browser.mobile .mock-tag{display:none}
+.browser iframe{display:block;width:100%;height:900px;border:0;background:#fff}
+
+.prio{display:grid;gap:12px}
+.prio .callout{margin:0}
+.prio h4{margin:0 0 6px;font-size:.95rem}
+.prio ul{margin:0;padding-left:20px}
+footer.src{border-top:1px solid var(--line);padding:22px 0 40px;font-size:.85rem;color:var(--muted)}
+footer.src ul{margin:6px 0 0;padding-left:20px}
+
+@media (max-width:720px){
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  td:first-child{white-space:normal}
+  .browser iframe{height:780px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="shell">
+    <p class="eyebrow">Audit SEO/GEO + Mockup dựng trang <span class="tier-pill">Tier 1</span></p>
+    <h1>Audit Quỹ ETF Techcom Capital VNX50 (FUETCC50)</h1>
+    <p class="lede">Bảng thông tin quỹ, biểu phí, Ban đại diện và tài liệu quỹ đều là chữ HTML. Điểm cần sửa: title, meta và 2 câu thân bài cam kết lợi nhuận, trang không có H1, schema breadcrumb lỗi, cụm bản tiếng Anh có 10 URL trùng nhau đang được index.</p>
+    <div class="meta">
+      <span><strong>URL:</strong> <a href="https://www.tcbs.com.vn/ca-nhan/ifund/quy-etf-techcom-capital-vnx50/">/ca-nhan/ifund/quy-etf-techcom-capital-vnx50/</a></span>
+      <span><strong>Loại trang:</strong> Trang sản phẩm, con của hub iFund</span>
+      <span><strong>Ngày audit:</strong> 02/10/2026</span>
+      <span><strong>Số từ:</strong> 651 từ thân bài</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Mục lục">
+  <div class="shell">
+    <a href="#danh-gia">1. Đánh giá</a>
+    <a href="#de-xuat">2. Đề xuất</a>
+    <a href="#mockup">3. Mockup</a>
+    <a href="#uu-tien">4. Ưu tiên xử lý</a>
+  </div>
+</nav>
+
+<main class="shell">
+
+<section id="danh-gia">
+  <h2>1. Đánh giá SEO/GEO</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Thành phần</th><th>Kết quả</th><th>Căn cứ</th></tr></thead>
+    <tbody>
+      <tr><td>Title</td><td><span class="badge critical">Không đạt</span></td><td>Quỹ ETF VNX50 TCBS - Tối đa lợi nhuận từ các cổ phiếu. Cam kết lợi nhuận trên trang YMYL, thiếu mã FUETCC50.</td></tr>
+      <tr><td>Meta description</td><td><span class="badge critical">Không đạt</span></td><td>Ghi quỹ giúp tối ưu hóa lợi nhuận. Không có mã, phí, sàn niêm yết.</td></tr>
+      <tr><td>Canonical</td><td><span class="badge good">Đạt</span></td><td>Tự trỏ về chính URL. Hreflang khai báo đúng cặp vi/en và x-default.</td></tr>
+      <tr><td>Robots</td><td><span class="badge good">Đạt</span></td><td><code>follow, index, max-snippet:250</code></td></tr>
+      <tr><td>Heading</td><td><span class="badge watch">Cần bổ sung H1</span></td><td>0 thẻ H1, tên quỹ nằm ở H2. H3 Minh bạch có dấu cách thừa trong mã nguồn.</td></tr>
+      <tr><td>Nội dung chính</td><td><span class="badge watch">Một phần</span></td><td>Định nghĩa, chiến lược, biểu phí, đơn vị liên quan, Ban đại diện đều là chữ HTML. Thiếu NAV, hiệu suất, danh mục nắm giữ. Biểu đồ duy nhất là Power BI của chỉ số VNX50, không phải của quỹ.</td></tr>
+      <tr><td>Văn phong</td><td><span class="badge critical">Không đạt</span></td><td>651 từ; 0 gạch ngang dài; 0 ngoặc kép. Văn quảng cáo chấp nhận được, nhưng có 4 chỗ cam kết lợi nhuận (YMYL). Chi tiết ở mục 2.</td></tr>
+      <tr><td>Ảnh &amp; alt text</td><td><span class="badge critical">Không đạt</span></td><td>Ảnh minh họa chính và 10 ảnh chân dung alt rỗng. Toàn trang 27/34 ảnh thiếu alt.</td></tr>
+      <tr><td>Structured data</td><td><span class="badge watch">Một phần</span></td><td>Có @graph của Rank Math. Node Breadcrumblist thứ hai sai tên, breadcrumb cấp 1 trỏ nhầm /ca-nhan/, chưa có node InvestmentFund.</td></tr>
+      <tr><td>Internal linking</td><td><span class="badge critical">Không đạt</span></td><td>Thân bài chỉ có nút CTA và 2 PDF. Không link tới hub iFund, ETF là gì, Fundmart, Công bố rủi ro.</td></tr>
+      <tr><td>Công bố rủi ro</td><td><span class="badge watch">Một phần</span></td><td>Có câu rủi ro ở đoạn mở đầu, nhưng không có khối riêng, không link tới trang Công bố rủi ro.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout watch-box">
+    <p><b>Phát hiện liên quan ngoài trang.</b></p>
+    <ul>
+      <li>Trang ETF là gì link tới <code>/quy-etf-techcom-capital-vnx50</code>, URL này trả về 404.</li>
+      <li>Bản EN gốc cùng 9 bản đánh số -2 đến -9 và URL -10 đều index, canonical tự trỏ, cùng title tiếng Việt Quỹ đầu tư iFund | TechcomSecurities.</li>
+      <li>Thẻ quỹ trên hub iFund lặp nguyên văn đoạn mở đầu của trang.</li>
+      <li>Nút Đầu tư ngay mang tham số transactionValue 1 tỷ đồng và autoPurchase, cần đội sản phẩm xác nhận.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="de-xuat">
+  <h2>2. Đề xuất</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Hạng mục</th><th>Hiện trạng</th><th>Đề xuất</th></tr></thead>
+    <tbody>
+      <tr><td>Từ khóa trọng tâm</td><td>Title và meta không có mã quỹ</td><td>Chính: FUETCC50, quỹ ETF VNX50, ETF Techcom Capital VNX50. Phụ: phí quỹ ETF VNX50, mua FUETCC50. Chưa có dữ liệu Search Console để xác nhận lượng tìm kiếm.</td></tr>
+      <tr><td>Title</td><td>Quỹ ETF VNX50 TCBS - Tối đa lợi nhuận từ các cổ phiếu</td><td>Quỹ ETF Techcom Capital VNX50 (FUETCC50): phí, cách mua | TCBS (khoảng 62 ký tự)</td></tr>
+      <tr><td>Meta description</td><td>Có cam kết tối ưu hóa lợi nhuận</td><td>FUETCC50 mô phỏng chỉ số VNX50, niêm yết trên HOSE. Phí quản lý 0,5%/NAV/năm, phí mua lại 0,15%. Xem chiến lược, rủi ro, tài liệu quỹ và cách mua. (khoảng 150 ký tự)</td></tr>
+      <tr><td>Heading</td><td>0 H1, lỗi gõ ở H3</td><td>Tên quỹ lên H1. Giữ H2 lợi ích và 4 H3. Thêm H2 Hiệu suất và danh mục, Rủi ro khi đầu tư, Câu hỏi thường gặp như mockup.</td></tr>
+      <tr><td>Internal linking + CTA</td><td>Chỉ có nút CTA và 2 PDF</td><td>Quỹ ETF → /ca-nhan/ifund/quy-etf-la-gi/. Fundmart → /ca-nhan/he-thong/fundmart/. Xem các quỹ khác → /ca-nhan/ifund/. Rủi ro → /ve-chung-toi/cong-bo-rui-ro/. Bước 1 thay URL trần bằng anchor TCInvest. Sửa link 404 trên trang ETF là gì.</td></tr>
+      <tr><td>Alt text</td><td>11 ảnh nội dung alt rỗng</td><td>Ảnh chính: Minh họa quỹ ETF Techcom Capital VNX50 FUETCC50. Ảnh chân dung: họ tên kèm chức danh.</td></tr>
+      <tr><td>Schema</td><td>Breadcrumb lỗi, thiếu node quỹ</td><td>Xóa node Breadcrumblist thứ hai, cấp 1 trỏ về tcbs.com.vn. Thêm InvestmentFund gồm tên, mã FUETCC50, mô tả, phí, công ty quản lý (lấy tên pháp lý từ bản cáo bạch). Chưa thêm FAQPage cho tới khi FAQ hiển thị.</td></tr>
+      <tr><td>Nội dung bổ sung</td><td>Không có NAV, hiệu suất, FAQ</td><td>Khối Hiệu suất và danh mục, khối Rủi ro, FAQ 4 câu như mockup. Số liệu lấy từ nguồn chính thức, chưa xác minh trong phiên audit nên mockup để khung trống.</td></tr>
+      <tr><td>Bản EN</td><td>10 URL trùng đang index</td><td>301 các bản đánh số về bản EN gốc hoặc đặt noindex (bạn chọn). Sửa title tiếng Việt trên bản EN.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Câu cần sửa</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Vị trí</th><th>Câu gốc</th><th>Căn cứ</th><th>Đề xuất viết lại</th></tr></thead>
+    <tbody>
+      <tr><td>Title</td><td class="src">Quỹ ETF VNX50 TCBS - Tối đa lợi nhuận từ các cổ phiếu</td><td><span class="badge critical">P0</span> Cam kết lợi nhuận; thiếu mã FUETCC50.</td><td>Quỹ ETF Techcom Capital VNX50 (FUETCC50): phí, cách mua | TCBS</td></tr>
+      <tr><td>Meta description</td><td class="src">Khám phá quỹ ETF VNX50 từ TCBS, giúp nhà đầu tư tối ưu hóa lợi nhuận từ các cổ phiếu trong chỉ số VNX50 của thị trường chứng khoán Việt Nam</td><td><span class="badge critical">P0</span> Cam kết lợi nhuận, hiện trên SERP.</td><td>FUETCC50 mô phỏng chỉ số VNX50, niêm yết trên HOSE. Phí quản lý 0,5%/NAV/năm, phí mua lại 0,15%. Xem chiến lược, rủi ro, tài liệu quỹ và cách mua.</td></tr>
+      <tr><td>Khối Chi phí<br>quản lý thấp</td><td class="src">Chi phí quản lý của Quỹ thấp dẫn tới lợi nhuận mang lại cho Nhà đầu tư cao hơn.</td><td><span class="badge critical">P0</span> Cam kết lợi nhuận, AI dễ trích nguyên câu.</td><td>Phí quản lý của quỹ là 0,5%/NAV/năm. Phí thấp giảm chi phí nắm giữ, còn kết quả đầu tư vẫn theo biến động của chỉ số VNX50.</td></tr>
+      <tr><td>Đoạn dưới<br>H2 thứ hai</td><td class="src">Được thiết kế theo chỉ số VNX50, quỹ giúp đa dạng hóa danh mục, tối ưu lợi nhuận và tận dụng tiềm năng tăng trưởng dài hạn của thị trường chứng khoán.</td><td><span class="badge critical">P0</span> Cam kết lợi nhuận.</td><td>Được thiết kế theo chỉ số VNX50, quỹ giúp đa dạng hóa danh mục và theo sát tăng trưởng dài hạn của thị trường, kể cả các giai đoạn chỉ số giảm.</td></tr>
+      <tr><td>Đoạn mở đầu</td><td class="src">Đây là giải pháp tối ưu dành cho cả nhà đầu tư cá nhân và tổ chức để đa dạng hóa danh mục và tận dụng cơ hội tăng trưởng của nền kinh tế.</td><td><span class="badge watch">P1</span> Đoạn snippet chính nhưng không có dữ kiện; nên là câu định nghĩa.</td><td>Quỹ ETF Techcom Capital VNX50 (FUETCC50) là quỹ hoán đổi danh mục mô phỏng chỉ số VNX50, niêm yết trên HOSE.</td></tr>
+      <tr><td>H3 khối lợi ích</td><td class="src">M inh bạch</td><td><span class="badge good">P2</span> Lỗi gõ trong heading.</td><td>Minh bạch</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="mockup">
+  <h2>3. Mockup giao diện sau khi dựng</h2>
+  <p class="intro">Dùng chung hệ giao diện với mockup Zero Fee. Câu chữ giữ nguyên trang hiện tại, chỉ thay các câu ở bảng Câu cần sửa. Có 4 tương tác: dải thông tin nhanh hiện lần lượt ở hero, tab trong khối Thông tin tổng quan, biểu đồ hiệu suất đổi kỳ 3T, 6T, YTD, 1N và hiện giá trị khi rê chuột, FAQ mở đóng. Khối Hiệu suất và danh mục dùng <b>số liệu mô phỏng</b> để xem giao diện, không phải số liệu thật của quỹ.</p>
+
+  <div class="card-grid">
+    <div class="card"><h4>Màu</h4><p><span class="swatch" style="background:#c41c16"></span>Đỏ chính #c41c16<br><span class="swatch" style="background:#6cf5c2"></span>Icon lợi ích giữ bộ SVG nhiều màu hiện có<br><span class="swatch" style="background:#f4f6f9"></span>Nền khối xen kẽ #f4f6f9</p></div>
+    <div class="card"><h4>Chữ</h4><p>SF Pro Display (dự phòng Inter). H1 40px/600, H2 34px/600, đoạn văn 17px màu #5b6675. Eyebrow 12px in hoa.</p></div>
+    <div class="card"><h4>Bố cục</h4><p>Hero, Lợi ích, Thông tin tổng quan (3 tab), Hiệu suất và danh mục, Rủi ro, Tài liệu quỹ, FAQ, Bắt đầu đầu tư.</p></div>
+  </div>
+
+  <div class="viewer-bar">
+    <div class="seg" role="group" aria-label="Chế độ xem">
+      <button type="button" data-mode="desktop" aria-pressed="true">Desktop</button>
+      <button type="button" data-mode="mobile" aria-pressed="false">Mobile</button>
+    </div>
+    <span class="viewer-hint">Bấm các tab trong khối Thông tin tổng quan để thử tương tác.</span>
+  </div>
+  <div class="browser" id="browser">
+    <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">tcbs.com.vn/ca-nhan/ifund/quy-etf-techcom-capital-vnx50/</div><span class="mock-tag">MOCK-UP</span></div>
+    <iframe id="mock" title="Mockup trang Quỹ ETF Techcom Capital VNX50 sau khi dựng" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;vi&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;robots&quot; content=&quot;noindex, nofollow&quot;&gt;
+&lt;title&gt;Mock-up Quỹ ETF Techcom Capital VNX50 sau khi dựng&lt;/title&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=vietnamese&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;style&gt;
+:root{
+  --red:#c41c16;--red-dark:#a01410;--red-soft:#fdeeed;
+  --ink:#1b2733;--ink2:#111418;--text:#5b6675;--td:#2a3744;
+  --line:#e5e9f0;--alt:#f4f6f9;--green:#009565;--green-soft:#e4f6eb;
+  --shadow:0 1px 2px rgba(11,31,58,.04),0 8px 24px rgba(11,31,58,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink2);font-family:&quot;SF Pro Display&quot;,-apple-system,BlinkMacSystemFont,Inter,&quot;Helvetica Neue&quot;,Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--red);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+.crumb{font-size:15px;color:var(--text);padding:16px 0}
+.crumb b{color:var(--ink2);font-weight:500}
+.crumb span{margin:0 10px;color:#c2c8d0}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#eadeff,#dfeaff 25%,#f1fcff 70%,#e5fffc);padding:40px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+h1{font-size:40px;font-weight:600;letter-spacing:-.8px;line-height:1.2;color:var(--ink);margin:0 0 10px}
+h1 em{font-style:normal;color:var(--red)}
+.tagline{font-size:20px;font-weight:500;color:var(--ink);margin:0 0 16px}
+.hero p.sub{font-size:17px;color:var(--text);margin:0 0 20px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px;padding:0;list-style:none}
+.facts li{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--td);box-shadow:0 1px 2px rgba(11,31,58,.05);opacity:0;transform:translateY(8px);animation:up .45s ease forwards}
+.facts li b{color:var(--red);font-weight:600}
+.facts li:nth-child(2){animation-delay:.08s}.facts li:nth-child(3){animation-delay:.16s}.facts li:nth-child(4){animation-delay:.24s}
+@keyframes up{to{opacity:1;transform:none}}
+.btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:15px 26px;font-size:16px;font-weight:600;border:1px solid var(--red);cursor:pointer;font-family:inherit;transition:background .15s,transform .15s}
+.btn:hover{text-decoration:none}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 6px 16px rgba(196,28,22,.28)}
+.btn-red:hover{background:var(--red-dark);transform:translateY(-1px)}
+.btn-line{background:#fff;color:var(--red)}
+.btn-line:hover{background:var(--red-soft)}
+.risk-line{margin:18px 0 0;font-size:14px;color:var(--text);display:flex;gap:8px;align-items:flex-start}
+.risk-line svg{flex:none;color:var(--red);margin-top:2px}
+
+.hero-img{border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(11,31,58,.16);background:#dfe6f1;aspect-ratio:8/5}
+.hero-img img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Image / data placeholder */
+.ph{border:2px dashed #b9c3d3;border-radius:16px;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.75) 0 14px,rgba(234,239,247,.75) 14px 28px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#5b6675;padding:20px;gap:6px}
+.ph svg{color:#9aa6b8}
+.ph b{font-size:12px;letter-spacing:1.2px;color:#7a8699;font-weight:700}
+.ph span{font-size:13.5px;max-width:360px;line-height:1.5}
+.ph small{font-size:12px;color:#8a95a6}
+
+/* Sections */
+.sec{padding:80px 0}
+.sec.alt{background:var(--alt)}
+.sec-head{text-align:center;max-width:820px;margin:0 auto 40px}
+.eyebrow{font-size:12px;letter-spacing:1.2px;color:var(--red);font-weight:600;text-transform:uppercase;margin-bottom:12px}
+h2{font-size:34px;font-weight:600;letter-spacing:-.6px;line-height:1.25;color:var(--ink2);margin:0}
+.sec-head p{font-size:17px;color:var(--text);margin:16px 0 0}
+
+/* Benefit cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:28px 24px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:#f0b9b6}
+.ibox{width:64px;height:64px;margin:0 0 18px}
+.ibox svg{display:block;width:64px;height:64px}
+.card h3{font-size:18px;font-weight:600;margin:0 0 10px;color:var(--ink2)}
+.card p{margin:0;color:var(--text);font-size:15px}
+
+/* Tabs */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:28px;overflow-x:auto}
+.tab{background:none;border:0;border-bottom:2px solid transparent;padding:14px 22px;font:inherit;font-size:16px;font-weight:500;color:var(--text);cursor:pointer;white-space:nowrap;margin-bottom:-1px;transition:color .2s,border-color .2s}
+.tab:hover{color:var(--ink2)}
+.tab[aria-selected=true]{color:var(--red);border-bottom-color:var(--red);font-weight:600}
+.panel{animation:panelIn .4s ease}
+.panel[hidden]{display:none}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+.tbl th{text-align:left;font-size:14px;color:var(--td);font-weight:600;padding:16px 18px;border-bottom:1px solid var(--line);width:240px;vertical-align:top;background:#fafbfc}
+.tbl td{padding:16px 18px;border-bottom:1px solid var(--line);color:var(--td);vertical-align:top}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:0}
+.tbl td.v{color:var(--red);font-weight:600}
+.tbl td p{margin:0 0 8px}.tbl td p:last-child{margin:0}
+.fee-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:16px}
+.fee{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;text-align:center;box-shadow:var(--shadow)}
+.fee b{display:block;font-size:34px;font-weight:700;color:var(--red);line-height:1.1}
+.fee span{display:block;font-size:15px;color:var(--ink);font-weight:600;margin-top:8px}
+.fee small{display:block;font-size:13px;color:var(--text);margin-top:2px}
+.note{margin-top:16px;background:#fff;border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:12px 16px;font-size:14px;color:var(--text)}
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.person{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+.person .av{width:84px;height:84px;border-radius:50%;margin:0 auto 12px;background:#e9eef5;display:grid;place-items:center;color:#9aa6b8;font-weight:700;font-size:22px}
+.person h4{margin:0 0 4px;font-size:16px;color:var(--ink2)}
+.person p{margin:0;font-size:14px;color:var(--text)}
+.person .grp{display:inline-block;font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--green);background:var(--green-soft);border-radius:999px;padding:2px 10px;margin-bottom:10px;font-weight:600}
+.tbd{color:#9a5b00;background:#fff7e9;border-radius:6px;padding:0 6px;font-size:13px}
+
+/* Performance (new block, simulated data) */
+.sim{display:inline-block;margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.8px;color:#9a5b00;background:#fff7e9;border:1px solid #f1dcb5;border-radius:999px;padding:2px 10px;vertical-align:3px}
+.asof{font-size:14px;color:var(--text);margin-top:10px}
+.perf{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+.kpi .lb{font-size:13px;color:var(--text);font-weight:500}
+.kpi .val{font-size:28px;font-weight:700;color:var(--ink2);line-height:1.2;margin-top:6px;font-variant-numeric:tabular-nums}
+.kpi .val small{font-size:15px;font-weight:600;color:var(--text);margin-left:4px}
+.kpi .sub{font-size:13px;color:var(--text);margin-top:4px}
+.up{color:var(--green)}.down{color:var(--red)}
+.perf-grid{display:block}
+.panel-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow)}
+.panel-card h3{margin:0;font-size:18px;font-weight:600}
+.pc-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.seg{display:inline-flex;background:var(--alt);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;font:inherit;font-size:14px;font-weight:600;color:var(--text);padding:6px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed=true]{background:#fff;color:var(--red);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.legend{display:flex;gap:18px;font-size:14px;color:var(--td);margin-bottom:6px}
+.legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:4px;margin-right:6px}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto}
+.chart .grid line{stroke:#eef1f5}
+.chart .axis text{fill:#8a95a6;font-size:12px}
+.tip{position:absolute;pointer-events:none;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(11,31,58,.12);padding:8px 12px;font-size:13px;color:var(--td);white-space:nowrap;opacity:0;transition:opacity .12s;transform:translate(-50%,-110%)}
+.tip b{display:block;color:var(--ink2);margin-bottom:2px}
+.tip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.chart-note{font-size:13px;color:var(--text);margin:10px 0 0}
+.hold{list-style:none;margin:0;padding:0}
+.hold li{display:grid;grid-template-columns:52px 1fr 52px;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #f0f2f6;font-size:14px}
+.hold li:last-child{border-bottom:0}
+.hold .tk{font-weight:700;color:var(--ink2)}
+.hold .nm{display:block;color:var(--text);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hold .bar{display:block;height:6px;border-radius:3px;background:#f6d2d0;margin-top:4px;overflow:hidden}
+.hold .bar span{display:block;height:100%;background:var(--red);border-radius:3px;width:0;transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.hold .w{text-align:right;font-weight:600;color:var(--td);font-variant-numeric:tabular-nums}
+.hold-sum{display:flex;justify-content:space-between;font-size:14px;color:var(--text);border-top:1px solid var(--line);margin-top:6px;padding-top:10px}
+.hold-sum b{color:var(--ink2)}
+
+/* Risk block */
+.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.risk{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);border-radius:12px;padding:22px}
+.risk h3{margin:0 0 8px;font-size:17px;font-weight:600}
+.risk p{margin:0;color:var(--text);font-size:15px}
+.risk-foot{margin:22px 0 0;text-align:center;font-size:15px;color:var(--text)}
+
+/* Docs */
+.docs{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:860px;margin:0 auto}
+.doc{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;color:var(--ink2);transition:border-color .2s}
+.doc:hover{border-color:#f0b9b6;text-decoration:none}
+.doc .ic{width:44px;height:44px;border-radius:10px;background:var(--red-soft);color:var(--red);display:grid;place-items:center;flex:none}
+.doc b{display:block;font-weight:600}
+.doc small{color:var(--text)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start}
+.faq-grid .intro h2{font-size:32px}
+.faq-grid .intro p{color:var(--text);margin:14px 0 0}
+.qa{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;box-shadow:0 1px 2px rgba(11,31,58,.04)}
+.qa summary{list-style:none;display:flex;align-items:center;gap:16px;padding:18px 20px;cursor:pointer;font-weight:500;font-size:16px;color:var(--ink2)}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary .q{color:var(--red);font-weight:600;font-size:14px;flex:none;width:28px}
+.qa summary .chev{margin-left:auto;width:30px;height:30px;border-radius:50%;background:#f3f4f6;display:grid;place-items:center;flex:none;transition:transform .25s}
+.qa[open] summary .chev{transform:rotate(180deg)}
+.qa .a{padding:0 20px 18px 64px;color:var(--text)}
+
+/* Steps + CTA */
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto 32px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;gap:16px}
+.step .n{width:40px;height:40px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.step h3{margin:0 0 6px;font-size:17px;font-weight:600}
+.step p{margin:0;color:var(--text);font-size:15px}
+.cta-band{background:linear-gradient(135deg,#eadeff,#dfeaff 25%,#f1fcff 70%,#e5fffc);padding:64px 0;text-align:center}
+.cta-band .btns{justify-content:center}
+
+footer{background:#1d1d1f;color:#a7adb5;text-align:center;padding:36px 0;font-size:14px}
+footer .row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;color:#d6d9de}
+
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .cards{grid-template-columns:1fr 1fr}
+  .perf{grid-template-columns:1fr 1fr}
+  .perf-grid{grid-template-columns:1fr}
+  .risk-grid{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr;gap:24px}
+  .fee-row{grid-template-columns:1fr}
+  .docs,.steps{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  h1{font-size:30px;letter-spacing:-.5px}
+  h2{font-size:26px}
+  .faq-grid .intro h2{font-size:26px}
+  .sec{padding:56px 0}
+  .hero{padding:24px 0 48px}
+  .hero p.sub{font-size:16px}
+  .btn{flex:1 1 auto}
+  .cards{grid-template-columns:1fr}
+  .tab{padding:12px 14px;font-size:15px}
+  .tbl th{width:auto;display:block;border-bottom:0;padding-bottom:4px}
+  .tbl td{display:block;padding-top:4px}
+  .tbl tr{display:block;border-bottom:1px solid var(--line)}
+  .tbl tr:last-child{border-bottom:0}
+  .tbl th,.tbl td{border-bottom:0}
+  .qa .a{padding-left:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- KHỐI 1: HERO --&gt;
+&lt;section class=&quot;hero&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;crumb&quot;&gt;Trang chủ&lt;span&gt;/&lt;/span&gt;Cá nhân&lt;span&gt;/&lt;/span&gt;Quỹ đầu tư iFund&lt;span&gt;/&lt;/span&gt;&lt;b&gt;Quỹ ETF Techcom Capital VNX50&lt;/b&gt;&lt;/div&gt;
+    &lt;div class=&quot;hero-grid&quot;&gt;
+      &lt;div&gt;
+        &lt;h1&gt;Quỹ ETF Techcom Capital VNX50 &lt;em&gt;(FUETCC50)&lt;/em&gt;&lt;/h1&gt;
+        &lt;p class=&quot;tagline&quot;&gt;Nắm bắt chỉ số, đón sóng thị trường&lt;/p&gt;
+        &lt;p class=&quot;sub&quot;&gt;Quỹ ETF Techcom Capital VNX50 (FUETCC50) là quỹ hoán đổi danh mục mô phỏng chỉ số VNX50, niêm yết trên HOSE. Quỹ mang đến cơ hội đầu tư vào 50 doanh nghiệp niêm yết hàng đầu trên thị trường chứng khoán Việt Nam với chi phí quản lý thấp, thanh khoản cao và danh mục minh bạch.&lt;/p&gt;
+        &lt;ul class=&quot;facts&quot;&gt;
+          &lt;li&gt;Mã giao dịch &lt;b&gt;FUETCC50&lt;/b&gt;&lt;/li&gt;
+          &lt;li&gt;Sàn &lt;b&gt;HOSE&lt;/b&gt;&lt;/li&gt;
+          &lt;li&gt;Chỉ số tham chiếu &lt;b&gt;VNX50&lt;/b&gt;&lt;/li&gt;
+          &lt;li&gt;Phí quản lý &lt;b&gt;0,5%/NAV/năm&lt;/b&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class=&quot;btns&quot;&gt;
+          &lt;a class=&quot;btn btn-red&quot; href=&quot;#&quot;&gt;Đầu tư ngay&lt;/a&gt;
+          &lt;a class=&quot;btn btn-line&quot; href=&quot;#&quot;&gt;Mở tài khoản&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;risk-line&quot;&gt;&lt;svg width=&quot;18&quot; height=&quot;18&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M12 3l9.5 17h-19z&quot;/&gt;&lt;path d=&quot;M12 10v4M12 17.5h.01&quot;/&gt;&lt;/svg&gt;&lt;span&gt;Quỹ có mức rủi ro cao do biến động theo chỉ số VNX50 và tình hình kinh tế trong nước, quốc tế. &lt;a href=&quot;#rui-ro&quot;&gt;Xem rủi ro&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;hero-img&quot;&gt;
+        &lt;img src=&quot;https://www.tcbs.com.vn/documents/10181/0/anh-bao-ETF.jpg&quot; alt=&quot;Minh họa quỹ ETF Techcom Capital VNX50 FUETCC50&quot; onerror=&quot;this.parentNode.innerHTML=&#x27;&amp;lt;div class=&amp;quot;ph&amp;quot; style=&amp;quot;height:100%&amp;quot;&amp;gt;&amp;lt;b&amp;gt;ẢNH HERO&amp;lt;/b&amp;gt;&amp;lt;span&amp;gt;Ảnh anh-bao-ETF.jpg hiện có trên trang&amp;lt;/span&amp;gt;&amp;lt;small&amp;gt;1000×625&amp;lt;/small&amp;gt;&amp;lt;/div&amp;gt;&#x27;&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- KHỐI 2: LỢI ÍCH --&gt;
+&lt;section class=&quot;sec&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;Vì sao chọn quỹ ETF&lt;/div&gt;
+      &lt;h2&gt;Đầu tư cổ phiếu dễ dàng và hiệu quả với ETF Techcom Capital VNX50&lt;/h2&gt;
+      &lt;p&gt;Được thiết kế theo chỉ số VNX50, quỹ giúp đa dạng hóa danh mục và theo sát tăng trưởng dài hạn của thị trường, kể cả các giai đoạn chỉ số giảm. Bạn sở hữu danh mục cổ phiếu của 50 doanh nghiệp chỉ với một giao dịch.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      &lt;div class=&quot;card&quot;&gt;
+        &lt;div class=&quot;ibox&quot;&gt;&lt;svg viewBox=&quot;0 0 512 512&quot; width=&quot;64&quot; height=&quot;64&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt; &lt;g clip-rule=&quot;evenodd&quot; fill-rule=&quot;evenodd&quot;&gt; &lt;g&gt; &lt;path d=&quot;m80.457 16h296.656c2.665 0 4.958.95 6.843 2.835l54.335 54.334c1.884 1.884 2.834 4.178 2.834 6.842v406.312c0 5.33-4.347 9.677-9.677 9.677h-350.991c-5.33 0-9.677-4.347-9.677-9.677v-460.646c0-5.329 4.347-9.677 9.677-9.677z&quot; fill=&quot;#eceff1&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m80.457 16h17.703v480h-17.703c-5.33 0-9.677-4.347-9.677-9.677v-460.646c0-5.33 4.347-9.677 9.677-9.677z&quot; fill=&quot;#d1d1d6&quot;&gt;&lt;/path&gt; &lt;g fill=&quot;#a79ba7&quot;&gt; &lt;path d=&quot;m381.122 16.839c1.028.469 1.974 1.135 2.834 1.995l54.335 54.334c.861.861 1.526 1.807 1.995 2.834h-54.326c-2.665 0-4.839-2.174-4.839-4.838v-54.325z&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m120.857 139.31c4.418 0 8 3.582 8 8s-3.582 8-8 8h-13.102c-4.418 0-8-3.582-8-8s3.582-8 8-8zm157.961-87.433c4.418 0 8 3.582 8 8s-3.582 8-8 8h-122.559c-4.418 0-8-3.582-8-8s3.582-8 8-8zm-157.961 0c4.418 0 8 3.582 8 8s-3.582 8-8 8h-13.102c-4.418 0-8-3.582-8-8s3.582-8 8-8zm157.961 43.715c4.418 0 8 3.582 8 8s-3.582 8-8 8h-122.559c-4.418 0-8-3.582-8-8s3.582-8 8-8zm-157.961 0c4.418 0 8 3.582 8 8s-3.582 8-8 8h-13.102c-4.418 0-8-3.582-8-8s3.582-8 8-8zm157.961 43.718c4.418 0 8 3.582 8 8s-3.582 8-8 8h-122.559c-4.418 0-8-3.582-8-8s3.582-8 8-8z&quot;&gt; &lt;/path&gt; &lt;/g&gt; &lt;/g&gt; &lt;g&gt; &lt;path d=&quot;m191.367 331.105 30.533 18.478 26.514 59.066-18.416 10.633-37.896-52.495z&quot; fill=&quot;#9facba&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m191.367 331.105 8.276 5.009.584 28.316 36.706 50.848-6.935 4.004-37.896-52.495z&quot; fill=&quot;#8d9ca8&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m256 184.149c127.66 0 231.15 103.49 231.15 231.15v.001h-96.713c-5.536-75.391-68.452-134.838-145.257-134.838s-139.721 59.447-145.257 134.838h-75.073v-.001c0-127.661 103.489-231.150 231.15-231.150z&quot; fill=&quot;#00e499&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m466.932 415.299h-76.494c-5.536-75.391-68.452-134.838-145.257-134.838s-139.721 59.447-145.257 134.838h-54.856v-.001c0-116.494 94.438-210.932 210.932-210.932s210.932 94.438 210.932 210.933z&quot; fill=&quot;#6cf5c2&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m245.18 280.461c11.67 0 23.02 1.372 33.896 3.965 15.174 3.617 29.428 9.608 42.346 17.559l50.173-86.902c-34.004-19.674-73.484-30.935-115.595-30.935s-81.591 11.261-115.594 30.935l45.104 78.122c14.499-6.52 30.259-10.737 46.813-12.185 4.236-.37 8.525-.559 12.857-.559z&quot; fill=&quot;#60b7ff&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m245.18 280.461c11.67 0 23.02 1.372 33.896 3.965 15.174 3.617 29.428 9.608 42.346 17.559l40.059-69.384c-31.029-17.954-67.053-28.235-105.481-28.235-38.427 0-74.451 10.281-105.481 28.235l34.99 60.604c14.499-6.52 30.259-10.737 46.813-12.185 4.237-.37 8.526-.559 12.858-.559z&quot; fill=&quot;#8ac9fe&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m371.594 215.084-50.173 86.902c12.981 7.991 24.614 17.96 34.477 29.489 9.851 11.514 17.937 24.583 23.841 38.788 5.833 14.038 9.534 29.185 10.698 45.037l96.713-.001c0-85.55-46.476-160.245-115.556-200.215z&quot; fill=&quot;#fd4755&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m361.481 232.601-40.059 69.384c12.981 7.991 24.614 17.96 34.477 29.489 9.851 11.514 17.937 24.583 23.841 38.788 5.833 14.038 9.534 29.185 10.698 45.037l76.494-.001c0-78.066-42.414-146.223-105.451-182.697z&quot; fill=&quot;#fe646f&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m382.521 377.937c-4.238 1.536-8.921-.654-10.457-4.893s.654-8.921 4.893-10.457l32.733-11.914c4.239-1.536 8.921.654 10.457 4.893s-.654 8.921-4.893 10.457zm-233.264-62.874c3.461 2.897 3.92 8.051 1.023 11.512-2.896 3.462-8.051 3.92-11.512 1.023l-26.762-22.457c-3.462-2.896-3.92-8.051-1.023-11.512 2.896-3.462 8.051-3.92 11.512-1.023zm-32.831 40.748c4.239 1.536 6.429 6.218 4.893 10.457s-6.218 6.429-10.457 4.893l-32.829-11.949c-4.238-1.536-6.429-6.218-4.893-10.457s6.218-6.429 10.457-4.893zm123.955-76.197c.777 4.45-2.201 8.688-6.652 9.466-4.45.777-8.689-2.201-9.466-6.651l-6.059-34.365c-.777-4.451 2.201-8.689 6.652-9.466s8.689 2.201 9.466 6.652zm46.754 6.219c-.777 4.451-5.015 7.428-9.466 6.651s-7.428-5.015-6.651-9.466l6.048-34.296c.777-4.451 5.015-7.428 9.466-6.651s7.428 5.015 6.651 9.466zm74.008 51.909c-3.462 2.897-8.616 2.438-11.512-1.023s-2.438-8.616 1.023-11.512l26.655-22.366c3.462-2.896 8.616-2.438 11.512 1.023 2.896 3.462 2.438 8.616-1.023 11.512z&quot; fill=&quot;#837683&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;g&gt; &lt;ellipse cx=&quot;255.953&quot; cy=&quot;444.379&quot; fill=&quot;#ffc338&quot; rx=&quot;51.62&quot; ry=&quot;51.62&quot; transform=&quot;matrix(.424 -.906 .906 .424 -255.036 487.681)&quot;&gt;&lt;/ellipse&gt; &lt;path d=&quot;m255.953 392.759c28.509 0 51.62 23.111 51.62 51.62s-23.111 51.62-51.62 51.62c-1.489 0-2.962-.067-4.419-.19 26.439-2.242 47.201-24.41 47.201-51.43s-20.761-49.187-47.201-51.43c1.457-.123 2.929-.19 4.419-.19z&quot; fill=&quot;#f5b829&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m278.525 425.604c1.708 4.073-.208 8.76-4.281 10.469-4.073 1.708-8.76-.208-10.469-4.281-1.048-2.497-3.034-3.937-5.212-4.489-1.514-.384-3.084-.41-4.532-.118-1.353.272-2.579.806-3.511 1.564-.917.746-1.501 1.81-1.437 3.114.049 1.014.623 1.739 1.426 2.263 1.731 1.13 4.292 1.786 6.772 2.193 4.393.721 9.216 1.941 13.341 4.432 5.057 3.053 8.874 7.664 9.738 14.775.06.498.1 1.147.118 1.936.158 6.623-2.844 11.543-7.357 14.966-2.689 2.041-5.894 3.458-9.169 4.311v.306c0 4.418-3.582 8-8 8s-8-3.582-8-8v-.475c-2.486-.727-4.848-1.797-6.972-3.211-4.465-2.974-7.888-7.369-9.338-13.187-1.053-4.28 1.563-8.603 5.844-9.656 4.28-1.053 8.603 1.564 9.656 5.844.4 1.604 1.373 2.836 2.651 3.687 1.818 1.211 4.199 1.787 6.646 1.729.355-.008.876-.054 1.563-.137 2.108-.256 4.148-.876 5.494-1.897.637-.483 1.062-1.12 1.044-1.904l-.056-.436c-.164-1.349-.997-2.289-2.112-2.963-2.048-1.237-4.923-1.921-7.654-2.37-4.287-.704-8.974-2.007-12.897-4.568-4.85-3.167-8.335-7.864-8.676-14.888-.335-6.903 2.632-12.434 7.312-16.239 2.182-1.775 4.745-3.135 7.495-4.036v-.624c0-4.418 3.582-8 8-8s8 3.582 8 8v.523c6.134 1.961 11.598 6.281 14.573 13.367z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;/g&gt; &lt;/svg&gt;&lt;/div&gt;
+        &lt;h3&gt;Chi phí quản lý thấp&lt;/h3&gt;
+        &lt;p&gt;Phí quản lý của quỹ là 0,5%/NAV/năm. Phí thấp giảm chi phí nắm giữ, còn kết quả đầu tư vẫn theo biến động của chỉ số VNX50.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;card&quot;&gt;
+        &lt;div class=&quot;ibox&quot;&gt;&lt;svg viewBox=&quot;0 0 512 512&quot; width=&quot;64&quot; height=&quot;64&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt; &lt;g clip-rule=&quot;evenodd&quot; fill-rule=&quot;evenodd&quot;&gt; &lt;g&gt; &lt;path d=&quot;m151.954 479.713h341.653v20.287h-361.94v-221.648h20.287z&quot; fill=&quot;#a79ba7&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m189.729 361.365h30.049c4.218 0 7.658 3.44 7.658 7.658v73.314c0 4.218-3.44 7.658-7.658 7.658h-30.049c-4.218 0-7.658-3.44-7.658-7.658v-73.314c0-4.218 3.44-7.658 7.658-7.658z&quot; fill=&quot;#fe646f&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m208.359 361.365h11.419c4.218 0 7.658 3.44 7.658 7.658v73.314c0 4.218-3.44 7.658-7.658 7.658h-11.419c4.218 0 7.658-3.44 7.658-7.658v-73.314c0-4.218-3.44-7.658-7.658-7.658z&quot; fill=&quot;#fd4755&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m273.965 305.198h30.049c4.218 0 7.658 3.44 7.658 7.658v129.482c0 4.218-3.44 7.658-7.658 7.658h-30.049c-4.218 0-7.658-3.44-7.658-7.658v-129.482c0-4.218 3.44-7.658 7.658-7.658z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m292.595 305.198h11.419c4.218 0 7.658 3.44 7.658 7.658v129.482c0 4.218-3.44 7.658-7.658 7.658h-11.419c4.218 0 7.658-3.44 7.658-7.658v-129.482c0-4.218-3.44-7.658-7.658-7.658z&quot; fill=&quot;#ffd064&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m358.201 324.106h30.049c4.218 0 7.658 3.441 7.658 7.659v110.572c.001 4.218-3.44 7.659-7.658 7.659-10.016 0-20.033 0-30.049 0-4.219 0-7.659-3.441-7.658-7.659 0-44.587 0-65.985 0-110.572-.001-4.218 3.439-7.659 7.658-7.659z&quot; fill=&quot;#6cf5c2&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m376.831 324.106h11.419c4.218 0 7.658 3.44 7.658 7.659v110.572c.001 4.218-3.439 7.659-7.658 7.659h-11.419c4.218 0 7.659-3.441 7.658-7.659 0-44.587 0-65.985 0-110.572.001-4.219-3.439-7.659-7.658-7.659z&quot; fill=&quot;#00e499&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m442.436 245.69h30.049c4.218 0 7.658 3.44 7.658 7.658v188.989c0 4.218-3.44 7.658-7.658 7.658h-30.049c-4.218 0-7.658-3.44-7.658-7.658v-188.989c0-4.218 3.44-7.658 7.658-7.658z&quot; fill=&quot;#8ac9fe&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m461.066 245.69h11.419c4.218 0 7.658 3.44 7.658 7.658v188.989c0 4.218-3.44 7.658-7.658 7.658h-11.419c4.218 0 7.658-3.44 7.658-7.658v-188.989c0-4.218-3.44-7.658-7.658-7.658z&quot; fill=&quot;#60b7ff&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m209.658 320.645c-3.469 2.709-8.478 2.094-11.187-1.375s-2.094-8.478 1.375-11.188l84.237-65.591c2.16-1.687 4.916-2.084 7.342-1.308l.001-.005 79.589 25.795 65.422-65.982-5.71.501c-4.401.38-8.277-2.881-8.656-7.281-.38-4.401 2.881-8.277 7.281-8.656l27.421-2.405c4.401-.38 8.277 2.881 8.656 7.281.06.7.028 1.387-.086 2.049l-3.004 26.87c-.483 4.384-4.429 7.546-8.813 7.062-4.384-.483-7.546-4.429-7.063-8.813l.512-4.578-68.094 68.676c-2.046 2.054-5.143 2.916-8.094 1.969l-80.242-26.007z&quot; fill=&quot;#a79ba7&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;path d=&quot;m219.695 46.288c-6.832-4.267-14.116-7.871-21.761-10.721-13.125-4.893-27.388-7.567-42.34-7.567-33.47 0-63.77 13.566-85.703 35.499-21.932 21.932-35.498 52.233-35.498 85.703 0 11.264 1.512 22.107 4.339 32.342 2.938 10.636 7.292 20.688 12.843 29.939 2.261 3.779 1.03 8.676-2.75 10.937-3.779 2.261-8.677 1.03-10.938-2.75-6.279-10.466-11.205-21.839-14.531-33.877-3.235-11.709-4.964-23.982-4.964-36.592 0-37.886 15.357-72.187 40.186-97.016 24.829-24.828 59.13-40.185 97.016-40.185 16.792 0 32.935 3.05 47.903 8.629 8.66 3.228 16.903 7.302 24.627 12.121l-.009-.031c-1.208-4.245 1.255-8.667 5.5-9.875s8.667 1.255 9.875 5.5l6.54 22.921c1.208 4.245-1.255 8.667-5.5 9.875-.826.235-1.658.331-2.472.302l-23.255.835c-4.401.155-8.095-3.287-8.25-7.688s3.287-8.095 7.688-8.25zm-136.622 219.395-.007-.024c8.053 5.024 16.672 9.239 25.74 12.53 14.643 5.315 30.402 8.213 46.787 8.213 37.886 0 72.187-15.357 97.015-40.186 24.829-24.829 40.186-59.129 40.186-97.015 0-12.339-1.64-24.322-4.714-35.739-3.167-11.764-7.866-22.911-13.868-33.212-2.209-3.814-7.092-5.115-10.906-2.906s-5.115 7.092-2.906 10.906c5.294 9.086 9.442 18.931 12.243 29.337 2.708 10.055 4.152 20.653 4.152 31.614 0 33.469-13.566 63.77-35.499 85.703-21.932 21.933-52.233 35.499-85.703 35.499-14.567 0-28.49-2.546-41.35-7.213-7.996-2.902-15.605-6.628-22.725-11.076l1.429-.051c4.401-.155 7.843-3.849 7.688-8.25s-3.849-7.843-8.25-7.688l-23.255.835c-.814-.029-1.646.067-2.472.302-4.245 1.208-6.708 5.63-5.5 9.875l6.54 22.921c1.208 4.245 5.63 6.708 9.875 5.5s6.708-5.63 5.5-9.875z&quot; fill=&quot;#9facba&quot;&gt;&lt;/path&gt; &lt;g&gt; &lt;path d=&quot;m172.751 77.315c7.608 1.811 14.874 4.827 21.533 8.927l13.992-6.215 16.491 16.491-6.213 13.988c4.102 6.66 7.118 13.929 8.929 21.539l14.275 5.495v23.322l-14.279 5.496c-1.811 7.608-4.827 14.874-8.927 21.533l6.214 13.992-16.491 16.492-13.988-6.213c-6.66 4.102-13.929 7.118-21.539 8.928l-5.495 14.276h-23.322l-5.496-14.279c-7.608-1.811-14.874-4.827-21.533-8.927l-13.992 6.215-16.491-16.491 6.213-13.988c-4.102-6.66-7.118-13.93-8.929-21.539l-14.276-5.495v-23.322l14.278-5.495c1.81-7.608 4.827-14.876 8.928-21.535l-6.214-13.991 16.491-16.492 13.992 6.215c6.659-4.1 13.925-7.116 21.533-8.927l5.496-14.279h23.322z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m116.904 212.16-13.992 6.215-2.155-2.155 13.119-5.826c.996.613 2.006 1.202 3.028 1.766zm55.847-134.845c7.608 1.811 14.874 4.827 21.533 8.927l-3.977 1.766c-6.659-4.1-16.953-8.883-24.561-10.693l-5.496-14.279h7.006zm21.538 134.847c-6.66 4.102-13.929 7.118-21.539 8.928l-5.495 14.276h-7.005l5.495-14.276c7.61-1.811 17.906-6.593 24.566-10.695zm-93.532-129.98 2.155-2.155 13.992 6.215c-1.022.564-2.032 1.153-3.028 1.766zm102.668 0 4.851-2.155 16.491 16.491-6.213 13.988c4.102 6.66 7.118 13.929 8.929 21.539l14.275 5.495v23.322l-14.279 5.496c-1.811 7.608-4.827 14.874-8.927 21.533l6.214 13.992-16.491 16.492-4.851-2.155 14.337-14.337-6.214-13.992c4.1-6.659 7.116-13.925 8.927-21.533l14.279-5.496v-23.322l-14.276-5.495c-1.811-7.610-4.827-14.879-8.928-21.539l6.213-13.988z&quot; fill=&quot;#ffd064&quot;&gt;&lt;/path&gt; &lt;ellipse cx=&quot;155.594&quot; cy=&quot;149.201&quot; fill=&quot;#ffc338&quot; rx=&quot;48.19&quot; ry=&quot;48.19&quot; transform=&quot;matrix(.501 -.866 .866 .501 -51.463 209.185)&quot;&gt;&lt;/ellipse&gt; &lt;path d=&quot;m155.594 101.011c-26.617 0-48.19 21.573-48.19 48.19 0 26.616 21.573 48.19 48.19 48.19 1.29 0 2.568-.052 3.833-.152-24.824-1.953-44.357-22.712-44.357-48.038 0-25.327 19.533-46.085 44.357-48.039-1.265-.099-2.543-.151-3.833-.151z&quot; fill=&quot;#f5b829&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m177.156 131.469c1.708 4.073-.208 8.76-4.281 10.469-4.073 1.708-8.76-.208-10.469-4.281-.906-2.159-2.622-3.404-4.504-3.881-1.339-.339-2.723-.363-3.998-.107-1.18.238-2.243.699-3.047 1.353-.731.595-1.196 1.439-1.146 2.471.036.747.476 1.292 1.09 1.693 1.543 1.007 3.863 1.598 6.118 1.968 4.157.682 8.723 1.839 12.643 4.206 4.852 2.929 8.515 7.355 9.344 14.186.057.468.094 1.091.112 1.857.152 6.376-2.736 11.112-7.077 14.406-2.46 1.867-5.367 3.187-8.349 4.01-.065 4.362-3.621 7.878-7.999 7.878-4.418 0-8-3.582-8-8v-.05c-2.231-.689-4.352-1.672-6.269-2.949-4.274-2.847-7.551-7.054-8.94-12.626-1.053-4.28 1.564-8.603 5.844-9.656s8.604 1.564 9.656 5.844c.338 1.358 1.166 2.403 2.252 3.126 1.606 1.069 3.72 1.578 5.899 1.526.304-.007.773-.049 1.409-.126 1.885-.229 3.697-.774 4.871-1.665.465-.353.777-.805.764-1.344-.001-.046-.015-.068-.05-.357-.13-1.068-.808-1.824-1.718-2.373-1.842-1.112-4.462-1.734-6.956-2.143-4.063-.667-8.509-1.905-12.243-4.343-4.662-3.044-8.012-7.561-8.34-14.318-.322-6.63 2.527-11.941 7.021-15.596 1.99-1.618 4.31-2.876 6.799-3.737v-.202c0-4.418 3.582-8 8-8s8 3.582 8 8v.104c5.715 1.928 10.78 6.025 13.564 12.657z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;/g&gt; &lt;/svg&gt;&lt;/div&gt;
+        &lt;h3&gt;Thanh khoản cao&lt;/h3&gt;
+        &lt;p&gt;Khi có nhu cầu, nhà đầu tư có thể bán lại chứng chỉ quỹ cho công ty quản lý quỹ đổi lấy danh mục chứng khoán cơ cấu (giao dịch sơ cấp) hoặc bán trực tiếp trên sàn giao dịch (giao dịch thứ cấp).&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;card&quot;&gt;
+        &lt;div class=&quot;ibox&quot;&gt;&lt;svg viewBox=&quot;0 0 512 512&quot; width=&quot;64&quot; height=&quot;64&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt; &lt;g clip-rule=&quot;evenodd&quot; fill-rule=&quot;evenodd&quot;&gt; &lt;g&gt; &lt;path d=&quot;m24.914 15.998h273.326c2.456 0 4.569.875 6.305 2.612l50.061 50.061c1.736 1.736 2.611 3.849 2.611 6.305v374.358c0 4.911-4.005 8.916-8.916 8.916h-323.387c-4.911 0-8.916-4.005-8.916-8.916v-424.42c0-4.91 4.005-8.916 8.916-8.916z&quot; fill=&quot;#eceff1&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m24.914 15.998h16.311v442.251h-16.311c-4.911 0-8.916-4.005-8.916-8.916v-424.419c0-4.91 4.005-8.916 8.916-8.916z&quot; fill=&quot;#d1d1d6&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m301.933 16.771c.947.433 1.819 1.046 2.611 1.839l50.061 50.061c.793.793 1.406 1.665 1.839 2.612h-50.053c-2.455 0-4.458-2.003-4.458-4.458z&quot; fill=&quot;#a79ba7&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;g&gt; &lt;path d=&quot;m78.485 362.657h22.981c3.226 0 5.857 2.631 5.857 5.857v56.07c0 3.226-2.631 5.857-5.857 5.857h-22.981c-3.226 0-5.857-2.631-5.857-5.857v-56.07c0-3.226 2.631-5.857 5.857-5.857z&quot; fill=&quot;#fe646f&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m92.733 362.657h8.733c3.226 0 5.857 2.631 5.857 5.857v56.07c0 3.226-2.631 5.857-5.857 5.857h-8.733c3.226 0 5.857-2.631 5.857-5.857v-56.07c0-3.226-2.631-5.857-5.857-5.857z&quot; fill=&quot;#fd4755&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m142.907 319.702h22.981c3.226 0 5.857 2.631 5.857 5.857v99.026c0 3.226-2.631 5.857-5.857 5.857h-22.981c-3.225 0-5.857-2.631-5.857-5.857v-99.026c0-3.226 2.631-5.857 5.857-5.857z&quot; fill=&quot;#ffe177&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m157.155 319.702h8.733c3.226 0 5.857 2.631 5.857 5.856v99.026c0 3.226-2.631 5.857-5.857 5.857h-8.733c3.226 0 5.857-2.631 5.857-5.857v-99.026c0-3.225-2.631-5.856-5.857-5.856z&quot; fill=&quot;#ffd064&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m207.329 334.162h22.982c3.226 0 5.857 2.631 5.857 5.858v84.564c.001 3.226-2.63 5.858-5.857 5.858-7.66 0-15.321 0-22.982 0-3.226 0-5.857-2.632-5.857-5.858 0-34.099 0-50.464 0-84.564 0-3.226 2.632-5.858 5.857-5.858z&quot; fill=&quot;#6cf5c2&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m221.578 334.162h8.733c3.226 0 5.857 2.631 5.857 5.857v84.564c.001 3.226-2.631 5.858-5.857 5.858h-8.733c3.226 0 5.857-2.632 5.857-5.858 0-34.099 0-50.464 0-84.564 0-3.225-2.631-5.857-5.857-5.857z&quot; fill=&quot;#00e499&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m271.751 274.191h22.981c3.226 0 5.857 2.631 5.857 5.857v144.536c0 3.226-2.631 5.857-5.857 5.857h-22.981c-3.226 0-5.857-2.631-5.857-5.857v-144.536c0-3.226 2.631-5.857 5.857-5.857z&quot; fill=&quot;#8ac9fe&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m285.999 274.191h8.733c3.226 0 5.857 2.631 5.857 5.857v144.536c0 3.226-2.631 5.857-5.857 5.857h-8.733c3.226 0 5.857-2.631 5.857-5.857v-144.536c0-3.226-2.631-5.857-5.857-5.857z&quot; fill=&quot;#60b7ff&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m94.88 322.167c-3.469 2.709-8.478 2.094-11.188-1.375-2.709-3.469-2.094-8.478 1.375-11.187l64.423-50.164c2.159-1.687 4.916-2.084 7.342-1.308l.001-.005 59.775 19.374 45.644-46.034c-4.103-.004-7.593-3.146-7.952-7.311-.38-4.401 2.881-8.277 7.281-8.656l20.971-1.839c4.401-.379 8.276 2.881 8.656 7.281.06.7.028 1.387-.086 2.049l-2.284 20.435c-.483 4.384-4.429 7.546-8.813 7.062-3.822-.421-6.714-3.474-7.073-7.154l-48.478 48.892c-2.046 2.054-5.143 2.916-8.094 1.969l-60.428-19.585z&quot; fill=&quot;#a79ba7&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;g&gt; &lt;path d=&quot;m406.064 393.48c-3.968 5.66-8.636 10.794-13.877 15.277l37.732 36.987 14.365-14.804z&quot; fill=&quot;#a79ba7&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m406.319 393.226c-.742 2.434-2.125 4.283-4.108 5.508l37.483 37.237 4.59-5.029z&quot; fill=&quot;#837683&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m477.701 493.754 16.212-16.708c2.847-2.934 2.775-7.663-.158-10.511l-44.903-43.572c-2.934-2.848-7.665-2.776-10.511.158l-16.212 16.707c-2.847 2.934-2.776 7.665.159 10.511l44.903 43.572c2.933 2.847 7.662 2.777 10.510-.157z&quot; fill=&quot;#f1ba84&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m442.208 422.963 44.903 43.572c2.933 2.847 3.006 7.577.158 10.511l-16.212 16.708c-.599.617-1.282 1.108-2.013 1.472 2.82 1.401 6.354.902 8.657-1.472l16.212-16.708c2.847-2.934 2.775-7.663-.159-10.511l-44.903-43.572c-2.316-2.248-5.752-2.677-8.498-1.314.667.332 1.294.77 1.855 1.314z&quot; fill=&quot;#e3a76f&quot;&gt;&lt;/path&gt; &lt;ellipse cx=&quot;344.79&quot; cy=&quot;352.317&quot; fill=&quot;#9facba&quot; rx=&quot;81.767&quot; ry=&quot;81.767&quot; transform=&quot;matrix(.957 -.29 .29 .957 -87.302 115.032)&quot;&gt;&lt;/ellipse&gt; &lt;path d=&quot;m344.79 270.55c45.159 0 81.767 36.609 81.767 81.767 0 45.159-36.609 81.767-81.767 81.767-1.331 0-2.654-.034-3.969-.097 43.315-2.071 77.798-37.842 77.798-81.67s-34.483-79.599-77.798-81.67c1.315-.063 2.638-.097 3.969-.097z&quot; fill=&quot;#8d9ca8&quot;&gt;&lt;/path&gt; &lt;ellipse cx=&quot;344.79&quot; cy=&quot;352.317&quot; fill=&quot;#eceff1&quot; rx=&quot;58.714&quot; ry=&quot;58.714&quot; transform=&quot;matrix(.16 -.987 .987 .16 -58.208 636.22)&quot;&gt;&lt;/ellipse&gt; &lt;path d=&quot;m344.79 293.604c1.334 0 2.657.049 3.969.137-30.575 2.042-54.745 27.485-54.745 58.577s24.17 56.536 54.745 58.577c-1.312.088-2.635.137-3.969.137-32.427 0-58.714-26.287-58.714-58.714s26.287-58.714 58.714-58.714z&quot; fill=&quot;#d1d1d6&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;g&gt; &lt;path d=&quot;m281.963 123.616c-4.418 0-8-3.582-8-8s3.582-8 8-8h14.89c4.418 0 8 3.582 8 8s-3.582 8-8 8zm-190.711-16c4.418 0 8 3.582 8 8s-3.582 8-8 8h-14.89c-4.418 0-8-3.582-8-8s3.582-8 8-8zm16.744-46.584c3.814 2.192 5.129 7.061 2.938 10.875-2.192 3.814-7.061 5.129-10.875 2.938l-12.896-7.445c-3.814-2.192-5.129-7.061-2.938-10.875 2.192-3.814 7.061-5.129 10.875-2.938zm-7.969 95.355c3.814-2.209 8.697-.908 10.906 2.906s.908 8.697-2.906 10.906l-12.895 7.445c-3.814 2.209-8.697.908-10.906-2.906s-.908-8.697 2.906-10.906zm173.13-81.542c-3.814 2.192-8.683.877-10.875-2.938-2.192-3.814-.876-8.683 2.938-10.875l12.895-7.445c3.814-2.192 8.683-.876 10.875 2.938s.876 8.683-2.938 10.875zm-7.969 95.355c-3.814-2.209-5.115-7.092-2.906-10.906s7.092-5.115 10.906-2.906l12.895 7.445c3.814 2.209 5.115 7.092 2.906 10.906s-7.092 5.115-10.906 2.906z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m169.67 223.741h33.876v17.228c0 5.65-4.623 10.272-10.272 10.272h-13.332c-5.649 0-10.272-4.622-10.272-10.272z&quot; fill=&quot;#b1b1b5&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m159.135 198.933h54.946v21.49c0 5.651-4.622 10.272-10.272 10.272h-34.401c-5.651 0-10.273-4.621-10.273-10.272z&quot; fill=&quot;#d1d1d6&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m202.115 195.814v24.609c0 5.619-4.59 10.272-10.272 10.272h11.966c5.649 0 10.272-4.621 10.272-10.272v-24.614c-3.909.128-8.033.005-11.966.005z&quot; fill=&quot;#b1b1b5&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m148.862 179.345h75.491v20.534c0 5.65-4.622 10.272-10.272 10.272h-54.947c-5.649 0-10.272-4.622-10.272-10.272z&quot; fill=&quot;#eceff1&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m212.387 189.605v9.328.945c0 5.65-4.622 10.272-10.271 10.272h11.966c.114 0 .228-.002.342-.006 5.493-.182 9.93-4.731 9.93-10.266v-10.274h-11.967z&quot; fill=&quot;#d1d1d6&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m186.608 41.629c34.913 0 63.215 28.302 63.215 63.215 0 35.109-22.428 33.01-25.469 84.76h-75.492c-3.042-51.75-25.469-49.652-25.469-84.76 0-34.913 28.302-63.215 63.215-63.215z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m180.625 41.909c32.107 3.014 57.232 30.041 57.232 62.936 0 32.611-19.35 33.12-24.541 74.501-.398 3.169-.712 6.578-.928 10.26h11.966c3.042-51.75 25.469-49.652 25.469-84.76 0-34.913-28.303-63.215-63.215-63.215-2.018-.002-4.014.093-5.983.278z&quot; fill=&quot;#ffd064&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m167.692 189.603v-61.605h-6.69c-6.248 0-11.922-2.55-16.031-6.659-4.109-4.108-6.659-9.782-6.659-16.031 0-6.248 2.55-11.922 6.659-16.031s9.783-6.659 16.031-6.659 11.923 2.55 16.031 6.659c4.109 4.108 6.659 9.783 6.659 16.031v6.689h5.833v-6.689c0-6.248 2.55-11.922 6.659-16.031 4.108-4.109 9.783-6.659 16.031-6.659s11.923 2.55 16.031 6.659c4.109 4.108 6.659 9.783 6.659 16.031s-2.55 11.922-6.659 16.031c-4.108 4.108-9.783 6.659-16.031 6.659h-6.69v61.605h-16v-61.605h-5.833v61.605zm0-77.605v-6.689c0-1.831-.755-3.502-1.971-4.718s-2.887-1.971-4.719-1.971c-1.831 0-3.502.755-4.718 1.971s-1.971 2.887-1.971 4.718.755 3.502 1.971 4.718 2.887 1.971 4.718 1.971zm37.832 0h6.69c1.831 0 3.502-.755 4.718-1.971s1.971-2.887 1.971-4.718-.755-3.502-1.971-4.718-2.887-1.971-4.718-1.971-3.502.755-4.718 1.971-1.972 2.887-1.972 4.718z&quot; fill=&quot;#ffc338&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;/g&gt; &lt;/svg&gt;&lt;/div&gt;
+        &lt;h3&gt;Minh bạch&lt;/h3&gt;
+        &lt;p&gt;Danh mục đầu tư và giá trị tài sản ròng của quỹ được công bố thường xuyên, xem tại khối &lt;a href=&quot;#hieu-suat&quot;&gt;Hiệu suất và danh mục&lt;/a&gt;.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;card&quot;&gt;
+        &lt;div class=&quot;ibox&quot;&gt;&lt;svg viewBox=&quot;0 0 512 512&quot; width=&quot;64&quot; height=&quot;64&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; aria-hidden=&quot;true&quot;&gt; &lt;g clip-rule=&quot;evenodd&quot; fill-rule=&quot;evenodd&quot;&gt; &lt;path d=&quot;m395.955 70.923c-17.817-13.496-37.633-24.477-58.92-32.412-25.171-9.382-52.472-14.511-81.035-14.511-64.066 0-122.066 25.967-164.049 67.951-41.984 41.983-67.951 99.983-67.951 164.049 0 21.5 2.901 42.256 8.328 61.901 5.625 20.359 13.956 39.597 24.58 57.303 2.261 3.779 1.03 8.676-2.75 10.937-3.779 2.261-8.677 1.03-10.938-2.75-11.352-18.921-20.256-39.48-26.268-61.241-5.833-21.118-8.952-43.303-8.952-66.15 0-68.482 27.759-130.482 72.638-175.362 44.879-44.879 106.88-72.638 175.362-72.638 30.402 0 59.584 5.504 86.598 15.574 21.545 8.031 41.665 18.964 59.885 32.322l-5.177-18.145c-1.208-4.245 1.255-8.667 5.5-9.875 4.246-1.208 8.667 1.255 9.875 5.5l12.148 42.578c1.208 4.245-1.255 8.667-5.5 9.875-.826.235-1.658.33-2.472.302l-43.682 1.569c-4.401.155-8.095-3.287-8.25-7.688s3.287-8.095 7.688-8.25zm-281.26 403.325-5.177-18.145c18.785 13.773 39.594 24.971 61.904 33.068 26.436 9.596 54.92 14.829 84.578 14.829 68.482 0 130.483-27.758 175.362-72.638 44.879-44.879 72.638-106.88 72.638-175.362 0-22.33-2.962-43.994-8.516-64.619-5.727-21.27-14.219-41.417-25.065-60.032-2.209-3.814-7.092-5.115-10.906-2.906s-5.115 7.092-2.906 10.906c10.137 17.399 18.078 36.245 23.44 56.157 5.186 19.263 7.953 39.543 7.953 60.494 0 64.066-25.967 122.066-67.951 164.049-41.983 41.984-99.983 67.951-164.049 67.951-27.838 0-54.488-4.88-79.141-13.828-21.991-7.981-42.443-19.206-60.78-33.097l23.31-.837c4.401-.155 7.843-3.849 7.688-8.25s-3.849-7.843-8.25-7.688l-43.683 1.569c-.814-.029-1.647.067-2.472.302-4.245 1.208-6.708 5.63-5.5 9.875l12.148 42.578c1.208 4.245 5.63 6.708 9.875 5.5s6.708-5.63 5.5-9.876z&quot; fill=&quot;#a79ba7&quot;&gt;&lt;/path&gt; &lt;g&gt; &lt;path d=&quot;m240.45 103.337c-92.901 0-168.213 75.311-168.213 168.213 0 40.851 14.565 78.299 38.783 107.439l129.43-129.43z&quot; fill=&quot;#fd4755&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m122.809 367.2 117.641-117.641v-129.633c-83.74 0-151.624 67.884-151.624 151.623 0 36.27 12.741 69.558 33.983 95.651z&quot; fill=&quot;#fe646f&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m137.549 191.075c-1.677 0-3.195.679-4.292 1.777-1.098 1.098-1.777 2.615-1.777 4.292s.679 3.195 1.777 4.292c1.098 1.098 2.615 1.777 4.292 1.777s3.195-.679 4.292-1.777c1.098-1.098 1.777-2.615 1.777-4.292 0-.86-.152-1.657-.441-2.355-.29-.701-.736-1.364-1.32-1.953l-.016.016c-.607-.607-1.265-1.058-1.937-1.336-.698-.289-1.495-.441-2.355-.441zm47.802 57.255c-1.677 0-3.195.679-4.292 1.777-1.098 1.098-1.777 2.615-1.777 4.292s.679 3.195 1.777 4.292c1.098 1.098 2.615 1.777 4.292 1.777s3.195-.679 4.292-1.777c1.098-1.097 1.777-2.615 1.777-4.292 0-.86-.152-1.656-.441-2.354-.279-.673-.729-1.331-1.336-1.937-.097-.097-.19-.195-.281-.295-.503-.445-1.062-.795-1.656-1.041-.698-.29-1.495-.442-2.355-.442zm-15.605-9.536c3.994-3.994 9.511-6.464 15.605-6.464 2.89 0 5.742.583 8.417 1.691 2.431 1.007 4.676 2.444 6.629 4.266.192.159.378.328.558.507 2.044 2.044 3.654 4.487 4.773 7.188 1.108 2.675 1.691 5.526 1.691 8.416 0 6.094-2.47 11.611-6.464 15.605s-9.511 6.464-15.605 6.464-11.611-2.47-15.605-6.464c-3.994-3.993-6.464-9.51-6.464-15.605.002-6.093 2.472-11.61 6.465-15.604zm14.968-58.712c2.571-3.572 7.552-4.384 11.125-1.812 3.572 2.571 4.384 7.552 1.812 11.125l-58.949 82.035c-2.571 3.573-7.552 4.384-11.125 1.812-3.572-2.571-4.384-7.552-1.812-11.125zm-62.77 1.457c3.994-3.994 9.511-6.464 15.605-6.464 2.889 0 5.741.583 8.417 1.691 2.701 1.119 5.143 2.729 7.187 4.773l-.016.016.016.015c2.058 2.059 3.669 4.49 4.773 7.156 1.108 2.676 1.691 5.527 1.691 8.417 0 6.094-2.47 11.611-6.464 15.605s-9.511 6.464-15.605 6.464-11.611-2.47-15.605-6.464c-3.994-3.993-6.464-9.51-6.464-15.605.001-6.094 2.471-11.61 6.465-15.604z&quot; fill=&quot;#eceff1&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;g&gt; &lt;path d=&quot;m271.551 72.237c92.9 0 168.211 75.31 168.212 168.212h-168.213z&quot; fill=&quot;#f5b829&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m423.174 240.45h-151.624v-151.624c83.74 0 151.624 67.884 151.624 151.624z&quot; fill=&quot;#ffc338&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m360.98 139.725c1.708 4.073-.208 8.76-4.281 10.469-4.073 1.708-8.76-.208-10.469-4.281-1.645-3.919-4.766-6.18-8.193-7.049-2.254-.571-4.602-.608-6.78-.169-2.083.42-3.989 1.258-5.464 2.457-1.701 1.383-2.781 3.369-2.662 5.822.103 2.139 1.246 3.623 2.84 4.663 2.522 1.646 6.098 2.576 9.525 3.139 5.39.885 11.291 2.372 16.279 5.384 5.921 3.575 10.389 8.962 11.396 17.258.074.609.121 1.369.143 2.268.182 7.659-3.299 13.357-8.532 17.328-3.648 2.768-8.123 4.576-12.628 5.525v2.16c0 4.418-3.582 8-8 8s-8-3.582-8-8v-2.322c-3.56-.852-6.944-2.271-9.929-4.259-5.269-3.509-9.307-8.691-11.017-15.549-1.053-4.28 1.564-8.603 5.844-9.656s8.603 1.564 9.656 5.844c.659 2.644 2.247 4.662 4.329 6.049 2.71 1.805 6.216 2.665 9.792 2.58.567-.013 1.305-.075 2.211-.184 3.048-.37 6.05-1.306 8.116-2.874 1.358-1.030 2.262-2.444 2.219-4.266-.002-.087-.028-.34-.08-.767-.307-2.533-1.792-4.25-3.771-5.445-2.912-1.758-6.865-2.709-10.592-3.321-5.234-.859-10.936-2.437-15.65-5.514-5.642-3.683-9.695-9.14-10.09-17.288-.391-8.051 3.073-14.505 8.537-18.947 2.985-2.426 6.576-4.2 10.424-5.241v-2.455c0-4.418 3.582-8 8-8s8 3.582 8 8v2.346c7.893 2.066 15.051 7.301 18.827 16.295z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;g&gt; &lt;path d=&quot;m133.011 400.979c29.141 24.216 66.587 38.783 107.439 38.783 92.902 0 168.213-75.311 168.213-168.213h-146.222z&quot; fill=&quot;#00e499&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m392.073 271.55h-129.632l-117.641 117.641c26.093 21.241 59.382 33.982 95.65 33.982 83.739 0 151.623-67.884 151.623-151.623z&quot; fill=&quot;#6cf5c2&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;g&gt; &lt;path d=&quot;m316.965 433.783c0 4.401-3.568 7.969-7.969 7.969s-7.969-3.568-7.969-7.969l-.018-83.522c-16.843-4.402-22.615-2.215-28.059-.152-4.105 1.556-8.082 3.063-13.827 3.239l17.55 29.609c2.243 3.797.984 8.694-2.813 10.937s-8.694.984-10.937-2.812l-19.187-32.372-19.188 32.372c-2.243 3.797-7.14 5.056-10.937 2.812-3.797-2.243-5.056-7.141-2.812-10.937l26-43.865c.665-1.169 1.634-2.185 2.875-2.918 2.054-1.214 4.43-1.402 6.533-.718 11.85 3.227 16.354 1.521 21.119-.284 7.726-2.928 15.924-6.031 37.593-.362 1.189-.705 2.576-1.11 4.057-1.11 1.482 0 2.869.405 4.057 1.11 21.669-5.669 29.868-2.566 37.593.362 4.761 1.804 9.262 3.509 21.091.292 3.488-1.153 7.428.231 9.374 3.523l26.062 43.97c2.243 3.797.984 8.694-2.812 10.937-3.797 2.243-8.694.984-10.937-2.812l-19.188-32.372-19.187 32.372c-2.243 3.797-7.141 5.056-10.937 2.812-3.797-2.243-5.056-7.141-2.812-10.937l17.55-29.609c-5.745-.176-9.722-1.683-13.827-3.239-5.443-2.063-11.215-4.249-28.055.151z&quot; fill=&quot;#a79ba7&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m308.976 321.725c11.013 0 19.944 8.931 19.944 19.944s-8.931 19.944-19.944 19.944-19.944-8.931-19.944-19.944c0-11.014 8.931-19.944 19.944-19.944z&quot; fill=&quot;#685e68&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m308.976 321.725c11.013 0 19.944 8.931 19.944 19.944s-8.931 19.944-19.944 19.944c-1.348 0-2.665-.135-3.938-.39 9.128-1.829 16.006-9.889 16.006-19.554s-6.879-17.725-16.006-19.554c1.273-.256 2.59-.39 3.938-.39z&quot; fill=&quot;#544854&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m308.996 413.322c19.948 0 38.249 11.509 46.948 29.452 2.578 5.342-1.384 11.455-7.188 11.451l-79.521.018c-6.234 0-9.984-6.79-6.906-12.04 8.819-17.63 26.944-28.881 46.667-28.881z&quot; fill=&quot;#685e68&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m308.996 413.322c19.948 0 38.249 11.509 46.948 29.452 2.578 5.342-1.384 11.455-7.188 11.451l-79.521.018-.131-.002 69.652-.015c5.804.004 9.766-6.109 7.188-11.451-7.967-16.431-23.986-27.465-41.948-29.208 1.652-.161 3.32-.245 5-.245z&quot; fill=&quot;#544854&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m340.374 388.888c-.144-.6-.22-1.226-.22-1.87 0-4.418 3.582-8 8-8l52.125.01c4.929.006 8.711 4.434 7.875 9.333-2.829 16.448-17.249 28.59-33.937 28.59-16.492.001-30.794-11.86-33.843-28.063z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m348.01 379.02.143-.002 52.125.01c4.929.006 8.711 4.434 7.875 9.333-2.829 16.448-17.249 28.59-33.937 28.59-1.511 0-3.004-.1-4.471-.294 14.736-1.94 26.897-13.336 29.47-28.296.836-4.899-2.946-9.327-7.875-9.333z&quot; fill=&quot;#ffd064&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m209.894 388.888c-.144-.6-.22-1.225-.22-1.869 0-4.418 3.582-8 8-8l52.124.01c4.929.006 8.711 4.434 7.875 9.333-2.828 16.448-17.249 28.59-33.937 28.59-16.491 0-30.794-11.861-33.842-28.064z&quot; fill=&quot;#ffe177&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m217.53 379.02.143-.002 52.124.01c4.929.006 8.711 4.434 7.875 9.333-2.828 16.448-17.249 28.59-33.937 28.59-1.511 0-3.004-.1-4.471-.294 14.736-1.94 26.898-13.336 29.47-28.296.836-4.899-2.946-9.327-7.875-9.333z&quot; fill=&quot;#ffd064&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;/g&gt; &lt;/svg&gt;&lt;/div&gt;
+        &lt;h3&gt;Đa dạng hóa danh mục đầu tư&lt;/h3&gt;
+        &lt;p&gt;Nhà đầu tư sở hữu ngay danh mục mô phỏng chỉ số tham chiếu với chi phí hợp lý, thay vì tự đầu tư vào nhiều chứng khoán riêng lẻ.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- KHỐI 3: THÔNG TIN TỔNG QUAN (TABS) --&gt;
+&lt;section class=&quot;sec alt&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;Thông tin quỹ&lt;/div&gt;
+      &lt;h2&gt;Thông tin tổng quan&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot; aria-label=&quot;Thông tin quỹ&quot;&gt;
+      &lt;button class=&quot;tab&quot; role=&quot;tab&quot; aria-selected=&quot;true&quot; aria-controls=&quot;t1&quot;&gt;Thông tin quỹ&lt;/button&gt;
+      &lt;button class=&quot;tab&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; aria-controls=&quot;t2&quot;&gt;Giá dịch vụ&lt;/button&gt;
+      &lt;button class=&quot;tab&quot; role=&quot;tab&quot; aria-selected=&quot;false&quot; aria-controls=&quot;t3&quot;&gt;Ban đại diện và điều hành&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;panel&quot; role=&quot;tabpanel&quot; id=&quot;t1&quot;&gt;
+      &lt;table class=&quot;tbl&quot;&gt;
+        &lt;tr&gt;&lt;th&gt;Mã giao dịch&lt;/th&gt;&lt;td class=&quot;v&quot;&gt;FUETCC50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Hình thức quỹ&lt;/th&gt;&lt;td&gt;Quỹ hoán đổi danh mục hoạt động theo quy định của Ủy ban Chứng khoán Nhà nước&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Sàn giao dịch&lt;/th&gt;&lt;td&gt;Sở Giao dịch Chứng khoán Thành phố Hồ Chí Minh (HOSE)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Chỉ số tham chiếu&lt;/th&gt;&lt;td&gt;VNX50&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Lô chứng chỉ quỹ&lt;/th&gt;&lt;td&gt;100.000 CCQ/lô&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Tần suất giao dịch hoán đổi&lt;/th&gt;&lt;td&gt;Hàng ngày&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Chiến lược đầu tư&lt;/th&gt;&lt;td&gt;&lt;p&gt;Mục tiêu đầu tư của quỹ là mô phỏng gần nhất có thể biến động của chỉ số tham chiếu.&lt;/p&gt;&lt;p&gt;Quỹ áp dụng chiến lược đầu tư thụ động, không thực hiện chiến lược phòng thủ khi thị trường giảm và không hiện thực hóa lợi nhuận khi thị trường được định giá cao.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Ngân hàng giám sát&lt;/th&gt;&lt;td&gt;Ngân hàng TMCP Đầu tư và Phát triển Việt Nam, Chi nhánh Hà Thành&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Đại lý chuyển nhượng&lt;/th&gt;&lt;td&gt;Tổng Công ty Lưu ký và Bù trừ Chứng khoán Việt Nam (VSDC)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Thành viên lập quỹ&lt;/th&gt;&lt;td&gt;CTCP Chứng khoán Kỹ Thương (TCBS), CTCP Chứng khoán Thành phố Hồ Chí Minh (HSC), CTCP Chứng khoán Vietcap (Vietcap)&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;th&gt;Kiểm toán&lt;/th&gt;&lt;td&gt;Công ty TNHH Ernst &amp;amp; Young Việt Nam&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;panel&quot; role=&quot;tabpanel&quot; id=&quot;t2&quot; hidden&gt;
+      &lt;div class=&quot;fee-row&quot;&gt;
+        &lt;div class=&quot;fee&quot;&gt;&lt;b&gt;0,5%&lt;/b&gt;&lt;span&gt;Giá dịch vụ quản lý&lt;/span&gt;&lt;small&gt;trên NAV mỗi năm&lt;/small&gt;&lt;/div&gt;
+        &lt;div class=&quot;fee&quot;&gt;&lt;b&gt;0%&lt;/b&gt;&lt;span&gt;Giá dịch vụ phát hành&lt;/span&gt;&lt;small&gt;trên giá trị lệnh mua&lt;/small&gt;&lt;/div&gt;
+        &lt;div class=&quot;fee&quot;&gt;&lt;b&gt;0,15%&lt;/b&gt;&lt;span&gt;Giá dịch vụ mua lại&lt;/span&gt;&lt;small&gt;trên giá trị lệnh bán&lt;/small&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;note&quot;&gt;Mức giá dịch vụ theo bảng thông tin quỹ hiện tại. Chi tiết xem Bản cáo bạch trong khối Tài liệu quỹ.&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;panel&quot; role=&quot;tabpanel&quot; id=&quot;t3&quot; hidden&gt;
+      &lt;div class=&quot;people&quot;&gt;
+        &lt;div class=&quot;person&quot;&gt;&lt;div class=&quot;av&quot;&gt;NL&lt;/div&gt;&lt;span class=&quot;grp&quot;&gt;Ban đại diện&lt;/span&gt;&lt;h4&gt;Bà Nguyễn Phương Lan, ACCA&lt;/h4&gt;&lt;p&gt;Chủ tịch&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;person&quot;&gt;&lt;div class=&quot;av&quot;&gt;ĐT&lt;/div&gt;&lt;span class=&quot;grp&quot;&gt;Ban đại diện&lt;/span&gt;&lt;h4&gt;Ông Đào Kiên Trung&lt;/h4&gt;&lt;p&gt;Thành viên&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;person&quot;&gt;&lt;div class=&quot;av&quot;&gt;TT&lt;/div&gt;&lt;span class=&quot;grp&quot;&gt;Ban đại diện&lt;/span&gt;&lt;h4&gt;Ông Trần Viết Thỏa&lt;/h4&gt;&lt;p&gt;Thành viên&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;person&quot;&gt;&lt;div class=&quot;av&quot;&gt;VA&lt;/div&gt;&lt;span class=&quot;grp&quot;&gt;Ban điều hành&lt;/span&gt;&lt;h4&gt;Ông Vương Duy Anh, CFA&lt;/h4&gt;&lt;p&gt;Chuyên gia Cao cấp Đầu tư &amp;amp; Quản lý danh mục&lt;/p&gt;&lt;/div&gt;
+        &lt;div class=&quot;person&quot;&gt;&lt;div class=&quot;av&quot;&gt;ĐT&lt;/div&gt;&lt;span class=&quot;grp&quot;&gt;Ban điều hành&lt;/span&gt;&lt;h4&gt;Ông Đặng Hoàng Tùng&lt;/h4&gt;&lt;p&gt;&lt;span class=&quot;tbd&quot;&gt;Chức danh và ảnh cần bổ sung&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;note&quot;&gt;Bấm vào từng người để mở tiểu sử như popup hiện tại. Ảnh chân dung giữ nguyên, thêm alt gồm họ tên và chức danh.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- KHỐI 4: HIỆU SUẤT (MỚI, SỐ LIỆU MÔ PHỎNG) --&gt;
+&lt;section class=&quot;sec&quot; id=&quot;hieu-suat&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;Khối mới&lt;/div&gt;
+      &lt;h2&gt;Hiệu suất và danh mục&lt;span class=&quot;sim&quot;&gt;SỐ LIỆU MÔ PHỎNG&lt;/span&gt;&lt;/h2&gt;
+      &lt;p class=&quot;asof&quot;&gt;Cập nhật ngày 30/09/2026 · Nguồn: công ty quản lý quỹ&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;perf&quot;&gt;
+      &lt;div class=&quot;kpi&quot;&gt;&lt;div class=&quot;lb&quot;&gt;NAV/CCQ&lt;/div&gt;&lt;div class=&quot;val&quot;&gt;25.418&lt;small&gt;VND&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;sub&quot;&gt;&lt;span class=&quot;up&quot;&gt;+0,42%&lt;/span&gt; so với phiên trước&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;kpi&quot;&gt;&lt;div class=&quot;lb&quot;&gt;Quy mô quỹ&lt;/div&gt;&lt;div class=&quot;val&quot;&gt;512&lt;small&gt;tỷ VND&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;sub&quot;&gt;20,1 triệu CCQ lưu hành&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;kpi&quot;&gt;&lt;div class=&quot;lb&quot;&gt;Hiệu suất &lt;span id=&quot;kpiPer&quot;&gt;1 năm&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;val&quot; id=&quot;kpiFund&quot;&gt;0%&lt;/div&gt;&lt;div class=&quot;sub&quot;&gt;VNX50: &lt;span id=&quot;kpiIdx&quot;&gt;0%&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;kpi&quot;&gt;&lt;div class=&quot;lb&quot;&gt;Sai số mô phỏng&lt;/div&gt;&lt;div class=&quot;val&quot;&gt;0,38&lt;small&gt;%&lt;/small&gt;&lt;/div&gt;&lt;div class=&quot;sub&quot;&gt;Độ lệch so với VNX50, 12 tháng&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;perf-grid&quot;&gt;
+      &lt;div class=&quot;panel-card&quot;&gt;
+        &lt;div class=&quot;pc-head&quot;&gt;
+          &lt;h3&gt;NAV quỹ so với chỉ số VNX50&lt;/h3&gt;
+          &lt;div class=&quot;seg&quot; role=&quot;group&quot; aria-label=&quot;Kỳ&quot;&gt;
+            &lt;button type=&quot;button&quot; data-d=&quot;63&quot; aria-pressed=&quot;false&quot;&gt;3T&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-d=&quot;126&quot; aria-pressed=&quot;false&quot;&gt;6T&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-d=&quot;ytd&quot; aria-pressed=&quot;false&quot;&gt;YTD&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-d=&quot;250&quot; aria-pressed=&quot;true&quot;&gt;1N&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;legend&quot;&gt;&lt;span&gt;&lt;i style=&quot;background:#c41c16&quot;&gt;&lt;/i&gt;FUETCC50 (NAV)&lt;/span&gt;&lt;span&gt;&lt;i style=&quot;background:#2f6fb3&quot;&gt;&lt;/i&gt;Chỉ số VNX50&lt;/span&gt;&lt;/div&gt;
+        &lt;div class=&quot;chart&quot; id=&quot;chart&quot;&gt;&lt;svg id=&quot;svg&quot; viewBox=&quot;0 0 1000 360&quot; role=&quot;img&quot; aria-label=&quot;Biểu đồ NAV quỹ và chỉ số VNX50 quy về 100 tại đầu kỳ&quot;&gt;&lt;/svg&gt;&lt;div class=&quot;tip&quot; id=&quot;tip&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+        &lt;p class=&quot;chart-note&quot;&gt;Hai đường quy về 100 tại đầu kỳ. Hiệu suất quá khứ không đảm bảo kết quả trong tương lai.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- KHỐI 5: RỦI RO (MỚI) --&gt;
+&lt;section class=&quot;sec alt&quot; id=&quot;rui-ro&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;Khối mới&lt;/div&gt;
+      &lt;h2&gt;Rủi ro khi đầu tư&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;risk-grid&quot;&gt;
+      &lt;div class=&quot;risk&quot;&gt;&lt;h3&gt;Biến động theo chỉ số&lt;/h3&gt;&lt;p&gt;Quỹ có mức rủi ro cao do biến động theo chỉ số VNX50 và tình hình kinh tế trong nước, quốc tế.&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;risk&quot;&gt;&lt;h3&gt;Không phòng thủ khi thị trường giảm&lt;/h3&gt;&lt;p&gt;Quỹ đầu tư thụ động nên không thực hiện chiến lược phòng thủ khi thị trường giảm.&lt;/p&gt;&lt;/div&gt;
+      &lt;div class=&quot;risk&quot;&gt;&lt;h3&gt;Sai lệch so với chỉ số&lt;/h3&gt;&lt;p&gt;Kết quả của quỹ có thể khác chỉ số VNX50 do chi phí và cách cơ cấu danh mục.&lt;/p&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;risk-foot&quot;&gt;Xem đầy đủ tại &lt;a href=&quot;#&quot;&gt;Công bố rủi ro&lt;/a&gt; và Bản cáo bạch của quỹ.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- KHỐI 6: TÀI LIỆU QUỸ --&gt;
+&lt;section class=&quot;sec&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;sec-head&quot;&gt;
+      &lt;div class=&quot;eyebrow&quot;&gt;Tài liệu&lt;/div&gt;
+      &lt;h2&gt;Tài liệu quỹ&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;docs&quot;&gt;
+      &lt;a class=&quot;doc&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;ic&quot;&gt;&lt;svg width=&quot;22&quot; height=&quot;22&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z&quot;/&gt;&lt;path d=&quot;M14 3v5h5M9 13h6M9 17h6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;&lt;b&gt;Bản cáo bạch&lt;/b&gt;&lt;small&gt;PDF · 05/02/2025&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;
+      &lt;a class=&quot;doc&quot; href=&quot;#&quot;&gt;&lt;span class=&quot;ic&quot;&gt;&lt;svg width=&quot;22&quot; height=&quot;22&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z&quot;/&gt;&lt;path d=&quot;M14 3v5h5M9 13h6M9 17h6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span&gt;&lt;b&gt;Điều lệ quỹ&lt;/b&gt;&lt;small&gt;PDF · 04/02/2025&lt;/small&gt;&lt;/span&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- KHỐI 7: FAQ (MỚI) --&gt;
+&lt;section class=&quot;sec alt&quot;&gt;
+  &lt;div class=&quot;wrap faq-grid&quot;&gt;
+    &lt;div class=&quot;intro&quot;&gt;
+      &lt;h2&gt;Câu hỏi thường gặp&lt;/h2&gt;
+      &lt;p&gt;Những thắc mắc phổ biến về quỹ ETF Techcom Capital VNX50. Tìm hiểu khái niệm tại &lt;a href=&quot;#&quot;&gt;Quỹ ETF là gì&lt;/a&gt;.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;details class=&quot;qa&quot; open&gt;&lt;summary&gt;&lt;span class=&quot;q&quot;&gt;Q1.&lt;/span&gt;FUETCC50 là gì?&lt;span class=&quot;chev&quot;&gt;&lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M6 9l6 6 6-6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;a&quot;&gt;FUETCC50 là mã giao dịch của Quỹ ETF Techcom Capital VNX50, quỹ hoán đổi danh mục mô phỏng chỉ số VNX50, niêm yết trên HOSE.&lt;/div&gt;&lt;/details&gt;
+      &lt;details class=&quot;qa&quot;&gt;&lt;summary&gt;&lt;span class=&quot;q&quot;&gt;Q2.&lt;/span&gt;Phí của quỹ ETF VNX50 là bao nhiêu?&lt;span class=&quot;chev&quot;&gt;&lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M6 9l6 6 6-6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;a&quot;&gt;Giá dịch vụ quản lý 0,5%/NAV/năm, giá dịch vụ phát hành 0%/giá trị lệnh mua, giá dịch vụ mua lại 0,15%/giá trị lệnh bán.&lt;/div&gt;&lt;/details&gt;
+      &lt;details class=&quot;qa&quot;&gt;&lt;summary&gt;&lt;span class=&quot;q&quot;&gt;Q3.&lt;/span&gt;Mua FUETCC50 ở đâu?&lt;span class=&quot;chev&quot;&gt;&lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M6 9l6 6 6-6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;a&quot;&gt;Mở tài khoản chứng khoán tại TCBS, đăng nhập TCInvest và chọn bảng giá &lt;a href=&quot;#&quot;&gt;Fundmart&lt;/a&gt; để đặt lệnh.&lt;/div&gt;&lt;/details&gt;
+      &lt;details class=&quot;qa&quot;&gt;&lt;summary&gt;&lt;span class=&quot;q&quot;&gt;Q4.&lt;/span&gt;Lô 100.000 chứng chỉ quỹ áp dụng khi nào?&lt;span class=&quot;chev&quot;&gt;&lt;svg width=&quot;14&quot; height=&quot;14&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2.5&quot; stroke-linecap=&quot;round&quot;&gt;&lt;path d=&quot;M6 9l6 6 6-6&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;a&quot;&gt;&lt;span class=&quot;tbd&quot;&gt;Câu trả lời lấy từ Bản cáo bạch hoặc đội sản phẩm&lt;/span&gt;&lt;/div&gt;&lt;/details&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- KHỐI 8: BẮT ĐẦU + CTA --&gt;
+&lt;section class=&quot;cta-band&quot;&gt;
+  &lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;eyebrow&quot;&gt;Bắt đầu đầu tư&lt;/div&gt;
+    &lt;h2 style=&quot;margin:0 auto 28px;max-width:760px&quot;&gt;Sẵn sàng để đầu tư chứng chỉ quỹ tại TCBS?&lt;/h2&gt;
+    &lt;div class=&quot;steps&quot;&gt;
+      &lt;div class=&quot;step&quot; style=&quot;text-align:left&quot;&gt;&lt;span class=&quot;n&quot;&gt;1&lt;/span&gt;&lt;div&gt;&lt;h3&gt;Mở tài khoản trực tuyến&lt;/h3&gt;&lt;p&gt;Mở tài khoản chứng khoán trên &lt;a href=&quot;#&quot;&gt;TCInvest&lt;/a&gt; chỉ trong 3 phút.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+      &lt;div class=&quot;step&quot; style=&quot;text-align:left&quot;&gt;&lt;span class=&quot;n&quot;&gt;2&lt;/span&gt;&lt;div&gt;&lt;h3&gt;Đặt lệnh giao dịch online&lt;/h3&gt;&lt;p&gt;Đăng nhập TCInvest, chọn bảng giá &lt;a href=&quot;#&quot;&gt;Fundmart&lt;/a&gt; để xem và chọn quỹ. Xem các quỹ khác tại &lt;a href=&quot;#&quot;&gt;iFund&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;btns&quot;&gt;
+      &lt;a class=&quot;btn btn-red&quot; href=&quot;#&quot;&gt;Đầu tư ngay&lt;/a&gt;
+      &lt;a class=&quot;btn btn-line&quot; href=&quot;#&quot;&gt;Mở tài khoản&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;footer&gt;
+  &lt;div class=&quot;row&quot;&gt;&lt;span&gt;www.tcbs.com.vn&lt;/span&gt;&lt;span&gt;cskh@tcbs.com.vn&lt;/span&gt;&lt;span&gt;facebook.com/techcomsecurities&lt;/span&gt;&lt;/div&gt;
+  &lt;div&gt;Footer TCBS giữ nguyên như các trang sản phẩm hiện tại&lt;/div&gt;
+&lt;/footer&gt;
+
+&lt;script&gt;
+(function(){
+  document.querySelectorAll(&#x27;a[href=&quot;#&quot;]&#x27;).forEach(a =&gt; a.addEventListener(&#x27;click&#x27;, e =&gt; e.preventDefault()));
+  const tabs = [...document.querySelectorAll(&#x27;.tab&#x27;)];
+  function sel(t){
+    tabs.forEach(x =&gt; { const on = x === t; x.setAttribute(&#x27;aria-selected&#x27;, on); x.tabIndex = on ? 0 : -1; });
+    const pid = t.getAttribute(&#x27;aria-controls&#x27;);
+    document.querySelectorAll(&#x27;.panel&#x27;).forEach(p =&gt; { p.hidden = p.id !== pid; });
+  }
+  tabs.forEach((t, i) =&gt; {
+    t.addEventListener(&#x27;click&#x27;, () =&gt; sel(t));
+    t.addEventListener(&#x27;keydown&#x27;, e =&gt; { if (e.key === &#x27;ArrowRight&#x27; || e.key === &#x27;ArrowLeft&#x27;) { const n = tabs[(i + (e.key === &#x27;ArrowRight&#x27; ? 1 : tabs.length - 1)) % tabs.length]; sel(n); n.focus(); } });
+  });
+  /* Khoi Hieu suat: so lieu mo phong de xem giao dien */
+  (function(){
+    var seed = 7; function rnd(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    function gauss(){ var u = rnd() || 1e-9, v = rnd(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+    var N = 250, idx = [1000], nav = [1000], dates = [];
+    var end = new Date(2026, 8, 30), d = new Date(end);
+    while (dates.length &lt; N) { if (d.getDay() % 6) dates.unshift(new Date(d)); d.setDate(d.getDate() - 1); }
+    for (var i = 1; i &lt; N; i++) {
+      var r = 0.0007 + 0.011 * gauss();
+      idx.push(idx[i - 1] * (1 + r));
+      nav.push(nav[i - 1] * (1 + r - 0.00002 + 0.00025 * gauss()));
+    }
+    var ytd = dates.findIndex(function(x){ return x.getFullYear() === 2026; });
+    var svg = document.getElementById(&#x27;svg&#x27;), tip = document.getElementById(&#x27;tip&#x27;), chart = document.getElementById(&#x27;chart&#x27;);
+    var W = 1000, H = 360, m = {l: 44, r: 14, t: 14, b: 30};
+    var NS = &#x27;http://www.w3.org/2000/svg&#x27;;
+    function el(n, a){ var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; }
+    function fmt(x, dg){ return x.toFixed(dg === undefined ? 1 : dg).replace(&#x27;.&#x27;, &#x27;,&#x27;); }
+    function pct(x){ return (x &gt;= 0 ? &#x27;+&#x27; : &#x27;&#x27;) + fmt(x) + &#x27;%&#x27;; }
+    function dstr(x){ return (&#x27;0&#x27; + x.getDate()).slice(-2) + &#x27;/&#x27; + (&#x27;0&#x27; + (x.getMonth() + 1)).slice(-2) + &#x27;/&#x27; + x.getFullYear(); }
+    var MON = [&#x27;Th1&#x27;,&#x27;Th2&#x27;,&#x27;Th3&#x27;,&#x27;Th4&#x27;,&#x27;Th5&#x27;,&#x27;Th6&#x27;,&#x27;Th7&#x27;,&#x27;Th8&#x27;,&#x27;Th9&#x27;,&#x27;Th10&#x27;,&#x27;Th11&#x27;,&#x27;Th12&#x27;];
+    var per = {63: &#x27;3 tháng&#x27;, 126: &#x27;6 tháng&#x27;, ytd: &#x27;từ đầu năm&#x27;, 250: &#x27;1 năm&#x27;};
+    var cur = &#x27;250&#x27;;
+    function draw(key){
+      cur = key;
+      var narrow = chart.clientWidth &lt; 600; W = narrow ? 520 : 1000; H = narrow ? 400 : 360;
+      svg.setAttribute(&#x27;viewBox&#x27;, &#x27;0 0 &#x27; + W + &#x27; &#x27; + H);
+      var s = key === &#x27;ytd&#x27; ? ytd : Math.max(0, N - Number(key));
+      var D = dates.slice(s), I = idx.slice(s).map(function(v){ return v / idx[s] * 100; }), F = nav.slice(s).map(function(v){ return v / nav[s] * 100; });
+      var lo = Math.min.apply(null, I.concat(F)), hi = Math.max.apply(null, I.concat(F)), pad = (hi - lo) * 0.1 || 1;
+      lo -= pad; hi += pad;
+      var x = function(i){ return m.l + i * (W - m.l - m.r) / (D.length - 1); };
+      var y = function(v){ return m.t + (hi - v) * (H - m.t - m.b) / (hi - lo); };
+      svg.innerHTML = &#x27;&#x27;;
+      var g = el(&#x27;g&#x27;, {&#x27;class&#x27;: &#x27;grid&#x27;}), ax = el(&#x27;g&#x27;, {&#x27;class&#x27;: &#x27;axis&#x27;});
+      var step = (hi - lo) &gt; 30 ? 10 : 5;
+      for (var t = Math.ceil(lo / step) * step; t &lt;= hi; t += step) {
+        g.appendChild(el(&#x27;line&#x27;, {x1: m.l, x2: W - m.r, y1: y(t), y2: y(t)}));
+        var tx = el(&#x27;text&#x27;, {x: m.l - 8, y: y(t) + 4, &#x27;text-anchor&#x27;: &#x27;end&#x27;}); tx.textContent = t; ax.appendChild(tx);
+      }
+      var last = -1;
+      D.forEach(function(dt, i){ if (dt.getMonth() !== last &amp;&amp; i &gt; 2) { var tx = el(&#x27;text&#x27;, {x: x(i), y: H - 8, &#x27;text-anchor&#x27;: &#x27;middle&#x27;}); tx.textContent = MON[dt.getMonth()]; ax.appendChild(tx); } last = dt.getMonth(); });
+      svg.appendChild(g); svg.appendChild(ax);
+      function path(arr){ return arr.map(function(v, i){ return (i ? &#x27;L&#x27; : &#x27;M&#x27;) + x(i).toFixed(1) + &#x27; &#x27; + y(v).toFixed(1); }).join(&#x27;&#x27;); }
+      svg.appendChild(el(&#x27;path&#x27;, {d: path(I), fill: &#x27;none&#x27;, stroke: &#x27;#2f6fb3&#x27;, &#x27;stroke-width&#x27;: 2, &#x27;stroke-linejoin&#x27;: &#x27;round&#x27;}));
+      svg.appendChild(el(&#x27;path&#x27;, {d: path(F), fill: &#x27;none&#x27;, stroke: &#x27;#c41c16&#x27;, &#x27;stroke-width&#x27;: 2, &#x27;stroke-linejoin&#x27;: &#x27;round&#x27;}));
+      var vl = el(&#x27;line&#x27;, {y1: m.t, y2: H - m.b, stroke: &#x27;#9aa6b8&#x27;, &#x27;stroke-width&#x27;: 1, &#x27;stroke-dasharray&#x27;: &#x27;3 3&#x27;, opacity: 0});
+      var d1 = el(&#x27;circle&#x27;, {r: 4.5, fill: &#x27;#2f6fb3&#x27;, stroke: &#x27;#fff&#x27;, &#x27;stroke-width&#x27;: 2, opacity: 0});
+      var d2 = el(&#x27;circle&#x27;, {r: 4.5, fill: &#x27;#c41c16&#x27;, stroke: &#x27;#fff&#x27;, &#x27;stroke-width&#x27;: 2, opacity: 0});
+      svg.appendChild(vl); svg.appendChild(d1); svg.appendChild(d2);
+      var hit = el(&#x27;rect&#x27;, {x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: &#x27;transparent&#x27;});
+      svg.appendChild(hit);
+      function show(ev){
+        var b = svg.getBoundingClientRect(), px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - b.left;
+        var sx = px * W / b.width, i = Math.round((sx - m.l) / (W - m.l - m.r) * (D.length - 1));
+        i = Math.max(0, Math.min(D.length - 1, i));
+        vl.setAttribute(&#x27;x1&#x27;, x(i)); vl.setAttribute(&#x27;x2&#x27;, x(i)); vl.setAttribute(&#x27;opacity&#x27;, 1);
+        d1.setAttribute(&#x27;cx&#x27;, x(i)); d1.setAttribute(&#x27;cy&#x27;, y(I[i])); d1.setAttribute(&#x27;opacity&#x27;, 1);
+        d2.setAttribute(&#x27;cx&#x27;, x(i)); d2.setAttribute(&#x27;cy&#x27;, y(F[i])); d2.setAttribute(&#x27;opacity&#x27;, 1);
+        tip.innerHTML = &#x27;&lt;b&gt;&#x27; + dstr(D[i]) + &#x27;&lt;/b&gt;&lt;i style=&quot;background:#c41c16&quot;&gt;&lt;/i&gt;FUETCC50: &#x27; + fmt(F[i], 2) + &#x27;&lt;br&gt;&lt;i style=&quot;background:#2f6fb3&quot;&gt;&lt;/i&gt;VNX50: &#x27; + fmt(I[i], 2);
+        tip.style.left = (x(i) * b.width / W) + &#x27;px&#x27;; tip.style.top = (Math.min(y(I[i]), y(F[i])) * b.height / H) + &#x27;px&#x27;; tip.style.opacity = 1;
+      }
+      function hide(){ vl.setAttribute(&#x27;opacity&#x27;, 0); d1.setAttribute(&#x27;opacity&#x27;, 0); d2.setAttribute(&#x27;opacity&#x27;, 0); tip.style.opacity = 0; }
+      hit.addEventListener(&#x27;mousemove&#x27;, show); hit.addEventListener(&#x27;touchmove&#x27;, show, {passive: true}); hit.addEventListener(&#x27;mouseleave&#x27;, hide);
+      var rf = F[F.length - 1] - 100, ri = I[I.length - 1] - 100;
+      document.getElementById(&#x27;kpiPer&#x27;).textContent = per[key];
+      var kf = document.getElementById(&#x27;kpiFund&#x27;); kf.textContent = pct(rf); kf.className = &#x27;val &#x27; + (rf &gt;= 0 ? &#x27;up&#x27; : &#x27;down&#x27;);
+      document.getElementById(&#x27;kpiIdx&#x27;).textContent = pct(ri);
+    }
+    document.querySelectorAll(&#x27;.seg button&#x27;).forEach(function(b){ b.addEventListener(&#x27;click&#x27;, function(){
+      document.querySelectorAll(&#x27;.seg button&#x27;).forEach(function(x){ x.setAttribute(&#x27;aria-pressed&#x27;, x === b); });
+      draw(b.dataset.d);
+    }); });
+    draw(&#x27;250&#x27;);
+    var rt; window.addEventListener(&#x27;resize&#x27;, function(){ clearTimeout(rt); rt = setTimeout(function(){ draw(cur); }, 120); });
+
+  })();
+})();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+  </div>
+
+  <h3>Hình ảnh và dữ liệu cần chuẩn bị</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Vị trí</th><th>Nội dung</th><th>Nguồn</th></tr></thead>
+    <tbody>
+      <tr><td>Hero</td><td>Ảnh anh-bao-ETF.jpg hiện có, thêm alt</td><td>Có sẵn trên trang</td></tr>
+      <tr><td>4 thẻ lợi ích</td><td>Giữ 4 icon SVG đang có trên trang, hiển thị 64px</td><td>Có sẵn trên trang</td></tr>
+      <tr><td>Ban điều hành</td><td>Ảnh và chức danh ông Đặng Hoàng Tùng (hiện là ảnh mặc định, không có chức danh)</td><td>Techcom Capital</td></tr>
+      <tr><td>Hiệu suất và danh mục</td><td>NAV/CCQ, quy mô quỹ, hiệu suất theo kỳ, sai số mô phỏng, ngày cập nhật. Mockup đang dùng số mô phỏng, cần thay toàn bộ trước khi dựng</td><td>Nguồn công bố của công ty quản lý quỹ</td></tr>
+      <tr><td>FAQ câu 4</td><td>Câu trả lời về lô 100.000 chứng chỉ quỹ</td><td>Bản cáo bạch hoặc đội sản phẩm</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="uu-tien">
+  <h2>4. Ưu tiên xử lý</h2>
+  <div class="prio">
+    <div class="callout critical-box"><h4>P0</h4><ul><li>Sửa title, meta description và 2 câu cam kết lợi nhuận trong thân bài.</li></ul></div>
+    <div class="callout watch-box"><h4>P1</h4><ul><li>Tên quỹ lên H1; sửa schema breadcrumb, thêm InvestmentFund.</li><li>Thay câu mở đầu bằng câu định nghĩa, đồng bộ thẻ quỹ trên hub iFund.</li><li>Bổ sung internal link; sửa link 404 trên trang ETF là gì.</li><li>Xử lý 10 URL EN trùng và title tiếng Việt trên bản EN.</li></ul></div>
+    <div class="callout good-box"><h4>P2</h4><ul><li>Dựng khối Hiệu suất và danh mục, Rủi ro, FAQ theo mockup.</li><li>Thêm alt cho 11 ảnh nội dung; sửa lỗi gõ H3 Minh bạch.</li><li>Xác nhận tham số 1 tỷ đồng của nút Đầu tư ngay.</li></ul></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="src">
+  <div class="shell">
+    <b>Nguồn</b>
+    <ul>
+      <li><a href="https://www.tcbs.com.vn/ca-nhan/ifund/quy-etf-techcom-capital-vnx50/">Trang đã audit</a>, <a href="https://www.tcbs.com.vn/ca-nhan/ifund/">hub iFund</a>, <a href="https://www.tcbs.com.vn/ca-nhan/ifund/quy-etf-la-gi/">Quỹ ETF là gì</a>, <a href="https://www.tcbs.com.vn/en/individual/ifund/etf-techcom-capital-vnx50/">bản EN</a></li>
+      <li><a href="https://ygslittleprince-netizen.github.io/sitemap/">Sitemap TCBS: phân loại Tier</a></li>
+      <li><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content">Google Search Central: helpful, reliable, people-first content</a>; <a href="https://schema.org/InvestmentFund">Schema.org: InvestmentFund</a></li>
+    </ul>
+    <p style="margin-top:10px">Dữ liệu đọc trực tiếp từ trang đã render ngày 02/10/2026. Không có dữ liệu Search Console hay PageSpeed Insights.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const browser = document.getElementById('browser'), frame = document.getElementById('mock');
+  var lastH = 0;
+  function fit(){
+    try {
+      const d = frame.contentDocument; if (!d || !d.documentElement) return;
+      // Do bang documentElement.scrollHeight: khong can thu khung ve 600px truoc,
+      // nho vay trang khong bi giat/cuon xuong cuoi moi khi noi dung iframe doi.
+      const h = Math.max(600, d.documentElement.scrollHeight);
+      if (Math.abs(h - lastH) < 2) return;
+      lastH = h;
+      frame.style.height = h + 'px';
+    } catch (e) {}
+  }
+  frame.addEventListener('load', () => {
+    fit();
+    try { new ResizeObserver(fit).observe(frame.contentDocument.documentElement); } catch (e) {}
+    setTimeout(fit, 800);
+  });
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    browser.classList.toggle('mobile', b.dataset.mode === 'mobile');
+    lastH = 0; frame.style.height = '600px';
+    setTimeout(fit, 400);
+  }));
+})();
+</script>
+</body>
+</html>

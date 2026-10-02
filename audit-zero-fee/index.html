@@ -759,20 +759,27 @@ footer .row{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-b
 <script>
 (function(){
   const browser = document.getElementById('browser'), frame = document.getElementById('mock');
+  var lastH = 0;
   function fit(){
     try {
-      const d = frame.contentDocument; if (!d || !d.body) return;
-      frame.style.height = '600px'; frame.style.height = Math.max(600, d.body.scrollHeight) + 'px';
+      const d = frame.contentDocument; if (!d || !d.documentElement) return;
+      // Do bang documentElement.scrollHeight: khong can thu khung ve 600px truoc,
+      // nho vay trang khong bi giat/cuon xuong cuoi moi khi noi dung iframe doi.
+      const h = Math.max(600, d.documentElement.scrollHeight);
+      if (Math.abs(h - lastH) < 2) return;
+      lastH = h;
+      frame.style.height = h + 'px';
     } catch (e) {}
   }
   frame.addEventListener('load', () => {
     fit();
-    try { new ResizeObserver(fit).observe(frame.contentDocument.body); } catch (e) {}
+    try { new ResizeObserver(fit).observe(frame.contentDocument.documentElement); } catch (e) {}
     setTimeout(fit, 800);
   });
   document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
     browser.classList.toggle('mobile', b.dataset.mode === 'mobile');
+    lastH = 0; frame.style.height = '600px';
     setTimeout(fit, 400);
   }));
 })();

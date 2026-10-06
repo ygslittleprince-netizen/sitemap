@@ -69,99 +69,148 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
 <body>
 <header class="hero">
   <div class="shell">
-    <p class="eyebrow">Audit SEO/GEO + Mockup bản dựng lại <span class="tier-pill">Tier 2</span></p>
-    <h1>Audit iWealth Partner: Đối tác giới thiệu khách hàng</h1>
-    <p class="lede">Bản dựng lại đã có H1, alt text đúng, link tới trang sản phẩm trên www và FAQ ở dạng chữ HTML. Còn 2 lỗi số liệu mang sang từ bản cũ (lãi suất iPower, tổng tiền ví dụ), title và meta chưa đổi, trang chưa có FAQPage và chưa link tới trang con. Bảng tỉ lệ cần đối chiếu với chính sách áp dụng từ 01/09/2026.</p>
+    <p class="eyebrow">Audit SEO/GEO + UI/UX bản dựng lại <span class="tier-pill">Tier 2</span></p>
+    <h1>Audit iWealth Partner: bản dựng lại trước golive</h1>
+    <p class="lede">Bản dựng mới có H1, alt text đúng, bảng và FAQ ở dạng chữ HTML, hiển thị không cuộn ngang từ 390px đến 1440px. Trước khi golive cần sửa 2 lỗi số liệu, khai báo title và meta trong Rank Math, thêm FAQPage và link tới trang con. Về giao diện, icon khối Lý do đang hiển thị thành khối đen đặc, lưới ưu đãi lệch ở khổ tablet và trang mobile dài 13.857px.</p>
     <div class="meta">
       <span><strong>URL:</strong> <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/">/ve-chung-toi/iwealth-partner/</a></span>
       <span><strong>Loại trang:</strong> Trang sản phẩm (giới thiệu chương trình), product hub</span>
-      <span><strong>Trạng thái:</strong> Bản dựng lại, chưa golive</span>
+      <span><strong>Đối tượng audit:</strong> file iwealth-partner.html, chưa golive</span>
       <span><strong>Ngày audit:</strong> 06/10/2026</span>
-      <span><strong>Số từ:</strong> 2.039 từ (gồm FAQ và tên giải thưởng)</span>
+      <span><strong>Số từ:</strong> 2.039 từ</span>
     </div>
   </div>
 </header>
 <nav class="toc"><div class="shell">
-  <a href="#danh-gia">1. Đánh giá</a><a href="#de-xuat">2. Đề xuất</a><a href="#mockup">3. Mockup</a><a href="#schema">4. Structured data</a><a href="#uu-tien">5. Ưu tiên xử lý</a>
+  <a href="#danh-gia">1. SEO/GEO</a><a href="#ui-ux">2. UI/UX</a><a href="#de-xuat">3. Đề xuất</a><a href="#mockup">4. Mockup</a><a href="#schema">5. Structured data</a><a href="#uu-tien">6. Ưu tiên xử lý</a>
 </div></nav>
 <main class="shell">
 
 <section id="danh-gia">
-  <h2>1. Đánh giá SEO/GEO</h2>
-  <p class="intro">File bản dựng lại chỉ có CSS và HTML phần thân trang. Title, meta, canonical, robots và schema do Rank Math sinh ra, nên được đọc từ trang đang chạy. Bản dựng lại sẽ giữ nguyên các giá trị này nếu không sửa trong Rank Math. Theo yêu cầu, báo cáo không chấm câu chữ quảng cáo.</p>
+  <h2>1. Đánh giá SEO/GEO trang mới</h2>
+  <p class="intro">Mọi số liệu trong mục này đọc từ file bản dựng. File là khối CSS và HTML chèn vào WordPress, không có thẻ head, nên title, meta, canonical và robots sẽ lấy theo cài đặt Rank Math khi trang mới golive tại URL cũ. Theo yêu cầu, báo cáo không chấm câu chữ quảng cáo.</p>
   <div class="table-wrap"><table>
     <thead><tr><th>Thành phần</th><th>Kết quả</th><th>Căn cứ</th></tr></thead>
     <tbody>
-      <tr><td>Title</td><td><span class="badge watch">Một phần</span></td><td><code>iWealth Partner - Techcom Securities - TCBS</code> (43 ký tự). Chỉ có tên chương trình và thương hiệu, không có cụm mô tả chương trình.</td></tr>
-      <tr><td>Meta description</td><td><span class="badge watch">Một phần</span></td><td>156 ký tự. Không nêu sản phẩm nào được tính tiền giới thiệu, không có cách đăng ký.</td></tr>
-      <tr><td>Canonical</td><td><span class="badge good">Đạt</span></td><td>Tự trỏ về chính URL. Hreflang khai báo vi, en và x-default.</td></tr>
-      <tr><td>Robots</td><td><span class="badge good">Đạt</span></td><td>follow, index, max-snippet:250</td></tr>
-      <tr><td>Heading</td><td><span class="badge watch">Cần bổ sung cụm mô tả vào H1</span></td><td>Bản dựng lại có 1 H1, thứ bậc H1, H2, H3 đúng. H1 chỉ có chữ "iWealth Partner", dòng "Đối tác giới thiệu khách hàng" là thẻ p. Tên chương trình trong H1 và 2 H2 bọc bằng thẻ mark để tô màu.</td></tr>
-      <tr><td>Nội dung chính</td><td><span class="badge critical">Không đạt</span></td><td>Bảng tỉ lệ, ví dụ, ưu đãi, 3 bước và 5 câu FAQ đều là chữ HTML. Không đạt vì lãi suất iPower lệch với trang sản phẩm và dòng tổng ví dụ không khớp. Chi tiết ở bảng Câu cần sửa.</td></tr>
-      <tr><td>Văn phong</td><td><span class="badge watch">Một phần</span></td><td>2.039 từ; 0 gạch ngang dài; 2 gạch nối dùng để chèn ý; 1 cặp ngoặc kép (tên menu, hợp lệ). Không chấm câu chữ quảng cáo. Còn 2 lỗi chính tả, 1 câu thiếu dấu đóng ngoặc, 1 chỗ lặp từ, xưng hô lẫn giữa bạn (12), Bạn viết hoa giữa câu (2), Quý khách (1), KH (4).</td></tr>
-      <tr><td>Ảnh &amp; alt text</td><td><span class="badge good">Đạt</span></td><td>2 ảnh trang trí ở hero để alt rỗng kèm aria-hidden. Ảnh giao diện có alt mô tả. 12 logo giải thưởng có alt theo tên đơn vị trao giải. Ảnh có width, height, lazy-load; ảnh hero có fetchpriority. Chưa đối chiếu từng logo với đúng đơn vị trao giải.</td></tr>
-      <tr><td>Structured data</td><td><span class="badge watch">Một phần</span></td><td>Rank Math đang sinh Organization, WebSite, BreadcrumbList, WebPage, FinancialService (thiếu name, url) và Article với author <code>tcbs_admin</code>. Chưa có FAQPage dù trang có 5 câu FAQ hiển thị.</td></tr>
-      <tr><td>Internal linking</td><td><span class="badge watch">Một phần</span></td><td>Đã link www tới Vay ký quỹ, iBond, iPower (cả 3 trả về 200) và trang Hỗ trợ. Còn thiếu link tới trang con. Thẻ ưu đãi 7.89% dẫn tới hub margin thay vì trang Margin 789. Link nội bộ mở tab mới. Anchor FAQ vẫn là "hướng dẫn tại đây".</td></tr>
-      <tr><td>Công bố rủi ro &amp; điều kiện</td><td><span class="badge watch">Một phần</span></td><td>Link Chính sách, Điều kiện điều khoản và 3 chú thích nằm ngay dưới bảng tỉ lệ. Các ưu đãi cho khách (7.89%, 100 triệu đồng) không ghi thời hạn trên trang.</td></tr>
-      <tr><td>Liên kết trang con (hub)</td><td><span class="badge critical">Không đạt</span></td><td>Bản dựng lại không có link tới <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/khach-hang-iwealth-partner/">Khách hàng iWealth Partner</a>. Trên bản live, link này chỉ có trong menu ẩn.</td></tr>
+      <tr><td>Title</td><td><span class="badge watch">Cần khai báo</span></td><td>Bản dựng không có title. Nếu Rank Math giữ cài đặt hiện tại, trang mới sẽ dùng <code>iWealth Partner - Techcom Securities - TCBS</code> (43 ký tự), chỉ có tên chương trình.</td></tr>
+      <tr><td>Meta description</td><td><span class="badge watch">Cần khai báo</span></td><td>Bản dựng không có meta. Bản đang cài trong Rank Math (156 ký tự) không nêu sản phẩm nào được tính tiền giới thiệu và không nói cách đăng ký.</td></tr>
+      <tr><td>Canonical</td><td><span class="badge watch">Kiểm tra khi golive</span></td><td>Không có trong bản dựng. Giữ URL cũ thì canonical tự trỏ về chính trang, hreflang vi/en giữ nguyên.</td></tr>
+      <tr><td>Robots</td><td><span class="badge watch">Kiểm tra khi golive</span></td><td>Không có trong bản dựng. Cần giữ index, follow như hiện tại.</td></tr>
+      <tr><td>Heading</td><td><span class="badge watch">Cần bổ sung cụm mô tả vào H1</span></td><td>1 H1, 6 H2, 12 H3, thứ bậc đúng. H1 chỉ có chữ "iWealth Partner", dòng "Đối tác giới thiệu khách hàng" nằm ở thẻ p. H1 và 2 H2 dùng thẻ mark để tô đỏ tên chương trình.</td></tr>
+      <tr><td>Nội dung chính</td><td><span class="badge critical">Không đạt</span></td><td>Bảng tỉ lệ 8 dòng, ví dụ 7 dòng, 4 ưu đãi, 3 bước và 5 câu FAQ đều là chữ HTML. Bảng có caption và th scope, FAQ dùng thẻ details nên câu trả lời nằm sẵn trong HTML. Không đạt vì có 2 lỗi số liệu, mốc chính sách có thể đã cũ và FAQ mô tả 3 bước khác với khối 3 bước (chi tiết ở bảng Câu cần sửa).</td></tr>
+      <tr><td>Văn phong</td><td><span class="badge watch">Một phần</span></td><td>2.039 từ; 0 gạch ngang dài; 2 gạch nối dùng để chèn ý; 1 cặp ngoặc kép (tên menu, hợp lệ). Không chấm câu chữ quảng cáo. Còn 2 lỗi chính tả, 1 câu thiếu dấu đóng ngoặc, 1 chỗ lặp từ, 7 chỗ viết hoa giữa câu, xưng hô lẫn (bạn 12, Quý khách 1, KH 4), số viết lẫn kiểu Anh (20,000,000,000) và kiểu Việt (1.300).</td></tr>
+      <tr><td>Ảnh &amp; alt text</td><td><span class="badge good">Đạt</span></td><td>15 ảnh. 2 ảnh trang trí ở hero để alt rỗng kèm aria-hidden. Ảnh giao diện TCInvest có alt mô tả, width, height và fetchpriority. 12 logo giải thưởng có alt theo tên đơn vị, có width, height và lazy-load. Chưa đối chiếu từng logo với đúng đơn vị trao giải.</td></tr>
+      <tr><td>Structured data</td><td><span class="badge watch">Một phần</span></td><td>Bản dựng không có JSON-LD. Trang có 5 câu FAQ hiển thị nhưng chưa có FAQPage. Nếu Rank Math giữ cài đặt hiện tại, trang mới mang schema Article với author <code>tcbs_admin</code> và FinancialService thiếu name, url.</td></tr>
+      <tr><td>Internal linking</td><td><span class="badge watch">Một phần</span></td><td>17 link: 6 link www (Vay ký quỹ, trái phiếu iBond, iPower, Chính sách, Điều kiện điều khoản, PDF chính sách cũ), 4 link app TCInvest, 4 link trang Hỗ trợ, 2 link mở tài khoản, 1 email. Mọi link www mở tab mới. Thẻ ưu đãi 7.89% dẫn tới hub margin thay vì trang Margin 789. 4 anchor dạng "tại đây".</td></tr>
+      <tr><td>Công bố rủi ro &amp; điều kiện</td><td><span class="badge watch">Một phần</span></td><td>Link Chính sách, Điều kiện điều khoản và 3 chú thích nằm ngay dưới bảng tỉ lệ. Ưu đãi 7.89% và ưu đãi 100 triệu đồng không ghi thời hạn áp dụng.</td></tr>
+      <tr><td>Liên kết trang con (hub)</td><td><span class="badge critical">Không đạt</span></td><td>Bản dựng không có link tới <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/khach-hang-iwealth-partner/">Khách hàng iWealth Partner</a>.</td></tr>
+      <tr><td>Giao diện &amp; trải nghiệm</td><td><span class="badge watch">Một phần</span></td><td>Không cuộn ngang ở cả 4 khung 390, 768, 1024, 1440px. Có 10 vấn đề ở mục 2, nặng nhất là icon khối Lý do hiển thị thành khối đen, lưới ưu đãi lệch ở tablet và thiếu nút đăng ký sau khối 3 bước.</td></tr>
     </tbody>
   </table></div>
 
   <div class="callout watch-box">
     <p><b>Phát hiện liên quan ngoài trang.</b></p>
     <ul>
-      <li>Link Chính sách <code>/iwealth-partner/policy</code> chuyển hướng tới <code>Chinh-sach-iWP-0926.pdf</code>, ghi áp dụng từ ngày 01/09/2026. Tiêu đề bảng trên trang vẫn ghi tỉ lệ từ 03/03/2026.</li>
-      <li>Theo nội dung đọc được từ file PDF đó (qua công cụ trích xuất, cần đối chiếu bản gốc): iPower chia theo mốc số dư 0.2%, 0.3%, 0.5%, 0.7%; không thấy mục iOptima. Trang chỉ ghi iPower "tới 0.7%/năm" và vẫn có dòng iOptima.</li>
-      <li>Link Điều kiện, điều khoản <code>/iwealth-partner/tnc</code> chuyển hướng tới <code>TnC-iWP-Ca-nhan-28.07.pdf</code>.</li>
-      <li>Trang <a href="https://www.tcbs.com.vn/ca-nhan/san-pham/ipower/">iPower</a> ghi lãi suất lên đến 9.0%/năm, biểu lãi suất hiệu lực từ 01/10/2026.</li>
+      <li>Link Chính sách <code>/iwealth-partner/policy</code> chuyển hướng tới <code>Chinh-sach-iWP-0926.pdf</code>, ghi áp dụng từ ngày 01/09/2026. Tiêu đề bảng trong bản dựng vẫn ghi tỉ lệ từ 03/03/2026.</li>
+      <li>Theo nội dung đọc được từ file PDF đó (qua công cụ trích xuất, cần đối chiếu bản gốc): iPower chia theo mốc số dư 0.2%, 0.3%, 0.5%, 0.7%; không thấy mục iOptima. Bản dựng ghi iPower "tới 0.7%/năm" và vẫn có dòng iOptima.</li>
+      <li>Trang <a href="https://www.tcbs.com.vn/ca-nhan/san-pham/ipower/">iPower</a> ghi lãi suất lên đến 9.0%/năm, biểu lãi suất hiệu lực từ 01/10/2026. Bản dựng ghi 6.0%/năm.</li>
     </ul>
   </div>
 </section>
 
-<section id="de-xuat">
-  <h2>2. Đề xuất</h2>
+<section id="ui-ux">
+  <h2>2. Đánh giá giao diện và trải nghiệm</h2>
+  <p class="intro">File bản dựng được render bằng trình duyệt headless ở 4 khung: 1440, 1024, 768 và 390px. Môi trường audit không tải được ảnh từ tcbs.com.vn, nên ảnh được thay bằng khung giữ chỗ cùng kích thước để kiểm bố cục. Font SF Pro Display chỉ có sẵn trên thiết bị Apple, máy Windows và Android sẽ hiển thị Segoe UI hoặc font hệ thống.</p>
+
+  <h3>Điểm đã ổn</h3>
+  <div class="card-grid">
+    <div class="card"><h4>Bố cục</h4><p>Thứ tự Hero, Quyền lợi, Ưu đãi cho khách, Lý do, Giải thưởng, 3 bước, FAQ đi từ lợi ích đến cách tham gia. Tiêu đề khối căn giữa, khoảng cách các khối đều 56px.</p></div>
+    <div class="card"><h4>Bảng trên mobile</h4><p>Bảng tỉ lệ và bảng ví dụ chuyển thành thẻ có nhãn cột, không cần cuộn ngang. Dòng tổng ví dụ có nền đỏ nhạt nên dễ nhận ra.</p></div>
+    <div class="card"><h4>Nút và tương tác</h4><p>Nút cao 48px, chuyển thành nút rộng toàn màn hình dưới 680px. Có focus-visible cho nút. Hiệu ứng động tắt khi người dùng bật giảm chuyển động.</p></div>
+    <div class="card"><h4>Ảnh</h4><p>Ảnh hero khai báo kích thước và tải ưu tiên. Logo giải thưởng tải lười. CSS gói trong class <code>.tcbs-iwp-lp</code> nên không ảnh hưởng phần còn lại của site.</p></div>
+  </div>
+
+  <h3>Chiều dài trang theo khung</h3>
   <div class="table-wrap"><table>
-    <thead><tr><th>Hạng mục</th><th>Hiện trạng</th><th>Đề xuất</th></tr></thead>
+    <thead><tr><th>Khung</th><th>Chiều dài trang</th><th>Ghi chú</th></tr></thead>
     <tbody>
-      <tr><td>Từ khóa trọng tâm</td><td>Title và meta chỉ có tên chương trình</td><td>Chính: iWealth Partner, iWealth Partner TCBS, đối tác giới thiệu khách hàng TCBS. Phụ: tiền giới thiệu chứng khoán, giới thiệu khách hàng mở tài khoản chứng khoán, hoa hồng giới thiệu TCBS. Chưa có dữ liệu Search Console để xác nhận lượng tìm kiếm.</td></tr>
-      <tr><td>Title</td><td>iWealth Partner - Techcom Securities - TCBS</td><td><code>iWealth Partner: Đối tác giới thiệu khách hàng | TCBS</code> (53 ký tự)</td></tr>
-      <tr><td>Meta description</td><td>iWealth Partner là chương trình Đối tác giới thiệu khách hàng của TCBS. Là nơi bạn có thể kiến tạo sự nghiệp...</td><td><code>Trở thành iWealth Partner, giới thiệu khách hàng đến TCBS và nhận tiền giới thiệu từ cổ phiếu, margin, trái phiếu, chứng chỉ quỹ. Đăng ký trên TCInvest.</code> (khoảng 150 ký tự)</td></tr>
-      <tr><td>Open Graph</td><td>og:title trùng title cũ</td><td>Dùng lại title và meta mới cho og:title, og:description. Giữ ảnh <code>iwp-node2-top</code> hoặc thay bằng ảnh 1200x630 có tên chương trình.</td></tr>
-      <tr><td>Heading</td><td>H1 chỉ có "iWealth Partner"</td><td>H1: <code>iWealth Partner: Đối tác giới thiệu khách hàng của TCBS</code>. Trong mockup, dòng phụ được đưa vào H1 bằng span nên giao diện không đổi. Thay thẻ mark bằng span để tô màu.</td></tr>
-      <tr><td>Internal linking + CTA</td><td>Thiếu link trang con, thẻ margin trỏ về hub</td><td>Thêm dòng dẫn tới Khách hàng iWealth Partner ở cuối khối 3 bước. Thẻ 7.89% trỏ tới <a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/margin-789/">/ca-nhan/uu-dai/margin-789/</a>. Link www mở cùng tab, giữ tab mới cho app và PDF. Đổi các anchor "tại đây" thành mô tả.</td></tr>
-      <tr><td>Alt text</td><td>Đã đạt</td><td>Giữ nguyên. Nhờ người phụ trách xác nhận từng logo khớp đúng đơn vị trao giải.</td></tr>
-      <tr><td>Schema</td><td>Thiếu FAQPage, có Article</td><td>Thêm FAQPage và hoàn thiện FinancialService theo mục 4. Trong Rank Math, đổi Schema Type khỏi Article.</td></tr>
-      <tr><td>Nội dung, số liệu</td><td>2 lỗi số liệu, mốc chính sách có thể cũ</td><td>Sửa theo bảng Câu cần sửa. Xác nhận bảng tỉ lệ theo chính sách 01/09/2026 trước khi golive.</td></tr>
-      <tr><td>Nhất quán FAQ</td><td>FAQ ghi bước 3 là tham gia khóa đào tạo, khối 3 bước không nhắc tới</td><td>Xác nhận khóa đào tạo có bắt buộc không, rồi thống nhất một cách mô tả.</td></tr>
+      <tr><td>1440px</td><td>6.532px</td><td>Lưới ưu đãi 4 cột, giải thưởng 3 cột.</td></tr>
+      <tr><td>1024px</td><td>7.558px</td><td>Lưới ưu đãi 3 cột cho 4 thẻ, thẻ thứ 4 nằm một mình.</td></tr>
+      <tr><td>768px</td><td>9.369px</td><td>Lưới ưu đãi 3 cột, mỗi thẻ rộng 229px; thẻ thứ 4 nằm một mình.</td></tr>
+      <tr><td>390px</td><td>13.857px</td><td>Khối Quyền lợi (bảng tỉ lệ, ví dụ, ưu đãi) cao 7.633px, chiếm 55% trang. 12 thẻ giải thưởng xếp 1 cột cao 1.566px.</td></tr>
     </tbody>
   </table></div>
 
-  <h3>Câu cần sửa</h3>
+  <h3>Vấn đề cần sửa</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Vị trí</th><th>Hiện trạng</th><th>Mức</th><th>Đề xuất</th></tr></thead>
+    <tbody>
+      <tr><td>Icon khối Lý do</td><td>3 icon (ngôi sao, màn hình, tai nghe) vẽ bằng nét nhưng không khai báo <code>fill="none"</code> và <code>stroke</code>, nên trình duyệt tô thành khối đen đặc; đường biểu đồ trong icon màn hình bị mất. Khác phong cách với 4 icon nhiều màu ở khối ưu đãi.</td><td><span class="badge watch">P1</span></td><td>Thêm <code>fill="none" stroke="#C41C16" stroke-width="1.8"</code> cho 3 thẻ svg, hoặc dùng icon cùng bộ với khối ưu đãi. Kiểm tra lại trên staging vì CSS của theme có thể đổi màu svg.</td></tr>
+      <tr><td>Lưới ưu đãi, 681 đến 1120px</td><td>3 cột cho 4 thẻ, thẻ thứ 4 rơi xuống hàng riêng.</td><td><span class="badge watch">P1</span></td><td>Dùng 2 cột trong khoảng 681 đến 1120px.</td></tr>
+      <tr><td>Sau khối 3 bước</td><td>Không có nút đăng ký. Nút Tham gia ngay chỉ có ở hero và sau khối ưu đãi, trong khi khối 3 bước là chỗ người đọc vừa biết cách tham gia.</td><td><span class="badge watch">P1</span></td><td>Thêm cặp nút Tham gia ngay và Mở tài khoản ngay dưới 3 bước.</td></tr>
+      <tr><td>Độ dài trang mobile</td><td>13.857px. Bảng ví dụ 7 dòng chuyển thành 7 thẻ, mỗi thẻ 3 ô. 12 thẻ giải thưởng xếp 1 cột.</td><td><span class="badge watch">P1</span></td><td>Thu gọn bảng ví dụ trên mobile bằng thẻ details "Xem ví dụ chi tiết", giữ dòng tổng luôn hiển thị. Thẻ giải thưởng trên mobile dùng logo 48px nằm cạnh chữ (mockup giảm từ 1.566px còn 1.114px).</td></tr>
+      <tr><td>Bảng tỉ lệ trên mobile</td><td>Cột đầu giữ lề trái 82px (chỗ cho nhãn New) ở mọi dòng, nên tên sản phẩm và nhãn "Tính năng" thụt vào 82px trên màn 390px.</td><td><span class="badge good">P2</span></td><td>Dưới 680px: lề trái 16px, nhãn New thành badge nằm cùng dòng với tên sản phẩm.</td></tr>
+      <tr><td>Thẻ không bấm được</td><td>Thẻ Lý do, Giải thưởng và 3 bước nổi lên khi rê chuột, giống thẻ có link.</td><td><span class="badge good">P2</span></td><td>Chỉ giữ hiệu ứng nổi cho thẻ có link, hoặc bỏ hẳn.</td></tr>
+      <tr><td>FAQ trên mobile</td><td>Nút Xem thêm nằm trên danh sách câu hỏi. Số Q1 đến Q5 tự co theo từng câu nên chữ câu hỏi không thẳng hàng.</td><td><span class="badge good">P2</span></td><td>Đưa nút Xem thêm xuống dưới danh sách trên mobile. Đặt cột số rộng cố định (ví dụ 32px).</td></tr>
+      <tr><td>Focus bàn phím ở FAQ</td><td>Câu hỏi FAQ bỏ outline khi focus, chỉ còn bóng nhạt quanh mũi tên.</td><td><span class="badge good">P2</span></td><td>Thêm outline 2px màu đỏ khi focus-visible.</td></tr>
+      <tr><td>Chú thích bảng</td><td>Chữ 13px màu xám. Số mũ 1, 2, 3 trong bảng không bấm được tới chú thích tương ứng.</td><td><span class="badge good">P2</span></td><td>Tăng lên 14px, gắn anchor cho số mũ.</td></tr>
+      <tr><td>Hiệu ứng nút</td><td>Nút dịch ngang 2px khi rê chuột.</td><td><span class="badge good">P2</span></td><td>Chỉ đổi màu nền khi rê chuột.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="de-xuat">
+  <h2>3. Đề xuất</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Hạng mục</th><th>Hiện trạng trong bản dựng</th><th>Đề xuất</th></tr></thead>
+    <tbody>
+      <tr><td>Từ khóa trọng tâm</td><td>H1 và tiêu đề khối chỉ có tên chương trình</td><td>Chính: iWealth Partner, iWealth Partner TCBS, đối tác giới thiệu khách hàng TCBS. Phụ: tiền giới thiệu chứng khoán, giới thiệu khách hàng mở tài khoản chứng khoán, hoa hồng giới thiệu TCBS. Chưa có dữ liệu Search Console để xác nhận lượng tìm kiếm.</td></tr>
+      <tr><td>Title</td><td>Chưa khai báo</td><td><code>iWealth Partner: Đối tác giới thiệu khách hàng | TCBS</code> (53 ký tự)</td></tr>
+      <tr><td>Meta description</td><td>Chưa khai báo</td><td><code>Trở thành iWealth Partner, giới thiệu khách hàng đến TCBS và nhận tiền giới thiệu từ cổ phiếu, margin, trái phiếu, chứng chỉ quỹ. Đăng ký trên TCInvest.</code> (khoảng 150 ký tự)</td></tr>
+      <tr><td>Open Graph</td><td>Chưa khai báo</td><td>og:title và og:description dùng lại title, meta mới. Ảnh chia sẻ 1200x630 có tên chương trình.</td></tr>
+      <tr><td>Heading</td><td><code>&lt;h1&gt;&lt;mark&gt;iWealth Partner&lt;/mark&gt;&lt;/h1&gt;</code> và dòng phụ ở thẻ p</td><td><code>&lt;h1&gt;&lt;span class="iwp-red"&gt;iWealth Partner&lt;/span&gt;&lt;span class="iwp-hero-subtitle"&gt;Đối tác giới thiệu khách hàng của TCBS&lt;/span&gt;&lt;/h1&gt;</code>. Giao diện giữ nguyên. Đổi 3 thẻ mark thành span.</td></tr>
+      <tr><td>Internal linking + CTA</td><td>Thiếu link trang con, thẻ 7.89% trỏ hub margin, link www mở tab mới</td><td>Thêm dòng dẫn tới Khách hàng iWealth Partner và cặp nút đăng ký sau khối 3 bước. Thẻ 7.89% trỏ tới <a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/margin-789/">/ca-nhan/uu-dai/margin-789/</a>. Link www mở cùng tab, giữ tab mới cho app, PDF và trang Hỗ trợ. Đổi 4 anchor "tại đây".</td></tr>
+      <tr><td>Alt text</td><td>Đạt</td><td>Giữ nguyên. Nhờ người phụ trách xác nhận từng logo khớp đúng đơn vị trao giải.</td></tr>
+      <tr><td>Schema</td><td>Không có JSON-LD</td><td>Thêm FAQPage và FinancialService theo mục 5. Trong Rank Math, đổi Schema Type khỏi Article.</td></tr>
+      <tr><td>Số liệu</td><td>2 lỗi, mốc chính sách có thể cũ</td><td>Sửa theo bảng dưới. Đối chiếu bảng tỉ lệ với chính sách áp dụng từ 01/09/2026 trước khi golive.</td></tr>
+      <tr><td>Định dạng số</td><td>20,000,000,000 và 0.15% cạnh 1.300 doanh nghiệp</td><td>Chọn một kiểu cho toàn trang. Nếu theo chuẩn tiếng Việt: 20.000.000.000 VND, 0,15%.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Câu cần sửa trong bản dựng</h3>
   <div class="table-wrap"><table>
     <thead><tr><th>Vị trí</th><th>Câu gốc</th><th>Căn cứ</th><th>Đề xuất viết lại</th></tr></thead>
     <tbody>
-      <tr><td>Thẻ ưu đãi iPower</td><td>Lãi suất linh hoạt theo số dư và giao dịch, lên đến 6.0%/năm.</td><td><span class="badge critical">P0</span> Trang iPower ghi lên đến 9.0%/năm. 6.0% là mức thấp nhất trong bảng.</td><td>Lãi suất linh hoạt theo số dư và giao dịch, lên đến 9.0%/năm.</td></tr>
-      <tr><td>Dòng tổng ví dụ</td><td>Tổng tiền nhận 333,304,118 VND</td><td><span class="badge critical">P0</span> Cộng 7 dòng được 352,208,221 VND. Từng dòng tính đúng.</td><td>Tổng tiền nhận 352,208,221 VND (cần bộ phận phụ trách xác nhận).</td></tr>
-      <tr><td>Đoạn mở ví dụ</td><td>Trong tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa...</td><td><span class="badge watch">P1</span> Dòng iPower tính từ 3/9/2026, không thuộc tháng 3.</td><td>Từ tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa...</td></tr>
-      <tr><td>Hero, gạch đầu dòng 2</td><td>Muốn mở rộng và kết nối mạng lưới quạn hệ chất lượng.</td><td><span class="badge watch">P2</span> Lỗi chính tả.</td><td>Muốn mở rộng và kết nối mạng lưới quan hệ chất lượng.</td></tr>
-      <tr><td>Bảng tỉ lệ, dòng iPower</td><td>...(thời gian áp dụng trong vòng 90 ngày kể từ ngày phát sinh giao dịch chuyển tiền vào iPower đầu tiên của khách hàng.</td><td><span class="badge watch">P2</span> Thiếu dấu đóng ngoặc.</td><td>...iPower đầu tiên của khách hàng).</td></tr>
-      <tr><td>Bảng tỉ lệ, dòng CCQ</td><td>Nhận 0.4% tính trên giá trị đầu tư gốc đầu tư của KH được giới thiệu.</td><td><span class="badge watch">P2</span> Lặp từ, viết tắt KH.</td><td>Nhận 0.4% tính trên giá trị gốc đầu tư của khách hàng được giới thiệu.</td></tr>
-      <tr><td>Thẻ Công nghệ hiện đại</td><td>...đặc biệt, Bạn có thể theo dõi hiệu quả...</td><td><span class="badge watch">P2</span> Viết hoa giữa câu.</td><td>...đặc biệt, bạn có thể theo dõi hiệu quả...</td></tr>
-      <tr><td>Thẻ Hỗ trợ tận tâm</td><td>...đồng hành cùng Bạn trên hành trình...</td><td><span class="badge watch">P2</span> Viết hoa giữa câu.</td><td>...đồng hành cùng bạn trên hành trình...</td></tr>
-      <tr><td>FAQ Q5</td><td>...theo hướng dẫn tạị đây.</td><td><span class="badge watch">P2</span> Lỗi chính tả, anchor không mô tả.</td><td>...theo hướng dẫn gửi lời mời kết nối.</td></tr>
-      <tr><td>FAQ Q2, Q4</td><td>...theo hướng dẫn tại đây</td><td><span class="badge watch">P2</span> Anchor không mô tả.</td><td>Q2: hướng dẫn điều chỉnh phí giao dịch. Q4: hướng dẫn chia sẻ thông tin với iWealth Partner.</td></tr>
-      <tr><td>Thẻ Uy tín hàng đầu</td><td>TCBS là công ty chứng khoán Top 1 lợi nhuận trong 6 năm liên tiếp (2019 - 2024)...</td><td><span class="badge watch">P2</span> Số liệu không ghi nguồn, chưa xác minh trong phiên audit này.</td><td>Giữ câu, thêm nguồn công bố. Cập nhật năm 2025 nếu đã có số liệu.</td></tr>
+      <tr><td>Thẻ ưu đãi iPower</td><td>Tối ưu tiền nhàn rỗi với iPower - Tài khoản Nhân lãi. Lãi suất linh hoạt theo số dư và giao dịch, lên đến 6.0%/năm.</td><td><span class="badge critical">P0</span> Trang iPower ghi lên đến 9.0%/năm; 6.0% là mức thấp nhất trong bảng lãi suất.</td><td>...lên đến 9.0%/năm.</td></tr>
+      <tr><td>Dòng tổng ví dụ</td><td>Tổng tiền nhận 333,304,118 VND</td><td><span class="badge critical">P0</span> Cộng 7 dòng được 352,208,221 VND, từng dòng tính đúng.</td><td>Tổng tiền nhận 352,208,221 VND (cần bộ phận phụ trách xác nhận).</td></tr>
+      <tr><td>Tiêu đề cột bảng tỉ lệ</td><td>Tỉ lệ tiền giới thiệu từ 03/03/2026</td><td><span class="badge critical">P0</span> Link Chính sách dẫn tới bản áp dụng từ 01/09/2026.</td><td>Cập nhật theo chính sách đang hiệu lực sau khi bộ phận phụ trách xác nhận.</td></tr>
+      <tr><td>Đoạn mở ví dụ</td><td>Trong tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa sử dụng các tính năng...</td><td><span class="badge watch">P1</span> Dòng iPower tính từ 3/9/2026, không thuộc tháng 3.</td><td>Từ tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa sử dụng các tính năng...</td></tr>
+      <tr><td>FAQ Q1</td><td>Bước 3: Tham gia khoá đào tạo dành riêng cho iWealth Partner</td><td><span class="badge watch">P1</span> Khối 3 bước ở thân trang không nhắc tới khóa đào tạo.</td><td>Thống nhất một cách mô tả sau khi xác nhận khóa đào tạo có bắt buộc không.</td></tr>
+      <tr><td>Hero, gạch đầu dòng 2</td><td>Muốn mở rộng và kết nối mạng lưới quạn hệ chất lượng.</td><td><span class="badge good">P2</span> Lỗi chính tả.</td><td>Muốn mở rộng và kết nối mạng lưới quan hệ chất lượng.</td></tr>
+      <tr><td>FAQ Q5</td><td>...theo hướng dẫn tạị đây.</td><td><span class="badge good">P2</span> Lỗi chính tả, anchor không mô tả.</td><td>...theo hướng dẫn gửi lời mời kết nối.</td></tr>
+      <tr><td>Bảng tỉ lệ, dòng iPower</td><td>...(thời gian áp dụng trong vòng 90 ngày kể từ ngày phát sinh giao dịch chuyển tiền vào iPower đầu tiên của khách hàng.</td><td><span class="badge good">P2</span> Thiếu dấu đóng ngoặc.</td><td>...iPower đầu tiên của khách hàng).</td></tr>
+      <tr><td>Bảng tỉ lệ, dòng CCQ</td><td>Nhận 0.4% tính trên giá trị đầu tư gốc đầu tư của KH được giới thiệu.</td><td><span class="badge good">P2</span> Lặp từ, viết tắt KH.</td><td>Nhận 0.4% tính trên giá trị gốc đầu tư của khách hàng được giới thiệu.</td></tr>
+      <tr><td>Bảng tỉ lệ, 3 dòng khác</td><td>...của KH được giới thiệu. / ...đối tác giới thiệu KH với WealthNet.</td><td><span class="badge good">P2</span> Viết tắt KH trong câu hiển thị.</td><td>Viết đầy đủ "khách hàng".</td></tr>
+      <tr><td>Thẻ Công nghệ hiện đại</td><td>...đặc biệt, Bạn có thể theo dõi hiệu quả...</td><td><span class="badge good">P2</span> Viết hoa giữa câu.</td><td>...đặc biệt, bạn có thể theo dõi hiệu quả...</td></tr>
+      <tr><td>Thẻ Hỗ trợ tận tâm</td><td>...đồng hành cùng Bạn trên hành trình...</td><td><span class="badge good">P2</span> Viết hoa giữa câu.</td><td>...đồng hành cùng bạn trên hành trình...</td></tr>
+      <tr><td>Thẻ Uy tín hàng đầu</td><td>Trở thành Đối tác trong hệ sinh thái TCBS...</td><td><span class="badge good">P2</span> Viết hoa giữa câu.</td><td>Trở thành đối tác trong hệ sinh thái TCBS...</td></tr>
+      <tr><td>Dòng phụ khối Lý do</td><td>Hơn 13,000 iWealth Partner đã tin tưởng tham gia, với 97,000 Khách hàng được giới thiệu...</td><td><span class="badge good">P2</span> Viết hoa giữa câu; số liệu không ghi thời điểm.</td><td>Hơn 13.000 iWealth Partner đã tham gia, với 97.000 khách hàng được giới thiệu (số liệu đến tháng .../2026).</td></tr>
+      <tr><td>Đoạn mở ví dụ</td><td>Anh Nam đăng ký trở thành iWealth Partner (iWP) tại TCBS, anh giới thiệu Khách hàng Hoa... (Chị Hoa không là Khách hàng VIP...)</td><td><span class="badge good">P2</span> Viết hoa giữa câu; 4 chữ đầu in đậm lẻ.</td><td>...anh giới thiệu chị Hoa... (chị Hoa không là khách hàng VIP...). Bỏ in đậm ở "Anh Nam đăng ký trở thành".</td></tr>
+      <tr><td>FAQ Q2</td><td>Phí giao dịch của Khách hàng có iWealth Partner (iWP) chăm sóc là 0.15%.</td><td><span class="badge good">P2</span> Viết hoa giữa câu.</td><td>Phí giao dịch của khách hàng có iWealth Partner (iWP) chăm sóc là 0.15%.</td></tr>
+      <tr><td>Chú thích 1, FAQ Q2, Q4</td><td>(Xem lại chính sách trước ngày 03/03/2026 tại đây) / theo hướng dẫn tại đây</td><td><span class="badge good">P2</span> Anchor không mô tả.</td><td>chính sách áp dụng trước ngày 03/03/2026 / hướng dẫn điều chỉnh phí giao dịch / hướng dẫn chia sẻ thông tin với iWealth Partner</td></tr>
+      <tr><td>Chú thích 3</td><td>Quý khách có thể tham khảo thêm tại mục Đối tác trên ứng dụng TCInvest</td><td><span class="badge good">P2</span> Xưng hô khác phần còn lại của trang (bạn).</td><td>Bạn có thể tham khảo thêm tại mục Đối tác trên ứng dụng TCInvest.</td></tr>
+      <tr><td>Thẻ Uy tín hàng đầu</td><td>TCBS là công ty chứng khoán Top 1 lợi nhuận trong 6 năm liên tiếp (2019 - 2024)...</td><td><span class="badge good">P2</span> Số liệu không ghi nguồn, chưa xác minh trong phiên audit này.</td><td>Giữ câu, thêm nguồn công bố. Cập nhật năm 2025 nếu đã có số liệu.</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <section id="mockup">
-  <h2>3. Mockup giao diện sau khi dựng</h2>
-  <p class="intro">Mockup dùng chính file bản dựng lại. Câu chữ giữ nguyên, chỉ thay các câu ở bảng Câu cần sửa, thêm cụm mô tả vào H1, thêm dòng dẫn tới trang con và đổi link thẻ 7.89% sang Margin 789. Dòng tổng ví dụ dùng số cộng lại từ 7 dòng, cần xác nhận trước khi dựng. Mockup không sửa bảng tỉ lệ theo chính sách 01/09/2026 vì chưa có xác nhận.</p>
+  <h2>4. Mockup giao diện sau khi sửa</h2>
+  <p class="intro">Mockup dùng chính file bản dựng, chỉ áp các sửa đổi trong báo cáo. Câu chữ: sửa các câu P0, P1 và lỗi chính tả, viết hoa, viết tắt ở bảng trên; thêm cụm mô tả vào H1. Liên kết: thêm dòng dẫn tới trang con, thẻ 7.89% trỏ Margin 789, link www mở cùng tab. Giao diện: icon khối Lý do vẽ nét đỏ, lưới ưu đãi 2 cột ở tablet, cặp nút đăng ký sau 3 bước, nhãn New và lề bảng gọn trên mobile, thẻ giải thưởng gọn trên mobile, nút Xem thêm của FAQ xuống dưới trên mobile, bỏ hiệu ứng nổi ở thẻ không bấm được. Dòng tổng ví dụ dùng số cộng lại từ 7 dòng và bảng tỉ lệ chưa cập nhật theo chính sách 01/09/2026, cả hai chờ xác nhận.</p>
   <div class="card-grid">
     <div class="card"><h4>Màu</h4><p><span class="swatch" style="background:#c41c16"></span>Đỏ chính #C41C16<br><span class="swatch" style="background:#098a61"></span>Nhãn New, tiêu đề bảng #098A61<br><span class="swatch" style="background:#f9fbff"></span>Nền khối xen kẽ #F9FBFF</p></div>
     <div class="card"><h4>Chữ</h4><p>SF Pro Display, dự phòng font hệ thống. H1 42px/600, H2 34px/600, đoạn văn 16 đến 17px. Trên mobile H1 32px, H2 27px.</p></div>
-    <div class="card"><h4>Bố cục</h4><p>Hero, Quyền lợi (bảng tỉ lệ, ví dụ), Ưu đãi cho khách hàng, Lý do đồng hành, Giải thưởng, 3 bước, FAQ.</p></div>
+    <div class="card"><h4>Bố cục</h4><p>Hero, Quyền lợi (bảng tỉ lệ, ví dụ), Ưu đãi cho khách hàng, Lý do đồng hành, Giải thưởng, 3 bước kèm nút đăng ký, FAQ.</p></div>
   </div>
   <div class="viewer-bar">
     <div class="seg" role="group" aria-label="Khung xem">
@@ -1119,6 +1168,25 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
   }
 }
 
+.tcbs-iwp-lp .iwp-reason-card:hover,.tcbs-iwp-lp .iwp-award-card:hover,.tcbs-iwp-lp .iwp-step-card:hover{transform:none;box-shadow:var(--shadow-card);border-color:var(--line-200)}
+.tcbs-iwp-lp .iwp-btn-primary:hover,.tcbs-iwp-lp .iwp-btn-secondary:hover{transform:none}
+.tcbs-iwp-lp .iwp-faq-item summary:focus-visible{outline:2px solid var(--tcbs-red) !important;outline-offset:-2px}
+.tcbs-iwp-lp .iwp-footnotes{font-size:14px}
+@media (min-width:681px) and (max-width:1120px){.tcbs-iwp-lp .iwp-offer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:680px){
+.tcbs-iwp-lp .iwp-rate-table td:first-child{padding-left:16px}
+.tcbs-iwp-lp .iwp-rate-table .iwp-new{position:static;transform:none;min-width:0;margin:0 8px 6px 0;padding:3px 8px;border-radius:6px;font-size:12px}
+.tcbs-iwp-lp .iwp-rate-table .iwp-new::after{display:none}
+.tcbs-iwp-lp .iwp-awards-grid{gap:8px}
+.tcbs-iwp-lp .iwp-award-card{grid-template-columns:48px 1fr;gap:12px;min-height:0;padding:12px 14px}
+.tcbs-iwp-lp .iwp-award-logo{width:48px;height:40px}
+.tcbs-iwp-lp .iwp-award-name,.tcbs-iwp-lp .iwp-award-year{font-size:14px}
+.tcbs-iwp-lp .iwp-award-year{margin-top:2px}
+.tcbs-iwp-lp .iwp-faq-grid{gap:16px}
+.tcbs-iwp-lp .iwp-faq-aside{display:contents}
+.tcbs-iwp-lp .iwp-faq-list{order:1;margin-top:8px}
+.tcbs-iwp-lp .iwp-faq-more{order:2;margin-top:4px}
+}
 .tcbs-iwp-lp .iwp-red{color:var(--tcbs-red)}
 .tcbs-iwp-lp .iwp-hero-title .iwp-hero-subtitle{display:block;margin-top:10px;letter-spacing:0}
 .tcbs-iwp-lp .iwp-child-link{margin-top:28px;text-align:center;color:var(--ink-700);font-size:16px}
@@ -1179,13 +1247,13 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
         &lt;ol class=&quot;iwp-footnotes&quot;&gt;
           &lt;li&gt;Xem thêm &lt;a href=&quot;https://www.tcbs.com.vn/iwealth-partner/policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_policy&quot; data-section=&quot;quyen-loi&quot; data-cta-type=&quot;text-link&quot;&gt;Chính sách&lt;/a&gt; và &lt;a href=&quot;https://www.tcbs.com.vn/iwealth-partner/tnc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_policy&quot; data-section=&quot;quyen-loi&quot; data-cta-type=&quot;text-link&quot;&gt;Điều kiện, điều khoản&lt;/a&gt; của chương trình. (Xem lại &lt;a href=&quot;https://www.tcbs.com.vn/wp-content/uploads/2026/03/iWP-Policy-161124.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_policy&quot; data-section=&quot;quyen-loi&quot; data-cta-type=&quot;text-link&quot;&gt;chính sách áp dụng trước ngày 03/03/2026&lt;/a&gt;)&lt;/li&gt;
           &lt;li&gt;Phí giao dịch ròng: Tiền giới thiệu sẽ dựa trên phần chênh lệch của phí giao dịch cổ phiếu của khách hàng với mức phí tối thiểu trả Sở là 0.03%&lt;/li&gt;
-          &lt;li&gt;Áp dụng cho iWP có đăng ký làm đối tác giới thiệu khách hàng với WealthNet. Quý khách có thể tham khảo thêm tại mục Đối tác trên ứng dụng TCInvest&lt;/li&gt;
+          &lt;li&gt;Áp dụng cho iWP có đăng ký làm đối tác giới thiệu khách hàng với WealthNet. Bạn có thể tham khảo thêm tại mục Đối tác trên ứng dụng TCInvest&lt;/li&gt;
         &lt;/ol&gt;
       &lt;/article&gt;
 
       &lt;article id=&quot;vi-du&quot; class=&quot;iwp-data-block&quot;&gt;
         &lt;h3 class=&quot;iwp-data-title&quot;&gt;Ví dụ minh họa về thưởng giới thiệu&lt;/h3&gt;
-        &lt;p class=&quot;iwp-data-intro&quot;&gt;Anh Nam đăng ký trở thành iWealth Partner (iWP) tại TCBS, anh giới thiệu Khách hàng Hoa mở tài khoản TCBS từ 03/03/2026 và gán chăm sóc TKCK chị Hoa (Chị Hoa không là Khách hàng VIP hoặc định danh tại Techcombank). Từ tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa sử dụng các tính năng thuộc hệ sinh thái trên TCInvest, nên số tiền giới thiệu anh Nam nhận được tính tương ứng theo từng tính năng như sau:&lt;/p&gt;
+        &lt;p class=&quot;iwp-data-intro&quot;&gt;Anh Nam đăng ký trở thành iWealth Partner (iWP) tại TCBS, anh giới thiệu chị Hoa mở tài khoản TCBS từ 03/03/2026 và gán chăm sóc TKCK chị Hoa (chị Hoa không là khách hàng VIP hoặc định danh tại Techcombank). Từ tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa sử dụng các tính năng thuộc hệ sinh thái trên TCInvest, nên số tiền giới thiệu anh Nam nhận được tính tương ứng theo từng tính năng như sau:&lt;/p&gt;
         &lt;div class=&quot;iwp-table-scroll&quot;&gt;
           &lt;table class=&quot;iwp-table iwp-example-table&quot;&gt;
             &lt;caption&gt;Ví dụ minh họa tiền giới thiệu của iWealth Partner Nam&lt;/caption&gt;
@@ -1242,12 +1310,12 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
     &lt;div class=&quot;iwp-content-wrap&quot;&gt;
       &lt;div class=&quot;iwp-section-head&quot;&gt;
         &lt;h2 class=&quot;iwp-section-title&quot;&gt;Tại sao bạn nên đồng hành cùng TCBS?&lt;/h2&gt;
-        &lt;p class=&quot;iwp-section-sub&quot;&gt;Hơn 13,000 iWealth Partner đã tin tưởng tham gia, với 97,000 Khách hàng được giới thiệu và kết nối qua mạng lưới iWealth Partner trên toàn quốc&lt;/p&gt;
+        &lt;p class=&quot;iwp-section-sub&quot;&gt;Hơn 13,000 iWealth Partner đã tin tưởng tham gia, với 97,000 khách hàng được giới thiệu và kết nối qua mạng lưới iWealth Partner trên toàn quốc&lt;/p&gt;
       &lt;/div&gt;
       &lt;div class=&quot;iwp-reason-grid&quot;&gt;
-        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;m12 3 2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Uy tín hàng đầu, hiệu quả vượt trội&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;TCBS là công ty chứng khoán Top 1 lợi nhuận trong 6 năm liên tiếp (2019 - 2024), dẫn đầu thị trường về hiệu quả và sự tin cậy. Trở thành Đối tác trong hệ sinh thái TCBS là bước khởi đầu để bạn xây dựng thương hiệu cá nhân và khẳng định uy tín trong cộng đồng.&lt;/p&gt;&lt;/article&gt;
-        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;13&quot; rx=&quot;2&quot;/&gt;&lt;path d=&quot;M8 21h8M12 17v4M7 13l3-3 2 2 4-5&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Công nghệ hiện đại, tính năng toàn diện&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;TCBS mang đến hệ sinh thái tài chính toàn diện, đặc biệt, bạn có thể theo dõi hiệu quả và quản lý giới thiệu dễ dàng ngay trên nền tảng TCInvest.&lt;/p&gt;&lt;/article&gt;
-        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 13v-2a8 8 0 0 1 16 0v2M4 13h3v6H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 1-2Zm16 0h-3v6h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-1-2ZM17 19c0 1-2 2-5 2&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Hỗ trợ tận tâm, đồng hành bền vững&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;Đội ngũ chuyên nghiệp tại TCBS luôn sẵn sàng hỗ trợ và đồng hành cùng bạn trên hành trình phát triển bền vững - từ những bước đầu đến khi bứt phá thành công.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#C41C16&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;m12 3 2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Uy tín hàng đầu, hiệu quả vượt trội&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;TCBS là công ty chứng khoán Top 1 lợi nhuận trong 6 năm liên tiếp (2019 - 2024), dẫn đầu thị trường về hiệu quả và sự tin cậy. Trở thành đối tác trong hệ sinh thái TCBS là bước khởi đầu để bạn xây dựng thương hiệu cá nhân và khẳng định uy tín trong cộng đồng.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#C41C16&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;13&quot; rx=&quot;2&quot;/&gt;&lt;path d=&quot;M8 21h8M12 17v4M7 13l3-3 2 2 4-5&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Công nghệ hiện đại, tính năng toàn diện&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;TCBS mang đến hệ sinh thái tài chính toàn diện, đặc biệt, bạn có thể theo dõi hiệu quả và quản lý giới thiệu dễ dàng ngay trên nền tảng TCInvest.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;#C41C16&quot; stroke-width=&quot;1.8&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M4 13v-2a8 8 0 0 1 16 0v2M4 13h3v6H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 1-2Zm16 0h-3v6h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-1-2ZM17 19c0 1-2 2-5 2&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Hỗ trợ tận tâm, đồng hành bền vững&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;Đội ngũ chuyên nghiệp tại TCBS luôn sẵn sàng hỗ trợ và đồng hành cùng bạn trên hành trình phát triển bền vững - từ những bước đầu đến khi bứt phá thành công.&lt;/p&gt;&lt;/article&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/section&gt;
@@ -1281,6 +1349,7 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
         &lt;article class=&quot;iwp-card iwp-step-card&quot;&gt;&lt;span class=&quot;iwp-step-label&quot;&gt;Bước 2&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Giới thiệu &amp;amp; Đồng hành&lt;/h3&gt;&lt;p class=&quot;iwp-step-copy&quot;&gt;Chia sẻ mã giới thiệu, mời khách hàng trải nghiệm các tính năng, dịch vụ trên TCInvest và đồng hành, hướng dẫn họ trong suốt quá trình đầu tư.&lt;/p&gt;&lt;/article&gt;
         &lt;article class=&quot;iwp-card iwp-step-card&quot;&gt;&lt;span class=&quot;iwp-step-label&quot;&gt;Bước 3&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Nhận thưởng &amp;amp; Quản lý&lt;/h3&gt;&lt;p class=&quot;iwp-step-copy&quot;&gt;Dễ dàng theo dõi hiệu quả kinh doanh. Tiền giới thiệu được cập nhật tự động, minh bạch và nhận thưởng xứng đáng với nỗ lực của bạn.&lt;/p&gt;&lt;/article&gt;
       &lt;/div&gt;
+      &lt;div class=&quot;iwp-actions iwp-center-actions&quot;&gt;&lt;a class=&quot;iwp-btn iwp-btn-primary&quot; href=&quot;https://tcinvest.tcbs.com.vn/iwealth-partner&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_join&quot; data-section=&quot;bat-dau&quot; data-cta-type=&quot;primary&quot;&gt;Tham gia ngay&lt;/a&gt;&lt;a class=&quot;iwp-btn iwp-btn-secondary&quot; href=&quot;https://onboarding.tcbs.com.vn/onboarding&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_open_account&quot; data-section=&quot;bat-dau&quot; data-cta-type=&quot;secondary&quot;&gt;Mở tài khoản&lt;/a&gt;&lt;/div&gt;
       &lt;p class=&quot;iwp-child-link&quot;&gt;Bạn là nhà đầu tư và muốn có người đồng hành? Xem &lt;a href=&quot;https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/khach-hang-iwealth-partner/&quot;&gt;quyền lợi khi được iWealth Partner chăm sóc&lt;/a&gt;.&lt;/p&gt;
     &lt;/div&gt;
     &lt;/div&gt;
@@ -1295,7 +1364,7 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
       &lt;/aside&gt;
       &lt;div class=&quot;iwp-faq-list&quot;&gt;
           &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q1.&lt;/span&gt;&lt;span&gt;Làm thế nào để trở thành iWealth Partner?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;Chỉ hoàn thành 03 bước đơn giản:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bước 1: Đăng ký mở tài khoản chứng khoán TCBS&lt;/li&gt;&lt;li&gt;Bước 2: Đăng nhập TCInvest, tại Menu Tiện ích, chọn “iWealth Partner” và đăng ký&lt;/li&gt;&lt;li&gt;Bước 3: Tham gia khoá đào tạo dành riêng cho iWealth Partner&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/details&gt;
-          &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q2.&lt;/span&gt;&lt;span&gt;Phí giao dịch khi khách hàng có iWealth Partner giới thiệu là bao nhiêu?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;Phí giao dịch của Khách hàng có iWealth Partner (iWP) chăm sóc là 0.15%. (Trong đó, hoa hồng iWealth Partner nhận được là 0.12%). Tuy nhiên, iWealth Partner và khách hàng có iWealth Partner chăm sóc có thể thỏa thuận và điều chỉnh mức phí giao dịch theo &lt;a class=&quot;iwp-text-link&quot; href=&quot;https://help.tcbs.com.vn/iwealth-partner-de-xuat/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;text-link&quot;&gt;hướng dẫn điều chỉnh phí giao dịch&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
+          &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q2.&lt;/span&gt;&lt;span&gt;Phí giao dịch khi khách hàng có iWealth Partner giới thiệu là bao nhiêu?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;Phí giao dịch của khách hàng có iWealth Partner (iWP) chăm sóc là 0.15%. (Trong đó, hoa hồng iWealth Partner nhận được là 0.12%). Tuy nhiên, iWealth Partner và khách hàng có iWealth Partner chăm sóc có thể thỏa thuận và điều chỉnh mức phí giao dịch theo &lt;a class=&quot;iwp-text-link&quot; href=&quot;https://help.tcbs.com.vn/iwealth-partner-de-xuat/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;text-link&quot;&gt;hướng dẫn điều chỉnh phí giao dịch&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
           &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q3.&lt;/span&gt;&lt;span&gt;Thời hạn và phương thức thanh toán tiền giới thiệu?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;TCBS sẽ gửi thông báo kết quả tính toán tiền giới thiệu cho iWealth Partner chậm nhất vào ngày 14 hàng tháng.&lt;/p&gt;&lt;p&gt;Tiền giới thiệu được thanh toán bằng iXu (có thể quy đổi thành tiền mặt) vào TK chứng khoán của iWealth Partner chậm nhất ngày 15 tháng tiếp theo.(1 iXu = 1,000 VND)&lt;/p&gt;&lt;p&gt;Báo cáo tiền giới thiệu của iWealth Partner thường cập nhật đầy đủ vào ngày 15 hàng tháng (sau khi trả tiền giới thiệu). Dữ liệu được cập nhật đến ngày giao dịch liền trước.&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
           &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q4.&lt;/span&gt;&lt;span&gt;Cách chia sẻ thông tin giữa khách hàng và iWealth Partner?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;Chia sẻ thông tin để iWealth Partner và khách hàng đồng hành sát sao cùng nhau theo &lt;a class=&quot;iwp-text-link&quot; href=&quot;https://help.tcbs.com.vn/chia-se-iwp-kh/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;text-link&quot;&gt;hướng dẫn chia sẻ thông tin với iWealth Partner&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
           &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q5.&lt;/span&gt;&lt;span&gt;Hướng dẫn iWealth Partner gửi lời mời kết nối tới khách hàng?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;iWealth Partner có thể chủ động gửi lời mời kết nối tới khách hàng theo &lt;a class=&quot;iwp-text-link&quot; href=&quot;https://help.tcbs.com.vn/huong-dan-iwp-gui-loi-moi-gan-kh/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;text-link&quot;&gt;hướng dẫn gửi lời mời kết nối&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
@@ -1314,14 +1383,15 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
       <tr><td>Dòng tổng ví dụ</td><td>352,208,221 VND hay 333,304,118 VND</td><td>Bộ phận phụ trách chương trình</td></tr>
       <tr><td>Khối 3 bước, FAQ Q1</td><td>Khóa đào tạo iWealth Partner có bắt buộc không</td><td>Bộ phận phụ trách chương trình</td></tr>
       <tr><td>Thẻ Uy tín hàng đầu</td><td>Nguồn cho Top 1 lợi nhuận 2019-2024, số liệu năm 2025</td><td>Báo cáo tài chính, công bố của TCBS</td></tr>
-      <tr><td>Dòng phụ khối Lý do</td><td>Hơn 13,000 iWealth Partner và 97,000 khách hàng: số liệu tính đến ngày nào</td><td>Bộ phận phụ trách chương trình</td></tr>
+      <tr><td>Dòng phụ khối Lý do</td><td>13,000 iWealth Partner và 97,000 khách hàng tính đến ngày nào</td><td>Bộ phận phụ trách chương trình</td></tr>
       <tr><td>Khối Giải thưởng</td><td>12 logo khớp đúng đơn vị trao giải</td><td>Bộ phận truyền thông</td></tr>
+      <tr><td>Icon khối Lý do</td><td>Hiển thị trên staging với CSS của theme</td><td>Đội dựng trang</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <section id="schema">
-  <h2>4. Structured data</h2>
+  <h2>5. Structured data</h2>
   <p class="intro">Thêm bằng Custom Schema trong Rank Math, đổi Schema Type của trang khỏi Article. Câu trả lời trong FAQPage phải khớp với chữ hiển thị sau khi sửa.</p>
   <h3>FinancialService</h3>
 <pre>&lt;script type="application/ld+json"&gt;
@@ -1390,10 +1460,11 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
   ]
 }
 &lt;/script&gt;</pre>
+
 </section>
 
 <section id="uu-tien">
-  <h2>5. Ưu tiên xử lý</h2>
+  <h2>6. Ưu tiên xử lý</h2>
   <div class="prio">
     <div class="callout critical-box"><h4>P0</h4><ul>
       <li>Sửa lãi suất iPower từ 6.0% thành 9.0%/năm.</li>
@@ -1401,16 +1472,17 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
       <li>Đối chiếu bảng tỉ lệ với chính sách áp dụng từ 01/09/2026: mốc ngày, các mốc iPower, dòng iOptima.</li>
     </ul></div>
     <div class="callout watch-box"><h4>P1</h4><ul>
-      <li>Đổi title, meta, og trong Rank Math cùng lúc golive.</li>
-      <li>Thêm cụm mô tả vào H1.</li>
-      <li>Thêm FAQPage, hoàn thiện FinancialService, bỏ Article.</li>
-      <li>Thêm link tới trang Khách hàng iWealth Partner; đổi link thẻ 7.89% sang Margin 789.</li>
+      <li>Khai báo title, meta, og trong Rank Math cùng lúc golive; kiểm tra canonical và robots giữ như cũ.</li>
+      <li>Thêm cụm mô tả vào H1; thêm FAQPage, FinancialService, bỏ Article.</li>
+      <li>Thêm link tới trang Khách hàng iWealth Partner; thẻ 7.89% trỏ Margin 789.</li>
+      <li>Sửa icon khối Lý do; lưới ưu đãi 2 cột ở tablet; thêm nút đăng ký sau 3 bước; thu gọn bảng ví dụ và thẻ giải thưởng trên mobile.</li>
       <li>Thống nhất 3 bước giữa thân trang và FAQ; sửa mốc tháng trong ví dụ.</li>
     </ul></div>
     <div class="callout good-box"><h4>P2</h4><ul>
-      <li>Sửa 2 lỗi chính tả, dấu đóng ngoặc, lặp từ, chữ Bạn viết hoa, thống nhất xưng hô.</li>
-      <li>Đổi các anchor "tại đây"; link www mở cùng tab; thay thẻ mark bằng span.</li>
-      <li>Thêm nguồn cho câu Top 1 lợi nhuận; xác nhận số 13,000 và 97,000; xác nhận logo giải thưởng.</li>
+      <li>Sửa 2 lỗi chính tả, dấu đóng ngoặc, lặp từ, 7 chỗ viết hoa giữa câu, viết tắt KH, xưng hô Quý khách.</li>
+      <li>Thống nhất định dạng số; đổi 4 anchor "tại đây"; link www mở cùng tab; đổi thẻ mark thành span.</li>
+      <li>Giao diện: lề bảng tỉ lệ trên mobile, hiệu ứng nổi ở thẻ không bấm được, vị trí nút Xem thêm và cột số ở FAQ, focus bàn phím, chú thích bảng, hiệu ứng nút.</li>
+      <li>Thêm nguồn cho câu Top 1 lợi nhuận; ghi thời điểm cho số 13,000 và 97,000; xác nhận logo giải thưởng.</li>
     </ul></div>
   </div>
 </section>
@@ -1418,12 +1490,12 @@ footer.src ul{margin:6px 0 0;padding-left:20px}
 <footer class="src"><div class="shell">
   <b>Nguồn</b>
   <ul>
-    <li><a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/">Trang đang chạy</a>, file bản dựng lại do bạn gửi ngày 06/10/2026</li>
+    <li>File bản dựng <code>iwealth-partner.html</code> do bạn gửi ngày 06/10/2026; <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/">trang đang chạy</a> (cài đặt Rank Math)</li>
     <li><a href="https://www.tcbs.com.vn/ca-nhan/san-pham/ipower/">iPower</a>, <a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/margin-789/">Margin 789</a>, <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/khach-hang-iwealth-partner/">Khách hàng iWealth Partner</a>, <a href="https://www.tcbs.com.vn/iwealth-partner/policy">Chính sách iWealth Partner</a></li>
     <li><a href="https://ygslittleprince-netizen.github.io/sitemap/">Sitemap TCBS: phân loại Tier</a></li>
     <li><a href="https://developers.google.com/search/docs/appearance/structured-data/faqpage">Google Search Central: FAQPage</a>; <a href="https://schema.org/FinancialService">Schema.org: FinancialService</a></li>
   </ul>
-  <p style="margin-top:10px">Dữ liệu trang đang chạy đọc trực tiếp ngày 06/10/2026. Số từ và số đếm văn phong lấy từ script trên file bản dựng lại. Phép cộng ví dụ tính lại bằng script.</p>
+  <p style="margin-top:10px">Số từ, số đếm văn phong, số link và phép cộng ví dụ tính bằng script trên file bản dựng. Chiều dài trang đo khi render ở 4 khung với ảnh giữ chỗ cùng kích thước.</p>
 </div></footer>
 <script>
 (function(){

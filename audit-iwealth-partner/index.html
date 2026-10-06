@@ -1,0 +1,1440 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit iWealth Partner TCBS</title>
+<style>
+:root{--ink:#182338;--muted:#57657c;--paper:#fff;--canvas:#f5f7fb;--line:#e0e6f0;--brand:#b41334;--brand-dark:#871027;--good:#11735c;--watch:#9a5b00;--critical:#ae2538;--soft-good:#edfaf6;--soft-watch:#fff7e9;--soft-critical:#fff0f2;--radius:12px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--canvas);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--brand-dark)}a:hover{color:var(--brand)}
+code{padding:.1em .35em;background:#edf1f6;border-radius:4px;font-size:.92em}
+.shell{width:min(1060px,calc(100% - 32px));margin:0 auto}
+header.hero{padding:44px 0 30px;background:linear-gradient(135deg,#7d0b24 0%,#b41334 100%);color:#fff}
+.eyebrow{margin:0 0 10px;color:#ffd8df;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tier-pill{display:inline-block;padding:.16rem .6rem;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.72rem}
+h1{margin:0;font-size:clamp(1.6rem,4vw,2.3rem);letter-spacing:-.02em;line-height:1.2}
+.lede{max-width:800px;margin:14px 0 0;font-size:1rem;color:#ffeef0}
+.meta{display:flex;flex-wrap:wrap;gap:6px 22px;margin:18px 0 0;font-size:.86rem;color:#ffd8df}
+.meta strong{color:#fff}.meta a{color:#fff}
+nav.toc{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+nav.toc .shell{display:flex;gap:6px 16px;overflow-x:auto;padding:10px 0;white-space:nowrap}
+nav.toc a{color:var(--muted);font-size:.84rem;font-weight:600;text-decoration:none}nav.toc a:hover{color:var(--brand)}
+main{padding:30px 0 60px}
+section{margin:0 0 42px;scroll-margin-top:56px}
+h2{margin:0 0 12px;font-size:1.35rem;letter-spacing:-.01em}
+h3{margin:22px 0 8px;font-size:1.02rem}
+h4{margin:0 0 5px;font-size:.93rem}
+p{margin:0 0 12px}
+.intro{max-width:820px;color:var(--muted)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper)}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th,td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:.91rem}
+th{background:#f8fafc;color:#37455c;font-size:.75rem;letter-spacing:.03em;text-transform:uppercase}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600;white-space:nowrap}
+.badge{display:inline-block;padding:.18rem .55rem;border-radius:999px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.good{background:var(--soft-good);color:var(--good)}.watch{background:var(--soft-watch);color:var(--watch)}.critical{background:var(--soft-critical);color:var(--critical)}
+.callout{border-radius:var(--radius);padding:14px 18px;margin:16px 0 0;font-size:.93rem;border:1px solid}
+.callout p:last-child{margin:0}.callout ul{margin:6px 0 0;padding-left:20px}.callout li+li{margin-top:4px}
+.critical-box{background:var(--soft-critical);border-color:#f3c6cd}
+.watch-box{background:var(--soft-watch);border-color:#f1dcb5}
+.good-box{background:var(--soft-good);border-color:#bfe6d9}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:.9rem}
+.card h4{margin:0 0 6px}.card p{margin:0;color:var(--muted)}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px;border:1px solid rgba(0,0,0,.08)}
+.viewer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0 10px}
+.seg{display:inline-flex;background:#e9edf4;border-radius:999px;padding:4px}
+.seg button{border:0;background:transparent;font:inherit;font-size:.85rem;font-weight:700;color:var(--muted);padding:.4rem 1rem;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--brand);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.viewer-hint{font-size:.83rem;color:var(--muted)}
+.browser{margin:0 auto;border:1px solid #cfd7e3;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 18px 40px rgba(15,23,42,.12);transition:max-width .35s ease}
+.browser.mobile{max-width:412px;border-radius:28px;border-width:8px;border-color:#1f2937}
+.chrome{display:flex;align-items:center;gap:10px;background:#eef1f6;padding:9px 14px;border-bottom:1px solid #d9e0ea}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#cbd3df}
+.dots i:nth-child(1){background:#f87171}.dots i:nth-child(2){background:#fbbf24}.dots i:nth-child(3){background:#34d399}
+.url{flex:1;background:#fff;border-radius:999px;padding:4px 14px;font-size:.78rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-tag{font-size:.68rem;font-weight:800;letter-spacing:.06em;color:var(--watch);background:var(--soft-watch);border-radius:999px;padding:.12rem .55rem}
+.browser.mobile .dots,.browser.mobile .mock-tag{display:none}
+.browser iframe{display:block;width:100%;height:900px;border:0;background:#fff}
+pre{margin:6px 0 0;padding:16px;border-radius:var(--radius);background:#10223d;color:#eff6ff;font-size:.82rem;line-height:1.5;overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+.prio{display:grid;gap:12px}.prio .callout{margin:0}.prio h4{margin:0 0 6px;font-size:.95rem}.prio ul{margin:0;padding-left:20px}
+footer.src{border-top:1px solid var(--line);padding:22px 0 40px;font-size:.85rem;color:var(--muted)}
+footer.src ul{margin:6px 0 0;padding-left:20px}
+@media (max-width:720px){td:first-child{white-space:normal}.browser iframe{height:780px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="shell">
+    <p class="eyebrow">Audit SEO/GEO + Mockup bản dựng lại <span class="tier-pill">Tier 2</span></p>
+    <h1>Audit iWealth Partner: Đối tác giới thiệu khách hàng</h1>
+    <p class="lede">Bản dựng lại đã có H1, alt text đúng, link tới trang sản phẩm trên www và FAQ ở dạng chữ HTML. Còn 2 lỗi số liệu mang sang từ bản cũ (lãi suất iPower, tổng tiền ví dụ), title và meta chưa đổi, trang chưa có FAQPage và chưa link tới trang con. Bảng tỉ lệ cần đối chiếu với chính sách áp dụng từ 01/09/2026.</p>
+    <div class="meta">
+      <span><strong>URL:</strong> <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/">/ve-chung-toi/iwealth-partner/</a></span>
+      <span><strong>Loại trang:</strong> Trang sản phẩm (giới thiệu chương trình), product hub</span>
+      <span><strong>Trạng thái:</strong> Bản dựng lại, chưa golive</span>
+      <span><strong>Ngày audit:</strong> 06/10/2026</span>
+      <span><strong>Số từ:</strong> 2.039 từ (gồm FAQ và tên giải thưởng)</span>
+    </div>
+  </div>
+</header>
+<nav class="toc"><div class="shell">
+  <a href="#danh-gia">1. Đánh giá</a><a href="#de-xuat">2. Đề xuất</a><a href="#mockup">3. Mockup</a><a href="#schema">4. Structured data</a><a href="#uu-tien">5. Ưu tiên xử lý</a>
+</div></nav>
+<main class="shell">
+
+<section id="danh-gia">
+  <h2>1. Đánh giá SEO/GEO</h2>
+  <p class="intro">File bản dựng lại chỉ có CSS và HTML phần thân trang. Title, meta, canonical, robots và schema do Rank Math sinh ra, nên được đọc từ trang đang chạy. Bản dựng lại sẽ giữ nguyên các giá trị này nếu không sửa trong Rank Math. Theo yêu cầu, báo cáo không chấm câu chữ quảng cáo.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Thành phần</th><th>Kết quả</th><th>Căn cứ</th></tr></thead>
+    <tbody>
+      <tr><td>Title</td><td><span class="badge watch">Một phần</span></td><td><code>iWealth Partner - Techcom Securities - TCBS</code> (43 ký tự). Chỉ có tên chương trình và thương hiệu, không có cụm mô tả chương trình.</td></tr>
+      <tr><td>Meta description</td><td><span class="badge watch">Một phần</span></td><td>156 ký tự. Không nêu sản phẩm nào được tính tiền giới thiệu, không có cách đăng ký.</td></tr>
+      <tr><td>Canonical</td><td><span class="badge good">Đạt</span></td><td>Tự trỏ về chính URL. Hreflang khai báo vi, en và x-default.</td></tr>
+      <tr><td>Robots</td><td><span class="badge good">Đạt</span></td><td>follow, index, max-snippet:250</td></tr>
+      <tr><td>Heading</td><td><span class="badge watch">Cần bổ sung cụm mô tả vào H1</span></td><td>Bản dựng lại có 1 H1, thứ bậc H1, H2, H3 đúng. H1 chỉ có chữ "iWealth Partner", dòng "Đối tác giới thiệu khách hàng" là thẻ p. Tên chương trình trong H1 và 2 H2 bọc bằng thẻ mark để tô màu.</td></tr>
+      <tr><td>Nội dung chính</td><td><span class="badge critical">Không đạt</span></td><td>Bảng tỉ lệ, ví dụ, ưu đãi, 3 bước và 5 câu FAQ đều là chữ HTML. Không đạt vì lãi suất iPower lệch với trang sản phẩm và dòng tổng ví dụ không khớp. Chi tiết ở bảng Câu cần sửa.</td></tr>
+      <tr><td>Văn phong</td><td><span class="badge watch">Một phần</span></td><td>2.039 từ; 0 gạch ngang dài; 2 gạch nối dùng để chèn ý; 1 cặp ngoặc kép (tên menu, hợp lệ). Không chấm câu chữ quảng cáo. Còn 2 lỗi chính tả, 1 câu thiếu dấu đóng ngoặc, 1 chỗ lặp từ, xưng hô lẫn giữa bạn (12), Bạn viết hoa giữa câu (2), Quý khách (1), KH (4).</td></tr>
+      <tr><td>Ảnh &amp; alt text</td><td><span class="badge good">Đạt</span></td><td>2 ảnh trang trí ở hero để alt rỗng kèm aria-hidden. Ảnh giao diện có alt mô tả. 12 logo giải thưởng có alt theo tên đơn vị trao giải. Ảnh có width, height, lazy-load; ảnh hero có fetchpriority. Chưa đối chiếu từng logo với đúng đơn vị trao giải.</td></tr>
+      <tr><td>Structured data</td><td><span class="badge watch">Một phần</span></td><td>Rank Math đang sinh Organization, WebSite, BreadcrumbList, WebPage, FinancialService (thiếu name, url) và Article với author <code>tcbs_admin</code>. Chưa có FAQPage dù trang có 5 câu FAQ hiển thị.</td></tr>
+      <tr><td>Internal linking</td><td><span class="badge watch">Một phần</span></td><td>Đã link www tới Vay ký quỹ, iBond, iPower (cả 3 trả về 200) và trang Hỗ trợ. Còn thiếu link tới trang con. Thẻ ưu đãi 7.89% dẫn tới hub margin thay vì trang Margin 789. Link nội bộ mở tab mới. Anchor FAQ vẫn là "hướng dẫn tại đây".</td></tr>
+      <tr><td>Công bố rủi ro &amp; điều kiện</td><td><span class="badge watch">Một phần</span></td><td>Link Chính sách, Điều kiện điều khoản và 3 chú thích nằm ngay dưới bảng tỉ lệ. Các ưu đãi cho khách (7.89%, 100 triệu đồng) không ghi thời hạn trên trang.</td></tr>
+      <tr><td>Liên kết trang con (hub)</td><td><span class="badge critical">Không đạt</span></td><td>Bản dựng lại không có link tới <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/khach-hang-iwealth-partner/">Khách hàng iWealth Partner</a>. Trên bản live, link này chỉ có trong menu ẩn.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout watch-box">
+    <p><b>Phát hiện liên quan ngoài trang.</b></p>
+    <ul>
+      <li>Link Chính sách <code>/iwealth-partner/policy</code> chuyển hướng tới <code>Chinh-sach-iWP-0926.pdf</code>, ghi áp dụng từ ngày 01/09/2026. Tiêu đề bảng trên trang vẫn ghi tỉ lệ từ 03/03/2026.</li>
+      <li>Theo nội dung đọc được từ file PDF đó (qua công cụ trích xuất, cần đối chiếu bản gốc): iPower chia theo mốc số dư 0.2%, 0.3%, 0.5%, 0.7%; không thấy mục iOptima. Trang chỉ ghi iPower "tới 0.7%/năm" và vẫn có dòng iOptima.</li>
+      <li>Link Điều kiện, điều khoản <code>/iwealth-partner/tnc</code> chuyển hướng tới <code>TnC-iWP-Ca-nhan-28.07.pdf</code>.</li>
+      <li>Trang <a href="https://www.tcbs.com.vn/ca-nhan/san-pham/ipower/">iPower</a> ghi lãi suất lên đến 9.0%/năm, biểu lãi suất hiệu lực từ 01/10/2026.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="de-xuat">
+  <h2>2. Đề xuất</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Hạng mục</th><th>Hiện trạng</th><th>Đề xuất</th></tr></thead>
+    <tbody>
+      <tr><td>Từ khóa trọng tâm</td><td>Title và meta chỉ có tên chương trình</td><td>Chính: iWealth Partner, iWealth Partner TCBS, đối tác giới thiệu khách hàng TCBS. Phụ: tiền giới thiệu chứng khoán, giới thiệu khách hàng mở tài khoản chứng khoán, hoa hồng giới thiệu TCBS. Chưa có dữ liệu Search Console để xác nhận lượng tìm kiếm.</td></tr>
+      <tr><td>Title</td><td>iWealth Partner - Techcom Securities - TCBS</td><td><code>iWealth Partner: Đối tác giới thiệu khách hàng | TCBS</code> (53 ký tự)</td></tr>
+      <tr><td>Meta description</td><td>iWealth Partner là chương trình Đối tác giới thiệu khách hàng của TCBS. Là nơi bạn có thể kiến tạo sự nghiệp...</td><td><code>Trở thành iWealth Partner, giới thiệu khách hàng đến TCBS và nhận tiền giới thiệu từ cổ phiếu, margin, trái phiếu, chứng chỉ quỹ. Đăng ký trên TCInvest.</code> (khoảng 150 ký tự)</td></tr>
+      <tr><td>Open Graph</td><td>og:title trùng title cũ</td><td>Dùng lại title và meta mới cho og:title, og:description. Giữ ảnh <code>iwp-node2-top</code> hoặc thay bằng ảnh 1200x630 có tên chương trình.</td></tr>
+      <tr><td>Heading</td><td>H1 chỉ có "iWealth Partner"</td><td>H1: <code>iWealth Partner: Đối tác giới thiệu khách hàng của TCBS</code>. Trong mockup, dòng phụ được đưa vào H1 bằng span nên giao diện không đổi. Thay thẻ mark bằng span để tô màu.</td></tr>
+      <tr><td>Internal linking + CTA</td><td>Thiếu link trang con, thẻ margin trỏ về hub</td><td>Thêm dòng dẫn tới Khách hàng iWealth Partner ở cuối khối 3 bước. Thẻ 7.89% trỏ tới <a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/margin-789/">/ca-nhan/uu-dai/margin-789/</a>. Link www mở cùng tab, giữ tab mới cho app và PDF. Đổi các anchor "tại đây" thành mô tả.</td></tr>
+      <tr><td>Alt text</td><td>Đã đạt</td><td>Giữ nguyên. Nhờ người phụ trách xác nhận từng logo khớp đúng đơn vị trao giải.</td></tr>
+      <tr><td>Schema</td><td>Thiếu FAQPage, có Article</td><td>Thêm FAQPage và hoàn thiện FinancialService theo mục 4. Trong Rank Math, đổi Schema Type khỏi Article.</td></tr>
+      <tr><td>Nội dung, số liệu</td><td>2 lỗi số liệu, mốc chính sách có thể cũ</td><td>Sửa theo bảng Câu cần sửa. Xác nhận bảng tỉ lệ theo chính sách 01/09/2026 trước khi golive.</td></tr>
+      <tr><td>Nhất quán FAQ</td><td>FAQ ghi bước 3 là tham gia khóa đào tạo, khối 3 bước không nhắc tới</td><td>Xác nhận khóa đào tạo có bắt buộc không, rồi thống nhất một cách mô tả.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Câu cần sửa</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Vị trí</th><th>Câu gốc</th><th>Căn cứ</th><th>Đề xuất viết lại</th></tr></thead>
+    <tbody>
+      <tr><td>Thẻ ưu đãi iPower</td><td>Lãi suất linh hoạt theo số dư và giao dịch, lên đến 6.0%/năm.</td><td><span class="badge critical">P0</span> Trang iPower ghi lên đến 9.0%/năm. 6.0% là mức thấp nhất trong bảng.</td><td>Lãi suất linh hoạt theo số dư và giao dịch, lên đến 9.0%/năm.</td></tr>
+      <tr><td>Dòng tổng ví dụ</td><td>Tổng tiền nhận 333,304,118 VND</td><td><span class="badge critical">P0</span> Cộng 7 dòng được 352,208,221 VND. Từng dòng tính đúng.</td><td>Tổng tiền nhận 352,208,221 VND (cần bộ phận phụ trách xác nhận).</td></tr>
+      <tr><td>Đoạn mở ví dụ</td><td>Trong tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa...</td><td><span class="badge watch">P1</span> Dòng iPower tính từ 3/9/2026, không thuộc tháng 3.</td><td>Từ tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa...</td></tr>
+      <tr><td>Hero, gạch đầu dòng 2</td><td>Muốn mở rộng và kết nối mạng lưới quạn hệ chất lượng.</td><td><span class="badge watch">P2</span> Lỗi chính tả.</td><td>Muốn mở rộng và kết nối mạng lưới quan hệ chất lượng.</td></tr>
+      <tr><td>Bảng tỉ lệ, dòng iPower</td><td>...(thời gian áp dụng trong vòng 90 ngày kể từ ngày phát sinh giao dịch chuyển tiền vào iPower đầu tiên của khách hàng.</td><td><span class="badge watch">P2</span> Thiếu dấu đóng ngoặc.</td><td>...iPower đầu tiên của khách hàng).</td></tr>
+      <tr><td>Bảng tỉ lệ, dòng CCQ</td><td>Nhận 0.4% tính trên giá trị đầu tư gốc đầu tư của KH được giới thiệu.</td><td><span class="badge watch">P2</span> Lặp từ, viết tắt KH.</td><td>Nhận 0.4% tính trên giá trị gốc đầu tư của khách hàng được giới thiệu.</td></tr>
+      <tr><td>Thẻ Công nghệ hiện đại</td><td>...đặc biệt, Bạn có thể theo dõi hiệu quả...</td><td><span class="badge watch">P2</span> Viết hoa giữa câu.</td><td>...đặc biệt, bạn có thể theo dõi hiệu quả...</td></tr>
+      <tr><td>Thẻ Hỗ trợ tận tâm</td><td>...đồng hành cùng Bạn trên hành trình...</td><td><span class="badge watch">P2</span> Viết hoa giữa câu.</td><td>...đồng hành cùng bạn trên hành trình...</td></tr>
+      <tr><td>FAQ Q5</td><td>...theo hướng dẫn tạị đây.</td><td><span class="badge watch">P2</span> Lỗi chính tả, anchor không mô tả.</td><td>...theo hướng dẫn gửi lời mời kết nối.</td></tr>
+      <tr><td>FAQ Q2, Q4</td><td>...theo hướng dẫn tại đây</td><td><span class="badge watch">P2</span> Anchor không mô tả.</td><td>Q2: hướng dẫn điều chỉnh phí giao dịch. Q4: hướng dẫn chia sẻ thông tin với iWealth Partner.</td></tr>
+      <tr><td>Thẻ Uy tín hàng đầu</td><td>TCBS là công ty chứng khoán Top 1 lợi nhuận trong 6 năm liên tiếp (2019 - 2024)...</td><td><span class="badge watch">P2</span> Số liệu không ghi nguồn, chưa xác minh trong phiên audit này.</td><td>Giữ câu, thêm nguồn công bố. Cập nhật năm 2025 nếu đã có số liệu.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="mockup">
+  <h2>3. Mockup giao diện sau khi dựng</h2>
+  <p class="intro">Mockup dùng chính file bản dựng lại. Câu chữ giữ nguyên, chỉ thay các câu ở bảng Câu cần sửa, thêm cụm mô tả vào H1, thêm dòng dẫn tới trang con và đổi link thẻ 7.89% sang Margin 789. Dòng tổng ví dụ dùng số cộng lại từ 7 dòng, cần xác nhận trước khi dựng. Mockup không sửa bảng tỉ lệ theo chính sách 01/09/2026 vì chưa có xác nhận.</p>
+  <div class="card-grid">
+    <div class="card"><h4>Màu</h4><p><span class="swatch" style="background:#c41c16"></span>Đỏ chính #C41C16<br><span class="swatch" style="background:#098a61"></span>Nhãn New, tiêu đề bảng #098A61<br><span class="swatch" style="background:#f9fbff"></span>Nền khối xen kẽ #F9FBFF</p></div>
+    <div class="card"><h4>Chữ</h4><p>SF Pro Display, dự phòng font hệ thống. H1 42px/600, H2 34px/600, đoạn văn 16 đến 17px. Trên mobile H1 32px, H2 27px.</p></div>
+    <div class="card"><h4>Bố cục</h4><p>Hero, Quyền lợi (bảng tỉ lệ, ví dụ), Ưu đãi cho khách hàng, Lý do đồng hành, Giải thưởng, 3 bước, FAQ.</p></div>
+  </div>
+  <div class="viewer-bar">
+    <div class="seg" role="group" aria-label="Khung xem">
+      <button type="button" aria-pressed="true" data-mode="desktop">Desktop</button>
+      <button type="button" aria-pressed="false" data-mode="mobile">Mobile</button>
+    </div>
+    <span class="viewer-hint">Bấm câu hỏi trong khối FAQ để mở câu trả lời.</span>
+  </div>
+  <div class="browser" id="browser">
+    <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url">tcbs.com.vn/ve-chung-toi/iwealth-partner/</div><span class="mock-tag">MOCK-UP</span></div>
+    <iframe id="mock" title="Mockup trang iWealth Partner sau khi sửa" srcdoc="&lt;!doctype html&gt;&lt;html lang=&quot;vi&quot;&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;&lt;base target=&quot;_blank&quot;&gt;&lt;style&gt;body{margin:0;background:#fff}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;style&gt;
+.tcbs-iwp-lp {
+  --tcbs-red: #C41C16;
+  --tcbs-red-700: #9E1612;
+  --tcbs-red-soft: #FFE9EA;
+  --tcbs-red-tint: #FDECEC;
+  --ink-900: #111418;
+  --ink-800: #1B2733;
+  --ink-700: #2A3744;
+  --ink-500: #5B6675;
+  --ink-400: #7B8694;
+  --line-300: #D8DEE6;
+  --line-200: #E5E9F0;
+  --surface-soft: #F4F6F9;
+  --surface-softer: #F9FBFF;
+  --white: #FFFFFF;
+  --navy-900: #0B1F3A;
+  --navy-800: #143460;
+  --green: #098A61;
+  --green-soft: #E7F6F0;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-pill: 999px;
+  --shadow-xs: 0 1px 2px rgba(11, 31, 58, .06);
+  --shadow-sm: 0 1px 2px rgba(11, 31, 58, .04), 0 2px 8px rgba(11, 31, 58, .05);
+  --shadow-card: 0 1px 2px rgba(11, 31, 58, .04), 0 8px 24px rgba(11, 31, 58, .06);
+  --shadow-lg: 0 12px 32px rgba(11, 31, 58, .12);
+  --shadow-focus: 0 0 0 3px rgba(196, 28, 22, .18);
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --container: 1314px;
+  --content: 1120px;
+  --font-sans: &quot;SF Pro Display&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  color: var(--ink-800);
+  background: var(--white);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.tcbs-iwp-lp *,
+.tcbs-iwp-lp *::before,
+.tcbs-iwp-lp *::after {
+  box-sizing: border-box;
+}
+
+.tcbs-iwp-lp h1,
+.tcbs-iwp-lp h2,
+.tcbs-iwp-lp h3,
+.tcbs-iwp-lp p,
+.tcbs-iwp-lp ul,
+.tcbs-iwp-lp ol,
+.tcbs-iwp-lp li,
+.tcbs-iwp-lp figure {
+  margin: 0;
+  padding: 0;
+}
+
+.tcbs-iwp-lp img {
+  display: block;
+  max-width: 100%;
+}
+
+.tcbs-iwp-lp a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tcbs-iwp-lp &gt; section {
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+  padding: 56px 0;
+  border-top: 0;
+  border-bottom: 1px solid var(--line-200);
+}
+
+.tcbs-iwp-lp &gt; section:last-of-type {
+  border-bottom: 0;
+}
+
+.tcbs-iwp-lp .iwp-wrap {
+  width: min(calc(100% - 48px), var(--container));
+  margin: 0 auto;
+}
+
+.tcbs-iwp-lp .iwp-content-wrap {
+  width: min(calc(100% - 48px), var(--content));
+  margin: 0 auto;
+}
+
+.tcbs-iwp-lp .iwp-data-content {
+  max-width: var(--content);
+  margin: 0 auto;
+}
+
+.tcbs-iwp-lp .iwp-section-head {
+  max-width: 820px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.tcbs-iwp-lp .iwp-section-title {
+  color: var(--ink-900);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -.02em;
+}
+
+.tcbs-iwp-lp .iwp-section-title mark,
+.tcbs-iwp-lp .iwp-hero-title mark {
+  color: var(--tcbs-red);
+  background: transparent;
+}
+
+.tcbs-iwp-lp .iwp-section-sub {
+  margin-top: 12px;
+  color: var(--ink-500);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.tcbs-iwp-lp .iwp-btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.tcbs-iwp-lp .iwp-btn-primary {
+  color: var(--white);
+  background: var(--tcbs-red);
+  box-shadow: 0 6px 16px rgba(196, 28, 22, .22);
+}
+
+.tcbs-iwp-lp .iwp-btn-primary:hover {
+  background: var(--tcbs-red-700);
+  transform: translateX(2px);
+}
+
+.tcbs-iwp-lp .iwp-btn-secondary {
+  color: var(--tcbs-red);
+  background: var(--white);
+  border-color: var(--tcbs-red);
+}
+
+.tcbs-iwp-lp .iwp-btn-secondary:hover {
+  background: var(--tcbs-red-tint);
+  transform: translateX(2px);
+}
+
+.tcbs-iwp-lp button:focus,
+.tcbs-iwp-lp .iwp-btn:focus {
+  outline: 0 !important;
+}
+
+.tcbs-iwp-lp button:focus-visible,
+.tcbs-iwp-lp .iwp-btn:focus-visible {
+  outline: 0 !important;
+  box-shadow: var(--shadow-focus);
+}
+
+.tcbs-iwp-lp .iwp-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0 64px;
+  background-color: transparent;
+  background-image: linear-gradient(135deg, #eadeff, #dfeaff 25%, #f1fcff 70%, #e5fffc);
+}
+
+.tcbs-iwp-lp .iwp-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: .94fr 1.06fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.tcbs-iwp-lp .iwp-hero-copy {
+  max-width: 560px;
+}
+
+.tcbs-iwp-lp .iwp-hero-tag {
+  display: inline-flex;
+  margin-bottom: 12px;
+  color: var(--tcbs-red);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.tcbs-iwp-lp .iwp-hero-title {
+  color: var(--ink-900);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -.025em;
+}
+
+.tcbs-iwp-lp .iwp-hero-subtitle {
+  margin-top: 8px;
+  color: var(--ink-700);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.tcbs-iwp-lp .iwp-hero-intro {
+  margin-top: 16px;
+  color: var(--ink-700);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.tcbs-iwp-lp .iwp-hero-bullets {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+  list-style: none;
+}
+
+.tcbs-iwp-lp .iwp-hero-bullets li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.tcbs-iwp-lp .iwp-hero-bullets li::before {
+  position: absolute;
+  top: .2em;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background: url(&quot;https://www.tcbs.com.vn/documents/392342/392848/tech-bullet.svg&quot;) center/contain no-repeat;
+  content: &quot;&quot;;
+}
+
+.tcbs-iwp-lp .iwp-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.tcbs-iwp-lp .iwp-hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  min-width: 0;
+  padding: 64px 26px 72px 0;
+  justify-self: end;
+  isolation: isolate;
+}
+
+.tcbs-iwp-lp .iwp-hero-screen {
+  position: relative;
+  z-index: 1;
+  width: 92%;
+  height: auto;
+  margin-left: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .82);
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 24px 56px rgba(11, 31, 58, .18);
+}
+
+.tcbs-iwp-lp .iwp-hero-node {
+  position: absolute;
+  z-index: 2;
+  width: min(43%, 300px);
+  height: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .9);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: 0 16px 34px rgba(11, 31, 58, .16);
+  pointer-events: none;
+  animation: iwpHeroFloat 5s ease-in-out infinite;
+}
+
+.tcbs-iwp-lp .iwp-hero-node-one {
+  top: 0;
+  right: 0;
+}
+
+.tcbs-iwp-lp .iwp-hero-node-two {
+  bottom: 8px;
+  left: 0;
+  animation-delay: -2.4s;
+}
+
+@keyframes iwpHeroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.tcbs-iwp-lp .iwp-benefits-section {
+  background: var(--surface-softer);
+}
+
+.tcbs-iwp-lp .iwp-data-block {
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line-200);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.tcbs-iwp-lp .iwp-data-block + .iwp-data-block {
+  margin-top: 32px;
+}
+
+.tcbs-iwp-lp .iwp-data-title {
+  padding: 14px 20px;
+  color: var(--white);
+  background: linear-gradient(120deg, #087B59, #0A9569);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.tcbs-iwp-lp .iwp-data-intro {
+  padding: 24px 24px 0;
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.tcbs-iwp-lp .iwp-table-scroll {
+  overflow-x: auto;
+}
+
+.tcbs-iwp-lp .iwp-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.tcbs-iwp-lp .iwp-table caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.tcbs-iwp-lp .iwp-table th,
+.tcbs-iwp-lp .iwp-table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line-200);
+  vertical-align: top;
+  text-align: left;
+}
+
+.tcbs-iwp-lp .iwp-rate-table th:first-child,
+.tcbs-iwp-lp .iwp-rate-table td:first-child {
+  position: relative;
+  padding-left: 82px;
+}
+
+.tcbs-iwp-lp .iwp-table th {
+  color: var(--ink-900);
+  background: var(--surface-soft);
+  font-weight: 600;
+}
+
+.tcbs-iwp-lp .iwp-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.tcbs-iwp-lp .iwp-table strong,
+.tcbs-iwp-lp .iwp-rate {
+  color: var(--tcbs-red);
+  font-weight: 600;
+}
+
+.tcbs-iwp-lp .iwp-new {
+  position: absolute;
+  top: 50%;
+  left: -1px;
+  display: inline-flex;
+  min-width: 56px;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 0 6px 6px 0;
+  color: var(--white);
+  background: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  transform: translateY(-50%);
+}
+
+.tcbs-iwp-lp .iwp-new::after {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-top: 7px solid #066B4C;
+  border-left: 7px solid transparent;
+  content: &quot;&quot;;
+}
+
+.tcbs-iwp-lp .iwp-footnotes {
+  display: grid;
+  gap: 7px;
+  padding: 18px 24px 22px 44px;
+  border-top: 1px solid var(--line-200);
+  color: var(--ink-500);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.tcbs-iwp-lp .iwp-footnotes a,
+.tcbs-iwp-lp .iwp-text-link {
+  color: var(--tcbs-red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tcbs-iwp-lp .iwp-example-total td {
+  color: var(--ink-900);
+  background: var(--tcbs-red-tint);
+  font-weight: 600;
+}
+
+.tcbs-iwp-lp .iwp-customer-block {
+  margin-top: 56px;
+  padding-top: 56px;
+  border-top: 1px solid var(--line-200);
+}
+
+.tcbs-iwp-lp .iwp-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tcbs-iwp-lp .iwp-card {
+  min-width: 0;
+  background: var(--white);
+  border: 1px solid var(--line-200);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.tcbs-iwp-lp .iwp-card:hover {
+  border-color: var(--line-300);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+.tcbs-iwp-lp .iwp-offer-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  padding: 24px 20px;
+}
+
+.tcbs-iwp-lp .iwp-icon-tile {
+  display: inline-flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border-radius: 14px;
+  background: #F4F6FB;
+}
+
+.tcbs-iwp-lp .iwp-icon-tile svg {
+  width: 36px;
+  height: 36px;
+}
+
+.tcbs-iwp-lp .iwp-card-title {
+  color: var(--ink-900);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.tcbs-iwp-lp .iwp-card-copy {
+  margin-top: 12px;
+  color: var(--ink-500);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.tcbs-iwp-lp .iwp-card-copy a {
+  color: var(--tcbs-red);
+}
+
+.tcbs-iwp-lp .iwp-center-actions {
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.tcbs-iwp-lp .iwp-reasons-section {
+  background: linear-gradient(180deg, rgba(246, 243, 238, 1) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.tcbs-iwp-lp .iwp-reason-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.tcbs-iwp-lp .iwp-reason-card {
+  padding: 28px;
+  text-align: left;
+}
+
+.tcbs-iwp-lp .iwp-awards-section {
+  background: var(--surface-softer);
+}
+
+.tcbs-iwp-lp .iwp-awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tcbs-iwp-lp .iwp-award-card {
+  display: grid;
+  min-height: 112px;
+  grid-template-columns: 70px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding: 18px;
+}
+
+.tcbs-iwp-lp .iwp-award-logo {
+  width: 70px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.tcbs-iwp-lp .iwp-award-name {
+  color: var(--ink-700);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.tcbs-iwp-lp .iwp-award-year {
+  display: block;
+  margin-top: 4px;
+  color: var(--tcbs-red);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tcbs-iwp-lp .iwp-steps-block {
+  margin-top: 56px;
+  padding: 56px 0;
+  border-top: 1px solid var(--line-200);
+  background: linear-gradient(180deg, #FBF8F4 0%, #FFFFFF 100%);
+}
+
+.tcbs-iwp-lp .iwp-step-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.tcbs-iwp-lp .iwp-step-card {
+  position: relative;
+  padding: 30px 28px 28px;
+  border-top: 3px solid var(--tcbs-red);
+}
+
+.tcbs-iwp-lp .iwp-step-label {
+  display: inline-flex;
+  margin-bottom: 18px;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  color: var(--white);
+  background: var(--tcbs-red);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tcbs-iwp-lp .iwp-step-copy {
+  margin-top: 12px;
+  color: var(--ink-500);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.tcbs-iwp-lp .iwp-step-copy strong {
+  color: var(--ink-700);
+  font-weight: 600;
+}
+
+.tcbs-iwp-lp .iwp-faq-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.tcbs-iwp-lp .iwp-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(0, 2fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.tcbs-iwp-lp .iwp-faq-title {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.tcbs-iwp-lp .iwp-faq-aside {
+  position: sticky;
+  top: 24px;
+}
+
+.tcbs-iwp-lp .iwp-faq-aside .iwp-section-sub {
+  margin-top: 12px;
+}
+
+.tcbs-iwp-lp .iwp-faq-list {
+  display: grid;
+  gap: 14px;
+}
+
+.tcbs-iwp-lp .iwp-faq-item {
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line-200);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.tcbs-iwp-lp .iwp-faq-item summary {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 20px;
+  color: var(--ink-800);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  list-style: none;
+  cursor: pointer;
+}
+
+.tcbs-iwp-lp .iwp-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.tcbs-iwp-lp .iwp-faq-item summary:focus,
+.tcbs-iwp-lp .iwp-faq-item summary:focus-visible {
+  outline: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.tcbs-iwp-lp .iwp-faq-num {
+  color: var(--tcbs-red);
+}
+
+.tcbs-iwp-lp .iwp-faq-chevron {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface-soft);
+  transition: color .18s ease, background .18s ease, transform .18s ease;
+}
+
+.tcbs-iwp-lp .iwp-faq-item[open] .iwp-faq-chevron {
+  color: var(--white);
+  background: var(--tcbs-red);
+  transform: rotate(180deg);
+}
+
+.tcbs-iwp-lp .iwp-faq-item summary:focus-visible .iwp-faq-chevron {
+  box-shadow: var(--shadow-focus);
+}
+
+.tcbs-iwp-lp .iwp-faq-body {
+  padding: 0 20px 20px 64px;
+  color: var(--ink-500);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.tcbs-iwp-lp .iwp-faq-body p + p,
+.tcbs-iwp-lp .iwp-faq-body p + ul {
+  margin-top: 8px;
+}
+
+.tcbs-iwp-lp .iwp-faq-body ul {
+  padding-left: 20px;
+}
+
+.tcbs-iwp-lp .iwp-faq-more {
+  margin-top: 20px;
+}
+
+@media (max-width: 1120px) {
+  .tcbs-iwp-lp .iwp-offer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tcbs-iwp-lp .iwp-awards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 880px) {
+  .tcbs-iwp-lp .iwp-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-grid {
+    gap: 28px;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-copy {
+    max-width: 680px;
+  }
+
+  .tcbs-iwp-lp .iwp-reason-grid,
+  .tcbs-iwp-lp .iwp-step-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tcbs-iwp-lp .iwp-faq-aside {
+    position: static;
+  }
+}
+
+@media (max-width: 1080px) {
+  .tcbs-iwp-lp .iwp-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 680px) {
+  .tcbs-iwp-lp &gt; section {
+    padding: 44px 0;
+  }
+
+  .tcbs-iwp-lp .iwp-wrap,
+  .tcbs-iwp-lp .iwp-content-wrap {
+    width: min(calc(100% - 32px), var(--container));
+  }
+
+  .tcbs-iwp-lp .iwp-hero {
+    padding: 52px 0 44px;
+  }
+
+  .tcbs-iwp-lp .iwp-customer-block,
+  .tcbs-iwp-lp .iwp-steps-block {
+    margin-top: 44px;
+    padding-top: 44px;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-title {
+    font-size: 32px;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-subtitle {
+    font-size: 18px;
+  }
+
+  .tcbs-iwp-lp .iwp-section-title {
+    font-size: 27px;
+    line-height: 1.22;
+  }
+
+  .tcbs-iwp-lp .iwp-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .tcbs-iwp-lp .iwp-actions .iwp-btn {
+    width: 100%;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-visual {
+    max-width: 620px;
+    padding: 52px 16px 58px 0;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-screen {
+    border-radius: 14px;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-node {
+    width: 44%;
+    border-radius: 10px;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-node-one {
+    top: 0;
+    right: 0;
+    left: auto;
+  }
+
+  .tcbs-iwp-lp .iwp-hero-node-two {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+  }
+
+  .tcbs-iwp-lp .iwp-data-block {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .tcbs-iwp-lp .iwp-data-title {
+    border-radius: var(--r-lg) var(--r-lg) 0 0;
+  }
+
+  .tcbs-iwp-lp .iwp-data-intro {
+    padding: 20px 0;
+  }
+
+  .tcbs-iwp-lp .iwp-table-scroll {
+    overflow: visible;
+  }
+
+  .tcbs-iwp-lp .iwp-table,
+  .tcbs-iwp-lp .iwp-table tbody,
+  .tcbs-iwp-lp .iwp-table tr,
+  .tcbs-iwp-lp .iwp-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .tcbs-iwp-lp .iwp-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .tcbs-iwp-lp .iwp-table tr {
+    overflow: hidden;
+    margin-bottom: 14px;
+    background: var(--white);
+    border: 1px solid var(--line-200);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tcbs-iwp-lp .iwp-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--line-200);
+  }
+
+  .tcbs-iwp-lp .iwp-table td::before {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--ink-400);
+    content: attr(data-label);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .tcbs-iwp-lp .iwp-footnotes {
+    padding: 18px 0 0 20px;
+    border-top: 0;
+  }
+
+  .tcbs-iwp-lp .iwp-offer-grid,
+  .tcbs-iwp-lp .iwp-awards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tcbs-iwp-lp .iwp-offer-card,
+  .tcbs-iwp-lp .iwp-reason-card,
+  .tcbs-iwp-lp .iwp-step-card {
+    padding: 24px;
+  }
+
+  .tcbs-iwp-lp .iwp-faq-body {
+    padding: 0 18px 18px;
+  }
+
+  .tcbs-iwp-lp .iwp-faq-item summary {
+    padding: 17px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tcbs-iwp-lp * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+.tcbs-iwp-lp .iwp-red{color:var(--tcbs-red)}
+.tcbs-iwp-lp .iwp-hero-title .iwp-hero-subtitle{display:block;margin-top:10px;letter-spacing:0}
+.tcbs-iwp-lp .iwp-child-link{margin-top:28px;text-align:center;color:var(--ink-700);font-size:16px}
+.tcbs-iwp-lp .iwp-child-link a{color:var(--tcbs-red);text-decoration:underline;text-underline-offset:2px}
+&lt;/style&gt;
+
+&lt;div class=&quot;tcbs-iwp-lp&quot;&gt;
+  &lt;section id=&quot;hero&quot; class=&quot;iwp-hero&quot; data-screen-label=&quot;Giới thiệu iWealth Partner&quot;&gt;
+    &lt;div class=&quot;iwp-wrap iwp-hero-grid&quot;&gt;
+      &lt;div class=&quot;iwp-hero-copy&quot;&gt;
+        &lt;h1 class=&quot;iwp-hero-title&quot;&gt;&lt;span class=&quot;iwp-red&quot;&gt;iWealth Partner&lt;/span&gt;&lt;span class=&quot;iwp-hero-subtitle&quot;&gt;Đối tác giới thiệu khách hàng của TCBS&lt;/span&gt;&lt;/h1&gt;
+        &lt;p class=&quot;iwp-hero-intro&quot;&gt;Bạn đam mê tài chính và khát khao gia tăng thu nhập không giới hạn? iWealth Partner chính là bước tiếp theo để nâng tầm hành trình của bạn - nơi hội tụ những người tiên phong, chủ động kiến tạo sự nghiệp và tài chính cá nhân theo cách thông minh nhất.&lt;br&gt;Chúng tôi chào đón bạn nếu bạn:&lt;/p&gt;
+        &lt;ul class=&quot;iwp-hero-bullets&quot;&gt;
+          &lt;li&gt;Muốn chủ động thời gian, biến kiến thức thành thu nhập không giới hạn.&lt;/li&gt;
+          &lt;li&gt;Muốn mở rộng và kết nối mạng lưới quan hệ chất lượng.&lt;/li&gt;
+          &lt;li&gt;Muốn khẳng định tầm ảnh hưởng trong cộng đồng tài chính.&lt;/li&gt;
+          &lt;li&gt;Muốn khám phá và tận dụng bộ giải pháp tài chính toàn diện từ hệ sinh thái TCBS.&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div class=&quot;iwp-actions&quot;&gt;
+          &lt;a class=&quot;iwp-btn iwp-btn-primary&quot; href=&quot;https://tcinvest.tcbs.com.vn/iwealth-partner&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_join&quot; data-section=&quot;hero&quot; data-cta-type=&quot;primary&quot;&gt;Tham gia ngay&lt;/a&gt;
+          &lt;a class=&quot;iwp-btn iwp-btn-secondary&quot; href=&quot;https://onboarding.tcbs.com.vn/onboarding&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_open_account&quot; data-section=&quot;hero&quot; data-cta-type=&quot;secondary&quot;&gt;Mở tài khoản&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;figure class=&quot;iwp-hero-visual&quot;&gt;
+        &lt;img class=&quot;iwp-hero-node iwp-hero-node-one&quot; src=&quot;https://www.tcbs.com.vn/wp-content/uploads/2025/10/iwp-node2-top.png&quot; alt=&quot;&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;img class=&quot;iwp-hero-node iwp-hero-node-two&quot; src=&quot;https://www.tcbs.com.vn/wp-content/uploads/2025/10/iwp-node-top.png&quot; alt=&quot;&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;img class=&quot;iwp-hero-screen&quot; src=&quot;https://www.tcbs.com.vn/wp-content/uploads/2025/10/iwp-screen-1024x670.png&quot; alt=&quot;Màn hình quản lý iWealth Partner trên TCInvest&quot; width=&quot;1024&quot; height=&quot;670&quot; fetchpriority=&quot;high&quot;&gt;
+      &lt;/figure&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;quyen-loi&quot; class=&quot;iwp-benefits-section&quot; data-screen-label=&quot;Quyền lợi iWealth Partner&quot;&gt;
+    &lt;div class=&quot;iwp-wrap&quot;&gt;
+      &lt;div class=&quot;iwp-data-content&quot;&gt;
+      &lt;div class=&quot;iwp-section-head&quot;&gt;
+        &lt;h2 class=&quot;iwp-section-title&quot;&gt;Trở thành &lt;span class=&quot;iwp-red&quot;&gt;iWealth Partner&lt;/span&gt; bạn được hưởng quyền lợi xứng tầm&lt;/h2&gt;
+      &lt;/div&gt;
+
+      &lt;article class=&quot;iwp-data-block&quot;&gt;
+        &lt;h3 class=&quot;iwp-data-title&quot;&gt;Đa dạng các tính năng với tỉ lệ tiền giới thiệu vượt trội&lt;/h3&gt;
+        &lt;div class=&quot;iwp-table-scroll&quot;&gt;
+          &lt;table class=&quot;iwp-table iwp-rate-table&quot;&gt;
+            &lt;caption&gt;Tỉ lệ tiền giới thiệu theo từng tính năng từ ngày 03/03/2026&lt;/caption&gt;
+            &lt;colgroup&gt;&lt;col style=&quot;width:34%&quot;&gt;&lt;col style=&quot;width:66%&quot;&gt;&lt;/colgroup&gt;
+            &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Tính năng&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Tỉ lệ tiền giới thiệu từ 03/03/2026&lt;sup&gt;1&lt;/sup&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Giao dịch Cổ phiếu/ Chứng chỉ quỹ niêm yết/ Chứng quyền&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Nhận &lt;strong&gt;100%&lt;/strong&gt; phí giao dịch ròng từ khách hàng giới thiệu&lt;sup&gt;2&lt;/sup&gt;.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Giao dịch Vay ký quỹ (Margin)&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Lên tới &lt;strong&gt;1%/năm&lt;/strong&gt; tính trên dư nợ cho vay tính theo số ngày thực tế của khách hàng được giới thiệu.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;&lt;span class=&quot;iwp-new&quot;&gt;New&lt;/span&gt; Giao dịch Trái phiếu (iBond/iConnect)&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Nhận &lt;strong&gt;0.4%&lt;/strong&gt; giá trị doanh số quy chuẩn trái phiếu iBond và &lt;strong&gt;0.075%&lt;/strong&gt; doanh số quy chuẩn trái phiếu iConnect.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;&lt;span class=&quot;iwp-new&quot;&gt;New&lt;/span&gt; Giao dịch Chứng chỉ quỹ&lt;br&gt;- Quỹ Trái phiếu TCBF&lt;br&gt;- Quỹ Cổ phiếu&lt;br&gt;- Quỹ Cân bằng (Ngoại trừ TCFF)&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Nhận &lt;strong&gt;0.4%&lt;/strong&gt; tính trên giá trị gốc đầu tư của khách hàng được giới thiệu.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Giao dịch Chứng chỉ quỹ TCFF&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Nhận &lt;strong&gt;0.4%/năm&lt;/strong&gt; phí giới thiệu tính trên giá trị tài sản ròng của quỹ theo thời gian nắm giữ thực tế của khách hàng được giới thiệu.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;&lt;span class=&quot;iwp-new&quot;&gt;New&lt;/span&gt; iTracker&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Nhận &lt;strong&gt;0.5% tính trên gốc&lt;/strong&gt; của giá trị đầu tư (bao gồm các khoản sao chép mới, đầu tư thêm) thực tế của iTracker mà iWealth Partner giới thiệu nhu cầu thành công cho khách hàng.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;&lt;span class=&quot;iwp-new&quot;&gt;New&lt;/span&gt; Tài khoản nhân lãi iPower&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Nhận tới &lt;strong&gt;0.7%/năm&lt;/strong&gt; số dư tiền gửi thực tế iPower của khách hàng theo ngày (thời gian áp dụng trong vòng 90 ngày kể từ ngày phát sinh giao dịch chuyển tiền vào iPower đầu tiên của khách hàng).&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;&lt;span class=&quot;iwp-new&quot;&gt;New&lt;/span&gt; Giao dịch iOptima&lt;sup&gt;3&lt;/sup&gt;&lt;/td&gt;&lt;td data-label=&quot;Tỉ lệ tiền giới thiệu&quot;&gt;Tối ưu: &lt;strong&gt;0.5%/năm&lt;/strong&gt; tính trên Giá Trị Xác Nhận giao dịch thành công.&lt;br&gt;Bảo toàn, An lãi: &lt;strong&gt;0.8%/năm&lt;/strong&gt; tính trên Giá Trị Xác Nhận giao dịch thành công tính trên số ngày đầu tư thực tế.&lt;br&gt;Vượt trội, Phòng ngự, Cân bằng: &lt;strong&gt;0.6%&lt;/strong&gt; tính trên Giá Trị Xác Nhận giao dịch thành công.&lt;/td&gt;&lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+        &lt;ol class=&quot;iwp-footnotes&quot;&gt;
+          &lt;li&gt;Xem thêm &lt;a href=&quot;https://www.tcbs.com.vn/iwealth-partner/policy&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_policy&quot; data-section=&quot;quyen-loi&quot; data-cta-type=&quot;text-link&quot;&gt;Chính sách&lt;/a&gt; và &lt;a href=&quot;https://www.tcbs.com.vn/iwealth-partner/tnc&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_policy&quot; data-section=&quot;quyen-loi&quot; data-cta-type=&quot;text-link&quot;&gt;Điều kiện, điều khoản&lt;/a&gt; của chương trình. (Xem lại &lt;a href=&quot;https://www.tcbs.com.vn/wp-content/uploads/2026/03/iWP-Policy-161124.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_policy&quot; data-section=&quot;quyen-loi&quot; data-cta-type=&quot;text-link&quot;&gt;chính sách áp dụng trước ngày 03/03/2026&lt;/a&gt;)&lt;/li&gt;
+          &lt;li&gt;Phí giao dịch ròng: Tiền giới thiệu sẽ dựa trên phần chênh lệch của phí giao dịch cổ phiếu của khách hàng với mức phí tối thiểu trả Sở là 0.03%&lt;/li&gt;
+          &lt;li&gt;Áp dụng cho iWP có đăng ký làm đối tác giới thiệu khách hàng với WealthNet. Quý khách có thể tham khảo thêm tại mục Đối tác trên ứng dụng TCInvest&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/article&gt;
+
+      &lt;article id=&quot;vi-du&quot; class=&quot;iwp-data-block&quot;&gt;
+        &lt;h3 class=&quot;iwp-data-title&quot;&gt;Ví dụ minh họa về thưởng giới thiệu&lt;/h3&gt;
+        &lt;p class=&quot;iwp-data-intro&quot;&gt;Anh Nam đăng ký trở thành iWealth Partner (iWP) tại TCBS, anh giới thiệu Khách hàng Hoa mở tài khoản TCBS từ 03/03/2026 và gán chăm sóc TKCK chị Hoa (Chị Hoa không là Khách hàng VIP hoặc định danh tại Techcombank). Từ tháng 03/2026, anh Nam đã giới thiệu thành công chị Hoa sử dụng các tính năng thuộc hệ sinh thái trên TCInvest, nên số tiền giới thiệu anh Nam nhận được tính tương ứng theo từng tính năng như sau:&lt;/p&gt;
+        &lt;div class=&quot;iwp-table-scroll&quot;&gt;
+          &lt;table class=&quot;iwp-table iwp-example-table&quot;&gt;
+            &lt;caption&gt;Ví dụ minh họa tiền giới thiệu của iWealth Partner Nam&lt;/caption&gt;
+            &lt;colgroup&gt;&lt;col style=&quot;width:25%&quot;&gt;&lt;col style=&quot;width:39%&quot;&gt;&lt;col style=&quot;width:36%&quot;&gt;&lt;/colgroup&gt;
+            &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Tính năng&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Giá trị giao dịch/đầu tư&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Phí giới thiệu tương ứng&lt;br&gt;(trước thuế)&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Cổ phiếu/ Chứng chỉ quỹ niêm yết/ Chứng quyền&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;Chị Hoa có tổng giá trị giao dịch mua và bán trong tháng 3/2026 là 20,000,000,000 VND với phí giao dịch là 0.15%.&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;20,000,000,000 x (0.15% - 0.03%) = 24,000,000 VND.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Trái phiếu (iBond/iConnect)&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;Chị Hoa đặt lệnh và có nhập mã giới thiệu của iWP Nam khi mua trái phiếu iBond Pro90 với gốc đầu tư 5,000,000,000 VND&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;(3/12 x 5,000,000,000) x 0.4% = 5,000,000 VND.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Vay ký quỹ (Margin)&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;Chị Hoa giải ngân khoản vay giá trị 10,000,000,000 VND với lãi suất 11.5% ngày 9/3 và thanh toán khoản vay vào ngày 26/3, iWP Nam nhận tiền giới thiệu vay ký quỹ 1%.&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;10,000,000,000 x 1% x 17/365 = 4,657,534 VND.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Chứng chỉ quỹ&lt;br&gt;- Quỹ Trái phiếu TCBF&lt;br&gt;- Quỹ Cổ phiếu&lt;br&gt;- Quỹ Cân bằng (Ngoại trừ TCFF)&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;Chị Hoa đặt lệnh và có nhập mã giới thiệu của iWP Nam khi mua CCQ TCBF với gốc đầu tư là 15,000,000,000 VND&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;15,000,000,000 x 0.4% = 60,000,000 VND.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Chứng chỉ quỹ TCFF&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;Chị Hoa đặt lệnh và có nhập mã giới thiệu của iWP Nam khi mua thành công CCQ TCFF số lượng 1,000,000 CCQ vào ngày 4/3 và bán tại ngày 6/3.&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;Với NAV/CCQ ngày 4/3 và 5/3 lần lượt là 15,009 VND và 15,241 VND.&lt;br&gt;Ngày 4/3: 0.4% x 15,009 x 1,000,000 /365 = 164,482 VND&lt;br&gt;Ngày 5/3: 0.4% x 15,241 x 1,000,000 /365 = 167,025 VND.&lt;br&gt;Tổng tiền giới thiệu tính theo số ngày khách hàng nắm giữ (2 ngày): 331,507 VND.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;Tài khoản nhân lãi iPower&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;Chị Hoa chưa từng sử dụng iPower trước đây, sau khi gán cho iWP chị Hoa gửi vào iPower với số tiền là 60,000,000,000 VND tại ngày 3/9/2026 và duy trì số tiền không đổi trong hết tháng 9.&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;60,000,000,000 x 0.7%/365 = 1,150,685 VND.&lt;br&gt;Tổng tiền: 1,150,685 x 28 = 32,219,180 VND.&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;iTracker&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;Chị Hoa đặt lệnh sao chép iTracker và có nhập mã giới thiệu của iWP Nam, sao chép giao dịch thành công giá trị 45,000,000,000 VND tại ngày 10/3.&lt;br&gt;&lt;br&gt;Ngày 11/3 chị Hoa tiếp tục đầu tư thêm 200,000,000 VND&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;Ngày 10/3: 45,000,000,000 x 0.5% = 225,000,000 VND.&lt;br&gt;&lt;br&gt;Ngày 11/3: 200,000,000 x 0.5% = 1,000,000 VND.&lt;br&gt;&lt;br&gt;Tổng tiền giới thiệu: 226,000,000 VND&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr class=&quot;iwp-example-total&quot;&gt;&lt;td data-label=&quot;Tính năng&quot;&gt;&lt;strong&gt;Tổng tiền nhận&lt;/strong&gt;&lt;/td&gt;&lt;td data-label=&quot;Giá trị giao dịch/đầu tư&quot;&gt;&lt;/td&gt;&lt;td data-label=&quot;Phí giới thiệu tương ứng&quot;&gt;&lt;strong&gt;352,208,221 VND&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;uu-dai-khach-hang&quot; class=&quot;iwp-customer-block&quot; data-screen-label=&quot;Ưu đãi dành cho khách hàng&quot;&gt;
+      &lt;div class=&quot;iwp-section-head&quot;&gt;
+        &lt;h2 class=&quot;iwp-section-title&quot;&gt;Và mang đến những ưu đãi đặc biệt dành cho khách hàng của bạn&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;iwp-offer-grid&quot;&gt;
+        &lt;article class=&quot;iwp-card iwp-offer-card&quot;&gt;
+          &lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg id=&quot;fi_17598058&quot; viewBox=&quot;0 0 512 512&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; data-name=&quot;Layer 1&quot;&gt; &lt;path d=&quot;m310.864 383.751a7 7 0 0 0 7-7v-11.046c19.121-2.595 33.7-15.633 33.7-31.277s-14.583-28.682-33.7-31.278v-35.337c8.5 1.6 15.626 6.031 18.446 11.845a7 7 0 1 0 12.6-6.113c-5.17-10.659-16.955-18.072-31.044-19.93v-11a7 7 0 1 0 -14 0v11.013c-19.135 2.6-33.732 15.648-33.732 31.308s14.6 28.683 33.732 31.278v35.308c-8.5-1.6-15.64-6.029-18.486-11.84a7 7 0 0 0 -12.58 6.158c5.2 10.63 16.994 18.024 31.062 19.88v11.029a7 7 0 0 0 7.002 7.002zm7-66.422c11.207 2.1 19.7 9.083 19.7 17.1s-8.493 15-19.7 17.1zm-33.732-32.393c0-8.031 8.506-15.024 19.728-17.128v34.227c-11.22-2.102-19.726-9.082-19.726-17.099zm133.249 112.064a30.978 30.978 0 0 0 -11.816-2.932 126.713 126.713 0 0 0 32.148-84.391c0-67.594-53.147-123-119.847-126.652v-27.1a101.247 101.247 0 0 0 12.584.818c13.346 0 25.164-2.943 35.294-8.812 15.091-8.742 26.482-24 33.857-45.364a7 7 0 0 0 -5.291-9.16c-22.185-4.283-41.1-2.047-56.2 6.65a65.906 65.906 0 0 0 -20.243 18.457v-14.108c13.7-16.379 20.651-33.185 20.631-49.989-.019-17.451-7.538-34.948-22.346-52a7 7 0 0 0 -5.286-2.417 7 7 0 0 0 -5.285 2.409c-14.824 17.059-22.35 34.556-22.37 52.008-.018 16.8 6.94 33.612 20.653 49.992v14.117a65.93 65.93 0 0 0 -20.264-18.463c-15.113-8.7-34.028-10.932-56.214-6.649a7 7 0 0 0 -5.291 9.16c7.374 21.361 18.768 36.623 33.861 45.364 10.132 5.869 21.952 8.812 35.308 8.812a101.254 101.254 0 0 0 12.594-.819v27.1c-66.716 3.646-119.875 59.057-119.875 126.652a126.33 126.33 0 0 0 12.6 55.07c-16.643-2.942-31.711-2.61-52.576-2.143l-3.337.075v-16.778a7 7 0 0 0 -7-7h-52.381a7 7 0 0 0 -7 7v153.013a7 7 0 0 0 7 7h52.384a7 7 0 0 0 7-7v-19.359c21.35.429 25.613 2.585 51.256 15.566 3.681 1.862 7.774 3.936 12.393 6.242a86.855 86.855 0 0 0 41.643 10.631c11.7 0 23.9-2.275 36.734-6.819l.2-.073 131.9-51.165a30.852 30.852 0 0 0 2.582-56.943zm-34.072-291.123c-12.122 27.837-32.779 39.761-62.807 36.272 11.998-27.749 32.642-39.674 62.807-36.272zm-144.919 0c30.173-3.416 50.834 8.518 62.835 36.271-30.048 3.499-50.712-8.435-62.835-36.271zm72.471-87.712c18.046 24.4 18.047 48.262 0 72.554-18.061-24.292-18.067-48.149 0-72.554zm-112.87 291.516a112.859 112.859 0 1 1 176.663 93.083q-20.272 7.3-40.537 14.605.046-.832.047-1.673a29 29 0 0 0 -1.269-8.5 100.111 100.111 0 1 0 -95.687-30.031c-8.182-3.333-15.467-5.94-22.211-7.976a112.318 112.318 0 0 1 -17.006-59.508zm74.523 76.931a85.941 85.941 0 1 1 52.435 7.872 28.972 28.972 0 0 0 -19.867-7.872zm-145.843 105.306h-38.38v-139.009h38.38zm292.829-59.818a16.742 16.742 0 0 1 -9.525 8.7c-.054.019-.106.04-.16.06l-131.886 51.155c-24.919 8.8-46.863 7.8-67.078-3.035-.06-.032-.12-.064-.181-.1-4.63-2.311-8.731-4.388-12.414-6.252-26.7-13.515-32.629-16.506-57.581-17.063v-88.875l3.653-.082c39.736-.9 56.188-1.269 104.86 21.032a32.106 32.106 0 0 0 13.686 2.976h42.208a15.045 15.045 0 0 1 11.527 5.378q.19.268.405.517a14.945 14.945 0 0 1 .092 18.228c-.016.021-.025.044-.04.065s-.036.038-.052.059a15.035 15.035 0 0 1 -11.932 5.884h-68.711a7 7 0 0 0 0 14h68.711a28.9 28.9 0 0 0 21.817-9.884q35.789-12.935 71.631-25.821a16.848 16.848 0 0 1 20.97 23.058z&quot; fill=&quot;#27276d&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m256.528 158.3c-27.128-7.3-58.628-1.242-86.428 16.608-27.26 17.5-48.3 44.425-59.786 76.311l-12.1-3.41a7 7 0 0 0 -8.322 9.529l23.7 54.539a7 7 0 0 0 10.442 2.942l48.666-34.129a7 7 0 0 0 -2.122-12.472l-11.865-3.342c16-51.157 59.942-83.461 97.716-93.029a7 7 0 0 0 .1-13.548zm-113.252 109.667a7 7 0 0 0 4.883 8.485l4.42 1.245-29.566 20.733-14.4-33.142 4.311 1.215a7 7 0 0 0 8.58-4.645c9.894-31.573 29.839-58.267 56.161-75.167 14.519-9.322 30.067-15.022 45.185-16.809-34.439 17.836-67.518 51.278-79.574 98.085z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;/svg&gt;&lt;/span&gt;
+          &lt;h3 class=&quot;iwp-card-title&quot;&gt;Lãi suất vay ưu đãi chỉ 7.89%/năm&lt;/h3&gt;
+          &lt;p class=&quot;iwp-card-copy&quot;&gt;&lt;a href=&quot;https://www.tcbs.com.vn/ca-nhan/uu-dai/margin-789/&quot; data-event=&quot;iwp_click_product&quot; data-section=&quot;uu-dai-khach-hang&quot; data-cta-type=&quot;text-link&quot;&gt;Vay ký quỹ&lt;/a&gt; lần đầu lãi suất hấp dẫn chỉ 7.89%/năm, ưu đãi trong 180 ngày, hạn mức đến 5 tỷ VND.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-offer-card&quot;&gt;
+          &lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg id=&quot;fi_18699703&quot; viewBox=&quot;0 0 512 512&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; data-name=&quot;Layer 1&quot;&gt; &lt;g fill-rule=&quot;evenodd&quot;&gt; &lt;g fill=&quot;#052f81&quot;&gt; &lt;path d=&quot;m73.297 166.705c-3.761 0-6.802-3.041-6.802-6.802v-131.475c0-3.75 3.042-6.801 6.802-6.801h103.21c3.752 0 6.801 3.051 6.801 6.801 0 3.76-3.051 6.802-6.802 6.802h-96.408s0 124.673 0 124.673c0 3.76-3.051 6.803-6.801 6.803zm365.403 0c-3.749 0-6.802-3.041-6.802-6.802v-124.674s-96.98 0-96.98 0c-3.76 0-6.803-3.041-6.803-6.801.001-3.751 3.041-6.801 6.802-6.801h103.783c3.76 0 6.801 3.051 6.801 6.801v131.474c0 3.76-3.042 6.803-6.801 6.803zm-282.383 67.451h-54.094c-3.749 0-6.802-3.05-6.802-6.801 0-3.761 3.051-6.802 6.802-6.802h54.094c3.76 0 6.8 3.041 6.8 6.802.001 3.75-3.041 6.801-6.8 6.801zm251.998 0h-55.548c-3.762 0-6.803-3.05-6.803-6.801s3.041-6.802 6.802-6.802h55.55c3.761 0 6.801 3.041 6.801 6.802s-3.041 6.801-6.801 6.801z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m176.157 203.034h-45.076c-2.505 0-4.809-1.379-5.995-3.575-4.634-8.61-11.64-15.614-20.25-20.249-2.194-1.186-3.575-3.488-3.575-5.995v-90.646c0-2.508 1.38-4.8 3.575-5.985 8.611-4.645 15.615-11.65 20.25-20.25 1.185-2.206 3.488-3.576 5.995-3.576h45.076c3.76 0 6.801 3.041 6.801 6.802s-3.041 6.802-6.802 6.802h-41.169c-5.1 8.152-11.962 15.012-20.123 20.113v82.834c8.163 5.102 15.022 11.961 20.123 20.123h41.17c3.76 0 6.801 3.041 6.801 6.802s-3.041 6.801-6.801 6.801zm199.269 0h-39.586c-3.749 0-6.802-3.051-6.802-6.801 0-3.761 3.051-6.802 6.801-6.802h35.68c6.229-9.941 15.119-17.995 25.613-23.193v-79.764c-8.16-5.102-15.012-11.961-20.123-20.113h-41.169c-3.749 0-6.802-3.051-6.802-6.802 0-3.761 3.051-6.802 6.801-6.802h45.087c2.497 0 4.798 1.37 5.983 3.576 4.636 8.599 11.641 15.605 20.25 20.25 2.206 1.185 3.576 3.479 3.576 5.985v88.061c0 2.769-1.681 5.257-4.246 6.306-10.679 4.343-19.589 12.34-25.079 22.523-1.183 2.195-3.488 3.576-5.984 3.575z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m210.35 459.086-1.972-7.375-3.664-.028c.389-51.197-5.247-120.981-58.484-135.906-1.301-.37-2.459-1.108-3.343-2.138l-32.346-37.992c-.184-.214-.351-.437-.506-.67-2.332-3.537-4.897-5.499-7.832-5.995-5.538-.943-11.602 3.294-13.321 4.615-3.148 2.409-6.122 1.409-7.258.874-2.302-1.098-3.79-3.401-3.867-5.956l-.505-18.521-2.136-62.497c-.011-.078-.012-.155-.012-.233.012-10.873-3.459-19.997-10.028-26.381-4.099-3.994-9.289-6.666-14.818-7.744l-5.547 115.316c-.243 5.169-.516 9.717-.749 13.72-.872 15.148-1.322 22.747 1.05 29.063 2.439 6.539 8.395 13.516 20.259 27.42l60.682 71.135c1.331 1.564 2.554 2.993 3.691 4.314 10.155 11.786 13.574 15.76 20.589 33.697l.874 2.225-12.661 4.965-.874-2.234c-6.178-15.77-8.493-18.462-18.238-29.781-1.145-1.332-2.39-2.779-3.731-4.353l-60.671-71.126c-25.834-30.277-26.517-32.132-24.544-66.111.233-3.974.486-8.492.738-13.584l5.879-122.303c.175-3.556 3.051-6.374 6.607-6.481 11.427-.321 22.708 4.091 30.948 12.107 9.106 8.861 14.128 21.649 14.147 36.019l2.139 62.429.203 7.453c3.955-1.439 8.58-2.283 13.428-1.467 6.648 1.127 12.253 5.014 16.674 11.572l30.782 36.136c60.32 18.52 66.801 93.474 66.384 148.509-.029 3.061-2.089 5.733-5.043 6.52l-2.924.786z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m131.344 358.005c-1.924 0-3.828-.816-5.179-2.39l-47.232-55.463c-9.58-11.243-8.347-28.674 2.681-38.079 2.868-2.429 7.161-2.089 9.59.768 2.44 2.865 2.089 7.161-.767 9.59-5.422 4.615-5.947 13.273-1.147 18.898l47.232 55.462c2.44 2.857 2.089 7.152-.768 9.591-1.281 1.087-2.847 1.623-4.411 1.622z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m133.434 459.31c-1.476 0-2.722 1.253-2.722 2.73l.002 17.635c0 1.477 1.242 2.721 2.719 2.721h97.36c1.478 0 2.721-1.244 2.721-2.721v-17.636c.001-1.477-1.244-2.73-2.721-2.73h-97.359zm97.359 36.689h-97.359c-8.996 0-16.325-7.326-16.325-16.324v-17.636c0-9.007 7.326-16.333 16.324-16.333h97.36c9.007 0 16.324 7.327 16.324 16.334v17.635c0 8.998-7.317 16.324-16.324 16.324z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m301.647 459.086-2.914-.787c-2.965-.787-5.024-3.458-5.044-6.519-.426-55.035 6.053-129.989 66.374-148.508l30.782-36.137c4.423-6.559 10.037-10.445 16.683-11.572 4.849-.816 9.474.029 13.419 1.458l.204-7.395 2.138-62.477c.02-14.371 5.042-27.157 14.147-36.019 8.24-8.017 19.502-12.427 30.957-12.107 3.548.107 6.422 2.925 6.597 6.481l5.888 122.303c.245 5.091.505 9.61.729 13.584 1.982 33.979 1.292 35.835-24.525 66.102l-60.68 71.135c-1.349 1.574-2.595 3.022-3.741 4.354-9.744 11.32-12.058 14.011-18.228 29.781l-.872 2.234-12.672-4.965.874-2.226c7.016-17.937 10.435-21.91 20.589-33.697 1.138-1.321 2.361-2.75 3.702-4.314l60.662-71.117c11.873-13.924 17.828-20.899 20.277-27.439 2.361-6.316 1.914-13.914 1.04-29.063-.233-4.003-.496-8.55-.748-13.719l-5.547-115.317c-5.529 1.078-10.718 3.751-14.819 7.745-6.567 6.383-10.038 15.508-10.028 26.381v.233l-2.147 62.546-.505 18.471c-.068 2.556-1.565 4.859-3.868 5.957-1.136.534-4.11 1.535-7.258-.874-1.718-1.322-7.773-5.558-13.321-4.615-2.933.495-5.499 2.458-7.832 5.995-.145.233-.321.457-.496.67l-32.355 37.991c-.874 1.031-2.041 1.769-3.343 2.138-53.236 14.924-58.873 84.709-58.474 135.906l-3.673.028-1.972 7.375z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m380.653 358.005c-1.565 0-3.13-.534-4.412-1.622-2.855-2.439-3.197-6.734-.768-9.591l47.243-55.463c4.79-5.625 4.265-14.282-1.157-18.897-2.856-2.43-3.206-6.724-.767-9.59 2.441-2.857 6.724-3.197 9.59-.768 11.029 9.406 12.262 26.837 2.682 38.079l-47.231 55.462c-1.34 1.574-3.256 2.391-5.179 2.391z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m281.203 459.31c-1.475 0-2.721 1.253-2.721 2.73l.002 17.635c0 1.477 1.242 2.721 2.719 2.721h97.361c1.478 0 2.721-1.244 2.721-2.721v-17.636c.001-1.477-1.244-2.73-2.721-2.73h-97.36zm97.36 36.689h-97.36c-8.996 0-16.324-7.326-16.324-16.324v-17.636c0-9.007 7.326-16.333 16.324-16.333h97.361c8.999 0 16.324 7.327 16.324 16.334v17.635c0 8.998-7.326 16.324-16.324 16.324z&quot;&gt; &lt;/path&gt; &lt;/g&gt; &lt;path d=&quot;m206.376 313.813c-2.76 0-5.267-1.67-6.306-4.265l-11.046-27.479-23.31 18.277c-2.304 1.808-5.502 1.935-7.951.321-2.439-1.613-3.576-4.606-2.818-7.433l23.914-89.238c.971-3.624 4.701-5.771 8.326-4.809 3.624.971 5.781 4.703 4.81 8.337l-18.636 69.542 14.401-11.291c1.681-1.321 3.885-1.768 5.955-1.214 2.071.553 3.751 2.05 4.548 4.032l6.832 16.974 14.836-55.404c.973-3.625 4.703-5.781 8.337-4.809 3.626.971 5.781 4.703 4.809 8.327l-20.123 75.089c-.756 2.828-3.235 4.859-6.16 5.034-.136.009-.272.01-.418.009z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m305.622 313.813c-.136 0-.273.001-.419-.009-2.913-.175-5.402-2.206-6.16-5.033l-19.986-74.615c-.973-3.633 1.174-7.354 4.808-8.336 3.626-.972 7.355 1.185 8.327 4.81l14.721 54.937 6.821-16.975c.798-1.982 2.487-3.478 4.547-4.031 2.071-.554 4.275-.107 5.956 1.214l14.4 11.291-18.635-69.542c-.973-3.635 1.184-7.365 4.808-8.337 3.635-.972 7.365 1.185 8.336 4.81l23.903 89.237c.758 2.827-.379 5.82-2.817 7.434-2.439 1.612-5.646 1.487-7.949-.321l-23.308-18.278-11.047 27.479c-1.041 2.595-3.549 4.266-6.307 4.265z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m255.999 29.603c-54.199 0-98.284 44.095-98.284 98.294.001 54.189 44.084 98.283 98.283 98.283s98.293-44.094 98.293-98.283c0-54.2-44.094-98.293-98.292-98.294zm0 210.18c-61.7 0-111.887-50.195-111.887-111.886.002-61.701 50.186-111.896 111.887-111.896 61.7 0 111.896 50.196 111.896 111.896s-50.196 111.886-111.896 111.886z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m255.999 63.543c-35.474 0-64.344 28.869-64.344 64.354 0 35.475 28.868 64.343 64.344 64.343s64.353-28.868 64.353-64.343c.001-35.486-28.868-64.353-64.352-64.354zm0 142.3c-42.977 0-77.947-34.97-77.947-77.946.001-42.987 34.97-77.957 77.947-77.957 42.986 0 77.956 34.97 77.956 77.957 0 42.976-34.97 77.947-77.956 77.946z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m255.999 184.787c-3.75 0-6.802-3.051-6.802-6.802v-9.454c-5.664-1.186-10.97-4.11-15.245-8.609-2.583-2.731-2.468-7.035.253-9.62 2.722-2.585 7.025-2.468 9.619.252 5.151 5.431 11.777 5.675 16.256 4.091 3.451-1.224 7.258-4.129 7.618-8.648.361-4.567-4.343-8.726-12.593-11.125-20.87-6.074-24.078-18.287-24.486-23.261-.728-8.969 4.888-17.918 13.973-22.28 1.419-.671 2.964-1.253 4.606-1.691v-9.844c0-3.751 3.051-6.801 6.802-6.801 3.76 0 6.801 3.051 6.801 6.801v9.513c5.433 1.155 11.116 3.945 16.518 9.065 2.732 2.584 2.847 6.889.263 9.61-2.583 2.73-6.889 2.847-9.619.262-6.129-5.82-13.419-7.55-19.482-4.644-4.052 1.933-6.578 5.509-6.296 8.891.371 4.518 5.869 8.745 14.721 11.32 22.097 6.431 22.688 20.959 22.348 25.263-.728 9.202-7.103 17.024-16.635 20.385-.601.213-1.205.408-1.817.583v9.94c0 3.751-3.041 6.802-6.801 6.802z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;/svg&gt;&lt;/span&gt;
+          &lt;h3 class=&quot;iwp-card-title&quot;&gt;Ưu đãi giao dịch đến 100 triệu đồng&lt;/h3&gt;
+          &lt;p class=&quot;iwp-card-copy&quot;&gt;Tổng giá trị ưu đãi đến 100 triệu đồng khi giao dịch mua &lt;a href=&quot;https://www.tcbs.com.vn/ca-nhan/trai-phieu-ibond/&quot; data-event=&quot;iwp_click_product&quot; data-section=&quot;uu-dai-khach-hang&quot; data-cta-type=&quot;text-link&quot;&gt;trái phiếu iBond&lt;/a&gt; hoặc chứng chỉ quỹ trong 30 ngày đầu sau khi mở tài khoản TCBS.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-offer-card&quot;&gt;
+          &lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg id=&quot;fi_17980702&quot; viewBox=&quot;0 0 512 512&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; data-name=&quot;Layer 1&quot;&gt; &lt;path d=&quot;m132.657 122.383a7 7 0 0 0 -10.849 0l-50.973 62.457a7 7 0 0 0 5.424 11.43h19.335v125.818a7 7 0 0 0 7 7h49.3a7 7 0 0 0 7-7v-125.818h19.335a7 7 0 0 0 5.424-11.432zm19.24 59.882a7 7 0 0 0 -7 7v125.82h-35.297v-125.818a7 7 0 0 0 -7-7h-11.587l36.222-44.38 36.241 44.38zm289.267 2.573-51-62.455a7 7 0 0 0 -10.848 0l-50.976 62.457a7 7 0 0 0 5.424 11.43h19.336v125.818a7 7 0 0 0 7 7h49.3a7 7 0 0 0 7-7v-125.818h19.34a7 7 0 0 0 5.424-11.432zm-31.764-2.573a7 7 0 0 0 -7 7v125.82h-35.3v-125.818a7 7 0 0 0 -7-7h-11.582l36.222-44.38 36.241 44.38z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m174.067 135.827h163.865a14.9 14.9 0 0 0 14.885-14.884v-106.058a14.9 14.9 0 0 0 -14.885-14.885h-163.865a14.9 14.9 0 0 0 -14.883 14.885v106.058a14.9 14.9 0 0 0 14.883 14.884zm-.878-120.942a.9.9 0 0 1 .878-.879h163.865a.9.9 0 0 1 .879.879v106.058a.9.9 0 0 1 -.879.878h-163.865a.9.9 0 0 1 -.878-.878zm200.648 380.344c-6.99-34.915-30.124-73.934-68.806-116.1a20.92 20.92 0 0 0 -7.868-38.664c.313-.331.627-.662.949-1 8.678-9.111 19.479-20.449 14.431-54.607a8.284 8.284 0 0 0 -4.949-6.633c-5.382-2.293-10.523 1.393-18.308 6.966-3.5 2.509-11.343 8.12-14.82 8.855-1.688-3.21-3.363-6.112-4.987-8.924-2.3-3.984-4.68-8.1-7.178-13.254a7 7 0 0 0 -6.292-3.948h-.009a7 7 0 0 0 -6.293 3.932c-2.5 5.115-4.863 9.208-7.152 13.167-1.64 2.836-3.331 5.761-5.048 9.026-3.475-.738-11.3-6.339-14.8-8.844-7.789-5.576-12.93-9.262-18.316-6.981a8.3 8.3 0 0 0 -4.964 6.622c-5.051 34.185 5.761 45.524 14.448 54.633.32.336.632.664.942.992a20.912 20.912 0 0 0 -7.878 38.655c-38.673 42.145-61.8 81.15-68.787 116.06-6.562 32.8 1.389 61.4 23 82.705 23.059 22.743 58.973 34.113 94.892 34.113 35.884 0 71.773-11.358 94.809-34.069 21.604-21.301 29.552-49.898 22.984-82.702zm-161.478-200.21c.759.537 1.51 1.075 2.2 1.567 9.066 6.492 18.43 13.213 26.877 11.177a12.194 12.194 0 0 0 8.112-6.515c1.691-3.267 3.363-6.158 5.134-9.219.432-.751.869-1.5 1.308-2.269.458.8.912 1.584 1.363 2.365 1.749 3.03 3.4 5.892 5.074 9.12a12.2 12.2 0 0 0 8.112 6.518c8.445 2.032 17.826-4.688 26.9-11.185.682-.487 1.424-1.02 2.177-1.551 1.585 20.892-4.861 27.658-11.643 34.777a56.3 56.3 0 0 0 -8.412 10.436h-47.126a56.372 56.372 0 0 0 -8.421-10.431c-6.789-7.12-13.242-13.888-11.655-34.79zm5.369 59.227h66.126.041.026 10.352a7.024 7.024 0 0 1 6.917 6.945 6.939 6.939 0 0 1 -6.917 6.946h-76.545a6.946 6.946 0 1 1 0-13.891zm123.292 213.712c-19.087 18.818-50.85 30.051-84.976 30.05h-.038c-34.14-.008-65.924-11.258-85.021-30.093-18.085-17.837-24.688-42.038-19.1-69.987 6.824-34.106 30.848-73.053 71.4-115.785h65.4c40.557 42.758 64.59 81.722 71.421 115.836 5.594 27.953-1.006 52.151-19.086 69.979zm-85.02-153.78a81.238 81.238 0 1 0 81.224 81.252 81.331 81.331 0 0 0 -81.224-81.252zm0 148.47a67.233 67.233 0 1 1 67.218-67.218 67.294 67.294 0 0 1 -67.218 67.218zm32.915-48.2c0 12.674-10.928 22.961-25.912 25.431v7.058a7 7 0 0 1 -14.006 0v-7.066c-10.751-1.795-19.68-7.678-23.708-15.991a7 7 0 0 1 12.6-6.107c2.473 5.1 9.92 8.667 18.108 8.667 10.25 0 18.909-5.491 18.909-11.992s-8.659-12.02-18.909-12.02c-18.457 0-32.915-11.433-32.915-26.026 0-12.689 10.928-22.987 25.912-25.46v-7.052a7 7 0 0 1 14.006 0v7.065c10.752 1.8 19.678 7.678 23.708 15.99a7 7 0 1 1 -12.6 6.109c-2.473-5.1-9.919-8.667-18.108-8.667-10.25 0-18.91 5.5-18.91 12.02 0 6.4 8.837 12.02 18.91 12.02 18.457 0 32.915 11.432 32.915 26.026zm-58.167-352.748a18.995 18.995 0 1 0 -13.45-5.531 19.061 19.061 0 0 0 13.45 5.531zm-3.561-22.583a5.045 5.045 0 0 1 7.15 7.12 5.092 5.092 0 0 1 -7.151.014 5.04 5.04 0 0 1 0-7.134zm54.084 34.979h-.029a19.052 19.052 0 0 0 0 38.1h.029a18.841 18.841 0 0 0 13.418-5.581 19.068 19.068 0 0 0 .011-26.925 18.854 18.854 0 0 0 -13.429-5.596zm3.5 22.634a4.944 4.944 0 0 1 -3.522 1.464h-.008a5.047 5.047 0 0 1 0-10.093h.008a4.95 4.95 0 0 1 3.535 1.479 5.058 5.058 0 0 1 -.012 7.148zm-72.933 15.331a7 7 0 0 1 0-9.9l78.417-78.388a7 7 0 0 1 9.9 9.9l-78.416 78.389a7 7 0 0 1 -9.9 0z&quot; fill=&quot;#27276d&quot;&gt;&lt;/path&gt; &lt;/svg&gt;&lt;/span&gt;
+          &lt;h3 class=&quot;iwp-card-title&quot;&gt;Tiền chờ đầu tư lãi theo ngày&lt;/h3&gt;
+          &lt;p class=&quot;iwp-card-copy&quot;&gt;Tối ưu tiền nhàn rỗi với &lt;a href=&quot;https://www.tcbs.com.vn/ca-nhan/san-pham/ipower/&quot; data-event=&quot;iwp_click_product&quot; data-section=&quot;uu-dai-khach-hang&quot; data-cta-type=&quot;text-link&quot;&gt;iPower - Tài khoản Nhân lãi&lt;/a&gt;. Lãi suất linh hoạt theo số dư và giao dịch, lên đến 9.0%/năm.&lt;/p&gt;
+        &lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-offer-card&quot;&gt;
+          &lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg id=&quot;fi_18288571&quot; viewBox=&quot;0 0 512 512&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; data-name=&quot;Layer 1&quot;&gt; &lt;g fill-rule=&quot;evenodd&quot;&gt; &lt;g fill=&quot;#2e3760&quot;&gt; &lt;path d=&quot;m500.878 508.001h-413.589c-3.861 0-7.003-3.137-7.003-7.003v-244.205c0-3.866 3.142-6.998 7.003-6.998s6.998 3.132 6.998 6.998v237.207h406.591c3.866 0 6.998 3.132 6.998 6.998s-3.132 7.003-6.998 7.003z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m383.467 267.522-9.812-9.995 55.501-54.478 9.802 9.99zm-47.9 6.086-47.881-27.63 6.998-12.123 47.885 27.63-7.003 12.123zm-134.94 36.732-10.164-9.628 56.795-59.956 10.159 9.633z&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m178.349 305.674c-1.545 0-3.103.203-4.653.618-9.59 2.568-15.299 12.457-12.731 22.046 2.572 9.585 12.461 15.294 22.041 12.727 9.59-2.568 15.299-12.461 12.731-22.046-2.152-8.031-9.44-13.344-17.389-13.344zm.01 50.009c-14.131 0-27.094-9.445-30.912-23.721-4.57-17.046 5.579-34.623 22.62-39.193 17.046-4.566 34.628 5.584 39.189 22.625 4.57 17.046-5.579 34.628-22.62 39.193-2.77.738-5.541 1.095-8.277 1.095z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m156.284 467.997h44.131v-79.202h-44.131zm51.133 14.001h-58.131c-3.861 0-6.998-3.137-6.998-6.998v-93.203c0-3.87 3.137-7.003 6.998-7.003h58.131c3.861 0 6.998 3.132 6.998 7.003v93.203c0 3.861-3.137 6.998-6.998 6.998z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m269.564 209.415c-1.568 0-3.137.208-4.686.618-4.652 1.245-8.533 4.223-10.931 8.388-2.408 4.165-3.04 9.015-1.8 13.658 2.567 9.59 12.461 15.299 22.051 12.731 9.58-2.572 15.289-12.461 12.717-22.046-1.236-4.648-4.218-8.528-8.378-10.931-2.78-1.602-5.849-2.418-8.972-2.418zm-.019 50.009c-14.126 0-27.099-9.44-30.921-23.721-2.206-8.258-1.076-16.877 3.195-24.281 4.276-7.403 11.177-12.698 19.43-14.913 8.258-2.21 16.877-1.076 24.29 3.2 7.399 4.271 12.688 11.173 14.908 19.43 4.561 17.041-5.589 34.623-22.63 39.188-2.76.743-5.54 1.096-8.272 1.096z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m247.465 467.997h44.131v-161.696h-44.131zm51.133 14.001h-58.131c-3.861 0-7.003-3.132-7.003-6.998v-175.702c0-3.866 3.142-6.998 7.003-6.998h58.131c3.87 0 6.998 3.132 6.998 6.998v175.702c0 3.866-3.128 6.998-6.998 6.998z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m356.054 262.653c-4.638 1.245-8.518 4.223-10.926 8.388-2.404 4.165-3.041 9.015-1.8 13.663 2.568 9.58 12.461 15.294 22.051 12.726 9.59-2.572 15.299-12.461 12.727-22.046-1.25-4.643-4.228-8.528-8.388-10.931-4.16-2.404-9.02-3.04-13.663-1.8zm4.672 49.391c-14.131 0-27.09-9.44-30.921-23.721-4.57-17.041 5.584-34.623 22.63-39.193 8.253-2.21 16.882-1.076 24.281 3.2 7.398 4.271 12.702 11.173 14.913 19.43 4.57 17.041-5.584 34.623-22.63 39.193-2.761.738-5.541 1.091-8.272 1.091z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m338.655 467.997h44.121v-112.981h-44.121zm51.124 14.001h-58.121c-3.871 0-7.003-3.132-7.003-6.998v-126.982c0-3.866 3.132-7.003 7.003-7.003h58.121c3.866 0 6.998 3.137 6.998 7.003v126.982c0 3.866-3.132 6.998-6.998 6.998z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m429.836 467.997h44.131v-198.593h-44.131zm51.129 14.001h-58.127c-3.87 0-7.003-3.132-7.003-6.998v-212.593c0-3.866 3.132-6.998 7.003-6.998h58.127c3.861 0 7.003 3.132 7.003 6.998v212.593c0 3.866-3.142 6.998-7.003 6.998z&quot;&gt; &lt;/path&gt; &lt;path d=&quot;m447.235 173.142c-4.638 1.245-8.518 4.223-10.926 8.388-2.403 4.165-3.04 9.015-1.791 13.658 2.558 9.59 12.457 15.299 22.037 12.727 9.59-2.568 15.304-12.456 12.731-22.046-1.25-4.643-4.218-8.523-8.388-10.926-4.16-2.403-9.011-3.045-13.663-1.8zm4.672 49.391c-14.131 0-27.089-9.44-30.921-23.721-4.561-17.046 5.594-34.628 22.63-39.193 8.262-2.215 16.882-1.076 24.28 3.195 7.398 4.276 12.703 11.177 14.913 19.435 4.571 17.041-5.584 34.623-22.62 39.189-2.77.738-5.55 1.096-8.282 1.096z&quot;&gt; &lt;/path&gt; &lt;/g&gt; &lt;path d=&quot;m140.425 120.647c-10.83 0-19.638 8.817-19.638 19.647s8.808 19.652 19.638 19.652 19.652-8.817 19.652-19.652-8.812-19.647-19.652-19.647zm0 53.296c-18.547 0-33.639-15.091-33.639-33.648s15.091-33.643 33.639-33.643 33.653 15.091 33.653 33.643-15.091 33.648-33.653 33.648z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m83.978 132.732-13.885-1.839c4.194-31.679 29.252-56.737 60.931-60.936l1.844 13.88c-25.42 3.369-45.53 23.475-48.889 48.894zm112.908 0c-3.369-25.42-23.47-45.525-48.889-48.894l1.839-13.88c31.669 4.199 56.732 29.256 60.93 60.936l-13.88 1.839zm-65.863 77.899c-31.679-4.199-56.737-29.251-60.931-60.935l13.885-1.839c3.359 25.419 23.47 45.525 48.889 48.899l-1.844 13.875zm18.812 0-1.839-13.875c25.419-3.373 45.52-23.479 48.889-48.894l13.88 1.839c-4.199 31.679-29.261 56.736-60.93 60.93z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m46.657 130.671-13.928-1.409c5.145-50.863 45.805-91.519 96.668-96.673l1.409 13.928c-44.28 4.488-79.671 39.879-84.149 84.154zm187.55 0c-4.493-44.275-39.883-79.666-84.154-84.154l1.414-13.928c50.858 5.154 91.519 45.81 96.668 96.673zm-104.81 117.329c-50.863-5.149-91.524-45.81-96.668-96.668l13.928-1.409c4.479 44.275 39.869 79.666 84.149 84.149zm22.07 0-1.414-13.928c44.271-4.484 79.661-39.874 84.154-84.149l13.928 1.409c-5.149 50.858-45.81 91.519-96.668 96.668z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m140.425 17.999c-.541 0-2.099.516-3.238 1.713-.999 1.047-.961 1.858-.951 2.128l2.65 53.986c.121 2.471 1.042 3.933 1.54 4.411.512-.478 1.433-1.94 1.549-4.411l2.64-53.986c.019-.27.063-1.081-.936-2.128-1.139-1.197-2.702-1.713-3.253-1.713zm0 76.355c-8.35 0-15.019-7.674-15.516-17.842l-2.654-53.985c-.227-4.561 1.482-8.991 4.793-12.466 3.557-3.74 8.687-6.062 13.378-6.062s9.831 2.321 13.393 6.062c3.311 3.475 5.01 7.905 4.788 12.466l-2.65 53.985c-.497 10.169-7.167 17.842-15.531 17.842z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m200.487 140.295c.478.507 1.94 1.424 4.411 1.544l53.986 2.649c.27.014 1.081.053 2.133-.946 1.187-1.139 1.708-2.703 1.708-3.248 0-.54-.521-2.104-1.708-3.248-1.052-.994-1.863-.956-2.133-.941l-53.986 2.65c-2.471.12-3.933 1.037-4.411 1.539zm58.508 18.195c-.256 0-.531-.005-.787-.019l-53.991-2.649c-10.169-.497-17.842-7.172-17.842-15.526s7.674-15.029 17.842-15.526l53.991-2.645c4.546-.236 8.977 1.472 12.456 4.788 3.74 3.562 6.062 8.687 6.062 13.383s-2.321 9.826-6.062 13.388c-3.267 3.118-7.389 4.807-11.67 4.807z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m140.425 200.357c-.497.478-1.419 1.94-1.54 4.411l-2.65 53.986c-.01.266-.048 1.076.951 2.128 1.139 1.197 2.698 1.713 3.238 1.713.55 0 2.114-.516 3.253-1.713.999-1.047.956-1.863.936-2.128l-2.64-53.986c-.116-2.471-1.038-3.933-1.549-4.411zm0 76.239c-4.691 0-9.821-2.321-13.378-6.062-3.311-3.48-5.019-7.905-4.793-12.466l2.654-53.986c.497-10.174 7.167-17.842 15.516-17.842s15.033 7.669 15.531 17.842l2.65 53.986c.222 4.561-1.477 8.986-4.788 12.466-3.562 3.74-8.692 6.062-13.393 6.062z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;path d=&quot;m21.827 136.101c-.352 0-1.081.091-1.979.946-1.202 1.144-1.723 2.707-1.723 3.248 0 .545.521 2.109 1.723 3.248 1.047.999 1.858.96 2.128.946l53.981-2.649c2.471-.121 3.938-1.038 4.411-1.544-.473-.502-1.94-1.419-4.411-1.539l-53.981-2.65c-.039 0-.092-.005-.149-.005zm.029 22.389c-4.271 0-8.393-1.689-11.67-4.807-3.731-3.562-6.062-8.692-6.062-13.388s2.331-9.821 6.072-13.383c3.47-3.311 7.9-5.014 12.461-4.788l53.99 2.645c10.169.497 17.838 7.172 17.838 15.526s-7.669 15.029-17.838 15.526l-53.99 2.649c-.27.015-.531.019-.801.019z&quot; fill=&quot;#c41c16&quot;&gt;&lt;/path&gt; &lt;/g&gt; &lt;/svg&gt;&lt;/span&gt;
+          &lt;h3 class=&quot;iwp-card-title&quot;&gt;Trải nghiệm bộ công cụ phân tích toàn diện&lt;/h3&gt;
+          &lt;p class=&quot;iwp-card-copy&quot;&gt;Gồm &lt;a href=&quot;https://tcinvest.tcbs.com.vn/tc-price/tc-analysis?ticker=TCX&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_product&quot; data-section=&quot;uu-dai-khach-hang&quot; data-cta-type=&quot;text-link&quot;&gt;TCAnalysis&lt;/a&gt; phân tích hơn 1.300 doanh nghiệp &amp;amp; &lt;a href=&quot;https://tcinvest.tcbs.com.vn/home&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_product&quot; data-section=&quot;uu-dai-khach-hang&quot; data-cta-type=&quot;text-link&quot;&gt;Trợ lý AI Mập Thông thái&lt;/a&gt; hỗ trợ tài chính, pháp lý, tài sản số, v.v.&lt;/p&gt;
+        &lt;/article&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;iwp-actions iwp-center-actions&quot;&gt;
+        &lt;a class=&quot;iwp-btn iwp-btn-primary&quot; href=&quot;https://tcinvest.tcbs.com.vn/iwealth-partner&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_join&quot; data-section=&quot;uu-dai-khach-hang&quot; data-cta-type=&quot;primary&quot;&gt;Tham gia ngay&lt;/a&gt;
+        &lt;a class=&quot;iwp-btn iwp-btn-secondary&quot; href=&quot;https://onboarding.tcbs.com.vn/onboarding&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_open_account&quot; data-section=&quot;uu-dai-khach-hang&quot; data-cta-type=&quot;secondary&quot;&gt;Mở tài khoản&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;dong-hanh&quot; class=&quot;iwp-reasons-section&quot; data-screen-label=&quot;Tại sao đồng hành cùng TCBS&quot;&gt;
+    &lt;div class=&quot;iwp-content-wrap&quot;&gt;
+      &lt;div class=&quot;iwp-section-head&quot;&gt;
+        &lt;h2 class=&quot;iwp-section-title&quot;&gt;Tại sao bạn nên đồng hành cùng TCBS?&lt;/h2&gt;
+        &lt;p class=&quot;iwp-section-sub&quot;&gt;Hơn 13,000 iWealth Partner đã tin tưởng tham gia, với 97,000 Khách hàng được giới thiệu và kết nối qua mạng lưới iWealth Partner trên toàn quốc&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;iwp-reason-grid&quot;&gt;
+        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;m12 3 2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 3Z&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Uy tín hàng đầu, hiệu quả vượt trội&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;TCBS là công ty chứng khoán Top 1 lợi nhuận trong 6 năm liên tiếp (2019 - 2024), dẫn đầu thị trường về hiệu quả và sự tin cậy. Trở thành Đối tác trong hệ sinh thái TCBS là bước khởi đầu để bạn xây dựng thương hiệu cá nhân và khẳng định uy tín trong cộng đồng.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;rect x=&quot;3&quot; y=&quot;4&quot; width=&quot;18&quot; height=&quot;13&quot; rx=&quot;2&quot;/&gt;&lt;path d=&quot;M8 21h8M12 17v4M7 13l3-3 2 2 4-5&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Công nghệ hiện đại, tính năng toàn diện&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;TCBS mang đến hệ sinh thái tài chính toàn diện, đặc biệt, bạn có thể theo dõi hiệu quả và quản lý giới thiệu dễ dàng ngay trên nền tảng TCInvest.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-reason-card&quot;&gt;&lt;span class=&quot;iwp-icon-tile&quot; aria-hidden=&quot;true&quot;&gt;&lt;svg viewBox=&quot;0 0 24 24&quot;&gt;&lt;path d=&quot;M4 13v-2a8 8 0 0 1 16 0v2M4 13h3v6H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 1-2Zm16 0h-3v6h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-1-2ZM17 19c0 1-2 2-5 2&quot;/&gt;&lt;/svg&gt;&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Hỗ trợ tận tâm, đồng hành bền vững&lt;/h3&gt;&lt;p class=&quot;iwp-card-copy&quot;&gt;Đội ngũ chuyên nghiệp tại TCBS luôn sẵn sàng hỗ trợ và đồng hành cùng bạn trên hành trình phát triển bền vững - từ những bước đầu đến khi bứt phá thành công.&lt;/p&gt;&lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;giai-thuong&quot; class=&quot;iwp-awards-section&quot; data-screen-label=&quot;Giải thưởng TCBS và ba bước tham gia&quot;&gt;
+    &lt;div class=&quot;iwp-content-wrap&quot;&gt;
+      &lt;div class=&quot;iwp-section-head&quot;&gt;
+        &lt;h2 class=&quot;iwp-section-title&quot;&gt;Tại sao lựa chọn đầu tư tại TCBS&lt;/h2&gt;
+        &lt;p class=&quot;iwp-section-sub&quot;&gt;TCBS là công ty con của Techcombank, tiên phong giải pháp tài chính và phát triển hệ sinh thái Wealthtech nâng tầm trải nghiệm đầu tư.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;iwp-awards-grid&quot;&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/392342/584492/financeAsia.jpg&quot; alt=&quot;FinanceAsia&quot; width=&quot;160&quot; height=&quot;160&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Most Innovative Use of Technology - Blockchain&lt;span class=&quot;iwp-award-year&quot;&gt;2025&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/392342/584492/theAsset-logo.jpg&quot; alt=&quot;The Asset&quot; width=&quot;160&quot; height=&quot;160&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Best Digital Wealth Management Experience&lt;span class=&quot;iwp-award-year&quot;&gt;2025&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/10181/0/euro.png&quot; alt=&quot;Euromoney&quot; width=&quot;162&quot; height=&quot;162&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Most Innovative Securities Firm in Vietnam&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/10181/0/euro.png&quot; alt=&quot;Euromoney&quot; width=&quot;162&quot; height=&quot;162&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Best Bond Advisory &amp;amp; Services Provider in Vietnam&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/10181/0/IF.png&quot; alt=&quot;International Finance&quot; width=&quot;162&quot; height=&quot;162&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Best Wealthtech Application in Vietnam - TCInvest&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/10181/0/AEA.png&quot; alt=&quot;Asian Experience Awards&quot; width=&quot;162&quot; height=&quot;162&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Digital Experience of the Year in Vietnam-Financial Technology Sector&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/10181/0/ibs-1.png&quot; alt=&quot;IBS Intelligence&quot; width=&quot;162&quot; height=&quot;162&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Best Investment &amp;amp; Fund Management Implementation&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/10181/0/ibs-1.png&quot; alt=&quot;IBS Intelligence&quot; width=&quot;162&quot; height=&quot;162&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Best Wealth Management Firm&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/10181/0/gbo.png&quot; alt=&quot;Global Business Outlook&quot; width=&quot;162&quot; height=&quot;162&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Most Innovative Blockchain Application in Securities&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/392342/584492/financeAsia.jpg&quot; alt=&quot;FinanceAsia&quot; width=&quot;160&quot; height=&quot;160&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Nhà quản lý tài sản kỹ thuật số của năm&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/392342/584492/fintech.jpg&quot; alt=&quot;The Asset Triple A Digital Awards&quot; width=&quot;160&quot; height=&quot;160&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Outstanding AI Technology Application in Vietnam&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-award-card&quot;&gt;&lt;img class=&quot;iwp-award-logo&quot; src=&quot;https://www.tcbs.com.vn/documents/392342/584492/fintech.jpg&quot; alt=&quot;The Asset Triple A Digital Awards&quot; width=&quot;160&quot; height=&quot;160&quot; loading=&quot;lazy&quot;&gt;&lt;p class=&quot;iwp-award-name&quot;&gt;Excellence in Fintech Technology Application in Vietnam&lt;span class=&quot;iwp-award-year&quot;&gt;2024&lt;/span&gt;&lt;/p&gt;&lt;/article&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;bat-dau&quot; class=&quot;iwp-steps-block&quot; data-screen-label=&quot;Ba bước trở thành iWealth Partner&quot;&gt;
+    &lt;div class=&quot;iwp-content-wrap&quot;&gt;
+      &lt;div class=&quot;iwp-section-head&quot;&gt;&lt;h2 class=&quot;iwp-section-title&quot;&gt;Bắt đầu hành trình &lt;span class=&quot;iwp-red&quot;&gt;iWealth Partner&lt;/span&gt;&lt;br&gt;chỉ với 3 bước&lt;/h2&gt;&lt;/div&gt;
+      &lt;div class=&quot;iwp-step-grid&quot;&gt;
+        &lt;article class=&quot;iwp-card iwp-step-card&quot;&gt;&lt;span class=&quot;iwp-step-label&quot;&gt;Bước 1&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Đăng ký &amp;amp; Kích hoạt&lt;/h3&gt;&lt;p class=&quot;iwp-step-copy&quot;&gt;Mở tài khoản và hoàn tất hợp đồng iWealth Partner điện tử nhanh chóng để kích hoạt vai trò đối tác của bạn.&lt;br&gt;&lt;strong&gt;Đối với Cá nhân&lt;/strong&gt;: Ký hợp đồng trực tuyến dễ dàng ngay trên ứng dụng TCInvest.&lt;br&gt;&lt;strong&gt;Đối với Tổ chức&lt;/strong&gt;: Vui lòng liên hệ &lt;a class=&quot;iwp-text-link&quot; href=&quot;mailto:cskh@tcbs.com.vn&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;bat-dau&quot; data-cta-type=&quot;text-link&quot;&gt;cskh@tcbs.com.vn&lt;/a&gt; để được hướng dẫn chi tiết.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-step-card&quot;&gt;&lt;span class=&quot;iwp-step-label&quot;&gt;Bước 2&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Giới thiệu &amp;amp; Đồng hành&lt;/h3&gt;&lt;p class=&quot;iwp-step-copy&quot;&gt;Chia sẻ mã giới thiệu, mời khách hàng trải nghiệm các tính năng, dịch vụ trên TCInvest và đồng hành, hướng dẫn họ trong suốt quá trình đầu tư.&lt;/p&gt;&lt;/article&gt;
+        &lt;article class=&quot;iwp-card iwp-step-card&quot;&gt;&lt;span class=&quot;iwp-step-label&quot;&gt;Bước 3&lt;/span&gt;&lt;h3 class=&quot;iwp-card-title&quot;&gt;Nhận thưởng &amp;amp; Quản lý&lt;/h3&gt;&lt;p class=&quot;iwp-step-copy&quot;&gt;Dễ dàng theo dõi hiệu quả kinh doanh. Tiền giới thiệu được cập nhật tự động, minh bạch và nhận thưởng xứng đáng với nỗ lực của bạn.&lt;/p&gt;&lt;/article&gt;
+      &lt;/div&gt;
+      &lt;p class=&quot;iwp-child-link&quot;&gt;Bạn là nhà đầu tư và muốn có người đồng hành? Xem &lt;a href=&quot;https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/khach-hang-iwealth-partner/&quot;&gt;quyền lợi khi được iWealth Partner chăm sóc&lt;/a&gt;.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;section id=&quot;faq&quot; class=&quot;iwp-faq-section faq-layout-03&quot; data-screen-label=&quot;FAQ&quot;&gt;
+    &lt;div class=&quot;iwp-content-wrap iwp-faq-grid&quot;&gt;
+      &lt;aside class=&quot;iwp-faq-aside&quot;&gt;
+        &lt;h2 class=&quot;iwp-section-title iwp-faq-title&quot;&gt;Câu hỏi thường gặp&lt;/h2&gt;
+        &lt;p class=&quot;iwp-section-sub&quot;&gt;Tìm hiểu nhanh những thông tin quan trọng để bắt đầu và đồng hành hiệu quả cùng iWealth Partner.&lt;/p&gt;
+        &lt;div class=&quot;iwp-faq-more&quot;&gt;&lt;a class=&quot;iwp-btn iwp-btn-secondary&quot; href=&quot;https://help.tcbs.com.vn/ban-dong-hanh/doi-tac-phat-trien-kinh-doanh-iwealth-partner/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;secondary&quot;&gt;Xem thêm&lt;/a&gt;&lt;/div&gt;
+      &lt;/aside&gt;
+      &lt;div class=&quot;iwp-faq-list&quot;&gt;
+          &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q1.&lt;/span&gt;&lt;span&gt;Làm thế nào để trở thành iWealth Partner?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;Chỉ hoàn thành 03 bước đơn giản:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Bước 1: Đăng ký mở tài khoản chứng khoán TCBS&lt;/li&gt;&lt;li&gt;Bước 2: Đăng nhập TCInvest, tại Menu Tiện ích, chọn “iWealth Partner” và đăng ký&lt;/li&gt;&lt;li&gt;Bước 3: Tham gia khoá đào tạo dành riêng cho iWealth Partner&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/details&gt;
+          &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q2.&lt;/span&gt;&lt;span&gt;Phí giao dịch khi khách hàng có iWealth Partner giới thiệu là bao nhiêu?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;Phí giao dịch của Khách hàng có iWealth Partner (iWP) chăm sóc là 0.15%. (Trong đó, hoa hồng iWealth Partner nhận được là 0.12%). Tuy nhiên, iWealth Partner và khách hàng có iWealth Partner chăm sóc có thể thỏa thuận và điều chỉnh mức phí giao dịch theo &lt;a class=&quot;iwp-text-link&quot; href=&quot;https://help.tcbs.com.vn/iwealth-partner-de-xuat/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;text-link&quot;&gt;hướng dẫn điều chỉnh phí giao dịch&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
+          &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q3.&lt;/span&gt;&lt;span&gt;Thời hạn và phương thức thanh toán tiền giới thiệu?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;TCBS sẽ gửi thông báo kết quả tính toán tiền giới thiệu cho iWealth Partner chậm nhất vào ngày 14 hàng tháng.&lt;/p&gt;&lt;p&gt;Tiền giới thiệu được thanh toán bằng iXu (có thể quy đổi thành tiền mặt) vào TK chứng khoán của iWealth Partner chậm nhất ngày 15 tháng tiếp theo.(1 iXu = 1,000 VND)&lt;/p&gt;&lt;p&gt;Báo cáo tiền giới thiệu của iWealth Partner thường cập nhật đầy đủ vào ngày 15 hàng tháng (sau khi trả tiền giới thiệu). Dữ liệu được cập nhật đến ngày giao dịch liền trước.&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
+          &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q4.&lt;/span&gt;&lt;span&gt;Cách chia sẻ thông tin giữa khách hàng và iWealth Partner?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;Chia sẻ thông tin để iWealth Partner và khách hàng đồng hành sát sao cùng nhau theo &lt;a class=&quot;iwp-text-link&quot; href=&quot;https://help.tcbs.com.vn/chia-se-iwp-kh/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;text-link&quot;&gt;hướng dẫn chia sẻ thông tin với iWealth Partner&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
+          &lt;details class=&quot;iwp-faq-item&quot;&gt;&lt;summary&gt;&lt;span class=&quot;iwp-faq-num&quot;&gt;Q5.&lt;/span&gt;&lt;span&gt;Hướng dẫn iWealth Partner gửi lời mời kết nối tới khách hàng?&lt;/span&gt;&lt;span class=&quot;iwp-faq-chevron&quot; aria-hidden=&quot;true&quot;&gt;⌄&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;iwp-faq-body&quot;&gt;&lt;p&gt;iWealth Partner có thể chủ động gửi lời mời kết nối tới khách hàng theo &lt;a class=&quot;iwp-text-link&quot; href=&quot;https://help.tcbs.com.vn/huong-dan-iwp-gui-loi-moi-gan-kh/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot; data-event=&quot;iwp_click_help&quot; data-section=&quot;faq&quot; data-cta-type=&quot;text-link&quot;&gt;hướng dẫn gửi lời mời kết nối&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;/details&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;"></iframe>
+  </div>
+
+  <h3>Dữ liệu cần xác nhận trước khi golive</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Vị trí</th><th>Nội dung</th><th>Nguồn</th></tr></thead>
+    <tbody>
+      <tr><td>Bảng tỉ lệ</td><td>Mốc "từ 03/03/2026", các mốc iPower 0.2% đến 0.7%, dòng iOptima còn áp dụng hay không</td><td>Chính sách iWP áp dụng từ 01/09/2026</td></tr>
+      <tr><td>Dòng tổng ví dụ</td><td>352,208,221 VND hay 333,304,118 VND</td><td>Bộ phận phụ trách chương trình</td></tr>
+      <tr><td>Khối 3 bước, FAQ Q1</td><td>Khóa đào tạo iWealth Partner có bắt buộc không</td><td>Bộ phận phụ trách chương trình</td></tr>
+      <tr><td>Thẻ Uy tín hàng đầu</td><td>Nguồn cho Top 1 lợi nhuận 2019-2024, số liệu năm 2025</td><td>Báo cáo tài chính, công bố của TCBS</td></tr>
+      <tr><td>Dòng phụ khối Lý do</td><td>Hơn 13,000 iWealth Partner và 97,000 khách hàng: số liệu tính đến ngày nào</td><td>Bộ phận phụ trách chương trình</td></tr>
+      <tr><td>Khối Giải thưởng</td><td>12 logo khớp đúng đơn vị trao giải</td><td>Bộ phận truyền thông</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="schema">
+  <h2>4. Structured data</h2>
+  <p class="intro">Thêm bằng Custom Schema trong Rank Math, đổi Schema Type của trang khỏi Article. Câu trả lời trong FAQPage phải khớp với chữ hiển thị sau khi sửa.</p>
+  <h3>FinancialService</h3>
+<pre>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "@id": "https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/#service",
+  "name": "iWealth Partner",
+  "url": "https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/",
+  "description": "Chương trình đối tác giới thiệu khách hàng của TCBS. Đối tác nhận tiền giới thiệu khi khách hàng giao dịch cổ phiếu, vay ký quỹ, trái phiếu, chứng chỉ quỹ, iTracker và iPower.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Techcom Securities (TCBS)",
+    "url": "https://www.tcbs.com.vn"
+  },
+  "areaServed": "VN"
+}
+&lt;/script&gt;</pre>
+  <h3>FAQPage</h3>
+<pre>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Làm thế nào để trở thành iWealth Partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bước 1: Đăng ký mở tài khoản chứng khoán TCBS. Bước 2: Đăng nhập TCInvest, tại Menu Tiện ích, chọn iWealth Partner và đăng ký. Bước 3: Tham gia khóa đào tạo dành riêng cho iWealth Partner."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Phí giao dịch khi khách hàng có iWealth Partner giới thiệu là bao nhiêu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Phí giao dịch của khách hàng có iWealth Partner chăm sóc là 0.15%, trong đó hoa hồng iWealth Partner nhận được là 0.12%. iWealth Partner và khách hàng có thể thỏa thuận và điều chỉnh mức phí giao dịch theo hướng dẫn điều chỉnh phí giao dịch của TCBS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Thời hạn và phương thức thanh toán tiền giới thiệu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TCBS gửi thông báo kết quả tính toán tiền giới thiệu cho iWealth Partner chậm nhất vào ngày 14 hàng tháng. Tiền giới thiệu được thanh toán bằng iXu (có thể quy đổi thành tiền mặt) vào tài khoản chứng khoán của iWealth Partner chậm nhất ngày 15 tháng tiếp theo (1 iXu = 1,000 VND). Báo cáo tiền giới thiệu cập nhật đầy đủ vào ngày 15 hàng tháng, dữ liệu cập nhật đến ngày giao dịch liền trước."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Cách chia sẻ thông tin giữa khách hàng và iWealth Partner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Khách hàng chia sẻ thông tin để iWealth Partner đồng hành sát sao cùng nhau theo hướng dẫn chia sẻ thông tin với iWealth Partner trên trang Hỗ trợ TCBS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Hướng dẫn iWealth Partner gửi lời mời kết nối tới khách hàng?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "iWealth Partner có thể chủ động gửi lời mời kết nối tới khách hàng theo hướng dẫn gửi lời mời kết nối trên trang Hỗ trợ TCBS."
+      }
+    }
+  ]
+}
+&lt;/script&gt;</pre>
+</section>
+
+<section id="uu-tien">
+  <h2>5. Ưu tiên xử lý</h2>
+  <div class="prio">
+    <div class="callout critical-box"><h4>P0</h4><ul>
+      <li>Sửa lãi suất iPower từ 6.0% thành 9.0%/năm.</li>
+      <li>Sửa dòng tổng ví dụ sau khi bộ phận phụ trách xác nhận.</li>
+      <li>Đối chiếu bảng tỉ lệ với chính sách áp dụng từ 01/09/2026: mốc ngày, các mốc iPower, dòng iOptima.</li>
+    </ul></div>
+    <div class="callout watch-box"><h4>P1</h4><ul>
+      <li>Đổi title, meta, og trong Rank Math cùng lúc golive.</li>
+      <li>Thêm cụm mô tả vào H1.</li>
+      <li>Thêm FAQPage, hoàn thiện FinancialService, bỏ Article.</li>
+      <li>Thêm link tới trang Khách hàng iWealth Partner; đổi link thẻ 7.89% sang Margin 789.</li>
+      <li>Thống nhất 3 bước giữa thân trang và FAQ; sửa mốc tháng trong ví dụ.</li>
+    </ul></div>
+    <div class="callout good-box"><h4>P2</h4><ul>
+      <li>Sửa 2 lỗi chính tả, dấu đóng ngoặc, lặp từ, chữ Bạn viết hoa, thống nhất xưng hô.</li>
+      <li>Đổi các anchor "tại đây"; link www mở cùng tab; thay thẻ mark bằng span.</li>
+      <li>Thêm nguồn cho câu Top 1 lợi nhuận; xác nhận số 13,000 và 97,000; xác nhận logo giải thưởng.</li>
+    </ul></div>
+  </div>
+</section>
+</main>
+<footer class="src"><div class="shell">
+  <b>Nguồn</b>
+  <ul>
+    <li><a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/">Trang đang chạy</a>, file bản dựng lại do bạn gửi ngày 06/10/2026</li>
+    <li><a href="https://www.tcbs.com.vn/ca-nhan/san-pham/ipower/">iPower</a>, <a href="https://www.tcbs.com.vn/ca-nhan/uu-dai/margin-789/">Margin 789</a>, <a href="https://www.tcbs.com.vn/ve-chung-toi/iwealth-partner/khach-hang-iwealth-partner/">Khách hàng iWealth Partner</a>, <a href="https://www.tcbs.com.vn/iwealth-partner/policy">Chính sách iWealth Partner</a></li>
+    <li><a href="https://ygslittleprince-netizen.github.io/sitemap/">Sitemap TCBS: phân loại Tier</a></li>
+    <li><a href="https://developers.google.com/search/docs/appearance/structured-data/faqpage">Google Search Central: FAQPage</a>; <a href="https://schema.org/FinancialService">Schema.org: FinancialService</a></li>
+  </ul>
+  <p style="margin-top:10px">Dữ liệu trang đang chạy đọc trực tiếp ngày 06/10/2026. Số từ và số đếm văn phong lấy từ script trên file bản dựng lại. Phép cộng ví dụ tính lại bằng script.</p>
+</div></footer>
+<script>
+(function(){
+  var browser=document.getElementById('browser'),frame=document.getElementById('mock'),lastH=0;
+  function fit(){try{var d=frame.contentDocument;if(!d||!d.documentElement)return;var h=Math.max(600,d.documentElement.scrollHeight);if(Math.abs(h-lastH)<2)return;lastH=h;frame.style.height=h+'px';}catch(e){}}
+  frame.addEventListener('load',function(){fit();try{new ResizeObserver(fit).observe(frame.contentDocument.documentElement);}catch(e){}setTimeout(fit,800);});
+  document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    browser.classList.toggle('mobile',b.dataset.mode==='mobile');lastH=0;setTimeout(fit,400);
+  });});
+})();
+</script>
+</body>
+</html>
